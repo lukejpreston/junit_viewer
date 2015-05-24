@@ -1,0 +1,12 @@
+{
+  "name": "junit-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.4",
+    "xml2js": "^0.4.8"
+  }
+}

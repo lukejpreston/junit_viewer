@@ -1,0 +1,42 @@
+body {
+    font-family: monospace;
+    font-size: 18px;
+}
+
+.title {
+    text-align: center;
+}
+
+.suite {
+    background: lightblue;
+    border: solid 1px;
+    padding: 5px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.suite__data {
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.test {
+    border: solid 1px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.test--pass {
+    background: lightgreen;
+}
+
+.test--fail {
+    background: lightcoral;
+}
+
+.test__time {
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
