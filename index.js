@@ -19,7 +19,7 @@ function jsonResults() {
             return folder + file
         })
 
-var finalResults = {}
+    var finalResults = {}
     files.map(function(file) {
         var data = fs.readFileSync(file)
         var parsedData
@@ -32,9 +32,9 @@ var finalResults = {}
         return parsedData
     }).forEach(function(result) {
         var testCases = result.testsuite.testcase
-        testCases.forEach(function(testCase){
+        testCases.forEach(function(testCase) {
             var name = testCase.$.classname
-            if(!finalResults.hasOwnProperty(name)) {
+            if (!finalResults.hasOwnProperty(name)) {
                 finalResults[name] = {
                     tests: 0,
                     failures: 0,
@@ -49,7 +49,7 @@ var finalResults = {}
                 time: testCase.$.time
             }
 
-            if(testCase.hasOwnProperty('failure')) {
+            if (testCase.hasOwnProperty('failure')) {
                 finalResults[name].failures += 1
                 newCase.failureMessage = testCase.failure[0]._
             }
@@ -57,17 +57,22 @@ var finalResults = {}
         })
     })
     return finalResults
-
 }
 
-var express = require('express'),
+var express = require('express')
+
+function start() {
     app = express()
-app.use(express.static(__dirname));
+    app.use(express.static(__dirname))
 
-app.get('/junit.json', function(req, res) {
-    res.send(jsonResults());
-});
+    app.get('/junit.json', function(req, res) {
+        res.send(jsonResults());
+    });
 
-app.listen(8080);
-console.log('Listening on port 8080');
+    app.listen(4738);
+    console.log('Listening on port 4738');
+}
 
+module.exports = {
+    start: start
+}

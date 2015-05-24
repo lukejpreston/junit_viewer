@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "Run this by passing in a folder and it will start server to view simple junit results",
     "main": "index.js",
+    "bin": {
+        "junit-viewer" : "./bin/junit-viewer"
+    },
+    "directories": "./",
     "author": "Luke Preston",
     "license": "ISC",
     "repository": "https://github.com/lukejpreston/junit_viewer.git",
