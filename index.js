@@ -11,25 +11,41 @@ if (folder.charAt(folder.length - 1) !== '/') {
     folder += '/'
 }
 
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+function getFiles(folder) {
+    var files = []
+    fs.readdirSync(folder).forEach(function(file) {
+        if(fs.lstatSync(folder +'/'+ file).isDirectory()) {
+            files = files.concat(getFiles(folder +'/'+ file))
+        } else {
+            files.push(folder +'/'+ file)
+        }
+    })
+
+    return files.filter(function(file) {
+        var suffix = '.xml'
+        return file.indexOf(suffix, file.length - suffix.length) !== -1
+    })
+}
+
 function jsonResults() {
-    var files = fs.readdirSync(folder)
-        .filter(function(file) {
-            return file.indexOf('xml') !== -1
-        }).map(function(file) {
-            return folder + file
-        })
+    var files = getFiles(folder)
 
     var finalResults = {}
     files.map(function(file) {
         var data = fs.readFileSync(file)
         var parsedData
         parser.parseString(data, function(err, result) {
-            parsedData = result
+            parsedData = result || {}
         })
-        var result = {}
         var fileSplit = file.split('/')
         parsedData.name = fileSplit[fileSplit.length - 1].split('.')[0]
         return parsedData
+    }).filter(function(result){
+        return result.hasOwnProperty('testsuite')
     }).forEach(function(result) {
         var testCases = result.testsuite.testcase
         testCases.forEach(function(testCase) {
