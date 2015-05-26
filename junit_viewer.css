@@ -9,7 +9,7 @@ body {
 
 .suite {
     background: lightblue;
-    border: solid 1px;
+    border: groove;
     padding: 5px;
     margin: 2px;
     cursor: pointer;
@@ -22,7 +22,8 @@ body {
 }
 
 .test {
-    border: solid 1px;
+    position: relative;
+    border: groove;
     margin: 2px;
     padding: 5px;
 }
@@ -36,7 +37,13 @@ body {
 }
 
 .test__time {
-    float: right;
-    margin-right: 5px;
-    margin-left: 5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px;
+}
+
+.test__name {
+    padding-right: 15%;
+    display: block;
 }

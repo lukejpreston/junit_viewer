@@ -35,7 +35,7 @@ function jsonResults() {
     var files = getFiles(folder)
 
     var finalResults = {}
-    files.map(function(file) {
+    var testFiles = files.map(function(file) {
         var data = fs.readFileSync(file)
         var parsedData
         parser.parseString(data, function(err, result) {
@@ -45,9 +45,22 @@ function jsonResults() {
         parsedData.name = fileSplit[fileSplit.length - 1].split('.')[0]
         return parsedData
     }).filter(function(result){
-        return result.hasOwnProperty('testsuite')
-    }).forEach(function(result) {
-        var testCases = result.testsuite.testcase
+        return result.hasOwnProperty('testsuite') || result.hasOwnProperty('testsuites')
+    })
+
+    var results = []
+    testFiles.forEach(function(file) {
+        if(file.hasOwnProperty('testsuites')) {
+            file.testsuites.testsuite.forEach(function(test) {
+                results = results.concat(test)
+            })
+        } else {
+            results.push(file.testsuite)
+        }
+    })
+
+    results.forEach(function(result) {
+        var testCases = result.testcase
         testCases.forEach(function(testCase) {
             var name = testCase.$.classname
             if (!finalResults.hasOwnProperty(name)) {
@@ -61,7 +74,7 @@ function jsonResults() {
             finalResults[name].tests += 1
 
             var newCase = {
-                name: testCase.$.name,
+                name: testCase.$.name.replace(new RegExp('\n', 'g'), '<br />'),
                 time: testCase.$.time
             }
 
@@ -83,6 +96,7 @@ function start() {
 
     app.get('/junit.json', function(req, res) {
         res.send(jsonResults());
+
     });
 
     app.listen(4738);
