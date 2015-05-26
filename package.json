@@ -1,17 +1,17 @@
 {
-    "name": "junit-viewer",
-    "version": "1.0.0",
-    "description": "Run this by passing in a folder and it will start server to view simple junit results",
-    "main": "index.js",
-    "bin": {
-        "junit-viewer" : "./bin/junit-viewer"
-    },
-    "directories": "./",
-    "author": "Luke Preston",
-    "license": "ISC",
-    "repository": "https://github.com/lukejpreston/junit_viewer.git",
-    "dependencies": {
-        "express": "^4.12.4",
-        "xml2js": "^0.4.8"
-    }
+  "name": "junit-viewer",
+  "version": "1.1.0",
+  "description": "Run this by passing in a folder and it will start server to view simple junit results",
+  "main": "index.js",
+  "bin": {
+    "junit-viewer": "./bin/junit-viewer"
+  },
+  "directories": "./",
+  "author": "Luke Preston",
+  "license": "ISC",
+  "repository": "https://github.com/lukejpreston/junit_viewer.git",
+  "dependencies": {
+    "express": "^4.12.4",
+    "xml2js": "^0.4.8"
+  }
 }
