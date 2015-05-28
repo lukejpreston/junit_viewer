@@ -14,13 +14,16 @@ function Br() {
     return Dom('br')
 }
 
+$('.error').hide()  
+
 $.getJSON("junit.json", function(junitData) {
     $(".title").text(junitData.title)
     $('title').text(junitData.title)
     delete junitData.title
+
     var index = 0
-    for (var className in junitData) {
-        var data = junitData[className]
+    for (var className in junitData.results) {
+        var data = junitData.results[className]
         var suite = Div()
             .attr('id', function() {
                 return 's_' + index
@@ -97,8 +100,10 @@ $.getJSON("junit.json", function(junitData) {
                 .children('.tests')
                 .slideToggle(500)
         })
-
         index += 1
+    }
+    if(index === 0 || junitData.results.hasOwnProperty("NO FOLDER SPECIFIED FOR JUNIT VIEWER")) {
+        $('.error').show()
     }
 })
 

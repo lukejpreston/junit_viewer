@@ -61,3 +61,10 @@ body {
     text-align: center;
     padding: 5px;
 }
+
+.error {
+    background-color: lightcoral;
+    padding: 20px;
+    margin: 31px;
+    font-size: 24px;
+}

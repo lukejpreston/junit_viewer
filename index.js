@@ -2,7 +2,7 @@ var path = require('path'),
     fs = require('fs'),
     parser = new require('xml2js').Parser()
 
-var folder = process.argv.slice(2)[0] || './'
+var folder = process.argv.slice(2)[0] || './test_data'
 
 if (folder.charAt(0) == '.') {
     folder = __dirname + folder.slice(1)
@@ -110,9 +110,10 @@ function start() {
     app.use(express.static(__dirname))
 
     app.get('/junit.json', function(req, res) {
-        var results = jsonResults()
-        results.title = getTitle()
-        res.send(results);
+        res.send({
+            results: jsonResults(),
+            title: getTitle()
+        });
     });
 
     app.listen(4738);
