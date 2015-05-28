@@ -15,11 +15,11 @@ function Br() {
 }
 
 $.getJSON("junit.json", function(junitData) {
+    $(".title").text(junitData.title)
+    delete junitData.title
     var index = 0
     for (var className in junitData) {
-
         var data = junitData[className]
-
         var suite = Div()
             .attr('id', function() {
                 return 's_' + index
@@ -50,9 +50,9 @@ $.getJSON("junit.json", function(junitData) {
         else
             suite.addClass('suite--fail')
 
-
         var tests = Div()
             .addClass('tests')
+
         data.cases.forEach(function(testCase, caseIndex) {
             var test = Div()
                 .attr('id', function() {
@@ -99,7 +99,7 @@ $.getJSON("junit.json", function(junitData) {
 
         index += 1
     }
-});
+})
 
 function filter() {
     $(".test--pass").slideToggle(500)

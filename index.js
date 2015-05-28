@@ -15,13 +15,17 @@ function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
 
+function getTitle() {
+
+}
+
 function getFiles(folder) {
     var files = []
     fs.readdirSync(folder).forEach(function(file) {
-        if(fs.lstatSync(folder +'/'+ file).isDirectory()) {
-            files = files.concat(getFiles(folder +'/'+ file))
+        if (fs.lstatSync(folder + '/' + file).isDirectory()) {
+            files = files.concat(getFiles(folder + '/' + file))
         } else {
-            files.push(folder +'/'+ file)
+            files.push(folder + '/' + file)
         }
     })
 
@@ -44,13 +48,13 @@ function jsonResults() {
         var fileSplit = file.split('/')
         parsedData.name = fileSplit[fileSplit.length - 1].split('.')[0]
         return parsedData
-    }).filter(function(result){
+    }).filter(function(result) {
         return result.hasOwnProperty('testsuite') || result.hasOwnProperty('testsuites')
     })
 
     var results = []
     testFiles.forEach(function(file) {
-        if(file.hasOwnProperty('testsuites')) {
+        if (file.hasOwnProperty('testsuites')) {
             file.testsuites.testsuite.forEach(function(test) {
                 results = results.concat(test)
             })
@@ -95,10 +99,19 @@ function start() {
     app.use(express.static(__dirname))
 
     app.get('/junit.json', function(req, res) {
-        res.send(jsonResults());
+        var folderSplit = folder.split('/')
+        var title = folderSplit[folderSplit.length - 2]
+        title = title.replace(new RegExp('_', 'g'), ' ')
 
+        var fullTitle = []
+        title.split(' ').forEach(function(word){
+            fullTitle.push(word[0].toUpperCase() + word.slice(1))
+        })
+        
+        var results = jsonResults()
+        results.title = fullTitle.join(' ')
+        res.send(results);
     });
-
     app.listen(4738);
     console.log('Listening on port 4738');
 }
