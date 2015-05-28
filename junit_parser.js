@@ -45,6 +45,12 @@ $.getJSON("junit.json", function(junitData) {
             .append()
             .appendTo($('#results'))
 
+        if (data.failures === 0)
+            suite.addClass('suite--pass')
+        else
+            suite.addClass('suite--fail')
+
+
         var tests = Div()
             .addClass('tests')
         data.cases.forEach(function(testCase, caseIndex) {
@@ -85,7 +91,7 @@ $.getJSON("junit.json", function(junitData) {
             tests.append(test)
         })
         suite.append(tests)
-        suite.on('click', function(){
+        suite.on('click', function() {
             $(this)
                 .children('.tests')
                 .slideToggle(500)
@@ -94,3 +100,22 @@ $.getJSON("junit.json", function(junitData) {
         index += 1
     }
 });
+
+function filter() {
+    $(".test--pass").slideToggle(500)
+    $(".suite--pass").slideToggle(500)
+    var text = $(".filter").text()
+    if (text.indexOf("Filter") !== -1)
+        $(".filter").text("Insert Passing")
+    else
+        $(".filter").text("Filter Passing")
+}
+
+function expand() {
+    $(".suite").click()
+    var text = $(".expand").text()
+    if (text.indexOf("Expand") !== -1)
+        $(".expand").text("Contract All")
+    else
+        $(".expand").text("Expand All")
+}

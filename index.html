@@ -10,7 +10,13 @@
 
 <body>
     <h1 class="title">Unit Tests</h1>
-    <div id="results"></div>
+    <div class="container">
+        <div class="buttons">
+            <span onclick="expand()" class="button expand">Expand All</span>
+            <span onclick="filter()" class="button filter">Filter Passing</span>
+        </div>
+        <div id="results"></div>
+    </div>
     <script src="junit_parser.js"></script>
 </body>
 

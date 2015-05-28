@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <testsuite tests="2" failures="1" time="0.0160106">
+      <testcase name="Player Has a name Name Works Money" classname="Mega Suite" time="0"></testcase>
+  </testsuite>

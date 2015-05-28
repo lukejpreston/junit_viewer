@@ -47,3 +47,17 @@ body {
     padding-right: 15%;
     display: block;
 }
+
+.buttons {
+    margin: 2px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.button {
+    background: lightblue;
+    border: groove;
+    text-align: center;
+    padding: 5px;
+}
