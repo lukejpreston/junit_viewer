@@ -14,7 +14,7 @@ function Br() {
     return Dom('br')
 }
 
-$('.error').hide()  
+$('.error').hide()
 
 $.getJSON("junit.json", function(junitData) {
     $(".title").text(junitData.title)
@@ -46,6 +46,7 @@ $.getJSON("junit.json", function(junitData) {
                 )
                 .addClass('suite')
             )
+            .addClass("suite--contracted")
             .append()
             .appendTo($('#results'))
 
@@ -91,18 +92,29 @@ $.getJSON("junit.json", function(junitData) {
             else
                 test.addClass('test--pass')
 
-            tests.hide()
-            tests.append(test)
+            tests
+                .hide()
+                .append(test)
         })
-        suite.append(tests)
-        suite.on('click', function() {
-            $(this)
-                .children('.tests')
-                .slideToggle(500)
-        })
+        suite
+            .append(tests)
+            .on('click', function() {
+                var self = $(this)
+                self
+                    .children('.tests')
+                    .slideToggle(500)
+
+                if (self.hasClass("suite--contracted")) {
+                    self.removeClass("suite--contracted")
+                    self.addClass("suite--expanded")
+                } else {
+                    self.addClass("suite--contracted")
+                    self.removeClass("suite--expanded")
+                }
+            })
         index += 1
     }
-    if(index === 0 || junitData.results.hasOwnProperty("NO FOLDER SPECIFIED FOR JUNIT VIEWER")) {
+    if (index === 0 || junitData.results.hasOwnProperty("NO FOLDER SPECIFIED FOR JUNIT VIEWER")) {
         $('.error').show()
     }
 })
@@ -118,10 +130,14 @@ function filter() {
 }
 
 function expand() {
-    $(".suite").click()
+    
     var text = $(".expand").text()
-    if (text.indexOf("Expand") !== -1)
+    if (text.indexOf("Expand") !== -1) {
         $(".expand").text("Contract All")
-    else
+        $(".suite--contracted").click()
+    }
+    else {
+        $(".suite--expanded").click()
         $(".expand").text("Expand All")
+    }
 }
