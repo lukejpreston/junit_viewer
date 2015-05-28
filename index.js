@@ -94,26 +94,29 @@ function jsonResults() {
 
 var express = require('express')
 
+function getTitle() {
+    var folderSplit = folder.split('/')
+    var title = folderSplit[folderSplit.length - 2]
+    title = title.replace(new RegExp('_', 'g'), ' ')
+    var fullTitle = []
+    title.split(' ').forEach(function(word) {
+        fullTitle.push(word[0].toUpperCase() + word.slice(1))
+    })
+    return fullTitle.join(' ')
+}
+
 function start() {
     app = express()
     app.use(express.static(__dirname))
 
     app.get('/junit.json', function(req, res) {
-        var folderSplit = folder.split('/')
-        var title = folderSplit[folderSplit.length - 2]
-        title = title.replace(new RegExp('_', 'g'), ' ')
-
-        var fullTitle = []
-        title.split(' ').forEach(function(word){
-            fullTitle.push(word[0].toUpperCase() + word.slice(1))
-        })
-        
         var results = jsonResults()
-        results.title = fullTitle.join(' ')
+        results.title = getTitle()
         res.send(results);
     });
+
     app.listen(4738);
-    console.log('Listening on port 4738');
+    console.log('Running and viewer at http://localhost:4738');
 }
 
 module.exports = {

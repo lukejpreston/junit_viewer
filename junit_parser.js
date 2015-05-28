@@ -16,6 +16,7 @@ function Br() {
 
 $.getJSON("junit.json", function(junitData) {
     $(".title").text(junitData.title)
+    $('title').text(junitData.title)
     delete junitData.title
     var index = 0
     for (var className in junitData) {
