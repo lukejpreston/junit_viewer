@@ -2,21 +2,37 @@ var path = require('path'),
     fs = require('fs'),
     parser = new require('xml2js').Parser()
 
-var folder = process.argv.slice(2)[0] || './test_data'
 
-if (folder.charAt(0) == '.') {
-    folder = __dirname + folder.slice(1)
+var commandArgs = {}
+
+process.argv.forEach(function(arg) {
+    if (arg.indexOf('--save') !== -1) {
+        commandArgs.save = arg.split('=')[1] || 'junit.html'
+    }
+    if (arg.indexOf('--folder') !== -1) {
+        commandArgs.folder = arg.split('=')[1] || './test_data'
+    }
+    if (arg.indexOf('--port') !== -1) {
+        commandArgs.port = arg.split('=')[1] || 9090
+    }
+})
+
+var folder = commandArgs.folder || './test_data'
+
+if (folder.charAt(0) == '.' && folder.charAt(1) == '/') {
+    folder = folder.replace('./', '')
 }
+
+console.log(folder)
+
 if (folder.charAt(folder.length - 1) !== '/') {
     folder += '/'
 }
 
+
+
 function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
-
-function getTitle() {
-
 }
 
 function getFiles(folder) {
@@ -107,7 +123,7 @@ function getTitle() {
     return fullTitle.join(' ')
 }
 
-function start() {
+function startServer() {
     app = express()
     app.use(express.static(__dirname))
 
@@ -118,8 +134,43 @@ function start() {
         });
     });
 
-    app.listen(4738);
-    console.log('Running and viewer at http://localhost:4738');
+    app.listen(commandArgs.port);
+    console.log('Running and viewer at http://localhost:' + commandArgs.port);
+}
+
+function save() {
+    var thing = fs.readFileSync(__dirname + '/template.html')
+    var thing = thing
+        .toString()
+        .replace('REPLACEWITHJUNITDATA', JSON.stringify({
+            results: jsonResults(),
+            title: getTitle()
+        }))
+    fs.writeFile(commandArgs.save, thing, function(err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("The file was saved:", commandArgs.save);
+    });
+}
+
+function start() {
+    if (!commandArgs.hasOwnProperty('folder')) {
+        var message = ['Usage: ',
+            'You need to specify a folder',
+            '--folder=folderName location of folder',
+            '--port=portNumber supply a port if you want to serve',
+            '--save=fileName supply a file name if you wish to save the file'
+        ].join('\n')
+        console.log(message)
+    } else {
+        if (commandArgs.port) {
+            startServer()
+        }
+        if (commandArgs.save) {
+            save()
+        }
+    }
 }
 
 module.exports = {
