@@ -63,7 +63,9 @@ function jsonResults() {
         }
     })
 
-    results.forEach(function(result) {
+    results.filter(function(result) {
+        return result.testcase !== undefined
+    }).forEach(function(result) {
         var testCases = result.testcase
         testCases.forEach(function(testCase) {
             var name = testCase.$.classname
