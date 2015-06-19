@@ -3,7 +3,8 @@ Junit Viewer
 
 View a folder of junit xml in a simple web page
 
-install it
+Install It
+==========
 
 ```
 npm install junit-viewer -g
