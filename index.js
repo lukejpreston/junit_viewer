@@ -18,14 +18,17 @@ process.argv.forEach(function(arg) {
 });
 
 var folder = commandArgs.folder || './test_data';
+folder = folder.replace('\\', '/');
 
 if (folder.charAt(0) == '.' && folder.charAt(1) == '/') {
     folder = folder.replace('./', '');
 }
 
+var isFolder = fs.lstatSync(folder).isDirectory();
+
 console.log(folder);
 
-if (folder.charAt(folder.length - 1) !== '/') {
+if (isFolder && folder.charAt(folder.length - 1) !== '/') {
     folder += '/';
 }
 
@@ -35,13 +38,17 @@ function endsWith(str, suffix) {
 
 function getFiles(folder) {
     var files = [];
-    fs.readdirSync(folder).forEach(function(file) {
-        if (fs.lstatSync(folder + '/' + file).isDirectory()) {
-            files = files.concat(getFiles(folder + '/' + file));
-        } else {
-            files.push(folder + '/' + file);
-        }
-    });
+    if (isFolder) {
+        fs.readdirSync(folder).forEach(function (file) {
+            if (fs.lstatSync(folder + '/' + file).isDirectory()) {
+                files = files.concat(getFiles(folder + '/' + file));
+            } else {
+                files.push(folder + '/' + file);
+            }
+        });
+    } else {
+        files.push(folder);
+    }
 
     return files.filter(function(file) {
         var suffix = '.xml';
@@ -114,7 +121,7 @@ var express = require('express');
 
 function getTitle() {
     var folderSplit = folder.split('/');
-    var title = folderSplit[folderSplit.length - 2];
+    var title = folderSplit[folderSplit.length - (isFolder ? 2 : 1)];
     title = title.replace(new RegExp('_', 'g'), ' ');
     var fullTitle = [];
     title.split(' ').forEach(function(word) {

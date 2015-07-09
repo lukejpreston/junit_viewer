@@ -16,7 +16,7 @@
             <li>If this is the "Test Data" you forgot your folder</li>
             <li>Check the console for an error: if error from parsing please raise issue with some stub data or a pull request</li>
             <li>If the console says ENOENT exception either folder is missing/invalid or in accessible e.g. being used by another program as in unit tests are still running</li>
-            <li>That the folder has xml inside of it</li>
+            <li>That the folder has xml inside of it or the file, you set in the command, is not an xml</li>
             <li>That your tests have actually compiled as most reports won't be created if not compiled correctly</li>
         </ul>
     </div>
@@ -25,6 +25,7 @@
             <span onclick="expand()" class="button expand">Expand All</span>
             <span onclick="filter()" class="button filter">Filter Passing</span>
         </div>
+        <div id="summary"></div>
         <div id="results"></div>
     </div>
     <script src="junit_parser.js"></script>

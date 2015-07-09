@@ -21,7 +21,18 @@ $.getJSON("junit.json", function (junitData) {
     $('title').text(junitData.title);
     delete junitData.title;
 
-    var index = 0;
+    var index = 0, summary = {
+        suites: {
+            passed: 0,
+            failed: 0
+        },
+        tests: {
+            passed: 0,
+            failed: 0,
+            skipped: 0
+        },
+        time: 0
+    };
     for (var className in junitData.results) {
         if (junitData.results.hasOwnProperty(className)) {
             var data = junitData.results[className];
@@ -49,8 +60,10 @@ $.getJSON("junit.json", function (junitData) {
 
             if (data.failures === 0) {
                 suite.addClass('suite--pass');
+                summary.suites.passed++;
             } else {
                 suite.addClass('suite--fail');
+                summary.suites.failed++;
             }
 
             var tests = Div().addClass('tests');
@@ -70,6 +83,10 @@ $.getJSON("junit.json", function (junitData) {
                             .addClass('test__time')
                     ).addClass('test');
 
+                if (testCase.time) {
+                    summary.time += parseInt(testCase.time);
+                }
+
                 if (testCase.hasOwnProperty('failureMessage')) {
                     test.append(
                         Br()
@@ -83,10 +100,13 @@ $.getJSON("junit.json", function (junitData) {
                             .html(testCase.failureMessage)
                             .addClass('test__fail')
                     ).addClass('test--fail');
+                    summary.tests.failed++;
                 } else if (testCase.hasOwnProperty('skipped')) {
                     test.addClass('test--skip');
+                    summary.tests.skipped++;
                 } else {
                     test.addClass('test--pass');
+                    summary.tests.passed++;
                 }
 
                 tests
@@ -112,10 +132,33 @@ $.getJSON("junit.json", function (junitData) {
             index += 1;
         }
     }
+    $('#summary').html(
+        (summary.suites.failed + summary.suites.passed) + " suites (" +
+        summary.suites.failed + " failed, " + summary.suites.passed + " passed), " +
+        (summary.tests.failed + summary.tests.passed + summary.tests.skipped) + " tests (" +
+        summary.tests.failed + " failed, " + summary.tests.skipped + " skipped, " +
+        summary.tests.passed + " passed), Runtime: " + formatTime(summary.time)
+    );
     if (index === 0 || junitData.results.hasOwnProperty("NO FOLDER SPECIFIED FOR JUNIT VIEWER")) {
         $('.error').show();
     }
 });
+
+function formatTime(ms) {
+    function convertMS(ms) {
+        var d, h, m, s;
+        s = Math.floor(ms / 1000);
+        m = Math.floor(s / 60);
+        s = s % 60;
+        h = Math.floor(m / 60);
+        m = m % 60;
+        d = Math.floor(h / 24);
+        h = h % 24;
+        return { d: d, h: h, m: m, s: s };
+    }
+    ms = convertMS(ms);
+    return ms.h + ' h. ' + ms.m + ' min. ' + ms.s + ' sec.';
+}
 
 function filter() {
     $(".test--pass").slideToggle(500);

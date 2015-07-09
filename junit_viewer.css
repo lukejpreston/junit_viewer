@@ -1,6 +1,6 @@
 body {
     font-family: monospace;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .title {
@@ -8,24 +8,62 @@ body {
 }
 
 .suite {
-    background: lightblue;
-    border: groove;
-    padding: 5px;
-    margin: 2px;
+    padding: 8px;
+    margin: 3px;
     cursor: pointer;
+    line-height: 20px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 1px 2px 0 lightslategray;
+    -moz-box-shadow: 1px 1px 2px 0 lightslategray;
+    box-shadow: 1px 1px 2px 0 lightslategray;
+}
+
+.suite:after {
+    clear: both;
+    display: block;
+    content: " ";
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.suite__name {
+    float: left;
 }
 
 .suite__data {
     float: right;
     margin-left: 5px;
     margin-right: 5px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.suite--pass .suite {
+    background: lightgreen;
+}
+
+.suite--fail .suite {
+    background: lightblue;
+}
+
+.tests {
+    padding: 0 25px 25px;
 }
 
 .test {
     position: relative;
-    border: groove;
     margin: 2px;
-    padding: 5px;
+    padding: 8px;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
+    -moz-box-shadow: 1px 1px 1px 0 lightslategray;
+    box-shadow: 1px 1px 1px 0 lightslategray;
 }
 
 .test--pass {
@@ -42,9 +80,10 @@ body {
 
 .test__time {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 5px;
+    bottom: 5px;
     padding: 5px;
+    font-size: 12px;
 }
 
 .test__name {
@@ -53,22 +92,33 @@ body {
 }
 
 .buttons {
-    margin: 2px;
+    margin: 2px 2px 15px 2px;
     cursor: pointer;
-    display: block;
-    margin-bottom: 15px;
+    display: inline-block;
 }
 
 .button {
-    background: lightblue;
-    border: groove;
+    background: lightsalmon;
     text-align: center;
-    padding: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
+    -moz-box-shadow: 1px 1px 1px 0 lightslategray;
+    box-shadow: 1px 1px 1px 0 lightslategray;
+}
+
+#summary {
+    margin: 2px;
+    display: inline-block;
+    font-size: 12px;
 }
 
 .error {
     background-color: lightcoral;
     padding: 20px;
     margin: 31px;
-    font-size: 24px;
+    font-size: 16px;
 }
