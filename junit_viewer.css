@@ -36,6 +36,10 @@ body {
     background: lightcoral;
 }
 
+.test--skip {
+    background: lightgoldenrodyellow;
+}
+
 .test__time {
     position: absolute;
     right: 0;
