@@ -70,7 +70,7 @@ $.getJSON("junit.json", function(junitData) {
                 )
                 .append(
                     Span()
-                    .html('Time: ' + parseInt(testCase.time).toFixed(2))
+                    .html('Time: ' + parseFloat(testCase.time).toFixed(2))
                     .addClass('test__time')
                 )
                 .addClass('test')
