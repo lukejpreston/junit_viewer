@@ -54,6 +54,20 @@ $.getJSON("junit.json", function (junitData) {
                             .html('Failures: ' + data.failures)
                             .addClass('suite__data')
                     ).addClass('suite')
+                    .on('click', function () {
+                        var self = $(this).parent();
+                        self
+                            .children('.tests')
+                            .slideToggle(500);
+
+                        if (self.hasClass("suite--contracted")) {
+                            self.removeClass("suite--contracted");
+                            self.addClass("suite--expanded");
+                        } else {
+                            self.addClass("suite--contracted");
+                            self.removeClass("suite--expanded");
+                        }
+                    })
                 ).addClass("suite--contracted")
                 .append()
                 .appendTo($('#results'));
@@ -113,22 +127,7 @@ $.getJSON("junit.json", function (junitData) {
                     .hide()
                     .append(test);
             });
-            suite
-                .append(tests)
-                .on('click', function () {
-                    var self = $(this);
-                    self
-                        .children('.tests')
-                        .slideToggle(500);
-
-                    if (self.hasClass("suite--contracted")) {
-                        self.removeClass("suite--contracted");
-                        self.addClass("suite--expanded");
-                    } else {
-                        self.addClass("suite--contracted");
-                        self.removeClass("suite--expanded");
-                    }
-                });
+            suite.append(tests);
             index += 1;
         }
     }
