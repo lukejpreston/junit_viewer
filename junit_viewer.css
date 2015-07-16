@@ -49,6 +49,28 @@ body {
     background: lightblue;
 }
 
+.suite__summary {
+    padding: 5px 25px;
+    font-size: 12px;
+}
+
+.suite__summary > span {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 10px 0 0;
+    background: lightgrey;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 1px 1px 0 lightgrey;
+    -moz-box-shadow: 1px 1px 1px 0 lightgrey;
+    box-shadow: 1px 1px 1px 0 lightgrey;
+}
+
+.suite__summary .boolean {
+    background: orange;
+}
+
 .tests {
     padding: 0 25px 25px;
 }

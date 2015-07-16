@@ -58,8 +58,9 @@ function getFiles(folder) {
 
 function jsonResults() {
     var files = getFiles(folder);
-
     var finalResults = {};
+
+    // Read all files in the folder (or that one file)
     var testFiles = files.map(function(file) {
         var data = fs.readFileSync(file);
         var parsedData;
@@ -74,6 +75,7 @@ function jsonResults() {
     });
 
     var results = [];
+    // Collect all the testsuites
     testFiles.forEach(function(file) {
         if (file.hasOwnProperty('testsuites')) {
             file.testsuites.testsuite.forEach(function(test) {
@@ -96,6 +98,12 @@ function jsonResults() {
                     failures: 0,
                     cases: []
                 };
+                if (result.properties !== undefined) {
+                    finalResults[name].properties = {};
+                    result.properties[0].property.forEach(function(property){
+                        finalResults[name].properties[property.$.name] = property.$.value;
+                    })
+                }
             }
 
             finalResults[name].tests += 1;

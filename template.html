@@ -82,6 +82,28 @@
         background: lightblue;
     }
 
+    .suite__summary {
+        padding: 5px 25px;
+        font-size: 12px;
+    }
+
+    .suite__summary > span {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0 10px 0 0;
+        background: lightgrey;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        -webkit-box-shadow: 1px 1px 1px 0 lightgrey;
+        -moz-box-shadow: 1px 1px 1px 0 lightgrey;
+        box-shadow: 1px 1px 1px 0 lightgrey;
+    }
+
+    .suite__summary .boolean {
+        background: orange;
+    }
+
     .tests {
         padding: 0 25px 25px;
     }
@@ -220,6 +242,11 @@
         for (var className in junitData.results) {
             if (junitData.results.hasOwnProperty(className)) {
                 var data = junitData.results[className];
+
+                var content = Div()
+                        .addClass('content')
+                        .hide();
+
                 var suite = Div()
                     .attr('id', function () {
                         return 's_' + index;
@@ -241,7 +268,7 @@
                         .on('click', function () {
                             var self = $(this).parent();
                             self
-                                .children('.tests')
+                                .children('.content')
                                 .slideToggle(500);
 
                             if (self.hasClass("suite--contracted")) {
@@ -253,7 +280,7 @@
                             }
                         })
                     ).addClass("suite--contracted")
-                    .append()
+                    .append(content)
                     .appendTo($('#results'));
 
                 if (data.failures === 0) {
@@ -262,6 +289,26 @@
                 } else {
                     suite.addClass('suite--fail');
                     summary.suites.failed++;
+                }
+
+                if (data.properties) {
+                    var suiteSummary = Div().addClass('suite__summary');
+
+                    for (var propName in data.properties) {
+                        if (data.properties.hasOwnProperty(propName)) {
+                            var label = Span();
+                            if (data.properties[propName] == "true") {
+                                label
+                                        .addClass('boolean')
+                                        .html('<strong>' + propName + '</strong>');
+                            } else {
+                                label.html('<strong>' + propName + '</strong>: ' + data.properties[propName]);
+                            }
+                            suiteSummary.append(label);
+                        }
+                    }
+
+                    content.append(suiteSummary);
                 }
 
                 var tests = Div().addClass('tests');
@@ -307,11 +354,9 @@
                         summary.tests.passed++;
                     }
 
-                    tests
-                        .hide()
-                        .append(test);
+                    tests.append(test);
                 });
-                suite.append(tests);
+                content.append(tests);
                 index += 1;
             }
         }

@@ -36,6 +36,11 @@ $.getJSON("junit.json", function (junitData) {
     for (var className in junitData.results) {
         if (junitData.results.hasOwnProperty(className)) {
             var data = junitData.results[className];
+
+            var content = Div()
+                .addClass('content')
+                .hide();
+
             var suite = Div()
                 .attr('id', function () {
                     return 's_' + index;
@@ -57,7 +62,7 @@ $.getJSON("junit.json", function (junitData) {
                     .on('click', function () {
                         var self = $(this).parent();
                         self
-                            .children('.tests')
+                            .children('.content')
                             .slideToggle(500);
 
                         if (self.hasClass("suite--contracted")) {
@@ -69,7 +74,7 @@ $.getJSON("junit.json", function (junitData) {
                         }
                     })
                 ).addClass("suite--contracted")
-                .append()
+                .append(content)
                 .appendTo($('#results'));
 
             if (data.failures === 0) {
@@ -78,6 +83,26 @@ $.getJSON("junit.json", function (junitData) {
             } else {
                 suite.addClass('suite--fail');
                 summary.suites.failed++;
+            }
+
+            if (data.properties) {
+                var suiteSummary = Div().addClass('suite__summary');
+
+                for (var propName in data.properties) {
+                    if (data.properties.hasOwnProperty(propName)) {
+                        var label = Span();
+                        if (data.properties[propName] == "true") {
+                            label
+                                .addClass('boolean')
+                                .html('<strong>' + propName + '</strong>');
+                        } else {
+                            label.html('<strong>' + propName + '</strong>: ' + data.properties[propName]);
+                        }
+                        suiteSummary.append(label);
+                    }
+                }
+
+                content.append(suiteSummary);
             }
 
             var tests = Div().addClass('tests');
@@ -123,11 +148,9 @@ $.getJSON("junit.json", function (junitData) {
                     summary.tests.passed++;
                 }
 
-                tests
-                    .hide()
-                    .append(test);
+                tests.append(test);
             });
-            suite.append(tests);
+            content.append(tests);
             index += 1;
         }
     }
