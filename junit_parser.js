@@ -197,9 +197,9 @@ function expand() {
     var text = $(".expand").text();
     if (text.indexOf("Expand") !== -1) {
         $(".expand").text("Contract All");
-        $(".suite--contracted").click();
+        $(".suite--contracted .suite").click();
     } else {
-        $(".suite--expanded").click();
+        $(".suite--expanded .suite").click();
         $(".expand").text("Expand All");
     }
 }
