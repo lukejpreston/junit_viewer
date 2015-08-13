@@ -67,6 +67,20 @@
         float: left;
     }
 
+    .suite__name .flag {
+        display: inline-block;
+        padding: 0 10px;
+        background: rgba(255,255,255,0.5);
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    .suite__name .flag.content { color: red; }
+    .suite__name .flag.missing { color: darkblue; }
+    .suite__name .flag.engine { color: red; background: yellow; }
+    .suite__name .flag.bug { color: red; }
+    .suite__name .flag.ta { color: green; }
+
     .suite__data {
         float: right;
         margin-left: 5px;
@@ -179,7 +193,6 @@
         font-size: 16px;
     }
     </style>
-    <link rel="stylesheet" type="text/css" href="junit_viewer.css">
 </head>
 
 <body>
@@ -296,7 +309,7 @@
                     var suiteSummary = Div().addClass('suite__summary');
 
                     for (var propName in data.properties) {
-                        if (data.properties.hasOwnProperty(propName)) {
+                        if (data.properties.hasOwnProperty(propName) && ['flag-type', 'flag-content'].indexOf(propName) == -1) {
                             var label = Span();
                             if (data.properties[propName] == "true") {
                                 label
@@ -307,6 +320,14 @@
                             }
                             suiteSummary.append(label);
                         }
+                    }
+
+                    if (data.properties['flag-type']) {
+                        var flag = Span()
+                                .addClass('flag')
+                                .addClass(data.properties['flag-type'])
+                                .html(data.properties['flag-content'] || data.properties['flag-type']);
+                        suite.find('.suite__name').prepend(flag);
                     }
 
                     content.append(suiteSummary);
@@ -389,7 +410,6 @@
         }
 
         function filter() {
-            $(".test--pass").slideToggle(500);
             $(".suite--pass").slideToggle(500);
             var text = $(".filter").text();
             if (text.indexOf("Filter") !== -1) {

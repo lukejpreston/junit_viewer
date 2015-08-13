@@ -89,7 +89,7 @@ $.getJSON("junit.json", function (junitData) {
                 var suiteSummary = Div().addClass('suite__summary');
 
                 for (var propName in data.properties) {
-                    if (data.properties.hasOwnProperty(propName)) {
+                    if (data.properties.hasOwnProperty(propName) && ['flag-type', 'flag-content'].indexOf(propName) == -1) {
                         var label = Span();
                         if (data.properties[propName] == "true") {
                             label
@@ -100,6 +100,14 @@ $.getJSON("junit.json", function (junitData) {
                         }
                         suiteSummary.append(label);
                     }
+                }
+
+                if (data.properties['flag-type']) {
+                    var flag = Span()
+                        .addClass('flag')
+                        .addClass(data.properties['flag-type'])
+                        .html(data.properties['flag-content'] || data.properties['flag-type']);
+                    suite.find('.suite__name').prepend(flag);
                 }
 
                 content.append(suiteSummary);
@@ -183,7 +191,6 @@ function formatTime(ms) {
 }
 
 function filter() {
-    $(".test--pass").slideToggle(500);
     $(".suite--pass").slideToggle(500);
     var text = $(".filter").text();
     if (text.indexOf("Filter") !== -1) {
