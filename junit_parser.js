@@ -85,7 +85,7 @@ $.getJSON("junit.json", function(junitData) {
                     Br()
                 ).append(
                     Span()
-                    .html(testCase.failureMessage)
+                    .html(testCase.failureMessage.replace(/(?:\r\n|\r|\n)/g, '<br />'))
                     .addClass('test__fail')
                 )
                 .addClass('test--fail')
