@@ -227,8 +227,9 @@
         })
         suite
             .append(tests)
+            .children('.suite')
             .on('click', function() {
-                var self = $(this)
+                var self = $(this).parent()
                 self
                     .children('.tests')
                     .slideToggle(500)
@@ -249,7 +250,7 @@
 
     function filter() {
         $(".test--pass").slideToggle(500)
-        $(".suite--pass").slideToggle(500)
+        $(".suite--pass").children('.suite').slideToggle(500)
         var text = $(".filter").text()
         if (text.indexOf("Filter") !== -1)
             $(".filter").text("Insert Passing")
@@ -262,9 +263,9 @@
         var text = $(".expand").text()
         if (text.indexOf("Expand") !== -1) {
             $(".expand").text("Contract All")
-            $(".suite--contracted").click()
+            $(".suite--contracted").children('.suite').click()
         } else {
-            $(".suite--expanded").click()
+            $(".suite--expanded").children('.suite').click()
             $(".expand").text("Expand All")
         }
     }
