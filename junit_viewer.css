@@ -1,48 +1,68 @@
 body {
-    font-family: monospace;
-    font-size: 18px;
+    font-family: sans-serif;
+    font-size: 16px;
 }
-
+    
 .title {
     text-align: center;
 }
-
+    
 .suite {
-    background: lightblue;
-    border: groove;
+	background: lightblue;
+	font-weight:bold;
+	color:black;
     padding: 5px;
-    margin: 2px;
+    margin: 2px 0px;
     cursor: pointer;
 }
-
+	
+.suite--contracted, .suite--expanded {
+	border-left:5px solid #01DF3A;
+	box-shadow: 3px 3px 3px grey;
+}
+	
+.suite--fail {
+	border-left:5px solid #DF013A;
+}
+	
+.suite--fail .suite {
+    background: #DF013A;
+	color:white;
+}
+	
+.suite--expanded {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+    
 .suite__data {
     float: right;
     margin-left: 5px;
     margin-right: 5px;
 }
-
+    
 .test {
     position: relative;
-    border: groove;
-    margin: 2px;
+    margin: 2px 0px;
     padding: 5px;
 }
-
+    
 .test--pass {
     background: lightgreen;
 }
-
+    
 .test--fail {
-    background: lightcoral;
+	color:white;
+    background: #DF013A;
 }
-
+    
 .test__time {
     position: absolute;
     right: 0;
     bottom: 0;
     padding: 5px;
 }
-
+    
 .test__name {
     padding-right: 15%;
     display: block;
@@ -54,14 +74,14 @@ body {
     display: block;
     margin-bottom: 15px;
 }
-
+    
 .button {
     background: lightblue;
-    border: groove;
+	box-shadow: 3px 3px 3px grey;
     text-align: center;
     padding: 5px;
 }
-
+    
 .error {
     background-color: lightcoral;
     padding: 20px;
