@@ -17,17 +17,17 @@ You can start it on as a server
 So as not to save the file and share it easily
 
 ```
-junit-viewer --folder=folder_or_file_path --port=9090
+junit-viewer --results=folder_or_file_path --port=9090
 ```
 
 You can save it to a file
 
 ```
-junit-viewer --folder=folder_or_file_path --save=destination_file.html
+junit-viewer --results=folder_or_file_path --save=destination_file.html
 ```
 
 You can do both
 
 ```
-junit-viewer --folder=folder_or_file_path --save=destination_file.html --port=9090
+junit-viewer --results=folder_or_file_path --save=destination_file.html --port=9090
 ```

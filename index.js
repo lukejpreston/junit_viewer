@@ -9,27 +9,25 @@ process.argv.forEach(function(arg) {
     if (arg.indexOf('--save') !== -1) {
         commandArgs.save = arg.split('=')[1] || 'junit.html';
     }
-    if (arg.indexOf('--folder') !== -1) {
-        commandArgs.folder = arg.split('=')[1] || './test_data';
+    if (arg.indexOf('--results') !== -1) {
+        commandArgs.results = arg.split('=')[1] || './test_data';
     }
     if (arg.indexOf('--port') !== -1) {
         commandArgs.port = arg.split('=')[1] || 9090;
     }
 });
 
-var folder = commandArgs.folder || './test_data';
-folder = folder.replace('\\', '/');
+var resultsFolder = commandArgs.results || './test_data';
+resultsFolder = resultsFolder.replace('\\', '/');
 
-if (folder.charAt(0) == '.' && folder.charAt(1) == '/') {
-    folder = folder.replace('./', '');
+if (resultsFolder.charAt(0) == '.' && resultsFolder.charAt(1) == '/') {
+    resultsFolder = resultsFolder.replace('./', '');
 }
 
-var isFolder = fs.lstatSync(folder).isDirectory();
+var isFolder = fs.lstatSync(resultsFolder).isDirectory();
 
-console.log(folder);
-
-if (isFolder && folder.charAt(folder.length - 1) !== '/') {
-    folder += '/';
+if (isFolder && resultsFolder.charAt(resultsFolder.length - 1) !== '/') {
+    resultsFolder += '/';
 }
 
 function endsWith(str, suffix) {
@@ -38,30 +36,29 @@ function endsWith(str, suffix) {
 
 function getFiles(folder) {
     var files = [];
-    if (isFolder) {
-        fs.readdirSync(folder).forEach(function (file) {
-            if (fs.lstatSync(folder + '/' + file).isDirectory()) {
-                files = files.concat(getFiles(folder + '/' + file));
-            } else {
-                files.push(folder + '/' + file);
-            }
-        });
-    } else {
-        files.push(folder);
-    }
+    fs.readdirSync(folder).forEach(function (file) {
+        if (fs.lstatSync(folder + '/' + file).isDirectory()) {
+            files = files.concat(getFiles(folder + '/' + file));
+        } else {
+            files.push(folder + '/' + file);
+        }
+    });
 
     return files.filter(function(file) {
-        var suffix = '.xml';
-        return file.indexOf(suffix, file.length - suffix.length) !== -1
+        return /\.xml$/i.test(file);
     });
 }
 
-function jsonResults() {
-    var files = getFiles(folder);
-    var finalResults = {};
+function getFile(file) {
+    return [file].filter(function(file) {
+        return /\.xml$/i.test(file);
+    });
+}
 
-    // Read all files in the folder (or that one file)
-    var testFiles = files.map(function(file) {
+function readResultFiles() {
+    var files = (isFolder ? getFiles(resultsFolder) : getFile(resultsFolder));
+    var results = [];
+    files.map(function(file) {
         var data = fs.readFileSync(file);
         var parsedData;
         parser.parseString(data, function(err, result) {
@@ -72,11 +69,7 @@ function jsonResults() {
         return parsedData;
     }).filter(function(result) {
         return result.hasOwnProperty('testsuite') || result.hasOwnProperty('testsuites');
-    });
-
-    var results = [];
-    // Collect all the testsuites
-    testFiles.forEach(function(file) {
+    }).forEach(function(file) {
         if (file.hasOwnProperty('testsuites')) {
             file.testsuites.testsuite.forEach(function(test) {
                 results = results.concat(test);
@@ -85,10 +78,16 @@ function jsonResults() {
             results.push(file.testsuite);
         }
     });
-
-    results.filter(function(result) {
+    return results.filter(function(result) {
         return result.testcase !== undefined;
-    }).forEach(function(result) {
+    });
+}
+
+function jsonResults() {
+    var finalResults = {};
+    var testSuites = readResultFiles();
+
+    testSuites.forEach(function(result) {
         var testCases = result.testcase;
         testCases.forEach(function(testCase) {
             var name = testCase.$.classname;
@@ -98,7 +97,7 @@ function jsonResults() {
                     failures: 0,
                     cases: []
                 };
-                if (result.properties !== undefined) {
+                if (result.hasOwnProperty('properties')) {
                     finalResults[name].properties = {};
                     result.properties[0].property.forEach(function(property){
                         finalResults[name].properties[property.$.name] = property.$.value;
@@ -128,7 +127,7 @@ function jsonResults() {
 var express = require('express');
 
 function getTitle() {
-    var folderSplit = folder.split('/');
+    var folderSplit = resultsFolder.split('/');
     var title = folderSplit[folderSplit.length - (isFolder ? 2 : 1)];
     title = title.replace(new RegExp('_', 'g'), ' ');
     var fullTitle = [];
@@ -154,8 +153,7 @@ function startServer() {
 }
 
 function save() {
-    var thing = fs.readFileSync(__dirname + '/template.html');
-    thing = thing
+    var thing = fs.readFileSync(__dirname + '/template.html')
         .toString()
         .replace('REPLACEWITHJUNITDATA', JSON.stringify({
             results: jsonResults(),
@@ -170,10 +168,10 @@ function save() {
 }
 
 function start() {
-    if (!commandArgs.hasOwnProperty('folder')) {
+    if (!commandArgs.hasOwnProperty('results')) {
         var message = ['Usage: ',
             'You need to specify a folder',
-            '--folder=folderName location of folder',
+            '--results=folderName location of folder',
             '--port=portNumber supply a port if you want to serve',
             '--save=fileName supply a file name if you wish to save the file'
         ].join('\n');

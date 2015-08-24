@@ -32,161 +32,201 @@
     });
     </script>
     <style type="text/css">
-    body {
-        font-family: monospace;
-        font-size: 16px;
-    }
+        body {
+            font-family: monospace;
+            font-size: 16px;
+        }
 
-    .title {
-        text-align: center;
-    }
+        .title {
+            text-align: center;
+        }
 
-    .suite {
-        padding: 8px;
-        margin: 3px;
-        cursor: pointer;
-        line-height: 20px;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
-        -webkit-box-shadow: 1px 1px 2px 0 lightslategray;
-        -moz-box-shadow: 1px 1px 2px 0 lightslategray;
-        box-shadow: 1px 1px 2px 0 lightslategray;
-    }
+        .suite {
+            background: lightblue;
+            color: black;
+            padding: 8px;
+            margin: 3px 3px 3px 0;
+            cursor: pointer;
+            line-height: 20px;
+            -webkit-border-top-right-radius: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            -moz-border-radius-topright: 4px;
+            -moz-border-radius-bottomright: 4px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            -webkit-box-shadow: 1px 1px 2px 0 lightslategray;
+            -moz-box-shadow: 1px 1px 2px 0 lightslategray;
+            box-shadow: 1px 1px 2px 0 lightslategray;
+        }
 
-    .suite:after {
-        clear: both;
-        display: block;
-        content: " ";
-        visibility: hidden;
-        width: 0;
-        height: 0;
-    }
+        .suite--contracted, .suite--expanded {
+            border-left: 5px solid darkblue;
+        }
 
-    .suite__name {
-        float: left;
-    }
+        .suite--fail {
+            border-left: 5px solid #FF3043;
+        }
+        .suite--pass {
+            border-left: 5px solid #79EE61;
+        }
 
-    .suite__name .flag {
-        display: inline-block;
-        padding: 0 10px;
-        background: rgba(255,255,255,0.5);
-        font-weight: bold;
-        margin-right: 5px;
-    }
+        .suite--fail .suite {
+            background: #FF585F;
+        }
 
-    .suite__name .flag.content { color: red; }
-    .suite__name .flag.missing { color: darkblue; }
-    .suite__name .flag.engine { color: red; background: yellow; }
-    .suite__name .flag.bug { color: red; }
-    .suite__name .flag.ta { color: green; }
+        .suite--pass .suite {
+            background: #79EE61;
+        }
 
-    .suite__data {
-        float: right;
-        margin-left: 5px;
-        margin-right: 5px;
-        font-size: 12px;
-        line-height: 20px;
-    }
+        .suite:after {
+            clear: both;
+            display: block;
+            content: " ";
+            visibility: hidden;
+            width: 0;
+            height: 0;
+        }
 
-    .suite--pass .suite {
-        background: lightgreen;
-    }
+        .suite__name {
+            float: left;
+            font-size: 14px;
+            padding-top: 1px;
+        }
 
-    .suite--fail .suite {
-        background: lightblue;
-    }
+        .suite__name .flag {
+            display: inline-block;
+            padding: 0 10px;
+            background: rgba(255, 255, 255, 0.5);
+            font-weight: bold;
+            margin-right: 5px;
+        }
 
-    .suite__summary {
-        padding: 5px 25px;
-        font-size: 12px;
-    }
+        .suite__name .flag.content {
+            color: #FF3043;
+        }
 
-    .suite__summary > span {
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 0 10px 0 0;
-        background: lightgrey;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
-        -webkit-box-shadow: 1px 1px 1px 0 lightgrey;
-        -moz-box-shadow: 1px 1px 1px 0 lightgrey;
-        box-shadow: 1px 1px 1px 0 lightgrey;
-    }
+        .suite__name .flag.missing {
+            color: darkblue;
+        }
 
-    .suite__summary .boolean {
-        background: orange;
-    }
+        .suite__name .flag.engine {
+            color: #FF3043;
+            background: yellow;
+        }
 
-    .tests {
-        padding: 0 25px 25px;
-    }
+        .suite__name .flag.bug {
+            color: #FF3043;
+        }
 
-    .test {
-        position: relative;
-        border: groove;
-        margin: 2px;
-        padding: 5px;
-    }
+        .suite__name .flag.ta {
+            color: green;
+        }
 
-    .test--pass {
-        background: lightgreen;
-    }
+        .suite__data {
+            float: right;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 12px;
+            line-height: 20px;
+        }
 
-    .test--fail {
-        background: lightcoral;
-    }
+        .suite__summary {
+            padding: 5px 25px;
+            font-size: 12px;
+        }
 
-    .test--skip {
-        background: lightgoldenrodyellow;
-    }
+        .suite__summary > span {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 10px 0 0;
+            background: lightgrey;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 1px 1px 1px 0 lightgrey;
+            -moz-box-shadow: 1px 1px 1px 0 lightgrey;
+            box-shadow: 1px 1px 1px 0 lightgrey;
+        }
 
-    .test__time {
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
-        padding: 5px;
-        font-size: 12px;
-    }
+        .suite__summary .boolean {
+            background: orange;
+        }
 
-    .test__name {
-        padding-right: 15%;
-        display: block;
-    }
+        .tests {
+            padding: 0 25px 25px;
+        }
 
-    .buttons {
-        margin: 2px 2px 15px 2px;
-        cursor: pointer;
-        display: inline-block;
-    }
+        .test {
+            position: relative;
+            margin: 2px 0px;
+            padding: 5px;
+            font-size: 14px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
+            -moz-box-shadow: 1px 1px 1px 0 lightslategray;
+            box-shadow: 1px 1px 1px 0 lightslategray;
+        }
 
-    .button {
-        background: lightblue;
-        border: groove;
-        text-align: center;
-        padding: 5px 10px;
-        font-size: 14px;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
-        -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
-        -moz-box-shadow: 1px 1px 1px 0 lightslategray;
-        box-shadow: 1px 1px 1px 0 lightslategray;
-    }
+        .test--pass {
+            background: #79EE61;
+        }
 
-    #summary {
-        margin: 2px;
-        display: inline-block;
-        font-size: 12px;
-    }
+        .test--fail {
+            background: #FF585F;
+        }
 
-    .error {
-        background-color: lightcoral;
-        padding: 20px;
-        margin: 31px;
-        font-size: 16px;
-    }
+        .test--skip {
+            background: #EBFAAE;
+        }
+
+        .test__time {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .test__name {
+            padding-right: 15%;
+            display: block;
+        }
+
+        .buttons {
+            margin: 2px 2px 15px 2px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .button {
+            background: lightsalmon;
+            text-align: center;
+            padding: 5px 10px;
+            font-size: 14px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
+            -moz-box-shadow: 1px 1px 1px 0 lightslategray;
+            box-shadow: 1px 1px 1px 0 lightslategray;
+        }
+
+        #summary {
+            margin: 2px;
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        .error {
+            background-color: lightcoral;
+            padding: 20px;
+            margin: 31px;
+            font-size: 16px;
+        }
+
+
     </style>
 </head>
 
@@ -211,7 +251,6 @@
         <div id="results"></div>
     </div>
     <script>
-    //<!--
         function Dom(element) {
             return $('<' + element + '></' + element + '>');
         }
@@ -292,51 +331,30 @@
                     .append(content)
                     .appendTo($('#results'));
 
-        data.cases.forEach(function(testCase, caseIndex) {
-            var test = Div()
-                .attr('id', function() {
-                    return 't_' + caseIndex
-                })
-                .append(
-                    Span()
-                    .html(testCase.name)
-                    .addClass('test__name')
-                )
-                .append(
-                    Span()
-                    .html('Time: ' + parseInt(testCase.time).toFixed(2))
-                    .addClass('test__time')
-                )
-                .addClass('test')
+                if (data.failures === 0) {
+                    suite.addClass('suite--pass');
+                    summary.suites.passed++;
+                } else {
+                    suite.addClass('suite--fail');
+                    summary.suites.failed++;
+                }
 
-            if (testCase.hasOwnProperty('failureMessage'))
-                test.append(
-                    Br()
-                ).append(
-                    Span()
-                    .html('Message:')
-                ).append(
-                    Br()
-                ).append(
-                    Span()
-                    .html(testCase.failureMessage)
-                    .addClass('test__fail')
-                )
-                .addClass('test--fail')
-            else
-                test.addClass('test--pass')
+                if (data.properties) {
+                    var suiteSummary = Div().addClass('suite__summary');
 
-            tests
-                .hide()
-                .append(test)
-        })
-        suite
-            .append(tests)
-            .on('click', function() {
-                var self = $(this)
-                self
-                    .children('.tests')
-                    .slideToggle(500)
+                    for (var propName in data.properties) {
+                        if (data.properties.hasOwnProperty(propName) && ['flag-type', 'flag-content'].indexOf(propName) == -1) {
+                            var label = Span();
+                            if (data.properties[propName] == "true") {
+                                label
+                                        .addClass('boolean')
+                                        .html('<strong>' + propName + '</strong>');
+                            } else {
+                                label.html('<strong>' + propName + '</strong>: ' + data.properties[propName]);
+                            }
+                            suiteSummary.append(label);
+                        }
+                    }
 
                     if (data.properties['flag-type']) {
                         var flag = Span()
@@ -349,15 +367,7 @@
                     content.append(suiteSummary);
                 }
 
-    function filter() {
-        $(".test--pass").slideToggle(500)
-        $(".suite--pass").slideToggle(500)
-        var text = $(".filter").text()
-        if (text.indexOf("Filter") !== -1)
-            $(".filter").text("Insert Passing")
-        else
-            $(".filter").text("Filter Passing")
-    }
+                var tests = Div().addClass('tests');
 
                 data.cases.forEach(function (testCase, caseIndex) {
                     var test = Div()
@@ -374,13 +384,37 @@
                                 .addClass('test__time')
                         ).addClass('test');
 
-        var text = $(".expand").text()
-        if (text.indexOf("Expand") !== -1) {
-            $(".expand").text("Contract All")
-            $(".suite--contracted").click()
-        } else {
-            $(".suite--expanded").click()
-            $(".expand").text("Expand All")
+                    if (testCase.time) {
+                        summary.time += parseInt(testCase.time);
+                    }
+
+                    if (testCase.hasOwnProperty('failureMessage')) {
+                        test.append(
+                            Br()
+                        ).append(
+                            Span()
+                                .html('Message:')
+                        ).append(
+                            Br()
+                        ).append(
+                            Span()
+                                .html(testCase.failureMessage)
+                                .addClass('test__fail')
+                        ).addClass('test--fail');
+                        summary.tests.failed++;
+                    } else if (testCase.hasOwnProperty('skipped')) {
+                        test.addClass('test--skip');
+                        summary.tests.skipped++;
+                    } else {
+                        test.addClass('test--pass');
+                        summary.tests.passed++;
+                    }
+
+                    tests.append(test);
+                });
+                content.append(tests);
+                index += 1;
+            }
         }
         $('#summary').html(
                 (summary.suites.failed + summary.suites.passed) + " suites (" +
@@ -430,7 +464,6 @@
             }
         }
 
-    //-->
     </script>
 </body>
 

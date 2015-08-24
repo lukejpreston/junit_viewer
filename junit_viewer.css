@@ -1,47 +1,48 @@
 body {
-    font-family: sans-serif;
+    font-family: monospace;
     font-size: 16px;
 }
-    
+
 .title {
     text-align: center;
 }
-    
+
 .suite {
-	background: lightblue;
-	font-weight:bold;
-	color:black;
+    background: lightblue;
+    color: black;
     padding: 8px;
-    margin: 3px;
+    margin: 3px 3px 3px 0;
     cursor: pointer;
     line-height: 20px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     -webkit-box-shadow: 1px 1px 2px 0 lightslategray;
     -moz-box-shadow: 1px 1px 2px 0 lightslategray;
     box-shadow: 1px 1px 2px 0 lightslategray;
 }
-	
+
 .suite--contracted, .suite--expanded {
-	border-left:5px solid #01DF3A;
-	box-shadow: 3px 3px 3px grey;
+    border-left: 5px solid darkblue;
 }
-	
+
 .suite--fail {
-	border-left:5px solid #DF013A;
+    border-left: 5px solid #FF3043;
 }
-	
+.suite--pass {
+    border-left: 5px solid #79EE61;
+}
+
 .suite--fail .suite {
-    background: #DF013A;
-	color:white;
+    background: #FF585F;
 }
-	
-.suite--expanded {
-	margin-top:10px;
-	margin-bottom:10px;
+
+.suite--pass .suite {
+    background: #79EE61;
 }
-    
 
 .suite:after {
     clear: both;
@@ -54,21 +55,38 @@ body {
 
 .suite__name {
     float: left;
+    font-size: 14px;
+    padding-top: 1px;
 }
 
 .suite__name .flag {
     display: inline-block;
     padding: 0 10px;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
     font-weight: bold;
     margin-right: 5px;
 }
 
-.suite__name .flag.content { color: red; }
-.suite__name .flag.missing { color: darkblue; }
-.suite__name .flag.engine { color: red; background: yellow; }
-.suite__name .flag.bug { color: red; }
-.suite__name .flag.ta { color: green; }
+.suite__name .flag.content {
+    color: #FF3043;
+}
+
+.suite__name .flag.missing {
+    color: darkblue;
+}
+
+.suite__name .flag.engine {
+    color: #FF3043;
+    background: yellow;
+}
+
+.suite__name .flag.bug {
+    color: #FF3043;
+}
+
+.suite__name .flag.ta {
+    color: green;
+}
 
 .suite__data {
     float: right;
@@ -76,15 +94,6 @@ body {
     margin-right: 5px;
     font-size: 12px;
     line-height: 20px;
-}
-    
-
-.suite--pass .suite {
-    background: lightgreen;
-}
-
-.suite--fail .suite {
-    background: lightblue;
 }
 
 .suite__summary {
@@ -125,19 +134,17 @@ body {
     -moz-box-shadow: 1px 1px 1px 0 lightslategray;
     box-shadow: 1px 1px 1px 0 lightslategray;
 }
-    
+
 .test--pass {
-    background: lightgreen;
+    background: #79EE61;
 }
-    
+
 .test--fail {
-	color:white;
-    background: #DF013A;
+    background: #FF585F;
 }
-    
 
 .test--skip {
-    background: lightgoldenrodyellow;
+    background: #EBFAAE;
 }
 
 .test__time {
@@ -147,7 +154,7 @@ body {
     padding: 5px;
     font-size: 12px;
 }
-    
+
 .test__name {
     padding-right: 15%;
     display: block;
@@ -158,10 +165,9 @@ body {
     cursor: pointer;
     display: inline-block;
 }
-    
+
 .button {
     background: lightsalmon;
-	box-shadow: 3px 3px 3px grey;
     text-align: center;
     padding: 5px 10px;
     font-size: 14px;
