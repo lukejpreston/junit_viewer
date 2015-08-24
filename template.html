@@ -125,15 +125,9 @@
 
     .test {
         position: relative;
+        border: groove;
         margin: 2px;
-        padding: 8px;
-        font-size: 14px;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
-        -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
-        -moz-box-shadow: 1px 1px 1px 0 lightslategray;
-        box-shadow: 1px 1px 1px 0 lightslategray;
+        padding: 5px;
     }
 
     .test--pass {
@@ -168,7 +162,8 @@
     }
 
     .button {
-        background: lightsalmon;
+        background: lightblue;
+        border: groove;
         text-align: center;
         padding: 5px 10px;
         font-size: 14px;
@@ -297,30 +292,51 @@
                     .append(content)
                     .appendTo($('#results'));
 
-                if (data.failures === 0) {
-                    suite.addClass('suite--pass');
-                    summary.suites.passed++;
-                } else {
-                    suite.addClass('suite--fail');
-                    summary.suites.failed++;
-                }
+        data.cases.forEach(function(testCase, caseIndex) {
+            var test = Div()
+                .attr('id', function() {
+                    return 't_' + caseIndex
+                })
+                .append(
+                    Span()
+                    .html(testCase.name)
+                    .addClass('test__name')
+                )
+                .append(
+                    Span()
+                    .html('Time: ' + parseInt(testCase.time).toFixed(2))
+                    .addClass('test__time')
+                )
+                .addClass('test')
 
-                if (data.properties) {
-                    var suiteSummary = Div().addClass('suite__summary');
+            if (testCase.hasOwnProperty('failureMessage'))
+                test.append(
+                    Br()
+                ).append(
+                    Span()
+                    .html('Message:')
+                ).append(
+                    Br()
+                ).append(
+                    Span()
+                    .html(testCase.failureMessage)
+                    .addClass('test__fail')
+                )
+                .addClass('test--fail')
+            else
+                test.addClass('test--pass')
 
-                    for (var propName in data.properties) {
-                        if (data.properties.hasOwnProperty(propName) && ['flag-type', 'flag-content'].indexOf(propName) == -1) {
-                            var label = Span();
-                            if (data.properties[propName] == "true") {
-                                label
-                                        .addClass('boolean')
-                                        .html('<strong>' + propName + '</strong>');
-                            } else {
-                                label.html('<strong>' + propName + '</strong>: ' + data.properties[propName]);
-                            }
-                            suiteSummary.append(label);
-                        }
-                    }
+            tests
+                .hide()
+                .append(test)
+        })
+        suite
+            .append(tests)
+            .on('click', function() {
+                var self = $(this)
+                self
+                    .children('.tests')
+                    .slideToggle(500)
 
                     if (data.properties['flag-type']) {
                         var flag = Span()
@@ -333,7 +349,15 @@
                     content.append(suiteSummary);
                 }
 
-                var tests = Div().addClass('tests');
+    function filter() {
+        $(".test--pass").slideToggle(500)
+        $(".suite--pass").slideToggle(500)
+        var text = $(".filter").text()
+        if (text.indexOf("Filter") !== -1)
+            $(".filter").text("Insert Passing")
+        else
+            $(".filter").text("Filter Passing")
+    }
 
                 data.cases.forEach(function (testCase, caseIndex) {
                     var test = Div()
@@ -350,37 +374,13 @@
                                 .addClass('test__time')
                         ).addClass('test');
 
-                    if (testCase.time) {
-                        summary.time += parseInt(testCase.time);
-                    }
-
-                    if (testCase.hasOwnProperty('failureMessage')) {
-                        test.append(
-                            Br()
-                        ).append(
-                            Span()
-                                .html('Message:')
-                        ).append(
-                            Br()
-                        ).append(
-                            Span()
-                                .html(testCase.failureMessage)
-                                .addClass('test__fail')
-                        ).addClass('test--fail');
-                        summary.tests.failed++;
-                    } else if (testCase.hasOwnProperty('skipped')) {
-                        test.addClass('test--skip');
-                        summary.tests.skipped++;
-                    } else {
-                        test.addClass('test--pass');
-                        summary.tests.passed++;
-                    }
-
-                    tests.append(test);
-                });
-                content.append(tests);
-                index += 1;
-            }
+        var text = $(".expand").text()
+        if (text.indexOf("Expand") !== -1) {
+            $(".expand").text("Contract All")
+            $(".suite--contracted").click()
+        } else {
+            $(".suite--expanded").click()
+            $(".expand").text("Expand All")
         }
         $('#summary').html(
                 (summary.suites.failed + summary.suites.passed) + " suites (" +

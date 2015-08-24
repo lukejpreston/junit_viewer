@@ -1,13 +1,16 @@
 body {
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 16px;
 }
-
+    
 .title {
     text-align: center;
 }
-
+    
 .suite {
+	background: lightblue;
+	font-weight:bold;
+	color:black;
     padding: 8px;
     margin: 3px;
     cursor: pointer;
@@ -19,6 +22,26 @@ body {
     -moz-box-shadow: 1px 1px 2px 0 lightslategray;
     box-shadow: 1px 1px 2px 0 lightslategray;
 }
+	
+.suite--contracted, .suite--expanded {
+	border-left:5px solid #01DF3A;
+	box-shadow: 3px 3px 3px grey;
+}
+	
+.suite--fail {
+	border-left:5px solid #DF013A;
+}
+	
+.suite--fail .suite {
+    background: #DF013A;
+	color:white;
+}
+	
+.suite--expanded {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+    
 
 .suite:after {
     clear: both;
@@ -54,6 +77,7 @@ body {
     font-size: 12px;
     line-height: 20px;
 }
+    
 
 .suite--pass .suite {
     background: lightgreen;
@@ -91,8 +115,8 @@ body {
 
 .test {
     position: relative;
-    margin: 2px;
-    padding: 8px;
+    margin: 2px 0px;
+    padding: 5px;
     font-size: 14px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -101,14 +125,16 @@ body {
     -moz-box-shadow: 1px 1px 1px 0 lightslategray;
     box-shadow: 1px 1px 1px 0 lightslategray;
 }
-
+    
 .test--pass {
     background: lightgreen;
 }
-
+    
 .test--fail {
-    background: lightcoral;
+	color:white;
+    background: #DF013A;
 }
+    
 
 .test--skip {
     background: lightgoldenrodyellow;
@@ -121,7 +147,7 @@ body {
     padding: 5px;
     font-size: 12px;
 }
-
+    
 .test__name {
     padding-right: 15%;
     display: block;
@@ -132,9 +158,10 @@ body {
     cursor: pointer;
     display: inline-block;
 }
-
+    
 .button {
     background: lightsalmon;
+	box-shadow: 3px 3px 3px grey;
     text-align: center;
     padding: 5px 10px;
     font-size: 14px;
