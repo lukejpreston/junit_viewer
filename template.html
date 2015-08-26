@@ -3,6 +3,7 @@
 
 <head>
     <title>Loading...</title>
+    <meta charset="UTF-8">
     <!-- jquery -->
     <script type="text/javascript">
         /*! jQuery v2.1.4 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
@@ -31,98 +32,202 @@
     });
     </script>
     <style type="text/css">
-    body {
-        font-family: sans-serif;
-        font-size: 16px;
-    }
-    
-    .title {
-        text-align: center;
-    }
-    
-    .suite {
-	background: lightblue;
-	font-weight:bold;
-	color:black;
-        padding: 5px;
-        margin: 2px 0px;
-        cursor: pointer;
-    }
-	
-    .suite--contracted, .suite--expanded {
-	border-left:5px solid #01DF3A;
-	box-shadow: 3px 3px 3px grey;
-    }
-	
-    .suite--fail {
-	border-left:5px solid #DF013A;
-    }
-	
-    .suite--fail .suite {
-        background: #DF013A;
-	color:white;
-    }
-	
-    .suite--expanded {
-	margin-top:10px;
-	margin-bottom:10px;
-    }
-    
-    .suite__data {
-        float: right;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-    
-    .test {
-        position: relative;
-        margin: 2px 0px;
-        padding: 5px;
-    }
-    
-    .test--pass {
-        background: lightgreen;
-    }
-    
-    .test--fail {
-	color:white;
-        background: #DF013A;
-    }
-    
-    .test__time {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        padding: 5px;
-    }
-    
-    .test__name {
-        padding-right: 15%;
-        display: block;
-    }
-    
-    .buttons {
-        margin: 2px;
-        cursor: pointer;
-        display: block;
-        margin-bottom: 15px;
-    }
-    
-    .button {
-        background: lightblue;
-	box-shadow: 3px 3px 3px grey;
-        text-align: center;
-        padding: 5px;
-    }
-    
-    .error {
-        background-color: lightcoral;
-        padding: 20px;
-        margin: 31px;
-        font-size: 24px;
-    }
+        body {
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .suite {
+            background: lightblue;
+            color: black;
+            padding: 8px;
+            margin: 3px 3px 3px 0;
+            cursor: pointer;
+            line-height: 20px;
+            -webkit-border-top-right-radius: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            -moz-border-radius-topright: 4px;
+            -moz-border-radius-bottomright: 4px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            -webkit-box-shadow: 1px 1px 2px 0 lightslategray;
+            -moz-box-shadow: 1px 1px 2px 0 lightslategray;
+            box-shadow: 1px 1px 2px 0 lightslategray;
+        }
+
+        .suite--contracted, .suite--expanded {
+            border-left: 5px solid darkblue;
+        }
+
+        .suite--fail {
+            border-left: 5px solid #FF3043;
+        }
+        .suite--pass {
+            border-left: 5px solid #79EE61;
+        }
+
+        .suite--fail .suite {
+            background: #FF585F;
+        }
+
+        .suite--pass .suite {
+            background: #79EE61;
+        }
+
+        .suite:after {
+            clear: both;
+            display: block;
+            content: " ";
+            visibility: hidden;
+            width: 0;
+            height: 0;
+        }
+
+        .suite__name {
+            float: left;
+            font-size: 14px;
+            padding-top: 1px;
+        }
+
+        .suite__name .flag {
+            display: inline-block;
+            padding: 0 10px;
+            background: rgba(255, 255, 255, 0.5);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .suite__name .flag.content {
+            color: #FF3043;
+        }
+
+        .suite__name .flag.missing {
+            color: darkblue;
+        }
+
+        .suite__name .flag.engine {
+            color: #FF3043;
+            background: yellow;
+        }
+
+        .suite__name .flag.bug {
+            color: #FF3043;
+        }
+
+        .suite__name .flag.ta {
+            color: green;
+        }
+
+        .suite__data {
+            float: right;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .suite__summary {
+            padding: 5px 25px;
+            font-size: 12px;
+        }
+
+        .suite__summary > span {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 10px 0 0;
+            background: lightgrey;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 1px 1px 1px 0 lightgrey;
+            -moz-box-shadow: 1px 1px 1px 0 lightgrey;
+            box-shadow: 1px 1px 1px 0 lightgrey;
+        }
+
+        .suite__summary .boolean {
+            background: orange;
+        }
+
+        .tests {
+            padding: 0 25px 25px;
+        }
+
+        .test {
+            position: relative;
+            margin: 2px 0px;
+            padding: 5px;
+            font-size: 14px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
+            -moz-box-shadow: 1px 1px 1px 0 lightslategray;
+            box-shadow: 1px 1px 1px 0 lightslategray;
+        }
+
+        .test--pass {
+            background: #79EE61;
+        }
+
+        .test--fail {
+            background: #FF585F;
+        }
+
+        .test--skip {
+            background: #EBFAAE;
+        }
+
+        .test__time {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .test__name {
+            padding-right: 15%;
+            display: block;
+        }
+
+        .buttons {
+            margin: 2px 2px 15px 2px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .button {
+            background: lightsalmon;
+            text-align: center;
+            padding: 5px 10px;
+            font-size: 14px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 1px 1px 1px 0 lightslategray;
+            -moz-box-shadow: 1px 1px 1px 0 lightslategray;
+            box-shadow: 1px 1px 1px 0 lightslategray;
+        }
+
+        #summary {
+            margin: 2px;
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        .error {
+            background-color: lightcoral;
+            padding: 20px;
+            margin: 31px;
+            font-size: 16px;
+        }
+
+
     </style>
-    <link rel="stylesheet" type="text/css" href="junit_viewer.css">
 </head>
 
 <body>
@@ -142,153 +247,223 @@
             <span onclick="expand()" class="button expand">Expand All</span>
             <span onclick="filter()" class="button filter">Filter Passing</span>
         </div>
+        <div id="summary"></div>
         <div id="results"></div>
     </div>
     <script>
-    function Dom(element) {
-        return $('<' + element + '></' + element + '>')
-    }
-
-    function Div() {
-        return Dom('div')
-    }
-
-    function Span() {
-        return Dom('span')
-    }
-
-    function Br() {
-        return Dom('br')
-    }
-
-    $('.error').hide()
-
-    junitData = REPLACEWITHJUNITDATA
-
-
-    $(".title").text(junitData.title)
-    $('title').text(junitData.title)
-    delete junitData.title
-
-    var index = 0
-    for (var className in junitData.results) {
-        var data = junitData.results[className]
-        var suite = Div()
-            .attr('id', function() {
-                return 's_' + index
-            })
-            .append(Div()
-                .append(
-                    Span()
-                    .html(className)
-                    .addClass('suite__name')
-                )
-                .append(
-                    Span()
-                    .html('Tests: ' + data.tests)
-                    .addClass('suite__data')
-                )
-                .append(
-                    Span()
-                    .html('Failures: ' + data.failures)
-                    .addClass('suite__data')
-                )
-                .addClass('suite')
-            )
-            .addClass("suite--contracted")
-            .append()
-            .appendTo($('#results'))
-
-        if (data.failures === 0)
-            suite.addClass('suite--pass')
-        else
-            suite.addClass('suite--fail')
-
-        var tests = Div()
-            .addClass('tests')
-
-        data.cases.forEach(function(testCase, caseIndex) {
-            var test = Div()
-                .attr('id', function() {
-                    return 't_' + caseIndex
-                })
-                .append(
-                    Span()
-                    .html(testCase.name)
-                    .addClass('test__name')
-                )
-                .append(
-                    Span()
-                    .html('Time: ' + parseFloat(testCase.time).toFixed(2))
-                    .addClass('test__time')
-                )
-                .addClass('test')
-
-            if (testCase.hasOwnProperty('failureMessage'))
-                test.append(
-                    Br()
-                ).append(
-                    Span()
-                    .html('Message:')
-                ).append(
-                    Br()
-                ).append(
-                    Span()
-                    .html(testCase.failureMessage.replace(/(?:\r\n|\r|\n)/g, '<br />'))
-                    .addClass('test__fail')
-                )
-                .addClass('test--fail')
-            else
-                test.addClass('test--pass')
-
-            tests
-                .hide()
-                .append(test)
-        })
-        suite
-            .append(tests)
-            .children('.suite')
-            .on('click', function() {
-                var self = $(this).parent()
-                self
-                    .children('.tests')
-                    .slideToggle(500)
-
-                if (self.hasClass("suite--contracted")) {
-                    self.removeClass("suite--contracted")
-                    self.addClass("suite--expanded")
-                } else {
-                    self.addClass("suite--contracted")
-                    self.removeClass("suite--expanded")
-                }
-            })
-        index += 1
-    }
-    if (index === 0 || junitData.results.hasOwnProperty("NO FOLDER SPECIFIED FOR JUNIT VIEWER")) {
-        $('.error').show()
-    }
-
-    function filter() {
-        $(".test--pass").slideToggle(500)
-        $(".suite--pass").children('.suite').slideToggle(500)
-        var text = $(".filter").text()
-        if (text.indexOf("Filter") !== -1)
-            $(".filter").text("Insert Passing")
-        else
-            $(".filter").text("Filter Passing")
-    }
-
-    function expand() {
-
-        var text = $(".expand").text()
-        if (text.indexOf("Expand") !== -1) {
-            $(".expand").text("Contract All")
-            $(".suite--contracted").children('.suite').click()
-        } else {
-            $(".suite--expanded").children('.suite').click()
-            $(".expand").text("Expand All")
+        function Dom(element) {
+            return $('<' + element + '></' + element + '>');
         }
-    }
+
+        function Div() {
+            return Dom('div');
+        }
+
+        function Span() {
+            return Dom('span');
+        }
+
+        function Br() {
+            return Dom('br');
+        }
+
+        $('.error').hide();
+
+        junitData = REPLACEWITHJUNITDATA;
+
+        $(".title").text(junitData.title);
+        $('title').text(junitData.title);
+        delete junitData.title;
+
+        var index = 0, summary = {
+            suites: {
+                passed: 0,
+                failed: 0
+            },
+            tests: {
+                passed: 0,
+                failed: 0,
+                skipped: 0
+            },
+            time: 0
+        };
+        for (var className in junitData.results) {
+            if (junitData.results.hasOwnProperty(className)) {
+                var data = junitData.results[className];
+
+                var content = Div()
+                        .addClass('content')
+                        .hide();
+
+                var suite = Div()
+                    .attr('id', function () {
+                        return 's_' + index;
+                    })
+                    .append(Div()
+                        .append(
+                            Span()
+                                .html(className)
+                                .addClass('suite__name')
+                        ).append(
+                            Span()
+                                .html('Tests: ' + data.tests)
+                                .addClass('suite__data')
+                        ).append(
+                            Span()
+                                .html('Failures: ' + data.failures)
+                                .addClass('suite__data')
+                        ).addClass('suite')
+                        .on('click', function () {
+                            var self = $(this).parent();
+                            self
+                                .children('.content')
+                                .slideToggle(500);
+
+                            if (self.hasClass("suite--contracted")) {
+                                self.removeClass("suite--contracted");
+                                self.addClass("suite--expanded");
+                            } else {
+                                self.addClass("suite--contracted");
+                                self.removeClass("suite--expanded");
+                            }
+                        })
+                    ).addClass("suite--contracted")
+                    .append(content)
+                    .appendTo($('#results'));
+
+                if (data.failures === 0) {
+                    suite.addClass('suite--pass');
+                    summary.suites.passed++;
+                } else {
+                    suite.addClass('suite--fail');
+                    summary.suites.failed++;
+                }
+
+                if (data.properties) {
+                    var suiteSummary = Div().addClass('suite__summary');
+
+                    for (var propName in data.properties) {
+                        if (data.properties.hasOwnProperty(propName) && ['flag-type', 'flag-content'].indexOf(propName) == -1) {
+                            var label = Span();
+                            if (data.properties[propName] == "true") {
+                                label
+                                        .addClass('boolean')
+                                        .html('<strong>' + propName + '</strong>');
+                            } else {
+                                label.html('<strong>' + propName + '</strong>: ' + data.properties[propName]);
+                            }
+                            suiteSummary.append(label);
+                        }
+                    }
+
+                    if (data.properties['flag-type']) {
+                        var flag = Span()
+                                .addClass('flag')
+                                .addClass(data.properties['flag-type'])
+                                .html(data.properties['flag-content'] || data.properties['flag-type']);
+                        suite.find('.suite__name').prepend(flag);
+                    }
+
+                    content.append(suiteSummary);
+                }
+
+                var tests = Div().addClass('tests');
+
+                data.cases.forEach(function (testCase, caseIndex) {
+                    var test = Div()
+                        .attr('id', function () {
+                            return 't_' + caseIndex;
+                        })
+                        .append(
+                            Span()
+                                .html(testCase.name)
+                                .addClass('test__name')
+                        ).append(
+                            Span()
+                                .html('Time: ' + parseInt(testCase.time).toFixed(2))
+                                .addClass('test__time')
+                        ).addClass('test');
+
+                    if (testCase.time) {
+                        summary.time += parseInt(testCase.time);
+                    }
+
+                    if (testCase.hasOwnProperty('failureMessage')) {
+                        test.append(
+                            Br()
+                        ).append(
+                            Span()
+                                .html('Message:')
+                        ).append(
+                            Br()
+                        ).append(
+                            Span()
+                                .html(testCase.failureMessage)
+                                .addClass('test__fail')
+                        ).addClass('test--fail');
+                        summary.tests.failed++;
+                    } else if (testCase.hasOwnProperty('skipped')) {
+                        test.addClass('test--skip');
+                        summary.tests.skipped++;
+                    } else {
+                        test.addClass('test--pass');
+                        summary.tests.passed++;
+                    }
+
+                    tests.append(test);
+                });
+                content.append(tests);
+                index += 1;
+            }
+        }
+        $('#summary').html(
+                (summary.suites.failed + summary.suites.passed) + " suites (" +
+                summary.suites.failed + " failed, " + summary.suites.passed + " passed), " +
+                (summary.tests.failed + summary.tests.passed + summary.tests.skipped) + " tests (" +
+                summary.tests.failed + " failed, " + summary.tests.skipped + " skipped, " +
+                summary.tests.passed + " passed), Runtime: " + formatTime(summary.time)
+        );
+        if (index === 0 || junitData.results.hasOwnProperty("NO FOLDER SPECIFIED FOR JUNIT VIEWER")) {
+            $('.error').show();
+        }
+
+        function formatTime(ms) {
+            function convertMS(ms) {
+                var d, h, m, s;
+                s = Math.floor(ms / 1000);
+                m = Math.floor(s / 60);
+                s = s % 60;
+                h = Math.floor(m / 60);
+                m = m % 60;
+                d = Math.floor(h / 24);
+                h = h % 24;
+                return { d: d, h: h, m: m, s: s };
+            }
+            ms = convertMS(ms);
+            return ms.h + ' h. ' + ms.m + ' min. ' + ms.s + ' sec.';
+        }
+
+        function filter() {
+            $(".suite--pass").slideToggle(500);
+            var text = $(".filter").text();
+            if (text.indexOf("Filter") !== -1) {
+                $(".filter").text("Insert Passing");
+            } else {
+                $(".filter").text("Filter Passing");
+            }
+        }
+
+        function expand() {
+            var text = $(".expand").text();
+            if (text.indexOf("Expand") !== -1) {
+                $(".expand").text("Contract All");
+                $(".suite--contracted .suite").click();
+            } else {
+                $(".suite--expanded .suite").click();
+                $(".expand").text("Expand All");
+            }
+        }
+
     </script>
 </body>
 
