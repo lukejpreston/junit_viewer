@@ -30,10 +30,6 @@ if (isFolder && resultsFolder.charAt(resultsFolder.length - 1) !== '/') {
     resultsFolder += '/';
 }
 
-function endsWith(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
-
 function getFiles(folder) {
     var files = [];
     fs.readdirSync(folder).forEach(function (file) {
