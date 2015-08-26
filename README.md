@@ -31,3 +31,14 @@ You can do both
 ```
 junit-viewer --results=folder_or_file_path --save=destination_file.html --port=9090
 ```
+
+Test It
+=======
+
+If you are working on the code do some tests using the test_data folder
+
+```
+junit-viewer --results=test_data --save=destination_file.html --port=9090
+```
+
+then view either the saved file or go to localhost:9090 and view your changes
