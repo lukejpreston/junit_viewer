@@ -13,4 +13,7 @@
     <testcase name="Player Has a name Name Skippek" classname="Overall Suite" time="0">
         <skipped></skipped>
     </testcase>
+	<testcase name="Player Has a name Error" classname="Overall Suite" time="0">
+        <error message="Server returned an internal error" type="java.lang.RuntimeException">java.lang.RuntimeException: Server returned an internal error</error>
+    </testcase>
 </testsuite>
