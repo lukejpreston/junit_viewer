@@ -108,7 +108,10 @@ function jsonResults() {
                 time: testCase.$.time
             };
 
-            if (testCase.hasOwnProperty('failure')) {
+            if (testCase.hasOwnProperty('error')) {
+                finalResults[name].failures += 1;
+                newCase.failureMessage = testCase.error[0]._;
+            } else if (testCase.hasOwnProperty('failure')) {
                 finalResults[name].failures += 1;
                 newCase.failureMessage = testCase.failure[0]._;
             } else if (testCase.hasOwnProperty('skipped')) {
