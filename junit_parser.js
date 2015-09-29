@@ -192,6 +192,7 @@ function formatTime(ms) {
 
 function filter() {
     $(".suite--pass").slideToggle(500);
+    $(".test--pass").slideToggle(500);
     var text = $(".filter").text();
     if (text.indexOf("Filter") !== -1) {
         $(".filter").text("Insert Passing");
