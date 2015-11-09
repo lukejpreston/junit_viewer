@@ -1,6 +1,7 @@
 var path = require('path'),
     fs = require('fs'),
-    parser = new require('xml2js').Parser();
+    parser = new require('xml2js').Parser(),
+    dateFormat = require('date-format');
 
 
 var commandArgs = {};
@@ -151,6 +152,12 @@ function startServer() {
     console.log('Running and viewer at http://localhost:' + commandArgs.port);
 }
 
+function replaceTokens(string) {
+    return string.replace(/\$[\(\{\[](date|[ymhdso-]+)[\)\}\]]/i, function (match, format) {
+        return dateFormat(format.toLowerCase() == "date" ? "yyyy-MM-dd" : format, new Date());
+    });
+}
+
 function save() {
     var thing = fs.readFileSync(__dirname + '/template.html')
         .toString()
@@ -158,7 +165,7 @@ function save() {
             results: jsonResults(),
             title: getTitle()
         }));
-    fs.writeFile(commandArgs.save, thing, function(err) {
+    fs.writeFile(replaceTokens(commandArgs.save), thing, function(err) {
         if (err) {
             return console.log(err);
         }
