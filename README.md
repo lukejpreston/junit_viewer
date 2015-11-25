@@ -16,6 +16,8 @@ Install It
 npm install junit-viewer -g
 ```
 
+[NPM](https://www.npmjs.com/package/junit-viewer)
+
 Run It
 ======
 
