@@ -32,6 +32,16 @@ You can do both
 junit-viewer --results=folder_or_file_path --save=destination_file.html --port=9090
 ```
 
+You can use token to show the current date/time in the destination file.
+The command below will create `destination_file_2015-11-18.html` file.
+
+```
+junit-viewer --results=folder_or_file_path --save=destination_file_$[date].html
+```
+
+The string, `date` can be replaced with valid date-format strings.
+It uses [date-format](https://www.npmjs.com/package/date-format) plugin.
+
 Test It
 =======
 
