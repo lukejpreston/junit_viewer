@@ -3,6 +3,12 @@ Junit Viewer
 
 View a folder or a file of junit xml in a simple web page
 
+Demo
+====
+
+The demo uses the test data
+[Demo](http://lukejpreston.github.io/junit_viewer/)
+
 Install It
 ==========
 
