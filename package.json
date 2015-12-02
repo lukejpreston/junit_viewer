@@ -6,6 +6,9 @@
   "bin": {
     "junit-viewer": "./bin/junit-viewer"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "directories": "./",
   "author": "Luke Preston",
   "license": "ISC",
@@ -13,6 +16,10 @@
   "dependencies": {
     "date-format": "0.0.2",
     "express": "^4.12.4",
+    "mustache": "^2.2.0",
     "xml2js": "^0.4.8"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.8.0"
   }
 }
