@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"it",
+				"it	it"
+			],
+			[
 				"is",
 				"isInPlayback"
 			],
@@ -510,15 +514,51 @@
 			[
 				"Er",
 				"Errorf	 ƒ"
-			],
-			[
-				"func",
-				"func	func {...} ʂ"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 6039,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 595,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "parser.js",
+			"settings":
+			{
+				"buffer_size": 874,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 4823,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "__tests__/parser-test.js",
+			"settings":
+			{
+				"buffer_size": 475,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -527,10 +567,34 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 147.0,
-		"last_filter": "",
+		"height": 392.0,
+		"last_filter": "npm ",
 		"selected_items":
 		[
+			[
+				"npm ",
+				"Nodejs::NPM::Command"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"packa",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
 			[
 				"diff",
 				"FileDiffs: Menu"
@@ -574,10 +638,6 @@
 			[
 				"vagrane",
 				"Vagrant: Destroy && Up"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"run",
@@ -644,10 +704,6 @@
 				"GoSublime: List Package declarations"
 			],
 			[
-				"inst",
-				"Package Control: Install Package"
-			],
-			[
 				"package con",
 				"Package Control: Remove Channel"
 			],
@@ -682,10 +738,6 @@
 			[
 				"j",
 				"Set Syntax: JavaScript"
-			],
-			[
-				"remo",
-				"Package Control: Remove Package"
 			],
 			[
 				"css",
@@ -846,10 +898,19 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/prestl02/Projects/junit_viewer"
+		"/Users/prestl02/Projects/junit_viewer",
+		"/Users/prestl02/Projects/junit_viewer/__tests__",
+		"/Users/prestl02/Projects/junit_viewer/test_data",
+		"/Users/prestl02/Projects/junit_viewer/test_data/something"
 	],
 	"file_history":
 	[
+		"/Users/prestl02/Projects/junit_viewer/__tests__/template-test.js",
+		"/Users/prestl02/Projects/junit_viewer/template.html",
+		"/Users/prestl02/Projects/junit_viewer/index.js",
+		"/Users/prestl02/Projects/junit_viewer/template.js",
+		"/Users/prestl02/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/prestl02/Projects/junit_viewer/junit_viewer.sublime-project",
 		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/iplayerfortv-static/trunk/webapp/static-versioned/script/app/promosplash/promosplash.js",
 		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/iplayerfortv-static/trunk/webapp/static-versioned/script/app/mainpage/resumewatching/resumewatchingcomponent.js",
 		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/iplayerfortv-static/trunk/webapp/static-versioned/script/app/promosplash/iplayerpromotions.js",
@@ -971,17 +1032,11 @@
 		"/Users/prestl02/Downloads/thing.json",
 		"/Users/prestl02/Projects/bug_catcher/node_modules/express-livereload/node_modules/livereload/lib/livereload.js",
 		"/Users/prestl02/Projects/bug_catcher/node_modules/express-livereload/node_modules/livereload/lib/command.js",
-		"/Users/prestl02/Projects/bug_catcher/server/build_js.js",
-		"/Users/prestl02/Projects/bug_catcher/server/watch_templates.js",
-		"/Users/prestl02/Projects/bug_catcher/index.js",
-		"/Users/prestl02/Projects/bug_catcher/server/watch.js",
-		"/Users/prestl02/Projects/bug_catcher/server/uncache.js",
-		"/Users/prestl02/Projects/bug_catcher/README.md",
-		"/Users/prestl02/Projects/bug_catcher/loggit.js"
+		"/Users/prestl02/Projects/bug_catcher/server/build_js.js"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -1009,6 +1064,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"--",
+			"name",
+			"junit_parser",
+			"parser",
+			"dont",
 			"setDisabled(true)",
 			"Home",
 			"setDisabled(true)",
@@ -1131,12 +1191,7 @@
 			" = 546",
 			" = 462",
 			" = 390",
-			" = 330",
-			" = 210",
-			"1",
-			"0",
-			"1 0 3 1",
-			"0 1 3 2"
+			" = 330"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1154,8 +1209,157 @@
 	"groups":
 	[
 		{
+			"selected": 4,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								527,
+								527
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 128.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 595,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "parser.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								865,
+								865
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4823,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "__tests__/parser-test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								475,
+								475
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

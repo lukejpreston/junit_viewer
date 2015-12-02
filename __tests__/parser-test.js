@@ -12,4 +12,11 @@ describe('Parsing Junit Results', function() {
     it('Has the title of the file', function() {
         expect(testData.title).toBe('Test Data')
     });
+
+    describe('Passing tests', function() {
+        it('Has a name', function() {
+            expect(testData.tests[0].name).toBeDefined()
+        });
+
+    });
 });
