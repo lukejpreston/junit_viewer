@@ -114,5 +114,3 @@ function parse(fileName) {
 module.exports = {
     parse: parse
 }
-
-console.log(parse('./test_data'))
