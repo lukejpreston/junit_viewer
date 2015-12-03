@@ -4,7 +4,8 @@ var parser = require('../parser')
 
 describe('Parsing junit results', function() {
     var testData = parser.parse(__dirname + '/data/')
-    var singleTestData = parser.parse(__dirname + '/data/passing_suite.xml')
+    var singleTestData = parser.parse('./__tests__/data/passing_suite.xml')
+    var nonExistantData = parser.parse('this file does not exist')
 
     it('Has the title of the file', function() {
         expect(testData.title).toBe('Data')
@@ -84,5 +85,21 @@ describe('Parsing junit results', function() {
 
     it('Can parse just a single file', function() {
         expect(singleTestData).toBeDefined()
+    })
+
+    it('Default to "No Class Name" if none found', function() {
+        expect(testData.suites['No Class Name'].name).toBe('No Class Name')
+    })
+
+    it('Replaces dots with spaces', function() {
+        expect(testData.suites['H A S D O T']).toBeDefined()
+    })
+
+    it('Gives back an error for non existent file', function() {
+        expect(nonExistantData.junitViewerFileError).toBeDefined()
+    })
+
+    it('Adds parsing error if any found for each error', function() {
+        expect(testData.suites.junitViewerParsingError.length).toBe(2)
     })
 })

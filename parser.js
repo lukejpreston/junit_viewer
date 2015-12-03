@@ -14,11 +14,12 @@ function extractFullName(name, map) {
     var capsMatch = name.match(/[A-Z][a-z]+/g)
     name = capsMatch !== null ? capsMatch.join('_') : name
     fileSplit = name.split('.')
-    if (fileSplit.length > 1)
+
+    if (fileSplit.length > 1) {
         name = fileSplit
-        .slice(0, fileSplit.length - 1)
-        .join('_')
-    else if (fileSplit.length === 1)
+            .slice(0, fileSplit.length - 1)
+            .join('_')
+    } else if (fileSplit.length === 1)
         name = fileSplit[0]
 
     var words = name.split('_')
@@ -50,7 +51,7 @@ function normaliseFileName(fileName) {
 
     if (!fs.existsSync(fileName)) {
         console.log(fileName, 'does not exist')
-        process.exit()
+        return fileName + ' FILE DOES NOT EXIST NOT GOING RUNNING'
     }
 
     if (isDirectory(fileName) && fileName.charAt(fileName.length - 1) !== '/')
@@ -70,43 +71,53 @@ function parseTestResult(fileName, suites) {
 
     var data = fs.readFileSync(fileName).toString()
     parser.parseString(data, function(err, result) {
-        var suite = extractFullName(result.testsuite.testcase[0].$.classname, capitaliseAllWords) || 'No Class Name'
-        var properties
-        if (result.testsuite.hasOwnProperty('properties')) {
-            properties = {}
-            var resultProperties = result.testsuite.properties[0].property
-            for (var i = 0; i < resultProperties.length; i++)
-                properties[resultProperties[i].$.name] = resultProperties[i].$.value
-        }
-
-        suites[suite] = suites[suite] || {
-            name: suite,
-            tests: [],
-            properties: properties,
-            time: result.testsuite.$.time
-        }
-
-        result.testsuite.testcase.forEach(function(test) {
-            var type = 'passed',
-                message
-
-            if (test.hasOwnProperty('skipped'))
-                type = 'skipped'
-            else if (test.hasOwnProperty('error')) {
-                type = 'error'
-                message = test.error[0]._
-            } else if (test.hasOwnProperty('failure')) {
-                type = 'failure'
-                message = test.failure[0]._
+        var errorMessage = "there was an error parsing: " + fileName
+        if (err !== null && suites.junitViewerParsingError)
+            suites.junitViewerParsingError.push(errorMessage)
+        else if (err !== null)
+            suites.junitViewerParsingError = [errorMessage]
+        else {
+            var suite = 'No Class Name'
+            if (result.testsuite.testcase[0].$.classname)
+                suite = extractFullName(result.testsuite.testcase[0].$.classname, capitaliseAllWords)
+            var properties
+            if (result.testsuite.hasOwnProperty('properties')) {
+                properties = {}
+                var resultProperties = result.testsuite.properties[0].property
+                for (var i = 0; i < resultProperties.length; i++)
+                    properties[resultProperties[i].$.name] = resultProperties[i].$.value
             }
 
-            suites[suite].tests.push({
-                name: extractFullName(test.$.name, capitaliseFirstWord),
-                type: type,
-                message: message,
-                time: test.time
+            suites[suite] = suites[suite] || {
+                name: suite,
+                tests: [],
+                properties: properties,
+                time: result.testsuite.$.time
+            }
+
+            result.testsuite.testcase.forEach(function(test) {
+                var type = 'passed',
+                    message
+
+                if (test.hasOwnProperty('skipped'))
+                    type = 'skipped'
+                else if (test.hasOwnProperty('error')) {
+                    type = 'error'
+                    message = test.error[0]._
+                } else if (test.hasOwnProperty('failure')) {
+                    type = 'failure'
+                    message = test.failure[0]._
+                }
+
+                suites[suite].tests.push({
+                    name: extractFullName(test.$.name, capitaliseFirstWord),
+                    type: type,
+                    message: message,
+                    time: test.time
+                })
             })
-        })
+        }
+
     })
 }
 
@@ -123,6 +134,10 @@ function runThroughFolder(folder, suites) {
 
 function parse(fileName) {
     fileName = normaliseFileName(fileName)
+    if (fileName.indexOf('FILE DOES NOT EXIST NOT GOING RUNNING') !== -1)
+        return {
+            junitViewerFileError: fileName
+        }
 
     var suites = {}
     if (isDirectory(fileName))
