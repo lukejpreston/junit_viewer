@@ -12,7 +12,7 @@ describe('Parsing junit results', function() {
     function hasBasicSchema(itData) {
         var name = itData.name,
             type = itData.type
-        describe(name + ' suite', function() {
+        describe(name + ' suite basic schema', function() {
             var suite = testData.suites[name]
 
             it('Has a name', function() {
