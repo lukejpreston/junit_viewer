@@ -9,51 +9,45 @@ describe('Parsing junit results', function() {
         expect(testData.title).toBe('Data')
     })
 
-    describe('Passing suite', function() {
-        var suite = testData.suites.Passing
+    function hasBasicSchema(itData) {
+        var name = itData.name,
+            type = itData.type
+        describe(name + ' suite', function() {
+            var suite = testData.suites[name]
 
-        it('Has a name', function() {
-            expect(suite.name).toBeDefined()
-        })
+            it('Has a name', function() {
+                expect(suite.name).toBeDefined()
+            })
 
-        it('Has the time', function() {
-            expect(suite.time).toBeDefined()
-        })
+            it('Has the time', function() {
+                expect(suite.time).toBeDefined()
+            })
 
-        describe('Each test', function() {
-            suite.tests.forEach(function(test) {
-                it('Has a name', function() {
-                    expect(test.name).toBeDefined()
-                })
+            describe('Each test', function() {
+                suite.tests.forEach(function(test) {
+                    it('Has a name', function() {
+                        expect(test.name).toBeDefined()
+                    })
 
-                it('Has type of "passed"', function() {
-                    expect(test.type).toBe('passed')
+                    it('Has type of "' + type + '"', function() {
+                        expect(test.type).toBe(type)
+                    })
                 })
             })
         })
-    })
+    }
 
-    describe('Failing suite', function() {
-        var suite = testData.suites.Failing
-
-        it('Has a name', function() {
-            expect(suite.name).toBeDefined()
-        })
-
-        it('Has the time', function() {
-            expect(suite.time).toBeDefined()
-        })
-
-        describe('Each test', function() {
-            suite.tests.forEach(function(test) {
-                it('Has a name', function() {
-                    expect(test.name).toBeDefined()
-                })
-
-                it('Has type of "passed"', function() {
-                    expect(test.type).toBe('passed')
-                })
-            })
-        })
-    })
+    [{
+        name: 'Passing',
+        type: 'passed'
+    }, {
+        name: 'Failing',
+        type: 'failure'
+    }, {
+        name: 'Error',
+        type: 'error'
+    }, {
+        name: 'Skipped',
+        type: 'skipped'
+    }].forEach(hasBasicSchema)
 })
