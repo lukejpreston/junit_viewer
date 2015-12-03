@@ -21,5 +21,9 @@
   },
   "devDependencies": {
     "jest-cli": "^0.8.0"
+  },
+  "jest" : {
+    "collectCoverage": true,
+    "coverageReporters": ["lcov"]
   }
 }
