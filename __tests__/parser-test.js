@@ -100,6 +100,6 @@ describe('Parsing junit results', function() {
     })
 
     it('Adds parsing error if any found for each error', function() {
-        expect(testData.suites.junitViewerParsingError.length).toBe(2)
+        expect(testData.suites['invalid.xml']).toBeDefined()
     })
 })

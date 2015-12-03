@@ -30,6 +30,11 @@ function capitaliseAllWords(words) {
     return words.map(capitalise).join(' ')
 }
 
+function extractFileName(fileName) {
+    var fileNameSplit = fileName.split('/')
+    return fileNameSplit[fileNameSplit.length - 1]
+}
+
 function capitaliseFirstWord(words) {
     words = words.map(function(word) {
         return word.toLowerCase()
@@ -71,11 +76,11 @@ function parseTestResult(fileName, suites) {
 
     var data = fs.readFileSync(fileName).toString()
     parser.parseString(data, function(err, result) {
-        var errorMessage = "there was an error parsing: " + fileName
-        if (err !== null && suites.junitViewerParsingError)
-            suites.junitViewerParsingError.push(errorMessage)
-        else if (err !== null)
-            suites.junitViewerParsingError = [errorMessage]
+        if (err !== null)
+            suites[extractFileName(fileName)] = {
+                name: fileName,
+                error: err.toString()
+            };
         else {
             var suite = 'No Class Name'
             if (result.testsuite.testcase[0].$.classname)
