@@ -70,12 +70,25 @@ function parseTestResult(fileName, suites) {
 
     var data = fs.readFileSync(fileName).toString()
     parser.parseString(data, function(err, result) {
+        var suite = extractFullName(result.testsuite.testcase[0].$.classname, capitaliseAllWords) || 'No Class Name'
+        var properties
+        if (result.testsuite.hasOwnProperty('properties')) {
+            properties = {}
+            var resultProperties = result.testsuite.properties[0].property
+            for (var i = 0; i < resultProperties.length; i++)
+                properties[resultProperties[i].$.name] = resultProperties[i].$.value
+        }
+
+        suites[suite] = suites[suite] || {
+            name: suite,
+            tests: [],
+            properties: properties,
+            time: result.testsuite.$.time
+        }
+
         result.testsuite.testcase.forEach(function(test) {
             var type = 'passed',
-                suite = extractFullName(test.$.classname, capitaliseAllWords) || 'No Class Name',
                 message
-
-            suites[suite] = suites[suite] || []
 
             if (test.hasOwnProperty('skipped'))
                 type = 'skipped'
@@ -87,7 +100,7 @@ function parseTestResult(fileName, suites) {
                 message = test.failure[0]._
             }
 
-            suites[suite].push({
+            suites[suite].tests.push({
                 name: extractFullName(test.$.name, capitaliseFirstWord),
                 type: type,
                 message: message,

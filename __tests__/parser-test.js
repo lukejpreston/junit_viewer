@@ -6,33 +6,30 @@ describe('Parsing Junit Results', function() {
     var testData = parser.parse(__dirname + '/data')
 
     it('Has the title of the file', function() {
-        expect(testData.title).toBe('Test Data')
-    });
+        expect(testData.title).toBe('Data')
+    })
 
-    describe('Passing tests', function() {
+    describe('Passing suite', function() {
+        var suite = testData.suites.Passing
+
         it('Has a name', function() {
-            console.log(JSON.stringify(testData))
-            expect(testData.tests).toBeDefined()
-        });
+            expect(suite.name).toBeDefined()
+        })
 
-    });
-});
+        it('Has the time', function() {
+            expect(suite.time).toBeDefined()
+        })
 
+        describe('Each test', function() {
+            suite.tests.forEach(function(test) {
+                it('Has a name', function() {
+                    expect(test.name).toBeDefined()
+                })
 
-// { title: 'Test Data',
-//   data:
-//    { 'Test 3':
-//       { 'Player Has a name Name Works Money': [Object],
-//         'Player Has a name Name Fails': [Object] },
-//      'Test 4': { 'Player Has a name Name Works Money': [Object] },
-//      Test:
-//       { 'Player Has a name Name Works Money': [Object],
-//         'Player Has a name Name Fails': [Object] },
-//      'Test 2':
-//       { 'Player Has a name Name Works Money': [Object],
-//         'Player Has a name Name Fails': [Object] },
-//      'Test 5':
-//       { 'Player Has a name Name Works Money': [Object],
-//         'Player Has a name Name Fails': [Object],
-//         'Player Has a name Name Skippek': [Object],
-//         'Player Has a name Error': [Object] } } }
+                it('Has type of "passed"', function() {
+                    expect(test.type).toBe('passed')
+                })
+            })
+        })
+    })
+})
