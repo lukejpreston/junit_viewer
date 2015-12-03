@@ -2,7 +2,7 @@ jest.autoMockOff()
 
 var parser = require('../parser')
 
-describe('Parsing Junit Results', function() {
+describe('Parsing junit results', function() {
     var testData = parser.parse(__dirname + '/data')
 
     it('Has the title of the file', function() {
