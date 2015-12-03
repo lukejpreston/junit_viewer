@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-  <testsuite tests="2" failures="1" time="0.0160106">
-      <testcase name="Player Has a name Name Works Money" classname="Player Suite" time="0"></testcase>
-      <testcase name="Player Has a name Name Works Money" classname="NO FOLDER SPECIFIED FOR JUNIT VIEWER" time="0"></testcase>
-      <testcase name="Player Has a name Name Fails" classname="Player Suite" time="0.012011200000000001">
-          <failure type="Failure">C:/Users/lukej_000/go/src/hunter/player_test.go:19&#xA;Expected&#xA;    &lt;string&gt;: Luke&#xA;to equal&#xA;    &lt;string&gt;: luke</failure>
-      </testcase>
-  </testsuite>

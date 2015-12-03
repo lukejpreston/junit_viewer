@@ -7,8 +7,10 @@ function extractFullName(name, map) {
         .replace(/ /g, '_')
 
     var fileSplit = name.split('/')
-    var name = fileSplit[fileSplit.length - 1]
-
+    if (name.charAt(name.length - 1) === '/')
+        name = fileSplit[fileSplit.length - 2]
+    else
+        name = fileSplit[fileSplit.length - 1]
     var capsMatch = name.match(/[A-Z][a-z]+/g)
     name = capsMatch !== null ? capsMatch.join('_') : name
     fileSplit = name.split('.')
@@ -57,14 +59,23 @@ function normaliseFileName(fileName) {
     return fileName
 }
 
-function parseTestResult(fileName, data) {
-    var testData = fs.readFileSync(fileName).toString()
-    parser.parseString(testData, function(err, result) {
-        var suite = extractFullName(fileName, capitaliseAllWords)
-        data[suite] = {}
+function isXml(fileName) {
+    var fileSplit = fileName.split('.')
+    return fileSplit[fileSplit.length - 1] === 'xml'
+}
+
+function parseTestResult(fileName, suites) {
+    if (!isXml(fileName))
+        return
+
+    var data = fs.readFileSync(fileName).toString()
+    parser.parseString(data, function(err, result) {
         result.testsuite.testcase.forEach(function(test) {
             var type = 'passed',
+                suite = extractFullName(test.$.classname, capitaliseAllWords) || 'No Class Name',
                 message
+
+            suites[suite] = suites[suite] || []
 
             if (test.hasOwnProperty('skipped'))
                 type = 'skipped'
@@ -76,23 +87,23 @@ function parseTestResult(fileName, data) {
                 message = test.failure[0]._
             }
 
-            data[suite][test.$.name] = {
+            suites[suite].push({
                 name: extractFullName(test.$.name, capitaliseFirstWord),
                 type: type,
                 message: message,
                 time: test.time
-            }
+            })
         })
     })
 }
 
-function runThroughFolder(folder, data) {
+function runThroughFolder(folder, suites) {
     fs.readdirSync(folder).forEach(function(file) {
         var fileName = normaliseFileName(folder + file)
         if (isDirectory(fileName)) {
-            runThroughFolder(fileName, data)
+            runThroughFolder(fileName, suites)
         } else {
-            parseTestResult(fileName, data)
+            parseTestResult(fileName, suites)
         }
     })
 }
@@ -100,14 +111,15 @@ function runThroughFolder(folder, data) {
 function parse(fileName) {
     fileName = normaliseFileName(fileName)
 
-    var data = {}
+    var suites = {}
     if (isDirectory(fileName))
-        runThroughFolder(fileName, data)
+        runThroughFolder(fileName, suites)
     else
-        parseTestResult(fileName, data)
+        parseTestResult(fileName, suites)
+
     return {
         title: extractFullName(fileName, capitaliseAllWords),
-        data: data
+        suites: suites
     }
 }
 
