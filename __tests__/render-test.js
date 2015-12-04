@@ -18,6 +18,7 @@ function getInnerHtml(id) {
 }
 
 describe('Template', function() {
+    // console.log(rednerdView.body.innerHTML)
     it('Replace the title with the test name', function() {
         expect(rednerdView.title).toBe(data.title)
     })
