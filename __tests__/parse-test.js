@@ -1,11 +1,11 @@
 jest.autoMockOff()
 
-var parser = require('../parser')
+var parse = require('../parse')
 
 describe('Parsing junit results', function() {
-    var testData = parser.parse(__dirname + '/data/')
-    var singleTestData = parser.parse('./__tests__/data/passing_suite.xml')
-    var nonExistantData = parser.parse('this file does not exist')
+    var testData = parse(__dirname + '/data/')
+    var singleTestData = parse('./__tests__/data/passing_suite.xml')
+    var nonExistantData = parse('this file does not exist')
 
     it('Has the title of the file', function() {
         expect(testData.title).toBe('Data')

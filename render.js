@@ -6,6 +6,4 @@ function render(data) {
     return Mustache.render(html, data);
 }
 
-module.exports = {
-    render: render
-}
+module.exports = render

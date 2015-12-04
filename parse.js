@@ -156,6 +156,4 @@ function parse(fileName) {
     }
 }
 
-module.exports = {
-    parse: parse
-}
+module.exports = parse
