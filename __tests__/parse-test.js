@@ -31,6 +31,10 @@ describe('Parsing junit results', function() {
                         expect(test.name).toBeDefined()
                     })
 
+                    it('Has a time', function() {
+                        expect(test.time).toBeDefined()
+                    })
+
                     it('Has type of "' + type + '"', function() {
                         expect(test.type).toBe(type)
                     })
