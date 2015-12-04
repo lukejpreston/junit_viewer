@@ -20,8 +20,7 @@
         "xml2js": "^0.4.8"
     },
     "devDependencies": {
-        "jest-cli": "^0.8.0",
-        "jsdom": "7.0.2"
+        "jest-cli": "^0.8.0"
     },
     "jest": {
         "collectCoverage": true,
