@@ -8,11 +8,13 @@ function getTemplateString(fileName) {
 }
 
 module.exports = function(data) {
-    var htmlSuites = ''
+    var htmlSuites = []
 
-
-
-    console.log(data.suites)
+    Object.keys(data.suites).forEach(function(suite) {
+        suite.tests.forEach(function(test) {
+            console.log(test.type)
+        })
+    })
 
     var htmlData = {
         title: data.title,
