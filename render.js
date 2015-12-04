@@ -1,24 +1,35 @@
 var Mustache = require('mustache'),
     fs = require('fs')
 
-function getTemplateString(fileName) {
-    var template = fs.readFileSync(__dirname + '/templates/' + fileName + '.html').toString()
-    Mustache.parse(template)
-    return template
+var templatesCache = {}
+
+function render(fileName, data) {
+    if (!templatesCache.hasOwnProperty(fileName))
+        templatesCache[fileName] = fs.readFileSync(__dirname + '/templates/' + fileName + '.html').toString()
+    Mustache.parse(templatesCache[fileName])
+    return Mustache.render(templatesCache[fileName], data)
 }
 
 module.exports = function(data) {
-    var htmlSuites = []
+    var renderedSuites = Object.keys(data.suites).map(function(suiteName) {
+        var suite = data.suites[suiteName]
+        if (suite.error)
+            suite.tests = render('syntax_error', suite).replace(/\n/g, '<br />')
+        else
+            suite.tests = suite.tests.map(function(test) {
+                if (test.hasOwnProperty('message'))
+                    test.message = render('test_message', test).replace(/\n/g, '<br />')
+                return render('test', test)
+            }).join('\n')
+        return render('suite', suite)
+    }).join('\n')
 
-    Object.keys(data.suites).forEach(function(suite) {
-        suite.tests.forEach(function(test) {
-            console.log(test.type)
-        })
+    var renderedHtml = render('index', {
+        title: data.title,
+        suites: renderedSuites
     })
 
-    var htmlData = {
-        title: data.title,
-        suites: htmlSuites
-    }
-    return Mustache.render(getTemplateString('index'), htmlData)
+    fs.writeFileSync('example_output.html', renderedHtml)
+
+    return renderedHtml
 }
