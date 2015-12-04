@@ -47,7 +47,7 @@ function capitalise(word) {
 }
 
 function isDirectory(folder) {
-    return fs.lstatSync(folder).isDirectory();
+    return fs.lstatSync(folder).isDirectory()
 }
 
 function normaliseFileName(fileName) {
