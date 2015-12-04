@@ -9,7 +9,10 @@ function getTemplateString(fileName) {
 
 module.exports = function(data) {
     var htmlSuites = ''
-    console.log(data.suites.Passing)
+
+
+
+    console.log(data.suites)
 
     var htmlData = {
         title: data.title,
