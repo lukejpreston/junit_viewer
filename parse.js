@@ -118,7 +118,7 @@ function parseTestResult(fileName, suites) {
                     name: extractFullName(test.$.name, capitaliseFirstWord),
                     type: type,
                     message: message,
-                    time: test.time
+                    time: test.$.time
                 })
             })
         }

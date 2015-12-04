@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"html",
+				"htmlData"
+			],
+			[
+				"fil",
+				"fileSplit"
+			],
+			[
+				"toBe",
+				"toBeDefined"
+			],
+			[
 				"is",
 				"isXml"
 			],
@@ -432,10 +444,6 @@
 				"templateValues"
 			],
 			[
-				"html",
-				"htmlTemplates"
-			],
-			[
 				"react",
 				"reactTools"
 			],
@@ -506,40 +514,56 @@
 			[
 				"start",
 				"startServer"
-			],
-			[
-				"co",
-				"commandArgs"
-			],
-			[
-				"testC",
-				"testCase"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "parser.js",
+			"file": "templates/index.html",
 			"settings":
 			{
-				"buffer_size": 3900,
+				"buffer_size": 485,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "setup-jasmine-env.js",
+			"file": "render.js",
 			"settings":
 			{
-				"buffer_size": 225,
+				"buffer_size": 488,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "__tests__/parser-test.js",
+			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 1364,
+				"buffer_size": 747,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/passing_test.html",
+			"settings":
+			{
+				"buffer_size": 79,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "__tests__/render-test.js",
+			"settings":
+			{
+				"buffer_size": 617,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "__tests__/data/output.json",
+			"settings":
+			{
+				"buffer_size": 5474,
 				"line_ending": "Unix"
 			}
 		}
@@ -558,6 +582,10 @@
 			[
 				"java",
 				"Set Syntax: JavaScript"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
 			],
 			[
 				"rein",
@@ -602,10 +630,6 @@
 			[
 				"pre",
 				"Preferences: Settings - User"
-			],
-			[
-				"json",
-				"Set Syntax: JSON"
 			],
 			[
 				"pretty",
@@ -883,15 +907,30 @@
 	"expanded_folders":
 	[
 		"/Users/prestl02/Projects/junit_viewer",
-		"/Users/prestl02/Projects/junit_viewer/__tests__"
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data",
+		"/Users/prestl02/Projects/junit_viewer/coverage/lcov-report",
+		"/Users/prestl02/Projects/junit_viewer/templates"
 	],
 	"file_history":
 	[
-		"/Users/prestl02/Projects/junit_viewer/coverage/lcov-report/index.html",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/parse-test.js",
+		"/Users/prestl02/Projects/junit_viewer/parse.js",
+		"/Users/prestl02/Projects/junit_viewer/render.js",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/output.json",
 		"/Users/prestl02/Projects/junit_viewer/package.json",
-		"/Users/prestl02/Projects/junit_viewer/__tests__/test_data/defect_suite.xml",
 		"/Users/prestl02/Projects/junit_viewer/parser.js",
 		"/Users/prestl02/Projects/junit_viewer/__tests__/parser-test.js",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/example_output.json",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/error_suite.xml",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid_second.xml",
+		"/Users/prestl02/Projects/junit_viewer/coverage/lcov-report/junit_viewer/index.html",
+		"/Users/prestl02/Projects/junit_viewer/coverage/lcov-report/index.html",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/no_class_name.xml",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/passing_suite.xml",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/name.has.dots.xml",
+		"/Users/prestl02/Projects/junit_viewer/setup-jasmine-env.js",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/test_data/defect_suite.xml",
 		"/Users/prestl02/Projects/junit_viewer/__tests__/test_data/failing_suite.xml",
 		"/Users/prestl02/Projects/junit_viewer/__tests__/test_data/sub/defect_suite.xml",
 		"/Users/prestl02/Projects/junit_viewer/__tests__/test_data/sub/error_suite.xml",
@@ -1001,20 +1040,7 @@
 		"/Users/prestl02/Projects/bug_catcher/develop/js/bar/model.js",
 		"/Users/prestl02/Projects/bug_catcher/develop/templates/index.html",
 		"/Users/prestl02/Projects/bug_catcher/develop/templates/bug_catcher_script.js",
-		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/bigscreenconfig/trunk/build/config_test.js",
-		"/Users/prestl02/Projects/bug_catcher/develop/style/partials/_icomoon.scss",
-		"/Users/prestl02/Projects/bug_catcher/IcoMoon-Free-master/Font/Reference.html",
-		"/Users/prestl02/Projects/bug_catcher/develop/style/something.js",
-		"/Users/prestl02/Projects/bug_catcher/develop/js/liga.js",
-		"/Users/prestl02/Projects/bug_catcher/develop/style/liga.js",
-		"/Users/prestl02/Projects/bug_catcher/develop/style/demo.css",
-		"/Users/prestl02/Projects/bug_catcher/IcoMoon-Free-master/Font/demo-files/demo.js",
-		"/Users/prestl02/Projects/bug_catcher/IcoMoon-Free-master/PDF/0001-home.pdf",
-		"/Users/prestl02/Projects/bug_catcher/develop/js/bug_catcher.js",
-		"/Users/prestl02/Projects/bug_catcher/server/watch_js.js",
-		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspace/tvpjsframeworkconfig_trunk/webapp/htdocs/deviceconfig/3.0.1/nowtv-box_v2-default.json",
-		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspace/tvpjsframeworkconfig_trunk/webapp/htdocs/deviceconfig/3.0.1/lg-tv_2015_ultrahighend-default.json",
-		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspace/tvpjsframeworkconfig_trunk/webapp/htdocs/deviceconfig/3.0.1/nowtv-stb_2013-default.json"
+		"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/bigscreenconfig/trunk/build/config_test.js"
 	],
 	"find":
 	{
@@ -1025,6 +1051,8 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/prestl02/Projects/junit_viewer/node_modules",
+			"",
 			"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/iplayerfortv-static/trunk/tasks",
 			"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/iplayerfortv-static/trunk",
 			"/Users/prestl02/vagrant/tool-tal-pal-sandbox/workspacecode/iplayerfortv-static/trunk/tasks",
@@ -1046,6 +1074,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			";",
+			"parser.",
+			"thingy",
+			"innerHT",
+			"string",
+			"html",
+			" _",
+			"jsdom.",
+			"jsdom",
+			"GOING RUNNING",
+			"console.log",
+			"leave",
+			"console",
+			"error",
+			"normaliseFileName",
+			"exist",
+			"'",
+			"array",
+			"toBe",
 			"jest",
 			";",
 			"all",
@@ -1154,26 +1201,7 @@
 			"removeClass",
 			"getCurrentApplication:",
 			"this.",
-			"device",
-			"getCurrentApplication",
-			"RuntimeContext",
-			"getCurrentApplication",
-			"RuntimeContext",
-			"define",
-			"(14000, 10000) -> (32000, 10000)",
-			"(14000, 10000)",
-			"(32000, 10000)",
-			"(21000, 10000)",
-			"(19000, 10000)",
-			"(18000, 10000)",
-			"(14000, 10000)",
-			"(18000, 10000)",
-			"(14000, 10000)",
-			"(1234, 5678)",
-			"(14000, 10000) (18000, 10000)",
-			"subtitle",
-			"(32000, 10000)",
-			"(21000, 10000)"
+			"device"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1191,59 +1219,56 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "parser.js",
+					"file": "templates/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3900,
+						"buffer_size": 485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1217,
-								1248
+								447,
+								447
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 598.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "setup-jasmine-env.js",
+					"file": "render.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 225,
+						"buffer_size": 488,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								148,
-								148
+								421,
+								421
 							]
 						],
 						"settings":
 						{
-							"open_with_edit": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -1255,19 +1280,78 @@
 				},
 				{
 					"buffer": 2,
-					"file": "__tests__/parser-test.js",
+					"file": "package.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1364,
+						"buffer_size": 747,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								503,
-								503
+								538,
+								546
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/passing_test.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 79,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "__tests__/render-test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								376,
+								376
 							]
 						],
 						"settings":
@@ -1275,10 +1359,40 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 23.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "__tests__/data/output.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1891,7 +2005,7 @@
 		"selected_items":
 		[
 		],
-		"width": 1300.0
+		"width": 392.0
 	},
 	"selected_group": 0,
 	"settings":

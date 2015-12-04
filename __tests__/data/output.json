@@ -6,7 +6,8 @@
             "tests": [{
                 "name": "Is an error",
                 "type": "error",
-                "message": "java.lang.RuntimeException: There was an error"
+                "message": "java.lang.RuntimeException: There was an error",
+                "time": "0"
             }],
             "properties": {
                 "flag-type": "bug",
@@ -21,7 +22,8 @@
             "tests": [{
                 "name": "Is an error",
                 "type": "error",
-                "message": "java.lang.RuntimeException: There was an error"
+                "message": "java.lang.RuntimeException: There was an error",
+                "time": "0.00075"
             }],
             "time": "0.0160106"
         },
@@ -30,7 +32,8 @@
             "tests": [{
                 "name": "It is failure",
                 "type": "failure",
-                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke"
+                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke",
+                "time": "0.012011200000000001"
             }],
             "time": "0.0160106"
         },
@@ -43,17 +46,21 @@
             "tests": [{
                 "name": "Is an error",
                 "type": "error",
-                "message": "java.lang.RuntimeException: There was an error"
+                "message": "java.lang.RuntimeException: There was an error",
+                "time": "0.00075"
             }, {
                 "name": "It is failure",
                 "type": "failure",
-                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke"
+                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke",
+                "time": "0.012011200000000001"
             }, {
                 "name": "It is pass",
-                "type": "passed"
+                "type": "passed",
+                "time": "0.000625"
             }, {
                 "name": "It is skipped",
-                "type": "skipped"
+                "type": "skipped",
+                "time": "0"
             }],
             "properties": {
                 "flag-type": "bug",
@@ -67,7 +74,8 @@
             "name": "H A S D O T",
             "tests": [{
                 "name": "It is pass",
-                "type": "passed"
+                "type": "passed",
+                "time": "0.000625"
             }],
             "time": "0.0160106"
         },
@@ -75,7 +83,8 @@
             "name": "No Class Name",
             "tests": [{
                 "name": "It is pass",
-                "type": "passed"
+                "type": "passed",
+                "time": "0.000625"
             }],
             "time": "0.0160106"
         },
@@ -83,7 +92,8 @@
             "name": "Passing",
             "tests": [{
                 "name": "It is pass",
-                "type": "passed"
+                "type": "passed",
+                "time": "0.000625"
             }],
             "time": "0.0160106"
         },
@@ -91,7 +101,8 @@
             "name": "Skipped",
             "tests": [{
                 "name": "It is skipped",
-                "type": "skipped"
+                "type": "skipped",
+                "time": "0"
             }],
             "time": "0.0"
         },
@@ -100,7 +111,8 @@
             "tests": [{
                 "name": "Is an error",
                 "type": "error",
-                "message": "java.lang.RuntimeException: There was an error"
+                "message": "java.lang.RuntimeException: There was an error",
+                "time": "0"
             }],
             "properties": {
                 "flag-type": "bug",
@@ -115,7 +127,8 @@
             "tests": [{
                 "name": "Is an error",
                 "type": "error",
-                "message": "java.lang.RuntimeException: There was an error"
+                "message": "java.lang.RuntimeException: There was an error",
+                "time": "0.00075"
             }],
             "time": "0.0160106"
         },
@@ -124,7 +137,8 @@
             "tests": [{
                 "name": "It is failure",
                 "type": "failure",
-                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke"
+                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke",
+                "time": "0.012011200000000001"
             }],
             "time": "0.0160106"
         },
@@ -133,17 +147,21 @@
             "tests": [{
                 "name": "Is an error",
                 "type": "error",
-                "message": "java.lang.RuntimeException: There was an error"
+                "message": "java.lang.RuntimeException: There was an error",
+                "time": "0.00075"
             }, {
                 "name": "It is failure",
                 "type": "failure",
-                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke"
+                "message": "FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke",
+                "time": "0.012011200000000001"
             }, {
                 "name": "It is pass",
-                "type": "passed"
+                "type": "passed",
+                "time": "0.000625"
             }, {
                 "name": "It is skipped",
-                "type": "skipped"
+                "type": "skipped",
+                "time": "0"
             }],
             "properties": {
                 "flag-type": "bug",
@@ -157,7 +175,8 @@
             "name": "Passing Sub",
             "tests": [{
                 "name": "It is pass",
-                "type": "passed"
+                "type": "passed",
+                "time": "0.000625"
             }],
             "time": "0.0160106"
         },
@@ -165,7 +184,8 @@
             "name": "Skipped Sub",
             "tests": [{
                 "name": "It is skipped",
-                "type": "skipped"
+                "type": "skipped",
+                "time": "0"
             }],
             "time": "0.0"
         }
