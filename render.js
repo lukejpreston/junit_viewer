@@ -29,7 +29,5 @@ module.exports = function(data) {
         suites: renderedSuites
     })
 
-    fs.writeFileSync('example_output.html', renderedHtml)
-
     return renderedHtml
 }
