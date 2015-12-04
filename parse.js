@@ -137,7 +137,7 @@ function runThroughFolder(folder, suites) {
     })
 }
 
-function parse(fileName) {
+module.exports = function(fileName) {
     fileName = normaliseFileName(fileName)
     if (fileName.indexOf('FILE DOES NOT EXIST NOT GOING TO RUN') !== -1)
         return {
@@ -155,5 +155,3 @@ function parse(fileName) {
         suites: suites
     }
 }
-
-module.exports = parse
