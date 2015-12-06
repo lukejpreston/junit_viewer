@@ -11,7 +11,7 @@ function render(fileName, data) {
 }
 
 module.exports = function(data) {
-    if(data.junitViewerFileError) {
+    if (data.junitViewerFileError) {
         return render('no_file', data)
     }
 
@@ -39,7 +39,8 @@ module.exports = function(data) {
 
     var renderedHtml = render('index', {
         title: data.title,
-        suites: renderedSuites
+        suites: renderedSuites,
+        skeleton: fs.readFileSync(__dirname + '/templates/skeleton.css').toString()
     })
     return renderedHtml
 }
