@@ -1,6 +1,6 @@
 jest.autoMockOff()
 
-var data = require('./data/output.json')
+var data = require('./data/valid_parse_output.json')
 
 var rednerdView = require('jsdom')
     .jsdom(

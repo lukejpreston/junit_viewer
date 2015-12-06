@@ -76,7 +76,7 @@ function parseTestResult(fileName, suites) {
 
     var data = fs.readFileSync(fileName).toString()
     parser.parseString(data, function(err, result) {
-        if (err !== null) 
+        if (err !== null)
             suites[extractFileName(fileName)] = {
                 name: fileName,
                 type: 'failure',
