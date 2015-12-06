@@ -11,6 +11,10 @@ function render(fileName, data) {
 }
 
 module.exports = function(data) {
+    if(data.junitViewerFileError) {
+        return render('no_file', data)
+    }
+
     var renderedSuites = Object.keys(data.suites).map(function(suiteName) {
         var suite = data.suites[suiteName]
         suite.tests = suite.tests.map(function(test) {

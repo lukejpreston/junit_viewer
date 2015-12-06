@@ -105,8 +105,4 @@ describe('Parsing junit results', function() {
     it('Gives back an error for non existent file', function() {
         expect(nonExistantData.junitViewerFileError).toBeDefined()
     })
-
-    it('Adds parsing error if any found for each error', function() {
-        expect(testData.suites['invalid.xml']).toBeDefined()
-    })
 })
