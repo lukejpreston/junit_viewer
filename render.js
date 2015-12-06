@@ -37,8 +37,5 @@ module.exports = function(data) {
         title: data.title,
         suites: renderedSuites
     })
-
-    fs.writeFileSync('example_output.html', renderedHtml)
-
     return renderedHtml
 }
