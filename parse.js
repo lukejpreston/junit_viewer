@@ -80,10 +80,12 @@ function parseTestResult(fileName, suites) {
             suites[extractFileName(fileName)] = {
                 name: fileName,
                 type: 'failure',
+                time: 0,
                 tests: [{
                     name: fileName,
                     message: err.toString(),
-                    time: 0
+                    time: 0,
+                    type: 'error'
                 }]
             };
         else {

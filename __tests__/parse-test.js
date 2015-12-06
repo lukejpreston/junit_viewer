@@ -53,6 +53,9 @@ describe('Parsing junit results', function() {
         name: 'Error',
         type: 'error'
     }, {
+        name: 'invalid.xml',
+        type: 'error'
+    }, {
         name: 'Skipped',
         type: 'skipped'
     }].forEach(hasBasicSchema)
