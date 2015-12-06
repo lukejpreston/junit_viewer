@@ -76,12 +76,18 @@ function parseTestResult(fileName, suites) {
 
     var data = fs.readFileSync(fileName).toString()
     parser.parseString(data, function(err, result) {
-        if (err !== null)
+        if (err !== null) 
             suites[extractFileName(fileName)] = {
                 name: fileName,
-                error: err.toString()
+                type: 'failure',
+                tests: [{
+                    name: fileName,
+                    message: err.toString(),
+                    time: 0
+                }]
             };
         else {
+            var suiteType = 'passed'
             var suite = 'No Class Name'
             if (result.testsuite.testcase[0].$.classname)
                 suite = extractFullName(result.testsuite.testcase[0].$.classname, capitaliseAllWords)
@@ -107,9 +113,11 @@ function parseTestResult(fileName, suites) {
                 if (test.hasOwnProperty('skipped'))
                     type = 'skipped'
                 else if (test.hasOwnProperty('error')) {
+                    suiteType = 'failure'
                     type = 'error'
                     message = test.error[0]._
                 } else if (test.hasOwnProperty('failure')) {
+                    suiteType = 'failure'
                     type = 'failure'
                     message = test.failure[0]._
                 }
@@ -121,6 +129,8 @@ function parseTestResult(fileName, suites) {
                     time: test.$.time
                 })
             })
+
+            suites[suite].type = suiteType
         }
 
     })

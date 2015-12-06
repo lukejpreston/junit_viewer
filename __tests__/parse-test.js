@@ -4,6 +4,8 @@ var parse = require('../parse')
 
 describe('Parsing junit results', function() {
     var testData = parse(__dirname + '/data/')
+    var fs = require('fs')
+    fs.writeFileSync('./__tests__/data/output.json', JSON.stringify(testData))
     var singleTestData = parse('./__tests__/data/passing_suite.xml')
     var nonExistantData = parse('this file does not exist')
 
