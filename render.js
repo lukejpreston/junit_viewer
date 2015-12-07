@@ -27,7 +27,7 @@ function addIds(suites) {
     Object.keys(suites).forEach(function(key) {
         suites[key].id = key.replace(/ /g, '_') + '_' + createUniqueHash()
         suites[key].tests.forEach(function(test, index) {
-            suites[key].tests[index].id = test.name.replace(/ /g, '_') + '_' + createHash()
+            suites[key].tests[index].id = test.name.replace(/ /g, '_') + '_' + createUniqueHash()
         })
     })
 }

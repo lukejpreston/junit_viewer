@@ -10,11 +10,11 @@
     <h1 id="title">{{title}}</h1>
     <div>
         <div id="options">
-            <button>Filter Passing</button>
             <form>
+            <button>Filter Passing</button>
                 <fieldset>
                     <label>Search:</label>
-                    <input type="text"></input>
+                    <input type="text" oninput="search(this.value)"></input>
                 </fieldset>
             </form>
         </div>
