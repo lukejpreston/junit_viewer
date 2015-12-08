@@ -979,16 +979,24 @@ there.
 <body>
     <h1 id="title">Data</h1>
     <div>
-        <div id="options">
-            <form>
-                <button>Filter Passing</button>
-                <fieldset>
-                    <label>Search:</label>
-                    <input type="text" oninput="search(this.value)"></input>
-                </fieldset>
-            </form>
+        <div>
+            <h3>Filter</h3>
+            <fieldset>
+                <button>Filter Passing Suites</button>
+                <button>Filter Passing Tests</button>
+                <button>Filter Passing Suites With Properties</button>
+                <label>Search Suites:</label>
+                <input id="search_suites" type="text" oninput="searchSuite(this.value)"></input>
+                <label>Search Tests:</label>
+                <input id="search_tests" type="text" oninput="searchTests(this.value)"></input>
+                <label>Search Test Messages:</label>
+                <input id="search_messages" type="text" oninput="searchTestMessages(this.value)"></input>
+                <label>Search Properties:</label>
+                <input id="search_tests" type="text" oninput="searchProperties(this.value)"></input>
+            </fieldset>
         </div>
         <div id="suites">
+            <h3>Suites</h3>
             <div class="suite" id="Defect_TrlD9">
                 <button class="suite_name suite--failure">Defect</button>
                 <div>
@@ -1565,39 +1573,43 @@ there.
         }
     }
 
-    var names = Object.keys(suites).map(function(key) {
-        var tests = suites[key].tests.map(function(test) {
-            return {
-                name: test.name.toLowerCase(),
-                id: test.id
-            }
-        })
-        return {
-            suite: {
-                name: suites[key].name.toLowerCase(),
-                id: suites[key].id
-            },
-            tests: tests
-        }
-    })
-
-    function search(value) {
+    function searchSuite(value) {
         if (value === '') {
-            names.forEach(function(name) {
-                document.getElementById(name.suite.id).style.display = 'block'
+            Object.keys(suites).forEach(function(key) {
+                var suite = suites[key]
+                document.getElementById(suite.id).style.display = 'block'
             })
         } else {
             value = value.toLowerCase()
-            names.filter(function(name) {
-                return name.suite.name.indexOf(value) === -1
-            }).forEach(function(name) {
-                document.getElementById(name.suite.id).style.display = 'none'
+            Object.keys(suites).forEach(function(key) {
+                var suite = suites[key]
+                var containsSearch = suite.name.toLowerCase().indexOf(value) !== -1
+                document.getElementById(suite.id).style.display = containsSearch ? 'block' : 'none';
             })
+        }
+    }
 
-            names.filter(function(name) {
-                return name.suite.name.indexOf(value) !== -1
-            }).forEach(function(name) {
-                document.getElementById(name.suite.id).style.display = 'block'
+    function searchTests(value) {
+        if (value === '') {
+            searchSuite(document.getElementById("search_suites").value)
+
+            Object.keys(suites).forEach(function(key) {
+                var suite = suites[key]
+                suite.tests.forEach(function(test) {
+                    document.getElementById(test.id).style.display = 'block'
+                })
+            })
+        } else {
+            value = value.toLowerCase()
+            Object.keys(suites).forEach(function(key) {
+                var suite = suites[key]
+                var suiteShouldBeVisible = false
+                suite.tests.forEach(function(test) {
+                    var containsSearch = test.name.toLowerCase().indexOf(value) !== -1
+                    if (containsSearch) suiteShouldBeVisible = true
+                    document.getElementById(test.id).style.display = containsSearch ? 'block' : 'none';
+                })
+                document.getElementById(suite.id).style.display = suiteShouldBeVisible ? 'block' : 'none';
             })
         }
     }

@@ -4,8 +4,16 @@
 		"selected_items":
 		[
 			[
+				"hash",
+				"hashes"
+			],
+			[
+				"s",
+				"stringify"
+			],
+			[
 				"ren",
-				"renderedProperties"
+				"renderedJavaScript"
 			],
 			[
 				"suite",
@@ -488,10 +496,6 @@
 				"selected"
 			],
 			[
-				"s",
-				"selected"
-			],
-			[
 				"en",
 				"enterValue"
 			],
@@ -510,20 +514,32 @@
 			[
 				"Su",
 				"Summer	struct ʈ"
-			],
-			[
-				"P",
-				"Printf	n int, err error ƒ"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"file": "templates/junit_viewer.js",
 			"settings":
 			{
-				"buffer_size": 1375,
+				"buffer_size": 1053,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "valid_data.html",
+			"settings":
+			{
+				"buffer_size": 49783,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "render.js",
+			"settings":
+			{
+				"buffer_size": 2468,
 				"line_ending": "Unix"
 			}
 		}
@@ -867,26 +883,26 @@
 	"expanded_folders":
 	[
 		"/Users/prestl02/Projects/junit_viewer",
-		"/Users/prestl02/Projects/junit_viewer/__tests__/data",
-		"/Users/prestl02/Projects/junit_viewer/coverage/lcov-report",
 		"/Users/prestl02/Projects/junit_viewer/templates"
 	],
 	"file_history":
 	[
+		"/Users/prestl02/Projects/junit_viewer/templates/index.html",
+		"/Users/prestl02/Projects/junit_viewer/__tests__/data/valid_parse_output.json",
+		"/Users/prestl02/Projects/junit_viewer/templates/test.html",
+		"/Users/prestl02/Projects/junit_viewer/templates/suite.html",
+		"/Users/prestl02/Projects/junit_viewer/valid_data.html",
+		"/Users/prestl02/Projects/junit_viewer/index.html",
 		"/Users/prestl02/Projects/junit_viewer/README.md",
 		"/Users/prestl02/Projects/junit_viewer/.gitignore",
 		"/Users/prestl02/Projects/junit_viewer/render.js",
-		"/Users/prestl02/Projects/junit_viewer/templates/index.html",
 		"/Users/prestl02/Projects/junit_viewer/package.json",
 		"/Users/prestl02/Projects/junit_viewer/templates/skeleton.css",
-		"/Users/prestl02/Projects/junit_viewer/index.html",
 		"/Users/prestl02/Projects/junit_viewer/generate_view.js",
 		"/Users/prestl02/Projects/junit_viewer/__tests__/parse-test.js",
 		"/Users/prestl02/Projects/junit_viewer/parse.js",
 		"/Users/prestl02/Projects/junit_viewer/templates/properties.html",
-		"/Users/prestl02/Projects/junit_viewer/templates/suite.html",
 		"/Users/prestl02/Projects/junit_viewer/templates/property.html",
-		"/Users/prestl02/Projects/junit_viewer/__tests__/data/valid_parse_output.json",
 		"/Users/prestl02/Projects/junit_viewer/__tests__/data/no_such_file_parse_output.json",
 		"/Users/prestl02/Projects/junit_viewer/coverage/lcov-report/index.html",
 		"/Users/prestl02/Projects/junit_viewer/templates/no_file.html",
@@ -896,7 +912,6 @@
 		"/Users/prestl02/Projects/junit_viewer/__tests__/data/multi_suite.xml",
 		"/Users/prestl02/Projects/junit_viewer/example_output.html",
 		"/Users/prestl02/Projects/junit_viewer/templates/failure.html",
-		"/Users/prestl02/Projects/junit_viewer/templates/test.html",
 		"/Users/prestl02/Projects/junit_viewer/templates/test_message.html",
 		"/Users/prestl02/Projects/junit_viewer/templates/syntax_error.html",
 		"/Users/prestl02/Projects/junit_viewer/templates/passed.html",
@@ -999,8 +1014,7 @@
 		"/Users/prestl02/vagrant/sandbox-6-vagrant/cookbooks/yum/metadata.rb",
 		"/Users/prestl02/Projects/bug_catcher/develop/style/bug_catcher.scss",
 		"/Users/prestl02/Projects/bug_catcher/develop/templates/header.html",
-		"/Users/prestl02/themes.txt",
-		"/Users/prestl02/Projects/bug_catcher/server/server.js"
+		"/Users/prestl02/themes.txt"
 	],
 	"find":
 	{
@@ -1034,6 +1048,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"h2",
+			"suite",
+			"Search",
+			"search",
+			"function(suite)",
+			"name",
+			"names",
+			"suitesByName",
+			"createHash",
+			"testData",
+			"createHash",
+			"text",
+			"searchTests",
+			"filterTests",
+			"input",
 			"center",
 			"wrieFileSync",
 			"renderedSuite",
@@ -1146,22 +1175,7 @@
 			"createElemnt",
 			"left",
 			"<a href=\"#\">",
-			"exit",
-			"jasmine",
-			"\\n",
-			",",
-			":",
-			"auto",
-			"',",
-			"Finished",
-			"Started",
-			"playerObserver.addEvent(",
-			"_classNames",
-			"_isFocussed",
-			"_dataItem",
-			"_eventListeners",
-			"render",
-			"removeClass"
+			"exit"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1179,35 +1193,96 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "templates/junit_viewer.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1375,
+						"buffer_size": 1053,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								706,
-								706
+								377,
+								377
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "valid_data.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 49783,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21975,
+								21975
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 78.0,
+						"translation.y": 18183.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "render.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1057,
+								1057
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 400.0,
+						"translation.y": 5.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1290,6 +1365,18 @@
 		"selected_items":
 		[
 			[
+				"output",
+				"__tests__/data/valid_parse_output.json"
+			],
+			[
+				"render",
+				"render.js"
+			],
+			[
+				"valid_data",
+				"valid_data.html"
+			],
+			[
 				".giti",
 				".gitignore"
 			],
@@ -1310,20 +1397,12 @@
 				"__tests__/data/multi_suite.xml"
 			],
 			[
-				"output",
-				"__tests__/data/output.json"
-			],
-			[
 				"patest",
 				"__tests__/parse-test.js"
 			],
 			[
 				"suite",
 				"templates/suite.html"
-			],
-			[
-				"render",
-				"render.js"
 			],
 			[
 				"suit",
@@ -1796,10 +1875,6 @@
 			[
 				"nowwatchingcontrollertest",
 				"webapp/static-versioned/script-tests/tests/controllers/nowwatchingcontrollertest.js"
-			],
-			[
-				"very_long",
-				"junit-report/very_long.txt"
 			]
 		],
 		"width": 0.0
