@@ -46,7 +46,7 @@ module.exports = function(data) {
     var renderedSuites = Object.keys(data.suites).map(function(suiteName) {
         var suite = data.suites[suiteName]
         suite.tests = suite.tests.map(function(test) {
-            if (test.hasOwnProperty('message'))
+            if (test.message)
                 test.message = render('test_message.html', test).replace(/\n/g, '<br />')
             return render('test.html', test)
         }).join('\n')
