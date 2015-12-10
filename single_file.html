@@ -1244,13 +1244,15 @@ there.
     .suite_name {
         margin: 0;
         border-radius: 4px 4px 0 0;
+        margin-bottom: 5px;
     }
     
     .suite__contents {
-        margin: -4px 0 5px 0;
+        margin: -10px 0 5px 0;
         border-radius: 0 0 4px 4px;
         border: 1px solid #bbb;
         padding: 5px;
+        padding-top: 10px;
     }
     
     .search_button {
@@ -1267,19 +1269,19 @@ there.
     <h1 id="title" class="u-full-width">Multi Suite</h1>
     <div id="options" class="row offset-by-one ten columns">
         <div class="row">
-            <button disabled class="search_button one-third column">Search Suites:</button>
+            <button disabled class="search_button one-third column">SEARCH SUITES</button>
             <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
         </div>
         <div class="row">
-            <button disabled class="search_button one-third column">Search Tests:</button>
+            <button disabled class="search_button one-third column">SEARCH TESTS</button>
             <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
         </div>
     </div>
     <div id="options" class="row offset-by-one ten columns">
-        <button class="one-half column button-primary">Hide Passing Suites</button>
-        <button class="one-half column button-primary">Hide Passing Tests</button>
+        <button class="one-half column button-primary" onclick="hideSuites(this)">HIDE PASSGING SUITES</button>
+        <button class="one-half column button-primary" onclick="hideTests(this)">HIDE PASSING TESTS</button>
     </div>
-    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_jdSWh">
+    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_RmYaA">
     <button class="suite_name suite--failure u-full-width" onclick="contract(this.parentElement)">Multi</button>
     <div class="suite__contents">
         <div class="properties">
@@ -1312,7 +1314,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_K1KTW">
+        <div class="tests"><div class="test" id="Is_an_error_dFyiT">
     <button class="test_name test--error u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
@@ -1320,7 +1322,7 @@ there.
     <div class="test_message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_is_failure_Ey63q">
+<div class="test" id="It_is_failure_pp4f3">
     <button class="test_name test--failure u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
@@ -1328,7 +1330,7 @@ there.
     <div class="test_message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
 </div>
 
-<div class="test" id="It_is_pass_WMHki">
+<div class="test" id="It_is_pass_WR4Fs">
     <button class="test_name test--passed u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1336,7 +1338,7 @@ there.
     
 </div>
 
-<div class="test" id="It_is_skipped_YCgR5">
+<div class="test" id="It_is_skipped_elNen">
     <button class="test_name test--skipped u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
@@ -1347,7 +1349,7 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">// var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_K1KTW"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_Ey63q"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_WMHki"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_YCgR5"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_jdSWh"}}
+    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_dFyiT"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_pp4f3"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_WR4Fs"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_elNen"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_RmYaA"}}
 
 function contract(element) {
     if (element.children[1]) {
@@ -1355,6 +1357,26 @@ function contract(element) {
         element.children[1].style.display = visible !== 'none' ? 'none' : 'block'
         element.children[0].style['border-radius'] = visible !== 'none' ? '4px' : '4px 4px 0 0'
     }
+}
+
+function forEachSuite(callback) {
+    Object.keys(suites).forEach(function(key) {
+        callback(suites[key])
+    })
+}
+
+function hideSuites(element) {
+    var shown = element.innerHTML.indexOf('HIDE') !== -1
+    element.innerHTML = (shown ? 'SHOW' : 'HIDE') + ' PASSING SUITES'
+
+    forEachSuite(function(suite) {
+        if(suite.type === 'passed')
+            document.getElementById(suite.id).style.display = shown ? 'none' : 'block'
+    })
+}
+
+function hideTests(element) {
+
 }
 </script>
 </body>
