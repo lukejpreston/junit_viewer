@@ -30,7 +30,6 @@ function contract(element) {
     if (element.children[1]) {
         var isHidden = toggleBy.clicking(element.children[1])
         toggleCorners(element.children[0], isHidden)
-        // element.children[0].style['border-radius'] = !isHidden ? '4px' : '4px 4px 0 0'
     }
 }
 

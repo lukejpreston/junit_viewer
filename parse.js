@@ -88,10 +88,33 @@ function parseTestResult(fileName, suites) {
                     type: 'error'
                 }]
             };
+        else if (result === null)
+            suites[extractFileName(fileName)] = {
+                name: fileName,
+                type: 'failure',
+                time: 0,
+                tests: [{
+                    name: fileName,
+                    message: 'There are no results',
+                    time: 0,
+                    type: 'error'
+                }]
+            };
+
         else {
             var suiteType = 'passed'
             var suite = 'No Class Name'
-            if (result.testsuite.testcase[0].$.classname)
+            if (result.testsuites) {
+                result = result.testsuites
+            }
+
+            if (Array.isArray(result.testsuite))
+                result.testsuite = result.testsuite[0]
+
+            if (result.testsuite.testcase === undefined)
+                result.testsuite.testcase = []
+
+            if (result.testsuite.testcase.length > 0 && result.testsuite.testcase[0].$.classname)
                 suite = extractFullName(result.testsuite.testcase[0].$.classname, capitaliseAllWords)
             var properties
             if (result.testsuite.hasOwnProperty('properties')) {
@@ -117,11 +140,29 @@ function parseTestResult(fileName, suites) {
                 else if (test.hasOwnProperty('error')) {
                     suiteType = 'failure'
                     type = 'error'
-                    message = test.error[0]._
+                    if (test.error[0]._) {
+                        message = test.error[0]._
+                    } else {
+                        message = Object.keys(test.error[0]).map(function(key) {
+                            if(key !== '$')
+                                return '<' + key + '>' + test.error[0][key] +'<' + key + '/>'
+                            else
+                                return ''
+                        }).join('\n')
+                    }
                 } else if (test.hasOwnProperty('failure')) {
                     suiteType = 'failure'
                     type = 'failure'
-                    message = test.failure[0]._
+                    if (test.failure[0]._) {
+                        message = test.failure[0]._
+                    } else {
+                        message = Object.keys(test.failure[0]).map(function(key) {
+                            if(key !== '$')
+                                return '<' + key + '>' + test.failure[0][key] +'<' + key + '/>'
+                            else
+                                return ''
+                        }).join('\n')
+                    }
                 }
 
                 suites[suite].tests.push({
