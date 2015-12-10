@@ -99,7 +99,7 @@
     }
     
     .properties__list,
-    .test_message {
+    .test__message {
         margin-top: -10px;
         border: 1px solid #bbb;
         border-radius: 0 0 4px 4px;
@@ -122,7 +122,7 @@
         border-radius: 4px;
     }
     
-    .suite_name {
+    .suite__name {
         margin: 0;
         border-radius: 4px 4px 0 0;
         margin-bottom: 5px;
@@ -135,34 +135,12 @@
         padding: 5px;
         padding-top: 10px;
     }
-    
-    .search_button {
-        border-radius: 4px 0 0 4px;
-    }
-    
-    .search_input {
-        border-radius: 0 4px 4px 0 !important;
-    }
     </style>
 </head>
 
 <body>
-    <h1 id="title" class="u-full-width">{{title}}</h1>
-    <div id="options" class="row offset-by-one ten columns">
-        <div class="row">
-            <button disabled class="search_button one-third column">SEARCH SUITES</button>
-            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
-        </div>
-        <div class="row">
-            <button disabled class="search_button one-third column">SEARCH TESTS</button>
-            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
-        </div>
-    </div>
-    <div id="options" class="row offset-by-one ten columns">
-        <button class="one-half column button-primary" onclick="hideSuites(this)">HIDE PASSGING SUITES</button>
-        <button class="one-half column button-primary" onclick="hideTests(this)">HIDE PASSING TESTS</button>
-    </div>
-    <div id="suites" class="row offset-by-one ten columns">{{{suites}}}</div>
+    <h1 class="u-full-width">{{title}}</h1>
+    <div class="row offset-by-one ten columns">{{{suites}}}</div>
     <script type="text/javascript">{{{javascript}}}</script>
 </body>
 

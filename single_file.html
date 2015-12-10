@@ -1218,7 +1218,7 @@ there.
     }
     
     .properties__list,
-    .test_message {
+    .test__message {
         margin-top: -10px;
         border: 1px solid #bbb;
         border-radius: 0 0 4px 4px;
@@ -1241,7 +1241,7 @@ there.
         border-radius: 4px;
     }
     
-    .suite_name {
+    .suite__name {
         margin: 0;
         border-radius: 4px 4px 0 0;
         margin-bottom: 5px;
@@ -1254,35 +1254,13 @@ there.
         padding: 5px;
         padding-top: 10px;
     }
-    
-    .search_button {
-        border-radius: 4px 0 0 4px;
-    }
-    
-    .search_input {
-        border-radius: 0 4px 4px 0 !important;
-    }
     </style>
 </head>
 
 <body>
-    <h1 id="title" class="u-full-width">Multi Suite</h1>
-    <div id="options" class="row offset-by-one ten columns">
-        <div class="row">
-            <button disabled class="search_button one-third column">SEARCH SUITES</button>
-            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
-        </div>
-        <div class="row">
-            <button disabled class="search_button one-third column">SEARCH TESTS</button>
-            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
-        </div>
-    </div>
-    <div id="options" class="row offset-by-one ten columns">
-        <button class="one-half column button-primary" onclick="hideSuites(this)">HIDE PASSGING SUITES</button>
-        <button class="one-half column button-primary" onclick="hideTests(this)">HIDE PASSING TESTS</button>
-    </div>
-    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_RmYaA">
-    <button class="suite_name suite--failure u-full-width" onclick="contract(this.parentElement)">Multi</button>
+    <h1 class="u-full-width">Multi Suite</h1>
+    <div class="row offset-by-one ten columns"><div class="suite" id="Multi_vMh2x">
+    <button class="suite__name suite--failure u-full-width" onclick="contract(this.parentElement)">Multi</button>
     <div class="suite__contents">
         <div class="properties">
     <button class="properties__title u-full-width" onclick="contract(this.parentElement)">
@@ -1314,23 +1292,23 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_dFyiT">
+        <div class="tests"><div class="test" id="Is_an_error_vy3lb">
     <button class="test_name test--error u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
     </button>
-    <div class="test_message">java.lang.RuntimeException: There was an error</div>
+    <div class="test__message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_is_failure_pp4f3">
+<div class="test" id="It_is_failure_JKlXl">
     <button class="test_name test--failure u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
     </button>
-    <div class="test_message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
+    <div class="test__message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
 </div>
 
-<div class="test" id="It_is_pass_WR4Fs">
+<div class="test" id="It_is_pass_gO4rB">
     <button class="test_name test--passed u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1338,7 +1316,7 @@ there.
     
 </div>
 
-<div class="test" id="It_is_skipped_elNen">
+<div class="test" id="It_is_skipped_Crz6j">
     <button class="test_name test--skipped u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
@@ -1349,13 +1327,14 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_dFyiT"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_pp4f3"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_WR4Fs"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_elNen"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_RmYaA"}}
+    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_vy3lb"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_JKlXl"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_gO4rB"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_Crz6j"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_vMh2x"}}
 
 function contract(element) {
     if (element.children[1]) {
-        var visible = element.children[1].style.display
-        element.children[1].style.display = visible !== 'none' ? 'none' : 'block'
-        element.children[0].style['border-radius'] = visible !== 'none' ? '4px' : '4px 4px 0 0'
+        var shownAs = element.children[1].tBodies !== undefined ? 'table' : 'block'
+        var display = element.children[1].style.display
+        element.children[1].style.display = display !== 'none' ? 'none' : shownAs
+        element.children[0].style['border-radius'] = display !== 'none' ? '4px' : '4px 4px 0 0'
     }
 }
 
@@ -1365,20 +1344,43 @@ function forEachSuite(callback) {
     })
 }
 
+function forEachTest(callback) {
+    forEachSuite(function(suite) {
+        suite.tests.forEach(function(test) {
+            callback(test, suite)
+        })
+    })
+}
+
 function hideSuites(element) {
     var shown = element.innerHTML.indexOf('HIDE') !== -1
     element.innerHTML = (shown ? 'SHOW' : 'HIDE') + ' PASSING SUITES'
 
     forEachSuite(function(suite) {
-        if(suite.type === 'passed')
+        if (suite.type === 'passed')
             document.getElementById(suite.id).style.display = shown ? 'none' : 'block'
     })
 }
 
 function hideTests(element) {
+    var shown = element.innerHTML.indexOf('HIDE') !== -1
+    element.innerHTML = (shown ? 'SHOW' : 'HIDE') + ' PASSING TESTS'
 
+    forEachTest(function(test) {
+        if (test.type === 'passed' || test.type === 'skipped')
+            document.getElementById(test.id).style.display = shown ? 'none' : 'block'
+    })
 }
-</script>
+
+function contractSuites(element) {
+    var contracted = element.innerHTML.indexOf('CONTRACT') !== -1
+    element.innerHTML = (contracted ? 'EXPAND' : 'CONTRACT') + ' PASSING SUITES'
+
+    forEachSuite(function(suite) {
+        if (suite.type === 'passed')
+            document.getElementById(suite.id).style.display = contracted ? 'none' : 'block'
+    })
+}</script>
 </body>
 
 </html>
