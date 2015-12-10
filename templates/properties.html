@@ -1,6 +1,14 @@
-<div>
-    <button>Properties</button>
-    <ul class="properties">
-        {{{properties}}}
-    </ul>
+<div class="properties">
+    <button class="properties__title u-full-width">
+        <span class="u-pull-left">Properties</span>
+    </button>
+    <table class="properties__list u-full-width">
+        <thead>
+            <th>NAME</th>
+            <th>VALUE</th>
+        </thead>
+        <tbody>
+            {{{properties}}}
+        </tbody>
+    </table>
 </div>

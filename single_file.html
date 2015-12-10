@@ -1123,99 +1123,227 @@ there.
 
 </style>
 
+    <style type="text/css">
+    h1 {
+        text-align: center;
+    }
+    
+    .suite--failure {
+        color: #FFF;
+        background-color: #FF1717;
+        border-color: #FF1717;
+    }
+    
+    .suite--failure:focus,
+    .suite--failure:hover {
+        color: #FFF;
+        background-color: #ED1515;
+        border-color: #ED1515;
+    }
+    
+    .suite--passed {
+        color: #FFF;
+        background-color: #0CAB37;
+        border-color: #0CAB37;
+    }
+    
+    .suite--passed:focus,
+    .suite--passed:hover {
+        color: #FFF;
+        background-color: #0B9C32;
+        border-color: #0B9C32;
+    }
+    
+    .test--failure,
+    .test--error {
+        color: #FFF;
+        background-color: #E50000;
+        border-color: #E50000;
+    }
+    
+    .test--failure:focus,
+    .test--error:focus,
+    .test--failure:hover,
+    .test--error:hover {
+        color: #FFF;
+        background-color: #CC0000;
+        border-color: #CC0000;
+    }
+    
+    .test--passed {
+        color: #FFF;
+        background-color: #0DBD3D;
+        border-color: #0DBD3D;
+    }
+    
+    .test--passed:focus,
+    .test--passed:hover {
+        color: #FFF;
+        background-color: #0BA635;
+        border-color: #0BA635;
+    }
+    
+    .test--skipped {
+        color: #FFF;
+        background-color: #C3D6E3;
+        border-color: #C3D6E3;
+    }
+    
+    .test--skipped:focus,
+    .test--skipped:hover {
+        color: #FFF;
+        background-color: #BDCFDB;
+        border-color: #BDCFDB;
+    }
+    
+    .properties__title {
+        color: #FFF;
+        background-color: #B6B4BA;
+        border-color: #B6B4BA;
+    }
+    
+    .properties__title:focus,
+    .properties__title:hover {
+        color: #FFF;
+        background-color: #A7A6AB;
+        border-color: #A7A6AB;
+    }
+    
+    .properties__list,
+    .test_message {
+        width: 90%;
+        margin-left: 5%;
+    }
+    
+    .suite_name {
+        margin: 0;
+    }
+    
+    .suite__contents {
+        margin: -4px 0 5px 0;
+        border-radius: 0 4px;
+        border: 1px solid #bbb;
+        padding: 5px;
+    }
+    </style>
 </head>
 
 <body>
-    <h1 id="title">Multi Suite</h1>
-    <div>
-        <div id="options">
-            <form>
-            <button>Filter Passing</button>
-                <fieldset>
-                    <label>Search:</label>
-                    <input type="text" oninput="search(this.value)"></input>
-                </fieldset>
-            </form>
+    <h1 id="title" class="u-full-width">Multi Suite</h1>
+    <div id="options" class="row offset-by-one ten columns">
+        <button class="u-pull-left three columns button-primary">Filter Passing</button>
+        <div class="u-pull-right seven columns">
+            <button disabled class="four columns">Search:</button>
+            <input type="text" class="eight columns" oninput="search(this.value)"></input>
         </div>
-        <div id="suites"><div class="suite" id="Multi_qZWDY">
-    <button class="suite_name suite--failure">Multi</button>
-    <div>
-    <button>Properties</button>
-    <ul class="properties">
-        <li span="property">
-    <span class="property__key">flag-type</span>
-    <span class="property__value">bug</span>
-</li>
-
-<li span="property">
-    <span class="property__key">flag-content</span>
-    <span class="property__value">APPLICATION DEFECT</span>
-</li>
-
-<li span="property">
-    <span class="property__key">Has a name</span>
-    <span class="property__value">true</span>
-</li>
-
-<li span="property">
-    <span class="property__key">URL</span>
-    <span class="property__value">&#x2F;hunter&#x2F;overall_test.go</span>
-</li>
-
-    </ul>
+    </div>
+    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_8DfUJ">
+    <button class="suite_name suite--failure u-full-width">Multi</button>
+    <div class="suite__contents">
+        <div class="properties">
+    <button class="properties__title u-full-width">
+        <span class="u-pull-left">Properties</span>
+    </button>
+    <table class="properties__list u-full-width">
+        <thead>
+            <th>NAME</th>
+            <th>VALUE</th>
+        </thead>
+        <tbody>
+            <tr>
+    <td><b>flag-type</b></td>
+    <td>bug</td>
+</tr>
+<tr>
+    <td><b>flag-content</b></td>
+    <td>APPLICATION DEFECT</td>
+</tr>
+<tr>
+    <td><b>Has a name</b></td>
+    <td>true</td>
+</tr>
+<tr>
+    <td><b>URL</b></td>
+    <td>&#x2F;hunter&#x2F;overall_test.go</td>
+</tr>
+        </tbody>
+    </table>
 </div>
 
-    
-    <div class="tests"><div class="test" id="Is_an_error_1HSmv">
-    <button class="test_name test--error">
-        <span class="test_name">Is an error</span>
-        <span class="test_time">0.00075</span>
+        <div class="tests"><div class="test" id="Is_an_error_IFnzY">
+    <button class="test_name test--error u-full-width">
+        <span class="test_name u-pull-left">Is an error</span>
+        <span class="test_time u-pull-right">0.00075</span>
     </button>
     <div class="test_message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_is_failure_yC8UN">
-    <button class="test_name test--failure">
-        <span class="test_name">It is failure</span>
-        <span class="test_time">0.012011200000000001</span>
+<div class="test" id="It_is_failure_oyiV9">
+    <button class="test_name test--failure u-full-width">
+        <span class="test_name u-pull-left">It is failure</span>
+        <span class="test_time u-pull-right">0.012011200000000001</span>
     </button>
     <div class="test_message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
 </div>
 
-<div class="test" id="It_is_pass_oACA8">
-    <button class="test_name test--passed">
-        <span class="test_name">It is pass</span>
-        <span class="test_time">0.000625</span>
+<div class="test" id="It_is_pass_3fthq">
+    <button class="test_name test--passed u-full-width">
+        <span class="test_name u-pull-left">It is pass</span>
+        <span class="test_time u-pull-right">0.000625</span>
     </button>
     <div class="test_message"></div>
 </div>
 
-<div class="test" id="It_is_skipped_xTvQk">
-    <button class="test_name test--skipped">
-        <span class="test_name">It is skipped</span>
-        <span class="test_time">0</span>
+<div class="test" id="It_is_skipped_AH0O6">
+    <button class="test_name test--skipped u-full-width">
+        <span class="test_name u-pull-left">It is skipped</span>
+        <span class="test_time u-pull-right">0</span>
     </button>
     <div class="test_message"></div>
-</div>
-</div>
 </div>
 </div>
     </div>
-    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_1HSmv"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_yC8UN"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_oACA8"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_xTvQk"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_qZWDY"}}
+</div>
+</div>
+    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_IFnzY"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_oyiV9"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_3fthq"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_AH0O6"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_8DfUJ"}}
 
 var names = Object.keys(suites).map(function(key) {
     var tests = suites[key].tests.map(function(test) {
-        return test.name
+        return {
+            name: test.name.toLowerCase(),
+            id: test.id
+        }
     })
     return {
-        suite: suites[key].name,
+        suite: {
+            name: suites[key].name.toLowerCase(),
+            id: suites[key].id
+        },
         tests: tests
     }
 })
 
 function search(value) {
-    console.log(value)
-}</script>
+    if (value === '') {
+        names.forEach(function(name) {
+            document.getElementById(name.suite.id).style.display = 'block'
+        })
+    } else {
+        value = value.toLowerCase()
+        names.filter(function(name) {
+            return name.suite.name.indexOf(value) === -1
+        }).forEach(function(name) {
+            document.getElementById(name.suite.id).style.display = 'none'
+        })
+
+        names.filter(function(name) {
+            return name.suite.name.indexOf(value) !== -1
+        }).forEach(function(name) {
+            document.getElementById(name.suite.id).style.display = 'block'
+        })
+    }
+}
+</script>
 </body>
 
 </html>
