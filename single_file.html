@@ -1209,21 +1209,50 @@ there.
         border-color: #A7A6AB;
     }
     
+    .properties,
+    .test {
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 10px;
+    }
+    
     .properties__list,
     .test_message {
-        width: 90%;
-        margin-left: 5%;
+        margin-top: -10px;
+        border: 1px solid #bbb;
+        border-radius: 0 0 4px 4px;
+        padding: 10px;
+    }
+
+    .properties__list th, .properties__list td {
+        padding-left: 10px;
+    }
+    
+    .properties__title,
+    .test_name {
+        margin-bottom: 0;
+        border-radius: 4px 4px 0 0;
     }
     
     .suite_name {
         margin: 0;
+        border-radius: 4px 4px 0 0;
     }
     
     .suite__contents {
         margin: -4px 0 5px 0;
-        border-radius: 0 4px;
+        border-radius: 0 0 4px 4px;
         border: 1px solid #bbb;
         padding: 5px;
+    }
+    
+    .search_button {
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .search_input {
+        border-radius: 0 4px 4px 0 !important;
     }
     </style>
 </head>
@@ -1231,13 +1260,20 @@ there.
 <body>
     <h1 id="title" class="u-full-width">Multi Suite</h1>
     <div id="options" class="row offset-by-one ten columns">
-        <button class="u-pull-left three columns button-primary">Filter Passing</button>
-        <div class="u-pull-right seven columns">
-            <button disabled class="four columns">Search:</button>
-            <input type="text" class="eight columns" oninput="search(this.value)"></input>
+        <div class="row">
+            <button disabled class="search_button one-third column">Search Suites:</button>
+            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
+        </div>
+        <div class="row">
+            <button disabled class="search_button one-third column">Search Tests:</button>
+            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
         </div>
     </div>
-    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_w1ZuT">
+    <div id="options" class="row offset-by-one ten columns">
+        <button class="one-half column button-primary">Hide Passing Suites</button>
+        <button class="one-half column button-primary">Hide Passing Tests</button>
+    </div>
+    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_rkCLA">
     <button class="suite_name suite--failure u-full-width">Multi</button>
     <div class="suite__contents">
         <div class="properties">
@@ -1270,7 +1306,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_NEPp3">
+        <div class="tests"><div class="test" id="Is_an_error_xkXOl">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
@@ -1278,7 +1314,7 @@ there.
     <div class="test_message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_is_failure_ZvX0j">
+<div class="test" id="It_is_failure_NdwR5">
     <button class="test_name test--failure u-full-width">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
@@ -1286,7 +1322,7 @@ there.
     <div class="test_message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
 </div>
 
-<div class="test" id="It_is_pass_NiOow">
+<div class="test" id="It_is_pass_ra3Fq">
     <button class="test_name test--passed u-full-width">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1294,7 +1330,7 @@ there.
     <div class="test_message"></div>
 </div>
 
-<div class="test" id="It_is_skipped_GdG5y">
+<div class="test" id="It_is_skipped_y08c0">
     <button class="test_name test--skipped u-full-width">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
@@ -1305,45 +1341,12 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_NEPp3"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_ZvX0j"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_NiOow"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_GdG5y"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_w1ZuT"}}
-
-var names = Object.keys(suites).map(function(key) {
-    var tests = suites[key].tests.map(function(test) {
-        return {
-            name: test.name.toLowerCase(),
-            id: test.id
-        }
-    })
-    return {
-        suite: {
-            name: suites[key].name.toLowerCase(),
-            id: suites[key].id
-        },
-        tests: tests
-    }
-})
+    <!--script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_xkXOl"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_NdwR5"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_ra3Fq"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_y08c0"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_rkCLA"}}
 
 function search(value) {
-    if (value === '') {
-        names.forEach(function(name) {
-            document.getElementById(name.suite.id).style.display = 'block'
-        })
-    } else {
-        value = value.toLowerCase()
-        names.filter(function(name) {
-            return name.suite.name.indexOf(value) === -1
-        }).forEach(function(name) {
-            document.getElementById(name.suite.id).style.display = 'none'
-        })
-
-        names.filter(function(name) {
-            return name.suite.name.indexOf(value) !== -1
-        }).forEach(function(name) {
-            document.getElementById(name.suite.id).style.display = 'block'
-        })
-    }
+    
 }
-</script>
+</script-->
 </body>
 
 </html>

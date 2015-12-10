@@ -90,21 +90,50 @@
         border-color: #A7A6AB;
     }
     
+    .properties,
+    .test {
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 10px;
+    }
+    
     .properties__list,
     .test_message {
-        width: 90%;
-        margin-left: 5%;
+        margin-top: -10px;
+        border: 1px solid #bbb;
+        border-radius: 0 0 4px 4px;
+        padding: 10px;
+    }
+
+    .properties__list th, .properties__list td {
+        padding-left: 10px;
+    }
+    
+    .properties__title,
+    .test_name {
+        margin-bottom: 0;
+        border-radius: 4px 4px 0 0;
     }
     
     .suite_name {
         margin: 0;
+        border-radius: 4px 4px 0 0;
     }
     
     .suite__contents {
         margin: -4px 0 5px 0;
-        border-radius: 0 4px;
+        border-radius: 0 0 4px 4px;
         border: 1px solid #bbb;
         padding: 5px;
+    }
+    
+    .search_button {
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .search_input {
+        border-radius: 0 4px 4px 0 !important;
     }
     </style>
 </head>
@@ -112,14 +141,21 @@
 <body>
     <h1 id="title" class="u-full-width">{{title}}</h1>
     <div id="options" class="row offset-by-one ten columns">
-        <button class="u-pull-left three columns button-primary">Filter Passing</button>
-        <div class="u-pull-right seven columns">
-            <button disabled class="four columns">Search:</button>
-            <input type="text" class="eight columns" oninput="search(this.value)"></input>
+        <div class="row">
+            <button disabled class="search_button one-third column">Search Suites:</button>
+            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
+        </div>
+        <div class="row">
+            <button disabled class="search_button one-third column">Search Tests:</button>
+            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
         </div>
     </div>
+    <div id="options" class="row offset-by-one ten columns">
+        <button class="one-half column button-primary">Hide Passing Suites</button>
+        <button class="one-half column button-primary">Hide Passing Tests</button>
+    </div>
     <div id="suites" class="row offset-by-one ten columns">{{{suites}}}</div>
-    <script type="text/javascript">{{{javascript}}}</script>
+    <!--script type="text/javascript">{{{javascript}}}</script-->
 </body>
 
 </html>

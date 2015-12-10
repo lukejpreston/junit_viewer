@@ -1209,21 +1209,50 @@ there.
         border-color: #A7A6AB;
     }
     
+    .properties,
+    .test {
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 10px;
+    }
+    
     .properties__list,
     .test_message {
-        width: 90%;
-        margin-left: 5%;
+        margin-top: -10px;
+        border: 1px solid #bbb;
+        border-radius: 0 0 4px 4px;
+        padding: 10px;
+    }
+
+    .properties__list th, .properties__list td {
+        padding-left: 10px;
+    }
+    
+    .properties__title,
+    .test_name {
+        margin-bottom: 0;
+        border-radius: 4px 4px 0 0;
     }
     
     .suite_name {
         margin: 0;
+        border-radius: 4px 4px 0 0;
     }
     
     .suite__contents {
         margin: -4px 0 5px 0;
-        border-radius: 0 4px;
+        border-radius: 0 0 4px 4px;
         border: 1px solid #bbb;
         padding: 5px;
+    }
+    
+    .search_button {
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .search_input {
+        border-radius: 0 4px 4px 0 !important;
     }
     </style>
 </head>
@@ -1231,13 +1260,20 @@ there.
 <body>
     <h1 id="title" class="u-full-width">Data</h1>
     <div id="options" class="row offset-by-one ten columns">
-        <button class="u-pull-left three columns button-primary">Filter Passing</button>
-        <div class="u-pull-right seven columns">
-            <button disabled class="four columns">Search:</button>
-            <input type="text" class="eight columns" oninput="search(this.value)"></input>
+        <div class="row">
+            <button disabled class="search_button one-third column">Search Suites:</button>
+            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
+        </div>
+        <div class="row">
+            <button disabled class="search_button one-third column">Search Tests:</button>
+            <input type="text" class="search_input two-thirds column" oninput="search(this.value)"></input>
         </div>
     </div>
-    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Defect_qwhe0">
+    <div id="options" class="row offset-by-one ten columns">
+        <button class="one-half column button-primary">Hide Passing Suites</button>
+        <button class="one-half column button-primary">Hide Passing Tests</button>
+    </div>
+    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Defect_Em3sR">
     <button class="suite_name suite--failure u-full-width">Defect</button>
     <div class="suite__contents">
         <div class="properties">
@@ -1270,7 +1306,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_e6KHi">
+        <div class="tests"><div class="test" id="Is_an_error_qIclI">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0</span>
@@ -1281,11 +1317,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Error_1R8Ui">
+<div class="suite" id="Error_CCwxT">
     <button class="suite_name suite--failure u-full-width">Error</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="Is_an_error_aPXkM">
+        <div class="tests"><div class="test" id="Is_an_error_DN7Cv">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
@@ -1296,11 +1332,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Failing_9dU8h">
+<div class="suite" id="Failing_oP0db">
     <button class="suite_name suite--failure u-full-width">Failing</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_failure_oWh1y">
+        <div class="tests"><div class="test" id="It_is_failure_dYZ9K">
     <button class="test_name test--failure u-full-width">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
@@ -1311,11 +1347,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="invalid.xml_bYaEM">
+<div class="suite" id="invalid.xml_8wz7M">
     <button class="suite_name suite--failure u-full-width">/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="&#x2F;Users&#x2F;prestl02&#x2F;Projects&#x2F;junit_viewer&#x2F;__tests__&#x2F;data&#x2F;invalid.xml_RYsT3">
+        <div class="tests"><div class="test" id="&#x2F;Users&#x2F;prestl02&#x2F;Projects&#x2F;junit_viewer&#x2F;__tests__&#x2F;data&#x2F;invalid.xml_cshgO">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">&#x2F;Users&#x2F;prestl02&#x2F;Projects&#x2F;junit_viewer&#x2F;__tests__&#x2F;data&#x2F;invalid.xml</span>
         <span class="test_time u-pull-right">0</span>
@@ -1326,7 +1362,7 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Multi_cqV7s">
+<div class="suite" id="Multi_VftBU">
     <button class="suite_name suite--failure u-full-width">Multi</button>
     <div class="suite__contents">
         <div class="properties">
@@ -1359,7 +1395,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_b6sLL">
+        <div class="tests"><div class="test" id="Is_an_error_n1tHe">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
@@ -1367,7 +1403,7 @@ there.
     <div class="test_message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_is_failure_xLmrf">
+<div class="test" id="It_is_failure_yc0RW">
     <button class="test_name test--failure u-full-width">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
@@ -1375,7 +1411,7 @@ there.
     <div class="test_message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
 </div>
 
-<div class="test" id="It_is_pass_LEYJl">
+<div class="test" id="It_is_pass_2AjGu">
     <button class="test_name test--passed u-full-width">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1383,7 +1419,7 @@ there.
     <div class="test_message"></div>
 </div>
 
-<div class="test" id="It_is_skipped_1pF5C">
+<div class="test" id="It_is_skipped_fY6s5">
     <button class="test_name test--skipped u-full-width">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
@@ -1394,11 +1430,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="H_A_S_D_O_T_7EpiU">
+<div class="suite" id="H_A_S_D_O_T_98KlU">
     <button class="suite_name suite--passed u-full-width">H A S D O T</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_pass_AagsL">
+        <div class="tests"><div class="test" id="It_is_pass_n6fFl">
     <button class="test_name test--passed u-full-width">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1409,11 +1445,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="No_Class_Name_onOkE">
+<div class="suite" id="No_Class_Name_CMF3P">
     <button class="suite_name suite--passed u-full-width">No Class Name</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_pass_oBkPV">
+        <div class="tests"><div class="test" id="It_is_pass_rhpn5">
     <button class="test_name test--passed u-full-width">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1424,11 +1460,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Passing_YMb66">
+<div class="suite" id="Passing_GVSXF">
     <button class="suite_name suite--passed u-full-width">Passing</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_pass_Pyesb">
+        <div class="tests"><div class="test" id="It_is_pass_YqtyA">
     <button class="test_name test--passed u-full-width">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1439,11 +1475,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Skipped_YAuon">
+<div class="suite" id="Skipped_xfzwb">
     <button class="suite_name suite--passed u-full-width">Skipped</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_skipped_9IKHD">
+        <div class="tests"><div class="test" id="It_is_skipped_QO5FY">
     <button class="test_name test--skipped u-full-width">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
@@ -1454,7 +1490,7 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Defect_Sub_r41mm">
+<div class="suite" id="Defect_Sub_TPryh">
     <button class="suite_name suite--failure u-full-width">Defect Sub</button>
     <div class="suite__contents">
         <div class="properties">
@@ -1487,7 +1523,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_Hu9KO">
+        <div class="tests"><div class="test" id="Is_an_error_1SGKy">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0</span>
@@ -1498,11 +1534,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Error_Sub_Wcsuk">
+<div class="suite" id="Error_Sub_kW27Z">
     <button class="suite_name suite--failure u-full-width">Error Sub</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="Is_an_error_eU1ua">
+        <div class="tests"><div class="test" id="Is_an_error_TlHVg">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
@@ -1513,11 +1549,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Failing_Sub_QgoPP">
+<div class="suite" id="Failing_Sub_0ifuT">
     <button class="suite_name suite--failure u-full-width">Failing Sub</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_failure_d0TLG">
+        <div class="tests"><div class="test" id="It_is_failure_KslOM">
     <button class="test_name test--failure u-full-width">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
@@ -1528,7 +1564,7 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Multi_Sub_yw8LM">
+<div class="suite" id="Multi_Sub_EG1DN">
     <button class="suite_name suite--failure u-full-width">Multi Sub</button>
     <div class="suite__contents">
         <div class="properties">
@@ -1561,7 +1597,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_z3z5E">
+        <div class="tests"><div class="test" id="Is_an_error_bYnIj">
     <button class="test_name test--error u-full-width">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
@@ -1569,7 +1605,7 @@ there.
     <div class="test_message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_is_failure_1AAoe">
+<div class="test" id="It_is_failure_sRJJm">
     <button class="test_name test--failure u-full-width">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
@@ -1577,7 +1613,7 @@ there.
     <div class="test_message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
 </div>
 
-<div class="test" id="It_is_pass_xYW1M">
+<div class="test" id="It_is_pass_bi0cy">
     <button class="test_name test--passed u-full-width">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1585,7 +1621,7 @@ there.
     <div class="test_message"></div>
 </div>
 
-<div class="test" id="It_is_skipped_bdR7X">
+<div class="test" id="It_is_skipped_XPPNa">
     <button class="test_name test--skipped u-full-width">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
@@ -1596,11 +1632,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Passing_Sub_uN5s7">
+<div class="suite" id="Passing_Sub_Kj0BU">
     <button class="suite_name suite--passed u-full-width">Passing Sub</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_pass_OiM3i">
+        <div class="tests"><div class="test" id="It_is_pass_YRFrw">
     <button class="test_name test--passed u-full-width">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
@@ -1611,11 +1647,11 @@ there.
     </div>
 </div>
 
-<div class="suite" id="Skipped_Sub_dTqno">
+<div class="suite" id="Skipped_Sub_LbjKe">
     <button class="suite_name suite--passed u-full-width">Skipped Sub</button>
     <div class="suite__contents">
         
-        <div class="tests"><div class="test" id="It_is_skipped_1WSwr">
+        <div class="tests"><div class="test" id="It_is_skipped_mMho9">
     <button class="test_name test--skipped u-full-width">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
@@ -1626,45 +1662,12 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = {"Defect":{"name":"Defect","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0","id":"Is_an_error_e6KHi"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/test/data.com"},"time":"0.0160106","type":"failure","id":"Defect_qwhe0"},"Error":{"name":"Error","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_aPXkM"}],"time":"0.0160106","type":"failure","id":"Error_1R8Ui"},"Failing":{"name":"Failing","tests":[{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_oWh1y"}],"time":"0.0160106","type":"failure","id":"Failing_9dU8h"},"invalid.xml":{"name":"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml","type":"failure","time":0,"tests":[{"name":"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml","message":"Error: Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: b","time":0,"type":"error","id":"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml_RYsT3"}],"id":"invalid.xml_bYaEM"},"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_b6sLL"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_xLmrf"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_LEYJl"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_1pF5C"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_cqV7s"},"H A S D O T":{"name":"H A S D O T","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_AagsL"}],"time":"0.0160106","type":"passed","id":"H_A_S_D_O_T_7EpiU"},"No Class Name":{"name":"No Class Name","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_oBkPV"}],"time":"0.0160106","type":"passed","id":"No_Class_Name_onOkE"},"Passing":{"name":"Passing","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_Pyesb"}],"time":"0.0160106","type":"passed","id":"Passing_YMb66"},"Skipped":{"name":"Skipped","tests":[{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_9IKHD"}],"time":"0.0","type":"passed","id":"Skipped_YAuon"},"Defect Sub":{"name":"Defect Sub","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0","id":"Is_an_error_Hu9KO"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/test/data.com"},"time":"0.0160106","type":"failure","id":"Defect_Sub_r41mm"},"Error Sub":{"name":"Error Sub","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_eU1ua"}],"time":"0.0160106","type":"failure","id":"Error_Sub_Wcsuk"},"Failing Sub":{"name":"Failing Sub","tests":[{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_d0TLG"}],"time":"0.0160106","type":"failure","id":"Failing_Sub_QgoPP"},"Multi Sub":{"name":"Multi Sub","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_z3z5E"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_1AAoe"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_xYW1M"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_bdR7X"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_Sub_yw8LM"},"Passing Sub":{"name":"Passing Sub","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_OiM3i"}],"time":"0.0160106","type":"passed","id":"Passing_Sub_uN5s7"},"Skipped Sub":{"name":"Skipped Sub","tests":[{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_1WSwr"}],"time":"0.0","type":"passed","id":"Skipped_Sub_dTqno"}}
-
-var names = Object.keys(suites).map(function(key) {
-    var tests = suites[key].tests.map(function(test) {
-        return {
-            name: test.name.toLowerCase(),
-            id: test.id
-        }
-    })
-    return {
-        suite: {
-            name: suites[key].name.toLowerCase(),
-            id: suites[key].id
-        },
-        tests: tests
-    }
-})
+    <!--script type="text/javascript">var suites = {"Defect":{"name":"Defect","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0","id":"Is_an_error_qIclI"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/test/data.com"},"time":"0.0160106","type":"failure","id":"Defect_Em3sR"},"Error":{"name":"Error","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_DN7Cv"}],"time":"0.0160106","type":"failure","id":"Error_CCwxT"},"Failing":{"name":"Failing","tests":[{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_dYZ9K"}],"time":"0.0160106","type":"failure","id":"Failing_oP0db"},"invalid.xml":{"name":"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml","type":"failure","time":0,"tests":[{"name":"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml","message":"Error: Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: b","time":0,"type":"error","id":"/Users/prestl02/Projects/junit_viewer/__tests__/data/invalid.xml_cshgO"}],"id":"invalid.xml_8wz7M"},"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_n1tHe"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_yc0RW"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_2AjGu"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_fY6s5"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_VftBU"},"H A S D O T":{"name":"H A S D O T","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_n6fFl"}],"time":"0.0160106","type":"passed","id":"H_A_S_D_O_T_98KlU"},"No Class Name":{"name":"No Class Name","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_rhpn5"}],"time":"0.0160106","type":"passed","id":"No_Class_Name_CMF3P"},"Passing":{"name":"Passing","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_YqtyA"}],"time":"0.0160106","type":"passed","id":"Passing_GVSXF"},"Skipped":{"name":"Skipped","tests":[{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_QO5FY"}],"time":"0.0","type":"passed","id":"Skipped_xfzwb"},"Defect Sub":{"name":"Defect Sub","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0","id":"Is_an_error_1SGKy"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/test/data.com"},"time":"0.0160106","type":"failure","id":"Defect_Sub_TPryh"},"Error Sub":{"name":"Error Sub","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_TlHVg"}],"time":"0.0160106","type":"failure","id":"Error_Sub_kW27Z"},"Failing Sub":{"name":"Failing Sub","tests":[{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_KslOM"}],"time":"0.0160106","type":"failure","id":"Failing_Sub_0ifuT"},"Multi Sub":{"name":"Multi Sub","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_bYnIj"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_sRJJm"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_bi0cy"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_XPPNa"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_Sub_EG1DN"},"Passing Sub":{"name":"Passing Sub","tests":[{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_YRFrw"}],"time":"0.0160106","type":"passed","id":"Passing_Sub_Kj0BU"},"Skipped Sub":{"name":"Skipped Sub","tests":[{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_mMho9"}],"time":"0.0","type":"passed","id":"Skipped_Sub_LbjKe"}}
 
 function search(value) {
-    if (value === '') {
-        names.forEach(function(name) {
-            document.getElementById(name.suite.id).style.display = 'block'
-        })
-    } else {
-        value = value.toLowerCase()
-        names.filter(function(name) {
-            return name.suite.name.indexOf(value) === -1
-        }).forEach(function(name) {
-            document.getElementById(name.suite.id).style.display = 'none'
-        })
-
-        names.filter(function(name) {
-            return name.suite.name.indexOf(value) !== -1
-        }).forEach(function(name) {
-            document.getElementById(name.suite.id).style.display = 'block'
-        })
-    }
+    
 }
-</script>
+</script-->
 </body>
 
 </html>
