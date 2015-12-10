@@ -1279,11 +1279,11 @@ there.
         <button class="one-half column button-primary">Hide Passing Suites</button>
         <button class="one-half column button-primary">Hide Passing Tests</button>
     </div>
-    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_i8CDT">
-    <button class="suite_name suite--failure u-full-width">Multi</button>
+    <div id="suites" class="row offset-by-one ten columns"><div class="suite" id="Multi_jdSWh">
+    <button class="suite_name suite--failure u-full-width" onclick="contract(this.parentElement)">Multi</button>
     <div class="suite__contents">
         <div class="properties">
-    <button class="properties__title u-full-width">
+    <button class="properties__title u-full-width" onclick="contract(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
     <table class="properties__list u-full-width">
@@ -1312,32 +1312,32 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_an_error_uaHUo">
-    <button class="test_name test--error u-full-width">
+        <div class="tests"><div class="test" id="Is_an_error_K1KTW">
+    <button class="test_name test--error u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">Is an error</span>
         <span class="test_time u-pull-right">0.00075</span>
     </button>
     <div class="test_message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_is_failure_YrawN">
-    <button class="test_name test--failure u-full-width">
+<div class="test" id="It_is_failure_Ey63q">
+    <button class="test_name test--failure u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is failure</span>
         <span class="test_time u-pull-right">0.012011200000000001</span>
     </button>
     <div class="test_message">FILENAME:XX<br />Expected<br />    &lt;string&gt;: Luke<br />to equal<br />    &lt;string&gt;: luke</div>
 </div>
 
-<div class="test" id="It_is_pass_l2PCs">
-    <button class="test_name test--passed u-full-width">
+<div class="test" id="It_is_pass_WMHki">
+    <button class="test_name test--passed u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is pass</span>
         <span class="test_time u-pull-right">0.000625</span>
     </button>
     
 </div>
 
-<div class="test" id="It_is_skipped_Rkhqw">
-    <button class="test_name test--skipped u-full-width">
+<div class="test" id="It_is_skipped_YCgR5">
+    <button class="test_name test--skipped u-full-width" onclick="contract(this.parentElement)">
         <span class="test_name u-pull-left">It is skipped</span>
         <span class="test_time u-pull-right">0</span>
     </button>
@@ -1347,12 +1347,16 @@ there.
     </div>
 </div>
 </div>
-    <!--script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_uaHUo"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_YrawN"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_l2PCs"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_Rkhqw"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_i8CDT"}}
+    <script type="text/javascript">// var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is an error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_an_error_K1KTW"},{"name":"It is failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_is_failure_Ey63q"},{"name":"It is pass","type":"passed","time":"0.000625","id":"It_is_pass_WMHki"},{"name":"It is skipped","type":"skipped","time":"0","id":"It_is_skipped_YCgR5"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_jdSWh"}}
 
-function search(value) {
-    
+function contract(element) {
+    if (element.children[1]) {
+        var visible = element.children[1].style.display
+        element.children[1].style.display = visible !== 'none' ? 'none' : 'block'
+        element.children[0].style['border-radius'] = visible !== 'none' ? '4px' : '4px 4px 0 0'
+    }
 }
-</script-->
+</script>
 </body>
 
 </html>
