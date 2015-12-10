@@ -56,7 +56,7 @@ function normaliseFileName(fileName) {
 
     if (!fs.existsSync(fileName)) {
         console.log(fileName, 'does not exist')
-        return fileName + ' FILE DOES NOT EXIST NOT GOING TO RUN'
+        return fileName + ' FILE DOES NOT EXIST'
     }
 
     if (isDirectory(fileName) && fileName.charAt(fileName.length - 1) !== '/')
@@ -151,9 +151,9 @@ function runThroughFolder(folder, suites) {
 
 module.exports = function(fileName) {
     fileName = normaliseFileName(fileName)
-    if (fileName.indexOf('FILE DOES NOT EXIST NOT GOING TO RUN') !== -1)
+    if (fileName.indexOf('FILE DOES NOT EXIST') !== -1)
         return {
-            junitViewerFileError: fileName
+            junitViewerFileError: fileName.slice(0, fileName.indexOf('FILE DOES NOT EXIST') - 1)
         }
 
     var suites = {}
