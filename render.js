@@ -69,6 +69,7 @@ module.exports = function(data) {
         title: data.title,
         suites: renderedSuites,
         skeleton: fs.readFileSync(__dirname + '/templates/skeleton.css').toString(),
+        options: render('options.html'),
         javascript: renderedJavaScript
     })
     return renderedHtml

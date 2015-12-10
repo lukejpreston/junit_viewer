@@ -91,7 +91,8 @@
     }
     
     .properties,
-    .test {
+    .test,
+    .option {
         width: 96%;
         margin-left: 2%;
         margin-right: 2%;
@@ -99,7 +100,8 @@
     }
     
     .properties__list,
-    .test__message {
+    .test__message,
+    .options__cta {
         margin-top: -10px;
         border: 1px solid #bbb;
         border-radius: 0 0 4px 4px;
@@ -112,7 +114,7 @@
     }
     
     .properties__title,
-    .test_name {
+    .test__name {
         margin-bottom: 0;
         border-radius: 4px 4px 0 0;
     }
@@ -128,18 +130,33 @@
         margin-bottom: 5px;
     }
     
-    .suite__contents {
+    .suite__contents,
+    .options {
         margin: -10px 0 5px 0;
         border-radius: 0 0 4px 4px;
         border: 1px solid #bbb;
         padding: 5px;
         padding-top: 10px;
     }
+
+    .options_search__name {
+        width: 24%;
+        margin-right: 0;
+        border-radius: 4px 0 0 4px !important;
+    }
+
+    .options_search__input {
+        width: 74%;
+        margin-left: -5px;
+        border-radius: 0 4px 4px 0 !important;
+    }
+
     </style>
 </head>
 
 <body>
     <h1 class="u-full-width">{{title}}</h1>
+    <div class="row offset-by-one ten columns">{{{options}}}</div>
     <div class="row offset-by-one ten columns">{{{suites}}}</div>
     <script type="text/javascript">{{{javascript}}}</script>
 </body>
