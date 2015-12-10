@@ -1,4 +1,4 @@
-var suites = {{{suites}}}
+// var suites = {{{suites}}}
 
 function contract(element) {
     if (element.children[1]) {
@@ -23,32 +23,43 @@ function forEachTest(callback) {
     })
 }
 
-function hideSuites(element) {
-    var shown = element.innerHTML.indexOf('HIDE') !== -1
-    element.innerHTML = (shown ? 'SHOW' : 'HIDE') + ' PASSING SUITES'
+var hide = {
+    passing: {
+        suites: function(element) {
 
-    forEachSuite(function(suite) {
-        if (suite.type === 'passed')
-            document.getElementById(suite.id).style.display = shown ? 'none' : 'block'
-    })
+        },
+        tests: function(element) {
+
+        }
+    },
+    tests: function(element) {
+
+    },
+    properties: function(element) {
+
+    }
 }
 
-function hideTests(element) {
-    var shown = element.innerHTML.indexOf('HIDE') !== -1
-    element.innerHTML = (shown ? 'SHOW' : 'HIDE') + ' PASSING TESTS'
+var contract = {
+    suites: function(element) {
 
-    forEachTest(function(test) {
-        if (test.type === 'passed' || test.type === 'skipped')
-            document.getElementById(test.id).style.display = shown ? 'none' : 'block'
-    })
+    },
+    tests: function(element) {
+
+    },
+    properties: function(element) {
+
+    }
 }
 
-function contractSuites(element) {
-    var contracted = element.innerHTML.indexOf('CONTRACT') !== -1
-    element.innerHTML = (contracted ? 'EXPAND' : 'CONTRACT') + ' PASSING SUITES'
+var search = {
+    suites: function(value) {
 
-    forEachSuite(function(suite) {
-        if (suite.type === 'passed')
-            document.getElementById(suite.id).style.display = contracted ? 'none' : 'block'
-    })
+    },
+    tests: function(value) {
+
+    },
+    properties: function(value) {
+
+    }
 }

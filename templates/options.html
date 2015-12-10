@@ -6,11 +6,11 @@
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
-                    <input type="text" class="options_search__input"></input>
+                    <input type="text" class="options_search__input" oninput="search.suites(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-half column button-primary">HIDE PASSING</button>
-                    <button class="one-half column button-primary">CONTRACT</button>
+                    <button class="one-half column button-primary" onclick="hide.passing.suites(this)">HIDE PASSING</button>
+                    <button class="one-half column button-primary" onclick="contract.suites(this)">CONTRACT</button>
                 </div>
             </div>
         </div>
@@ -19,12 +19,12 @@
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
-                    <input type="text" class="options_search__input"></input>
+                    <input type="text" class="options_search__input" oninput="search.tests(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-third column button-primary">HIDE PASSING</button>
-                    <button class="one-third column button-primary">HIDE ALL</button>
-                    <button class="one-third column button-primary">CONTRACT</button>
+                    <button class="one-third column button-primary" onclick="hide.passing.test(this)">HIDE PASSING</button>
+                    <button class="one-third column button-primary" onclick="hide.tests(this)">HIDE ALL</button>
+                    <button class="one-third column button-primary" onclick="contract.tests(this)">CONTRACT</button>
                 </div>
             </div>
         </div>
@@ -33,11 +33,11 @@
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
-                    <input type="text" class="options_search__input"></input>
+                    <input type="text" class="options_search__input" oninput="search.properties(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-half column button-primary">HIDE PROPERTIES</button>
-                    <button class="one-half column button-primary">CONTRACT</button>
+                    <button class="one-half column button-primary" onclick="hide.properties(this)">HIDE PROPERTIES</button>
+                    <button class="one-half column button-primary" onclick="contract.properties(this)">CONTRACT</button>
                 </div>
             </div>
         </div>
