@@ -152,11 +152,20 @@ var cta = {
                     suiteElement.className = suiteElement.className.replace(' hide--searching', '')
                 else if (isNotHidden)
                     suiteElement.className = suiteElement.className + ' hide--searching'
-
             })
         },
         tests: function(value) {
-            console.log(value)
+            value = value.toUpperCase()
+            forEachTest(function(test) {
+                var testElement = document.getElementById(test.id)
+                var isNotHidden = testElement.className.indexOf('hide--searching') === -1
+                if (value === '')
+                    testElement.className = testElement.className.replace(' hide--searching', '')
+                else if (test.name.toUpperCase().indexOf(value) !== -1)
+                    testElement.className = testElement.className.replace(' hide--searching', '')
+                else if (isNotHidden)
+                    testElement.className = testElement.className + ' hide--searching'
+            })
         },
         properties: function(value) {
             console.log(value)
