@@ -1279,7 +1279,9 @@ there.
 
 .hide--searching,
 .hide--local,
-.hide--global {
+.hide--global,
+.hide--global_hide_passing,
+.hide--global_hide_all {
     display: none;
 }
 </style>
@@ -1333,10 +1335,10 @@ there.
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="Multi_qU3Sq">
+    <div class="row offset-by-one ten columns"><div class="suite" id="Multi_dUZLc">
     <button class="suite__name suite--failure u-full-width" onclick="cta.contract.local.suite(this.parentElement)">Multi</button>
     <div class="suite__contents">
-        <div id=properties_PcbA8 class="properties">
+        <div id=properties_ZJhZp class="properties">
     <button class="properties__title u-full-width" onclick="cta.contract.local.properties(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
@@ -1366,7 +1368,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_An_Error_J5hT1">
+        <div class="tests"><div class="test" id="Is_An_Error_sE3BV">
     <button class="test__name test--error u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">Is An Error</span>
         <span class="u-pull-right">0.00075</span>
@@ -1374,7 +1376,7 @@ there.
     <div class="test__message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_Is_A_Failure_Kw0NI">
+<div class="test" id="It_Is_A_Failure_NFG7A">
     <button class="test__name test--failure u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is A Failure</span>
         <span class="u-pull-right">0.012011200000000001</span>
@@ -1382,7 +1384,7 @@ there.
     <div class="test__message">FILENAME:XX<br />Expected<br />    <string>: Luke<br />to equal<br />    <string>: luke</div>
 </div>
 
-<div class="test" id="It_Is_A_Pass_phXPq">
+<div class="test" id="It_Is_A_Pass_oH20P">
     <button class="test__name test--passed u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is A Pass</span>
         <span class="u-pull-right">0.000625</span>
@@ -1390,7 +1392,7 @@ there.
     
 </div>
 
-<div class="test" id="It_Is_Skipped_W6Th9">
+<div class="test" id="It_Is_Skipped_PAnwm">
     <button class="test__name test--skipped u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is Skipped</span>
         <span class="u-pull-right">0</span>
@@ -1401,7 +1403,7 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is An Error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_An_Error_J5hT1"},{"name":"It Is A Failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_Is_A_Failure_Kw0NI"},{"name":"It Is A Pass","type":"passed","time":"0.000625","id":"It_Is_A_Pass_phXPq"},{"name":"It Is Skipped","type":"skipped","time":"0","id":"It_Is_Skipped_W6Th9"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go","id":"properties_PcbA8"},"time":"0.0160106","type":"failure","id":"Multi_qU3Sq"}}
+    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is An Error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_An_Error_sE3BV"},{"name":"It Is A Failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_Is_A_Failure_NFG7A"},{"name":"It Is A Pass","type":"passed","time":"0.000625","id":"It_Is_A_Pass_oH20P"},{"name":"It Is Skipped","type":"skipped","time":"0","id":"It_Is_Skipped_PAnwm"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go","id":"properties_ZJhZp"},"time":"0.0160106","type":"failure","id":"Multi_dUZLc"}}
 
 function createToggleDisplay(by) {
     return function(element) {
@@ -1425,7 +1427,8 @@ function toggleCorners(element, isHidden) {
 }
 
 var toggleBy = {
-    searching: createToggleDisplay('searching'),
+    global_hide_passing: createToggleDisplay('global_hide_passing'),
+    global_hide_all: createToggleDisplay('global_hide_all'),
     local: createToggleDisplay('local'),
     global: createToggleDisplay('global')
 }
@@ -1467,7 +1470,7 @@ var cta = {
                 forEachSuite(function(suite) {
                     if (suite.type === 'passed') {
                         var suiteElement = document.getElementById(suite.id)
-                        toggleBy.searching(suiteElement);
+                        toggleBy.global_hide_passing(suiteElement);
                     }
                 })
             },
@@ -1477,7 +1480,7 @@ var cta = {
                 forEachTest(function(test) {
                     if (test.type === 'passed') {
                         var testElement = document.getElementById(test.id)
-                        toggleBy.searching(testElement);
+                        toggleBy.global_hide_passing(testElement);
                     }
                 })
             }
@@ -1487,7 +1490,7 @@ var cta = {
             element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
             forEachTest(function(test) {
                 var testElement = document.getElementById(test.id)
-                toggleBy.searching(testElement);
+                toggleBy.global_hide_all(testElement);
             })
         },
         properties: function(element) {
@@ -1495,7 +1498,7 @@ var cta = {
             element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
             forEachProperties(function(properties) {
                 var propertiesElement = document.getElementById(properties.id)
-                toggleBy.searching(propertiesElement);
+                toggleBy.global_hide_all(propertiesElement);
             })
         }
     },
@@ -1544,7 +1547,18 @@ var cta = {
     },
     search: {
         suites: function(value) {
-            console.log(value)
+            value = value.toUpperCase()
+            forEachSuite(function(suite) {
+                var suiteElement = document.getElementById(suite.id)
+                var isNotHidden = suiteElement.className.indexOf('hide--searching') === -1
+                if (value === '')
+                    suiteElement.className = suiteElement.className.replace(' hide--searching', '')
+                else if (suite.name.toUpperCase().indexOf(value) !== -1)
+                    suiteElement.className = suiteElement.className.replace(' hide--searching', '')
+                else if (isNotHidden)
+                    suiteElement.className = suiteElement.className + ' hide--searching'
+
+            })
         },
         tests: function(value) {
             console.log(value)

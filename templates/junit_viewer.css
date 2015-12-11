@@ -154,6 +154,8 @@ h1 {
 
 .hide--searching,
 .hide--local,
-.hide--global {
+.hide--global,
+.hide--global_hide_passing,
+.hide--global_hide_all {
     display: none;
 }

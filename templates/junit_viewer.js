@@ -22,7 +22,8 @@ function toggleCorners(element, isHidden) {
 }
 
 var toggleBy = {
-    searching: createToggleDisplay('searching'),
+    global_hide_passing: createToggleDisplay('global_hide_passing'),
+    global_hide_all: createToggleDisplay('global_hide_all'),
     local: createToggleDisplay('local'),
     global: createToggleDisplay('global')
 }
@@ -64,7 +65,7 @@ var cta = {
                 forEachSuite(function(suite) {
                     if (suite.type === 'passed') {
                         var suiteElement = document.getElementById(suite.id)
-                        toggleBy.searching(suiteElement);
+                        toggleBy.global_hide_passing(suiteElement);
                     }
                 })
             },
@@ -74,7 +75,7 @@ var cta = {
                 forEachTest(function(test) {
                     if (test.type === 'passed') {
                         var testElement = document.getElementById(test.id)
-                        toggleBy.searching(testElement);
+                        toggleBy.global_hide_passing(testElement);
                     }
                 })
             }
@@ -84,7 +85,7 @@ var cta = {
             element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
             forEachTest(function(test) {
                 var testElement = document.getElementById(test.id)
-                toggleBy.searching(testElement);
+                toggleBy.global_hide_all(testElement);
             })
         },
         properties: function(element) {
@@ -92,7 +93,7 @@ var cta = {
             element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
             forEachProperties(function(properties) {
                 var propertiesElement = document.getElementById(properties.id)
-                toggleBy.searching(propertiesElement);
+                toggleBy.global_hide_all(propertiesElement);
             })
         }
     },
@@ -141,7 +142,18 @@ var cta = {
     },
     search: {
         suites: function(value) {
-            console.log(value)
+            value = value.toUpperCase()
+            forEachSuite(function(suite) {
+                var suiteElement = document.getElementById(suite.id)
+                var isNotHidden = suiteElement.className.indexOf('hide--searching') === -1
+                if (value === '')
+                    suiteElement.className = suiteElement.className.replace(' hide--searching', '')
+                else if (suite.name.toUpperCase().indexOf(value) !== -1)
+                    suiteElement.className = suiteElement.className.replace(' hide--searching', '')
+                else if (isNotHidden)
+                    suiteElement.className = suiteElement.className + ' hide--searching'
+
+            })
         },
         tests: function(value) {
             console.log(value)
