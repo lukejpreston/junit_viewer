@@ -69,6 +69,7 @@ module.exports = function(data) {
         title: data.title,
         suites: renderedSuites,
         skeleton: fs.readFileSync(__dirname + '/templates/skeleton.css').toString(),
+        style: fs.readFileSync(__dirname + '/templates/junit_viewer.css').toString(),
         options: render('options.html'),
         javascript: renderedJavaScript
     })
