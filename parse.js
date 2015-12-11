@@ -67,9 +67,8 @@ function parseTestResult(fileName, suites) {
         else {
             var suiteType = 'passed'
             var suite = 'No Class Name'
-            if (result.testsuites) {
+            if (result.testsuites)
                 result = result.testsuites
-            }
 
             if (Array.isArray(result.testsuite))
                 result.testsuite = result.testsuite[0]
