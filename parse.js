@@ -1,49 +1,12 @@
 var fs = require('fs')
 var parser = require('xml2js').Parser()
 
-function extractFullName(name, map) {
-    name = name
-        .replace(/-/g, '_')
-        .replace(/ /g, '_')
-
-    var fileSplit = name.split('/')
-    if (name.charAt(name.length - 1) === '/')
-        name = fileSplit[fileSplit.length - 2]
-    else
-        name = fileSplit[fileSplit.length - 1]
-    var capsMatch = name.match(/[A-Z][a-z]+/g)
-    name = capsMatch !== null ? capsMatch.join('_') : name
-    fileSplit = name.split('.')
-
-    if (fileSplit.length > 1) {
-        name = fileSplit
-            .slice(0, fileSplit.length - 1)
-            .join('_')
-    } else if (fileSplit.length === 1)
-        name = fileSplit[0]
-
-    var words = name.split('_')
-    return map(words)
-}
-
-function capitaliseAllWords(words) {
-    return words.map(capitalise).join(' ')
-}
-
 function extractFileName(fileName) {
     var fileNameSplit = fileName.split('/')
-    return fileNameSplit[fileNameSplit.length - 1]
-}
-
-function capitaliseFirstWord(words) {
-    words = words.map(function(word) {
-        return word.toLowerCase()
-    })
-    return [capitalise(words[0])].concat(words.slice(1)).join(' ')
-}
-
-function capitalise(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1)
+    var name = fileNameSplit[fileNameSplit.length - 1]
+    if(name === '')
+        name = fileNameSplit[fileNameSplit.length - 2]
+    return name
 }
 
 function isDirectory(folder) {
@@ -89,7 +52,7 @@ function parseTestResult(fileName, suites) {
                 }]
             };
         else if (result === null)
-            suites[extractFileName(fileName)] = {
+            suites[extractFileName(fileName)] = {#
                 name: fileName,
                 type: 'failure',
                 time: 0,
@@ -115,7 +78,7 @@ function parseTestResult(fileName, suites) {
                 result.testsuite.testcase = []
 
             if (result.testsuite.testcase.length > 0 && result.testsuite.testcase[0].$.classname)
-                suite = extractFullName(result.testsuite.testcase[0].$.classname, capitaliseAllWords)
+                suite = result.testsuite.testcase[0].$.classname
             var properties
             if (result.testsuite.hasOwnProperty('properties')) {
                 properties = {}
@@ -166,7 +129,7 @@ function parseTestResult(fileName, suites) {
                 }
 
                 suites[suite].tests.push({
-                    name: extractFullName(test.$.name, capitaliseFirstWord),
+                    name: test.$.name,
                     type: type,
                     message: message,
                     time: test.$.time
@@ -204,7 +167,7 @@ module.exports = function(fileName) {
         parseTestResult(fileName, suites)
 
     return {
-        title: extractFullName(fileName, capitaliseAllWords),
+        title: extractFileName(fileName),
         suites: suites
     }
 }
