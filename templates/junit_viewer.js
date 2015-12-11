@@ -18,8 +18,8 @@ function toggleCorners(element, isHidden) {
     } else {
         element.className = element.className.replace(' round', '')
         element.className = element.className + ' flat'
-    }}
-
+    }
+}
 
 var toggleBy = {
     searching: createToggleDisplay('searching'),
@@ -49,7 +49,7 @@ function forEachTest(callback) {
 
 function forEachProperties(callback) {
     forEachSuite(function(suite) {
-        if(suite.properties)
+        if (suite.properties)
             callback(suite.properties, suite)
     })
 }

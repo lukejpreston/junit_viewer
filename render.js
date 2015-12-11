@@ -29,7 +29,7 @@ function addIds(suites) {
         suites[key].tests.forEach(function(test, index) {
             suites[key].tests[index].id = test.name.replace(/ /g, '_') + '_' + createUniqueHash()
         })
-        if(suites[key].properties)
+        if (suites[key].properties)
             suites[key].properties.id = 'properties_' + createUniqueHash()
     })
 }
@@ -54,15 +54,15 @@ module.exports = function(data) {
         }).join('\n')
         if (suite.properties) {
             var renderedProperties = Object.keys(suite.properties)
-            .filter(function(key) {
-                return key !== 'id'
-            })
-            .map(function(key) {
-                return render('property.html', {
-                    key: key,
-                    value: suite.properties[key]
+                .filter(function(key) {
+                    return key !== 'id'
                 })
-            }).join('\n')
+                .map(function(key) {
+                    return render('property.html', {
+                        key: key,
+                        value: suite.properties[key]
+                    })
+                }).join('\n')
             suite.properties = render('properties.html', {
                 id: suite.properties.id,
                 properties: renderedProperties
