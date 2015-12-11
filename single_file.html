@@ -1324,7 +1324,7 @@ there.
                     <input type="text" class="options_search__input" oninput="cta.search.properties(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-half column button-primary" onclick="cta.hide.properties(this)">HIDE PROPERTIES</button>
+                    <button class="one-half column button-primary" onclick="cta.hide.properties(this)">HIDE ALL</button>
                     <button class="one-half column button-primary" onclick="cta.contract.properties(this)">CONTRACT</button>
                 </div>
             </div>
@@ -1332,10 +1332,10 @@ there.
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="Multi_aizBi">
+    <div class="row offset-by-one ten columns"><div class="suite" id="Multi_2mbPX">
     <button class="suite__name suite--failure u-full-width" onclick="contract(this.parentElement)">Multi</button>
     <div class="suite__contents">
-        <div class="properties">
+        <div id=properties_JMMb8 class="properties">
     <button class="properties__title u-full-width" onclick="contract(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
@@ -1365,7 +1365,7 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_An_Error_UtWqS">
+        <div class="tests"><div class="test" id="Is_An_Error_dhcaF">
     <button class="test__name test--error u-full-width" onclick="contract(this.parentElement)">
         <span class="u-pull-left">Is An Error</span>
         <span class="u-pull-right">0.00075</span>
@@ -1373,7 +1373,7 @@ there.
     <div class="test__message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_Is_A_Failure_xHNgc">
+<div class="test" id="It_Is_A_Failure_5XAQ2">
     <button class="test__name test--failure u-full-width" onclick="contract(this.parentElement)">
         <span class="u-pull-left">It Is A Failure</span>
         <span class="u-pull-right">0.012011200000000001</span>
@@ -1381,7 +1381,7 @@ there.
     <div class="test__message">FILENAME:XX<br />Expected<br />    <string>: Luke<br />to equal<br />    <string>: luke</div>
 </div>
 
-<div class="test" id="It_Is_A_Pass_GPpQN">
+<div class="test" id="It_Is_A_Pass_iGljD">
     <button class="test__name test--passed u-full-width" onclick="contract(this.parentElement)">
         <span class="u-pull-left">It Is A Pass</span>
         <span class="u-pull-right">0.000625</span>
@@ -1389,7 +1389,7 @@ there.
     
 </div>
 
-<div class="test" id="It_Is_Skipped_qJ2qJ">
+<div class="test" id="It_Is_Skipped_O3NTV">
     <button class="test__name test--skipped u-full-width" onclick="contract(this.parentElement)">
         <span class="u-pull-left">It Is Skipped</span>
         <span class="u-pull-right">0</span>
@@ -1400,7 +1400,7 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is An Error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_An_Error_UtWqS"},{"name":"It Is A Failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_Is_A_Failure_xHNgc"},{"name":"It Is A Pass","type":"passed","time":"0.000625","id":"It_Is_A_Pass_GPpQN"},{"name":"It Is Skipped","type":"skipped","time":"0","id":"It_Is_Skipped_qJ2qJ"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go"},"time":"0.0160106","type":"failure","id":"Multi_aizBi"}}
+    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is An Error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_An_Error_dhcaF"},{"name":"It Is A Failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_Is_A_Failure_5XAQ2"},{"name":"It Is A Pass","type":"passed","time":"0.000625","id":"It_Is_A_Pass_iGljD"},{"name":"It Is Skipped","type":"skipped","time":"0","id":"It_Is_Skipped_O3NTV"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go","id":"properties_JMMb8"},"time":"0.0160106","type":"failure","id":"Multi_2mbPX"}}
 
 function createToggleDisplay(by) {
     return function(element) {
@@ -1420,8 +1420,8 @@ function toggleCorners(element, isHidden) {
     } else {
         element.className = element.className.replace(' round', '')
         element.className = element.className + ' flat'
-    }
-}
+    }}
+
 
 var toggleBy = {
     searching: createToggleDisplay('searching'),
@@ -1449,21 +1449,52 @@ function forEachTest(callback) {
     })
 }
 
+function forEachProperties(callback) {
+    forEachSuite(function(suite) {
+        if(suite.properties)
+            callback(suite.properties, suite)
+    })
+}
+
 var cta = {
     hide: {
         passing: {
             suites: function(element) {
-                console.log(element)
+                var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+                element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' PASSING'
+                forEachSuite(function(suite) {
+                    if (suite.type === 'passed') {
+                        var suiteElement = document.getElementById(suite.id)
+                        toggleBy.searching(suiteElement);
+                    }
+                })
             },
             tests: function(element) {
-                console.log(element)
+                var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+                element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' PASSING'
+                forEachTest(function(test) {
+                    if (test.type === 'passed') {
+                        var testElement = document.getElementById(test.id)
+                        toggleBy.searching(testElement);
+                    }
+                })
             }
         },
         tests: function(element) {
-            console.log(element)
+            var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+            element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
+            forEachTest(function(test) {
+                var testElement = document.getElementById(test.id)
+                toggleBy.searching(testElement);
+            })
         },
         properties: function(element) {
-            console.log(element)
+            var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+            element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
+            forEachProperties(function(properties) {
+                var propertiesElement = document.getElementById(properties.id)
+                toggleBy.searching(propertiesElement);
+            })
         }
     },
 

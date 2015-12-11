@@ -18,8 +18,8 @@ function toggleCorners(element, isHidden) {
     } else {
         element.className = element.className.replace(' round', '')
         element.className = element.className + ' flat'
-    }
-}
+    }}
+
 
 var toggleBy = {
     searching: createToggleDisplay('searching'),
@@ -47,21 +47,52 @@ function forEachTest(callback) {
     })
 }
 
+function forEachProperties(callback) {
+    forEachSuite(function(suite) {
+        if(suite.properties)
+            callback(suite.properties, suite)
+    })
+}
+
 var cta = {
     hide: {
         passing: {
             suites: function(element) {
-                console.log(element)
+                var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+                element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' PASSING'
+                forEachSuite(function(suite) {
+                    if (suite.type === 'passed') {
+                        var suiteElement = document.getElementById(suite.id)
+                        toggleBy.searching(suiteElement);
+                    }
+                })
             },
             tests: function(element) {
-                console.log(element)
+                var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+                element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' PASSING'
+                forEachTest(function(test) {
+                    if (test.type === 'passed') {
+                        var testElement = document.getElementById(test.id)
+                        toggleBy.searching(testElement);
+                    }
+                })
             }
         },
         tests: function(element) {
-            console.log(element)
+            var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+            element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
+            forEachTest(function(test) {
+                var testElement = document.getElementById(test.id)
+                toggleBy.searching(testElement);
+            })
         },
         properties: function(element) {
-            console.log(element)
+            var isHidden = element.innerHTML.indexOf('HIDE') !== -1
+            element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
+            forEachProperties(function(properties) {
+                var propertiesElement = document.getElementById(properties.id)
+                toggleBy.searching(propertiesElement);
+            })
         }
     },
 
