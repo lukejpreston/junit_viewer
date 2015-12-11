@@ -23,12 +23,13 @@ function toggleCorners(element, isHidden) {
 
 var toggleBy = {
     searching: createToggleDisplay('searching'),
-    clicking: createToggleDisplay('clicking')
+    local: createToggleDisplay('local'),
+    global: createToggleDisplay('global')
 }
 
-function contract(element) {
+function contract(element, by) {
     if (element.children[1]) {
-        var isHidden = toggleBy.clicking(element.children[1])
+        var isHidden = toggleBy[by](element.children[1])
         toggleCorners(element.children[0], isHidden)
     }
 }
@@ -97,14 +98,45 @@ var cta = {
     },
 
     contract: {
-        suites: function(element) {
-            console.log(element)
+        local: {
+            suite: function(element) {
+                contract(element, 'local')
+            },
+            test: function(element) {
+                contract(element, 'local')
+            },
+            properties: function(element) {
+                contract(element, 'local')
+            },
+            option: function(element) {
+                contract(element, 'local')
+            }
         },
-        tests: function(element) {
-            console.log(element)
-        },
-        properties: function(element) {
-            console.log(element)
+        global: {
+            suites: function(element) {
+                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
+                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
+                forEachSuite(function(suite) {
+                    var suiteElement = document.getElementById(suite.id)
+                    contract(suiteElement, 'global')
+                })
+            },
+            tests: function(element) {
+                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
+                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
+                forEachTest(function(test) {
+                    var testElement = document.getElementById(test.id)
+                    contract(testElement, 'global')
+                })
+            },
+            properties: function(element) {
+                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
+                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
+                forEachProperties(function(properties) {
+                    var propertiesElement = document.getElementById(properties.id)
+                    contract(propertiesElement, 'global')
+                })
+            }
         }
     },
     search: {

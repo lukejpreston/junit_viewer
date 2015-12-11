@@ -1277,8 +1277,9 @@ there.
     border-radius: 4px;
 }
 
-.hide--clicking,
-.hide--searching {
+.hide--searching,
+.hide--local,
+.hide--global {
     display: none;
 }
 </style>
@@ -1287,10 +1288,10 @@ there.
 <body>
     <h1 class="u-full-width">multi_suite.xml</h1>
     <div class="row offset-by-one ten columns"><div>
-    <button class="button-primary u-full-width" onclick="contract(this.parentElement)">ADVANCED SEARCH</button>
-    <div class="options hide--clicking">
+    <button class="button-primary u-full-width" onclick="cta.contract.local.option(this.parentElement)">ADVANCED SEARCH</button>
+    <div class="options hide--local">
         <div class="option">
-            <button class="button-primary u-full-width option__name flat" onclick="contract(this.parentElement)">SUITES</button>
+            <button class="button-primary u-full-width option__name flat" onclick="cta.contract.local.option(this.parentElement)">SUITES</button>
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
@@ -1298,12 +1299,12 @@ there.
                 </div>
                 <div class="options__buttons">
                     <button class="one-half column button-primary" onclick="cta.hide.passing.suites(this)">HIDE PASSING</button>
-                    <button class="one-half column button-primary" onclick="cta.contract.suites(this)">CONTRACT</button>
+                    <button class="one-half column button-primary" onclick="cta.contract.global.suites(this)">CONTRACT ALL</button>
                 </div>
             </div>
         </div>
         <div class="option">
-            <button class="button-primary u-full-width option__name flat" onclick="contract(this.parentElement)">TESTS</button>
+            <button class="button-primary u-full-width option__name flat" onclick="cta.contract.local.option(this.parentElement)">TESTS</button>
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
@@ -1312,12 +1313,12 @@ there.
                 <div class="options__buttons">
                     <button class="one-third column button-primary" onclick="cta.hide.passing.tests(this)">HIDE PASSING</button>
                     <button class="one-third column button-primary" onclick="cta.hide.tests(this)">HIDE ALL</button>
-                    <button class="one-third column button-primary" onclick="cta.contract.tests(this)">CONTRACT</button>
+                    <button class="one-third column button-primary" onclick="cta.contract.global.tests(this)">CONTRACT ALL</button>
                 </div>
             </div>
         </div>
         <div class="option">
-            <button class="button-primary u-full-width option__name flat" onclick="contract(this.parentElement)">PROPERTIES</button>
+            <button class="button-primary u-full-width option__name flat" onclick="cta.contract.local.option(this.parentElement)">PROPERTIES</button>
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
@@ -1325,18 +1326,18 @@ there.
                 </div>
                 <div class="options__buttons">
                     <button class="one-half column button-primary" onclick="cta.hide.properties(this)">HIDE ALL</button>
-                    <button class="one-half column button-primary" onclick="cta.contract.properties(this)">CONTRACT</button>
+                    <button class="one-half column button-primary" onclick="cta.contract.global.properties(this)">CONTRACT ALL</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="Multi_2mbPX">
-    <button class="suite__name suite--failure u-full-width" onclick="contract(this.parentElement)">Multi</button>
+    <div class="row offset-by-one ten columns"><div class="suite" id="Multi_qU3Sq">
+    <button class="suite__name suite--failure u-full-width" onclick="cta.contract.local.suite(this.parentElement)">Multi</button>
     <div class="suite__contents">
-        <div id=properties_JMMb8 class="properties">
-    <button class="properties__title u-full-width" onclick="contract(this.parentElement)">
+        <div id=properties_PcbA8 class="properties">
+    <button class="properties__title u-full-width" onclick="cta.contract.local.properties(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
     <table class="properties__list u-full-width">
@@ -1365,32 +1366,32 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="Is_An_Error_dhcaF">
-    <button class="test__name test--error u-full-width" onclick="contract(this.parentElement)">
+        <div class="tests"><div class="test" id="Is_An_Error_J5hT1">
+    <button class="test__name test--error u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">Is An Error</span>
         <span class="u-pull-right">0.00075</span>
     </button>
     <div class="test__message">java.lang.RuntimeException: There was an error</div>
 </div>
 
-<div class="test" id="It_Is_A_Failure_5XAQ2">
-    <button class="test__name test--failure u-full-width" onclick="contract(this.parentElement)">
+<div class="test" id="It_Is_A_Failure_Kw0NI">
+    <button class="test__name test--failure u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is A Failure</span>
         <span class="u-pull-right">0.012011200000000001</span>
     </button>
     <div class="test__message">FILENAME:XX<br />Expected<br />    <string>: Luke<br />to equal<br />    <string>: luke</div>
 </div>
 
-<div class="test" id="It_Is_A_Pass_iGljD">
-    <button class="test__name test--passed u-full-width" onclick="contract(this.parentElement)">
+<div class="test" id="It_Is_A_Pass_phXPq">
+    <button class="test__name test--passed u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is A Pass</span>
         <span class="u-pull-right">0.000625</span>
     </button>
     
 </div>
 
-<div class="test" id="It_Is_Skipped_O3NTV">
-    <button class="test__name test--skipped u-full-width" onclick="contract(this.parentElement)">
+<div class="test" id="It_Is_Skipped_W6Th9">
+    <button class="test__name test--skipped u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is Skipped</span>
         <span class="u-pull-right">0</span>
     </button>
@@ -1400,7 +1401,7 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is An Error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_An_Error_dhcaF"},{"name":"It Is A Failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_Is_A_Failure_5XAQ2"},{"name":"It Is A Pass","type":"passed","time":"0.000625","id":"It_Is_A_Pass_iGljD"},{"name":"It Is Skipped","type":"skipped","time":"0","id":"It_Is_Skipped_O3NTV"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go","id":"properties_JMMb8"},"time":"0.0160106","type":"failure","id":"Multi_2mbPX"}}
+    <script type="text/javascript">var suites = {"Multi":{"name":"Multi","tests":[{"name":"Is An Error","type":"error","message":"java.lang.RuntimeException: There was an error","time":"0.00075","id":"Is_An_Error_J5hT1"},{"name":"It Is A Failure","type":"failure","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke","time":"0.012011200000000001","id":"It_Is_A_Failure_Kw0NI"},{"name":"It Is A Pass","type":"passed","time":"0.000625","id":"It_Is_A_Pass_phXPq"},{"name":"It Is Skipped","type":"skipped","time":"0","id":"It_Is_Skipped_W6Th9"}],"properties":{"flag-type":"bug","flag-content":"APPLICATION DEFECT","Has a name":"true","URL":"/hunter/overall_test.go","id":"properties_PcbA8"},"time":"0.0160106","type":"failure","id":"Multi_qU3Sq"}}
 
 function createToggleDisplay(by) {
     return function(element) {
@@ -1420,17 +1421,18 @@ function toggleCorners(element, isHidden) {
     } else {
         element.className = element.className.replace(' round', '')
         element.className = element.className + ' flat'
-    }}
-
+    }
+}
 
 var toggleBy = {
     searching: createToggleDisplay('searching'),
-    clicking: createToggleDisplay('clicking')
+    local: createToggleDisplay('local'),
+    global: createToggleDisplay('global')
 }
 
-function contract(element) {
+function contract(element, by) {
     if (element.children[1]) {
-        var isHidden = toggleBy.clicking(element.children[1])
+        var isHidden = toggleBy[by](element.children[1])
         toggleCorners(element.children[0], isHidden)
     }
 }
@@ -1451,7 +1453,7 @@ function forEachTest(callback) {
 
 function forEachProperties(callback) {
     forEachSuite(function(suite) {
-        if(suite.properties)
+        if (suite.properties)
             callback(suite.properties, suite)
     })
 }
@@ -1499,14 +1501,45 @@ var cta = {
     },
 
     contract: {
-        suites: function(element) {
-            console.log(element)
+        local: {
+            suite: function(element) {
+                contract(element, 'local')
+            },
+            test: function(element) {
+                contract(element, 'local')
+            },
+            properties: function(element) {
+                contract(element, 'local')
+            },
+            option: function(element) {
+                contract(element, 'local')
+            }
         },
-        tests: function(element) {
-            console.log(element)
-        },
-        properties: function(element) {
-            console.log(element)
+        global: {
+            suites: function(element) {
+                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
+                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
+                forEachSuite(function(suite) {
+                    var suiteElement = document.getElementById(suite.id)
+                    contract(suiteElement, 'global')
+                })
+            },
+            tests: function(element) {
+                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
+                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
+                forEachTest(function(test) {
+                    var testElement = document.getElementById(test.id)
+                    contract(testElement, 'global')
+                })
+            },
+            properties: function(element) {
+                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
+                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
+                forEachProperties(function(properties) {
+                    var propertiesElement = document.getElementById(properties.id)
+                    contract(propertiesElement, 'global')
+                })
+            }
         }
     },
     search: {

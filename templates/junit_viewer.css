@@ -152,7 +152,8 @@ h1 {
     border-radius: 4px;
 }
 
-.hide--clicking,
-.hide--searching {
+.hide--searching,
+.hide--local,
+.hide--global {
     display: none;
 }
