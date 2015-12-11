@@ -4,7 +4,7 @@ var parser = require('xml2js').Parser()
 function extractFileName(fileName) {
     var fileNameSplit = fileName.split('/')
     var name = fileNameSplit[fileNameSplit.length - 1]
-    if(name === '')
+    if (name === '')
         name = fileNameSplit[fileNameSplit.length - 2]
     return name
 }
@@ -52,7 +52,7 @@ function parseTestResult(fileName, suites) {
                 }]
             };
         else if (result === null)
-            suites[extractFileName(fileName)] = {#
+            suites[extractFileName(fileName)] = {
                 name: fileName,
                 type: 'failure',
                 time: 0,
@@ -103,29 +103,11 @@ function parseTestResult(fileName, suites) {
                 else if (test.hasOwnProperty('error')) {
                     suiteType = 'failure'
                     type = 'error'
-                    if (test.error[0]._) {
-                        message = test.error[0]._
-                    } else {
-                        message = Object.keys(test.error[0]).map(function(key) {
-                            if(key !== '$')
-                                return '<' + key + '>' + test.error[0][key] +'<' + key + '/>'
-                            else
-                                return ''
-                        }).join('\n')
-                    }
+                    message = test.error[0]._
                 } else if (test.hasOwnProperty('failure')) {
                     suiteType = 'failure'
                     type = 'failure'
-                    if (test.failure[0]._) {
-                        message = test.failure[0]._
-                    } else {
-                        message = Object.keys(test.failure[0]).map(function(key) {
-                            if(key !== '$')
-                                return '<' + key + '>' + test.failure[0][key] +'<' + key + '/>'
-                            else
-                                return ''
-                        }).join('\n')
-                    }
+                    message = test.failure[0]._
                 }
 
                 suites[suite].tests.push({
