@@ -117,13 +117,19 @@ function parseTestResult(fileName, suites) {
 
                 if (testResult.skipped) {
                     test.type = 'skipped'
-                    if (testResult.skipped !== '') {
-                        test.messages = testResult.skipped.map(function(message) {
+                    if (Array.isArray(testResult.skipped)) {
+                        test.messages = testResult.skipped.filter(function(message) {
+                            return message !== ''
+                        }).map(function(message) {
                             return {
                                 id: createUniqueHash('message'),
                                 message: message
                             }
                         })
+
+                        if(test.messages.length === 0) {
+                            delete test.messages
+                        }
                     }
 
                 } else if (testResult.error) {

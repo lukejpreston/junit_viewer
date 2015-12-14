@@ -1,11 +1,9 @@
 <div class="suite" id="{{id}}">
     <button class="suite--{{type}} u-full-width" onclick="cta.contract.local.suite(this.parentElement)">
-        <span class="suite__name">{{{name}}}</span>
-        <div>
-            <span class="suite__tests">{{{tests}}}</span>
-            <span class="suite__failures">{{{failures}}}</span>
-            <span class="suite__time">{{{time}}}</span>
-        </div>
+        <span class="suite__name u-pull-left">{{{name}}}</span>
+        <span class="suite__info u-pull-right">tests: {{{tests}}}</span>
+        <span class="suite__info u-pull-right">failures: {{{failures}}}</span>
+        <span class="suite__info u-pull-right">time: {{{time}}}</span>
     </button>
     <div class="suite__contents">
         {{{rendered.suiteProperties}}}

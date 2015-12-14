@@ -165,3 +165,7 @@ h1 {
 .hide--global_hide_all {
     display: none;
 }
+
+.suite__info {
+    margin-right: 10px;
+}
