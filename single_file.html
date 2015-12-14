@@ -1218,7 +1218,7 @@ there.
 }
 
 .properties__list,
-.test__message,
+.messages,
 .options__cta {
     margin-top: -10px;
     border: 1px solid #bbb;
@@ -1335,10 +1335,10 @@ there.
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="suite_RR5U9">
+    <div class="row offset-by-one ten columns"><div class="suite" id="suite_Kvwux">
     <button class="suite__name suite--failure u-full-width" onclick="cta.contract.local.suite(this.parentElement)">Multi</button>
     <div class="suite__contents">
-        <div id=properties_Ls5FT class="properties">
+        <div id=properties_Ugpd5 class="properties">
     <button class="properties__title u-full-width" onclick="cta.contract.local.properties(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
@@ -1348,19 +1348,19 @@ there.
             <th>VALUE</th>
         </thead>
         <tbody>
-            <tr id=property_LykGU>
+            <tr id=property_8FmyM>
     <td><b>flag-type</b></td>
     <td>bug</td>
 </tr>
-<tr id=property_vk0od>
+<tr id=property_NBx29>
     <td><b>flag-content</b></td>
     <td>APPLICATION DEFECT</td>
 </tr>
-<tr id=property_39qeG>
+<tr id=property_EOvWA>
     <td><b>Has a name</b></td>
     <td>true</td>
 </tr>
-<tr id=property_yW3VD>
+<tr id=property_YJnoJ>
     <td><b>URL</b></td>
     <td>&#x2F;hunter&#x2F;overall_test.go</td>
 </tr>
@@ -1368,46 +1368,47 @@ there.
     </table>
 </div>
 
-        <div class="tests"><div class="test" id="test_VGjM2">
+        <div class="tests"><div class="test" id="test_WNg3l">
     <button class="test__name test--error u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">Is An Error</span>
         <span class="u-pull-right">0.00075</span>
     </button>
-    <div id="message_Qb3DD" class="test__message">java.lang.RuntimeException: There was an error</div>
+    <div class="messages"><div id="message_TwZ5E" class="test__message">java.lang.RuntimeException: There was an error</div>
+<div id="message_Tmtf8" class="test__message">java.lang.RuntimeException: There was an error</div></div>
 </div>
 
-<div class="test" id="test_TSuNN">
+<div class="test" id="test_WUM0G">
     <button class="test__name test--failure u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is A Failure</span>
         <span class="u-pull-right">0.012011200000000001</span>
     </button>
-    <div id="message_wdNrL" class="test__message">FILENAME:XX
+    <div class="messages"><div id="message_za4Jp" class="test__message">FILENAME:XX
 Expected
     <string>: Luke
 to equal
-    <string>: luke</div>
+    <string>: luke</div></div>
 </div>
 
-<div class="test" id="test_20qos">
+<div class="test" id="test_OgGkw">
     <button class="test__name test--passed u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is A Pass</span>
         <span class="u-pull-right">0.000625</span>
     </button>
-    
+    <div class="messages"></div>
 </div>
 
-<div class="test" id="test_8pCRS">
+<div class="test" id="test_0jSYh">
     <button class="test__name test--skipped u-full-width" onclick="cta.contract.local.test(this.parentElement)">
         <span class="u-pull-left">It Is Skipped</span>
         <span class="u-pull-right">0</span>
     </button>
-    
+    <div class="messages"></div>
 </div>
 </div>
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = [{"id":"suite_RR5U9","type":"failure","name":"Multi","time":"0.0160106","tests":"3","failures":"1","properties":[{"id":"properties_Ls5FT","props":[{"name":"flag-type","value":"bug","id":"property_LykGU"},{"name":"flag-content","value":"APPLICATION DEFECT","id":"property_vk0od"},{"name":"Has a name","value":"true","id":"property_39qeG"},{"name":"URL","value":"/hunter/overall_test.go","id":"property_yW3VD"}]}],"testCases":[{"id":"test_VGjM2","time":"0.00075","name":"Is An Error","type":"error","messages":[{"id":"message_Qb3DD","message":"java.lang.RuntimeException: There was an error"}]},{"id":"test_TSuNN","time":"0.012011200000000001","name":"It Is A Failure","type":"failure","messages":[{"id":"message_wdNrL","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke"}]},{"id":"test_20qos","time":"0.000625","name":"It Is A Pass","type":"passed"},{"id":"test_8pCRS","time":"0","name":"It Is Skipped","type":"skipped"}]}]
+    <script type="text/javascript">var suites = [{"id":"suite_Kvwux","type":"failure","name":"Multi","time":"0.0160106","tests":"3","failures":"1","properties":[{"id":"properties_Ugpd5","props":[{"name":"flag-type","value":"bug","id":"property_8FmyM"},{"name":"flag-content","value":"APPLICATION DEFECT","id":"property_NBx29"},{"name":"Has a name","value":"true","id":"property_EOvWA"},{"name":"URL","value":"/hunter/overall_test.go","id":"property_YJnoJ"}]}],"testCases":[{"id":"test_WNg3l","time":"0.00075","name":"Is An Error","type":"error","messages":[{"id":"message_TwZ5E","message":"java.lang.RuntimeException: There was an error"},{"id":"message_Tmtf8","message":"java.lang.RuntimeException: There was an error"}]},{"id":"test_WUM0G","time":"0.012011200000000001","name":"It Is A Failure","type":"failure","messages":[{"id":"message_za4Jp","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke"}]},{"id":"test_OgGkw","time":"0.000625","name":"It Is A Pass","type":"passed"},{"id":"test_0jSYh","time":"0","name":"It Is Skipped","type":"skipped"}]}]
 function createToggleDisplay(by) {
     return function(element) {
         var isHidden = element.className.indexOf(' hide--' + by) !== -1
