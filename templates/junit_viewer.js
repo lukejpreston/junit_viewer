@@ -1,5 +1,3 @@
-var suites = {{{suites}}}
-
 function createToggleDisplay(by) {
     return function(element) {
         var isHidden = element.className.indexOf(' hide--' + by) !== -1
@@ -168,7 +166,10 @@ var cta = {
             })
         },
         properties: function(value) {
-            console.log(value)
+            value = value.toUpperCase()
+            forEachProperties(function(properties) {
+                console.log(properties)
+            })
         }
     }
 }

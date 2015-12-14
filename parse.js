@@ -1,6 +1,23 @@
 var fs = require('fs')
 var parser = require('xml2js').Parser()
 
+var hashes = []
+
+function createUniqueHash(identifier) {
+    if (identifier)
+        identifier = identifier + '_'
+    else
+        identifier = ''
+    var hash = ''
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    for (var i = 0; i < 5; i++) hash += possible.charAt(Math.floor(Math.random() * possible.length))
+    if (hashes.indexOf(hash) === -1) {
+        hashes.push(hash)
+        return identifier + hash
+    } else
+        return createUniqueHash(identifier)
+}
+
 function extractFileName(fileName) {
     var fileNameSplit = fileName.split('/')
     var name = fileNameSplit[fileNameSplit.length - 1]
@@ -33,6 +50,20 @@ function isXml(fileName) {
     return fileSplit[fileSplit.length - 1] === 'xml'
 }
 
+function createError(fileName, message) {
+    return {
+        name: fileName,
+        type: 'failure',
+        time: 0,
+        tests: [{
+            name: fileName,
+            message: message,
+            time: 0,
+            type: 'error'
+        }]
+    }
+}
+
 function parseTestResult(fileName, suites) {
     if (!isXml(fileName))
         return
@@ -40,86 +71,75 @@ function parseTestResult(fileName, suites) {
     var data = fs.readFileSync(fileName).toString()
     parser.parseString(data, function(err, result) {
         if (err !== null)
-            suites[extractFileName(fileName)] = {
-                name: fileName,
-                type: 'failure',
-                time: 0,
-                tests: [{
-                    name: fileName,
-                    message: err.toString(),
-                    time: 0,
-                    type: 'error'
-                }]
-            };
+            suites[fileName] = createError(fileName, err.toString())
         else if (result === null)
-            suites[extractFileName(fileName)] = {
-                name: fileName,
-                type: 'failure',
-                time: 0,
-                tests: [{
-                    name: fileName,
-                    message: 'There are no results',
-                    time: 0,
-                    type: 'error'
-                }]
-            };
-
+            suites[fileName] = createError(fileName, 'There are no results')
         else {
-            var suiteType = 'passed'
-            var suite = 'No Class Name'
-            if (result.testsuites)
-                result = result.testsuites
-
-            if (Array.isArray(result.testsuite))
-                result.testsuite = result.testsuite[0]
-
-            if (result.testsuite.testcase === undefined)
-                result.testsuite.testcase = []
-
-            if (result.testsuite.testcase.length > 0 && result.testsuite.testcase[0].$.classname)
-                suite = result.testsuite.testcase[0].$.classname
-            var properties
-            if (result.testsuite.hasOwnProperty('properties')) {
-                properties = {}
-                var resultProperties = result.testsuite.properties[0].property
-                for (var i = 0; i < resultProperties.length; i++)
-                    properties[resultProperties[i].$.name] = resultProperties[i].$.value
-            }
-
-            suites[suite] = suites[suite] || {
-                name: suite,
-                tests: [],
-                properties: properties,
-                time: result.testsuite.$.time
-            }
-
-            result.testsuite.testcase.forEach(function(test) {
-                var type = 'passed',
-                    message
-
-                if (test.hasOwnProperty('skipped'))
-                    type = 'skipped'
-                else if (test.hasOwnProperty('error')) {
-                    suiteType = 'failure'
-                    type = 'error'
-                    message = test.error[0]._
-                } else if (test.hasOwnProperty('failure')) {
-                    suiteType = 'failure'
-                    type = 'failure'
-                    message = test.failure[0]._
+            result.testsuite.testcase.forEach(function(testResult) {
+                //create/get suite
+                var classname = testResult.$.classname || 'NO CLASS NAME'
+                var suite = suites[classname] || {
+                    id: createUniqueHash('suite'),
+                    type: 'passed',
+                    name: classname,
+                    time: result.testsuite.$.time,
+                    tests: result.testsuite.$.tests,
+                    failures: result.testsuite.$.failures
                 }
 
-                suites[suite].tests.push({
-                    name: test.$.name,
-                    type: type,
-                    message: message,
-                    time: test.$.time
-                })
+                //add properties
+                var properties
+                if (result.testsuite.hasOwnProperty('properties')) {
+                    properties = []
+                    result.testsuite.properties.forEach(function(property) {
+                        var props = property.property
+                        properties.push({
+                            id: createUniqueHash('properties'),
+                            props: props.map(function(prop) {
+                                var prop = prop.$
+                                prop.id = createUniqueHash('property')
+                                return prop
+                            })
+                        })
+                    })
+                }
+                suite.properties = properties
+
+                //add tests
+                suite.testCases = suite.testCases || []
+                var test = {
+                    id: createUniqueHash('test'),
+                    time: testResult.$.time,
+                    name: testResult.$.name || 'NO TEST NAME',
+                }
+
+                test.type = 'passed'
+
+                if (testResult.skipped)
+                    test.type = 'skipped'
+                else if (testResult.error) {
+                    suite.type = 'failure'
+                    test.type = 'error'
+                    test.messages = testResult.error.map(function(message) {
+                        return {
+                            id: createUniqueHash('message'),
+                            message: message._
+                        }
+                    })
+                } else if (testResult.failure) {
+                    suite.type = 'failure'
+                    test.type = 'failure'
+                    test.messages = testResult.failure.map(function(message) {
+                        return {
+                            id: createUniqueHash('message'),
+                            message: message._
+                        }
+                    })
+                }
+                suite.testCases.push(test)
+                suites[classname] = suite
             })
-
-            suites[suite].type = suiteType
         }
-
     })
 }
 
@@ -146,6 +166,10 @@ module.exports = function(fileName) {
         runThroughFolder(fileName, suites)
     else
         parseTestResult(fileName, suites)
+
+    suites = Object.keys(suites).map(function(key) {
+        return suites[key]
+    })
 
     return {
         title: extractFileName(fileName),

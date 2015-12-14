@@ -10,75 +10,54 @@ function render(fileName, data) {
     return Mustache.render(templatesCache[fileName], data)
 }
 
-var hashes = []
-
-function createUniqueHash() {
-    var hash = ''
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    for (var i = 0; i < 5; i++) hash += possible.charAt(Math.floor(Math.random() * possible.length))
-    if (hashes.indexOf(hash) === -1) {
-        hashes.push(hash)
-        return hash
-    } else
-        return createUniqueHash()
-}
-
-function addIds(suites) {
-    Object.keys(suites).forEach(function(key) {
-        suites[key].id = key.replace(/ /g, '_') + '_' + createUniqueHash()
-        suites[key].tests.forEach(function(test, index) {
-            suites[key].tests[index].id = test.name.replace(/ /g, '_') + '_' + createUniqueHash()
-        })
-        if (suites[key].properties)
-            suites[key].properties.id = 'properties_' + createUniqueHash()
-    })
-}
-
 module.exports = function(data) {
     if (data.junitViewerFileError) {
         return render('no_file.html', data)
     }
 
-    addIds(data.suites)
+    var suites = data.suites
+    var renderedJavaScript = 'var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/templates/junit_viewer.js').toString()
 
-    var renderedJavaScript = render('junit_viewer.js', {
-        suites: JSON.stringify(data.suites)
-    })
+    var redneredSkeleton = fs.readFileSync(__dirname + '/templates/skeleton.css').toString()
+    var renderedStyle = fs.readFileSync(__dirname + '/templates/junit_viewer.css').toString()
+    var renderedOptions = render('options.html')
 
-    var renderedSuites = Object.keys(data.suites).map(function(suiteName) {
-        var suite = data.suites[suiteName]
-        suite.tests = suite.tests.map(function(test) {
-            if (test.message)
-                test.message = render('test_message.html', test).replace(/\n/g, '<br />')
-            return render('test.html', test)
-        }).join('\n')
-        if (suite.properties) {
-            var renderedProperties = Object.keys(suite.properties)
-                .filter(function(key) {
-                    return key !== 'id'
-                })
-                .map(function(key) {
-                    return render('property.html', {
-                        key: key,
-                        value: suite.properties[key]
-                    })
-                }).join('\n')
-            suite.properties = render('properties.html', {
-                id: suite.properties.id,
-                properties: renderedProperties
-            })
+    var renderedSuites = suites.map(function(suite) {
+        suite.rendered = {}
+
+        //render properties
+        if (suite.properties)
+            suite.rendered.properties = suite.properties.map(function(properties) {
+                properties.rendered = {
+                    properties: properties.props.map(function(prop) {
+                        return render('property.html', prop)
+                    }).join('\n')
+                }
+                return render('properties.html', properties)
+            }).join('\n')
+
+
+        //render tests
+        if (suite.testCases) {
+            suite.rendered.tests = suite.testCases.map(function(test) {
+                if (test.messages)
+                    test.rendered = {
+                        messages: test.messages.map(function(message) {
+                            return render('test_message.html', message)
+                        }).join('\n')
+                    }
+                return render('test.html', test)
+            }).join('\n')
         }
-
         return render('suite.html', suite)
     }).join('\n')
 
-    var renderedHtml = render('index.html', {
+    return render('index.html', {
         title: data.title,
-        suites: renderedSuites,
         skeleton: fs.readFileSync(__dirname + '/templates/skeleton.css').toString(),
         style: fs.readFileSync(__dirname + '/templates/junit_viewer.css').toString(),
         options: render('options.html'),
-        javascript: renderedJavaScript
+        javascript: renderedJavaScript,
+        suites: renderedSuites
     })
-    return renderedHtml
 }
