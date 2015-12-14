@@ -48,6 +48,7 @@ module.exports = function(data) {
                     }).join('\n')
                     test.rendered.testMessages = render('test_messages.html', test)
                 } else if (test.messages) {
+                    test.messages[0].single = '--single'
                     test.rendered.testMessages = render('test_message.html', test.messages[0])
                 }
                 return render('test.html', test)

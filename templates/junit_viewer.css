@@ -93,7 +93,8 @@ h1 {
 
 .properties__list,
 .test__messages,
-.options__cta {
+.options__cta,
+.test__message--single {
     margin-top: -10px;
     border: 1px solid #bbb;
     border-radius: 0 0 4px 4px;
