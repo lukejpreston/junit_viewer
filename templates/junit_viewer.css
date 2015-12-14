@@ -93,7 +93,7 @@ h1 {
 }
 
 .properties__list,
-.messages,
+.test__messages,
 .options__cta {
     margin-top: -10px;
     border: 1px solid #bbb;
@@ -110,6 +110,10 @@ h1 {
 .test__name {
     margin-bottom: 0;
     border-radius: 4px 4px 0 0;
+}
+
+.test__message {
+
 }
 
 .test--passed,
