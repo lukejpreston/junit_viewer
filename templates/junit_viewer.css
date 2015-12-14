@@ -113,7 +113,10 @@ h1 {
 }
 
 .test__message {
-
+    padding: 5px;
+    border-radius: 4px;
+    border: solid #bbb 1px;
+    margin-bottom: 4px;
 }
 
 .test--passed,
