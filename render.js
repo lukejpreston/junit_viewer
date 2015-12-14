@@ -26,7 +26,7 @@ module.exports = function(data) {
         suite.rendered = {}
 
         //render properties
-        if (suite.properties)
+        if (suite.properties) {
             suite.rendered.properties = suite.properties.map(function(properties) {
                 properties.rendered = {
                     properties: properties.props.map(function(prop) {
@@ -35,17 +35,19 @@ module.exports = function(data) {
                 }
                 return render('properties.html', properties)
             }).join('\n')
-
+            suite.rendered.suiteProperties = render('suite_properties.html', suite)
+        }
 
         //render tests
         if (suite.testCases) {
             suite.rendered.tests = suite.testCases.map(function(test) {
-                if (test.messages)
-                    test.rendered = {
-                        messages: test.messages.map(function(message) {
+                test.rendered = {}
+                if (test.messages) {
+                    test.rendered.messages = test.messages.map(function(message) {
                             return render('test_message.html', message)
                         }).join('\n')
-                    }
+                    test.rendered.testMessages = render('test_messages.html', test)
+                }
                 return render('test.html', test)
             }).join('\n')
         }

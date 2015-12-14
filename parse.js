@@ -115,9 +115,18 @@ function parseTestResult(fileName, suites) {
 
                 test.type = 'passed'
 
-                if (testResult.skipped)
+                if (testResult.skipped) {
                     test.type = 'skipped'
-                else if (testResult.error) {
+                    if (testResult.skipped !== '') {
+                        test.messages = testResult.skipped.map(function(message) {
+                            return {
+                                id: createUniqueHash('message'),
+                                message: message
+                            }
+                        })
+                    }
+
+                } else if (testResult.error) {
                     suite.type = 'failure'
                     test.type = 'error'
                     test.messages = testResult.error.map(function(message) {
@@ -136,6 +145,7 @@ function parseTestResult(fileName, suites) {
                         }
                     })
                 }
+
                 suite.testCases.push(test)
                 suites[classname] = suite
             })
