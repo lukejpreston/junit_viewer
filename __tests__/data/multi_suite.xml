@@ -8,6 +8,7 @@
     </properties>
     <testcase name="Is An Error" classname="Multi" time="0.00075">
         <error message="There was a error" type="java.lang.RuntimeException">java.lang.RuntimeException: There was an error</error>
+        <error message="There was a error" type="java.lang.RuntimeException">java.lang.RuntimeException: There was an error</error>
     </testcase>
     <testcase name="It Is A Failure" classname="Multi" time="0.012011200000000001">
       <failure type="Failure">FILENAME:XX&#xA;Expected&#xA;    &lt;string&gt;: Luke&#xA;to equal&#xA;    &lt;string&gt;: luke</failure>
