@@ -55,9 +55,13 @@ function createError(fileName, message) {
         name: fileName,
         type: 'failure',
         time: 0,
-        tests: [{
+        tests: 0,
+        testCases: [{
             name: fileName,
-            message: message,
+            messages: [{
+                id: createUniqueHash('message'),
+                message: message
+            }],
             time: 0,
             type: 'error'
         }]

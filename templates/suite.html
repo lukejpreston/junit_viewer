@@ -1,5 +1,5 @@
 <div class="suite" id="{{id}}">
-    <button class="suite--{{type}} u-full-width" onclick="cta.contract.local.suite(this.parentElement)">
+    <button class="suite--{{type}} u-full-width flat" onclick="cta.contract.local.suite(this.parentElement)">
         <span class="suite__name u-pull-left">{{{name}}}</span>
         <span class="suite__info u-pull-right">tests: {{{tests}}}</span>
         <span class="suite__info u-pull-right">failures: {{{failures}}}</span>
@@ -7,6 +7,6 @@
     </button>
     <div class="suite__contents">
         {{{rendered.suiteProperties}}}
-        <div class="suite__tests">{{{rendered.tests}}}</div>
+        {{{rendered.suiteTests}}}
     </div>
 </div>
