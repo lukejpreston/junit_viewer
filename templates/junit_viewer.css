@@ -84,7 +84,9 @@ h1 {
 }
 
 .test,
-.option {
+.option,
+.suite__properties,
+.properties--single {
     width: 96%;
     margin-left: 2%;
     margin-right: 2%;
