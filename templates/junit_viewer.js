@@ -188,7 +188,20 @@ var cta = {
         properties: function(value) {
             value = value.toUpperCase()
             forEachProperties(function(properties) {
-                console.log(properties)
+                properties.values.forEach(function(propertiesValue) {
+                    propertiesValue.props.forEach(function(prop) {
+                        var propElement = document.getElementById(prop.id)
+                        var isNotHidden = propElement.className.indexOf('hide--searching') === -1
+                        if (value === '')
+                            propElement.className = propElement.className.replace(' hide--searching', '')
+                        else if(prop.name.toUpperCase().indexOf(value) !== -1)
+                            propElement.className = propElement.className.replace(' hide--searching', '')
+                        else if(prop.value.toUpperCase().indexOf(value) !== -1)
+                            propElement.className = propElement.className.replace(' hide--searching', '')
+                        else if(isNotHidden)
+                            propElement.className = propElement.className + ' hide--searching'
+                    })
+                })
             })
         }
     }
