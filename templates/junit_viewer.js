@@ -172,7 +172,14 @@ var cta = {
                 var isNotHidden = testElement.className.indexOf('hide--searching') === -1
                 if (value === '')
                     testElement.className = testElement.className.replace(' hide--searching', '')
-                else if (test.name.toUpperCase().indexOf(value) !== -1)
+                else if (test.messages) {
+                    test.messages.forEach(function(message) {
+                        if (message.message.toUpperCase().indexOf(value) !== -1)
+                            testElement.className = testElement.className.replace(' hide--searching', '')
+                        else if (isNotHidden)
+                            testElement.className = testElement.className + ' hide--searching'
+                    })
+                } else if (test.name.toUpperCase().indexOf(value) !== -1)
                     testElement.className = testElement.className.replace(' hide--searching', '')
                 else if (isNotHidden)
                     testElement.className = testElement.className + ' hide--searching'
