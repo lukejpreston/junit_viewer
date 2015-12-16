@@ -58,6 +58,7 @@ function createError(fileName, message) {
         time: 0,
         tests: 0,
         testCases: [{
+            id: createUniqueHash('test'),
             name: fileName,
             messages: [{
                 id: createUniqueHash('message'),

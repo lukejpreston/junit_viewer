@@ -39,7 +39,7 @@ function forEachSuite(callback) {
 
 function forEachTest(callback) {
     forEachSuite(function(suite) {
-        suite.tests.forEach(function(test) {
+        suite.testCases.forEach(function(test) {
             callback(test, suite)
         })
     })
