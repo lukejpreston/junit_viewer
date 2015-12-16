@@ -26,8 +26,8 @@ module.exports = function(data) {
         suite.rendered = {}
 
         //render properties
-        if (suite.properties && suite.properties.length > 1) {
-            suite.rendered.properties = suite.properties.map(function(properties) {
+        if (suite.properties && suite.properties.values.length > 1) {
+            suite.rendered.properties = suite.properties.values.map(function(properties) {
                 properties.rendered = {
                     properties: properties.props.map(function(prop) {
                         return render('property.html', prop)
@@ -37,7 +37,7 @@ module.exports = function(data) {
             }).join('\n')
             suite.rendered.suiteProperties = render('suite_properties.html', suite)
         } else if (suite.properties) {
-            var properties = suite.properties[0]
+            var properties = suite.properties.values[0]
             properties.rendered = {
                 properties: properties.props.map(function(prop) {
                     return render('property.html', prop)

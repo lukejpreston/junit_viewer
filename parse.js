@@ -94,10 +94,13 @@ function parseTestResult(fileName, suites) {
                 //add properties
                 var properties
                 if (result.testsuite.hasOwnProperty('properties')) {
-                    properties = []
+                    properties = {
+                        id: createUniqueHash('properties'),
+                        values: []
+                    }
                     result.testsuite.properties.forEach(function(property) {
                         var props = property.property
-                        properties.push({
+                        properties.values.push({
                             id: createUniqueHash('properties'),
                             props: props.map(function(prop) {
                                 var prop = prop.$
@@ -131,7 +134,7 @@ function parseTestResult(fileName, suites) {
                             }
                         })
 
-                        if(test.messages.length === 0) {
+                        if (test.messages.length === 0) {
                             delete test.messages
                         }
                     }
