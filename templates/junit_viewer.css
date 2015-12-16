@@ -83,10 +83,10 @@ h1 {
     border-color: #A7A6AB;
 }
 
+.properties,
 .test,
 .option,
-.suite__properties,
-.properties--single {
+.suite__properties {
     width: 96%;
     margin-left: 2%;
     margin-right: 2%;
@@ -96,7 +96,7 @@ h1 {
 .properties__list,
 .test__messages,
 .options__cta,
-.test__message--single {
+.test__message {
     margin-top: -10px;
     border: 1px solid #bbb;
     border-radius: 0 0 4px 4px;
@@ -114,7 +114,7 @@ h1 {
     border-radius: 4px 4px 0 0;
 }
 
-.test__message {
+.test__message--multiple {
     padding: 5px;
     border-radius: 4px;
     border: solid #bbb 1px;

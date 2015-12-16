@@ -10,6 +10,55 @@ function render(fileName, data) {
     return Mustache.render(templatesCache[fileName], data)
 }
 
+function renderProperties(properties) {
+    if (properties.values.length === 0)
+        return
+
+    var renderedValues = properties.values.map(function(property) {
+        return render('property.html', property);
+    }).join('\n')
+
+    return render('properties.html', {
+        id: properties.id,
+        properties: renderedValues
+    });
+}
+
+function renderTests(testCases) {
+    return testCases.map(function(test) {
+        var renderTestProperties = {
+            id: test.id,
+            type: test.type,
+            name: test.name,
+            time: test.time
+        }
+
+        var renderedMessages
+        if (test.messages.values.length > 1) {
+            var renderedMessagesValues = test.messages.values.map(function(message) {
+                return render('message.html', {
+                    value: message.value,
+                    id: message.id,
+                    multiple: '--multiple'
+                })
+            }).join('\n')
+
+            renderedMessages = render('messages.html', {
+                id: test.messages.id,
+                messages: renderedMessagesValues
+            })
+            renderTestProperties.flat = 'flat'
+        } else if (test.messages.values.length === 1) {
+            renderedMessages = render('message.html', test.messages.values[0])
+            renderTestProperties.flat = 'flat'
+        }
+
+        renderTestProperties.messages = renderedMessages
+
+        return render('test.html', renderTestProperties)
+    }).join('\n')
+}
+
 module.exports = function(data) {
     if (data.junitViewerFileError) {
         return render('no_file.html', data)
@@ -18,57 +67,30 @@ module.exports = function(data) {
     var suites = data.suites
     var renderedJavaScript = 'var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/templates/junit_viewer.js').toString()
 
-    var redneredSkeleton = fs.readFileSync(__dirname + '/templates/skeleton.css').toString()
+    var renderedSkeleton = fs.readFileSync(__dirname + '/templates/skeleton.css').toString()
     var renderedStyle = fs.readFileSync(__dirname + '/templates/junit_viewer.css').toString()
     var renderedOptions = render('options.html')
 
-    var renderedSuites = suites.map(function(suite) {
-        suite.rendered = {}
+    var renderedSuties = suites.map(function(suite) {
+        var renderedTests = renderTests(suite.testCases)
+        var renderedProperties = renderProperties(suite.properties)
+        var renderLabels = Object.keys(suite).filter(function(key) {
+            return ['name', 'id', 'testCases', 'properties', 'type'].indexOf(key) === -1
+        }).map(function(key) {
+            return render('suite_label.html', {
+                key: key,
+                value: suite[key]
+            })
+        }).join('\n')
 
-        //render properties
-        if (suite.properties && suite.properties.values.length > 1) {
-            suite.rendered.properties = suite.properties.values.map(function(properties) {
-                properties.rendered = {
-                    properties: properties.props.map(function(prop) {
-                        return render('property.html', prop)
-                    }).join('\n')
-                }
-                return render('properties.html', properties)
-            }).join('\n')
-            suite.rendered.suiteProperties = render('suite_properties.html', suite)
-        } else if (suite.properties) {
-            var properties = suite.properties.values[0]
-            properties.rendered = {
-                properties: properties.props.map(function(prop) {
-                    return render('property.html', prop)
-                }).join('\n')
-            }
-            properties.single = '--single'
-            suite.rendered.suiteProperties = render('properties.html', properties)
-        }
-
-        //render tests
-        if (suite.testCases) {
-            suite.rendered.tests = suite.testCases.map(function(test) {
-                test.rendered = {}
-                if (test.messages.length > 1) {
-                    test.flat = 'flat'
-                    test.rendered.messages = test.messages.map(function(message) {
-                        return render('test_message.html', message)
-                    }).join('\n')
-                    test.rendered.testMessages = render('test_messages.html', test)
-                } else if (test.messages.length === 1) {
-                    test.flat = 'flat'
-                    test.messages[0].single = '--single'
-                    test.rendered.testMessages = render('test_message.html', test.messages[0])
-                }
-                return render('test.html', test)
-            }).join('\n')
-        }
-
-        suite.rendered.suiteTests = render('suite_tests.html', suite)
-
-        return render('suite.html', suite)
+        return render('suite.html', {
+            id: suite.id,
+            type: suite.type,
+            name: suite.name,
+            tests: renderedTests,
+            properties: renderedProperties,
+            labels: renderLabels
+        })
     }).join('\n')
 
     return render('index.html', {
@@ -77,6 +99,6 @@ module.exports = function(data) {
         style: fs.readFileSync(__dirname + '/templates/junit_viewer.css').toString(),
         options: render('options.html'),
         javascript: renderedJavaScript,
-        suites: renderedSuites
+        suites: renderedSuties
     })
 }
