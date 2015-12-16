@@ -51,13 +51,13 @@ module.exports = function(data) {
         if (suite.testCases) {
             suite.rendered.tests = suite.testCases.map(function(test) {
                 test.rendered = {}
-                if (test.messages && test.messages.length > 1) {
+                if (test.messages.length > 1) {
                     test.flat = 'flat'
                     test.rendered.messages = test.messages.map(function(message) {
                         return render('test_message.html', message)
                     }).join('\n')
                     test.rendered.testMessages = render('test_messages.html', test)
-                } else if (test.messages) {
+                } else if (test.messages.length === 1) {
                     test.flat = 'flat'
                     test.messages[0].single = '--single'
                     test.rendered.testMessages = render('test_message.html', test.messages[0])

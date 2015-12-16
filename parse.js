@@ -120,6 +120,7 @@ function parseTestResult(fileName, suites) {
                     id: createUniqueHash('test'),
                     time: testResult.$.time,
                     name: testResult.$.name || 'NO TEST NAME',
+                    messages: []
                 }
 
                 test.type = 'passed'
@@ -135,10 +136,6 @@ function parseTestResult(fileName, suites) {
                                 message: message
                             }
                         })
-
-                        if (test.messages.length === 0) {
-                            delete test.messages
-                        }
                     }
 
                 } else if (testResult.error) {

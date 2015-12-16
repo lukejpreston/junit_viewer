@@ -206,3 +206,5 @@ var cta = {
         }
     }
 }
+
+module.exports = cta
