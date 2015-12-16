@@ -88,8 +88,15 @@ var cta = {
             var isHidden = element.innerHTML.indexOf('HIDE') !== -1
             element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
             forEachProperties(function(properties) {
-                var propertiesElement = document.getElementById(properties.id)
-                toggleBy.global_hide_all(propertiesElement);
+                if (properties.values.length > 1) {
+                    var propertiesElement = document.getElementById(properties.id)
+                    toggleBy.global_hide_all(propertiesElement);
+                } else {
+                    properties.values.forEach(function(value) {
+                        var propertiesElement = document.getElementById(value.id)
+                        toggleBy.global_hide_all(propertiesElement);
+                    })
+                }
             })
         }
     },
@@ -129,9 +136,17 @@ var cta = {
             properties: function(element) {
                 var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
                 element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
+
                 forEachProperties(function(properties) {
-                    var propertiesElement = document.getElementById(properties.id)
-                    contract(propertiesElement, 'global')
+                    if (properties.values.length > 1) {
+                        var propertiesElement = document.getElementById(properties.id)
+                        contract(propertiesElement, 'global')
+                    } else {
+                        properties.values.forEach(function(value) {
+                            var propertiesElement = document.getElementById(value.id)
+                            contract(propertiesElement, 'global')
+                        })
+                    }
                 })
             }
         }
