@@ -34,9 +34,7 @@ function contract(element, by) {
 }
 
 function forEachSuite(callback) {
-    Object.keys(suites).forEach(function(key) {
-        callback(suites[key])
-    })
+    suites.forEach(callback)
 }
 
 function forEachTest(callback) {

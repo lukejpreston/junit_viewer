@@ -52,6 +52,7 @@ function isXml(fileName) {
 
 function createError(fileName, message) {
     return {
+        id: createUniqueHash('suite'),
         name: fileName,
         type: 'failure',
         time: 0,
