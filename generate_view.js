@@ -14,9 +14,3 @@ fs.writeFileSync('single_file.html', renderedSingleFile)
 var noFile = parse(__dirname + '/__tests__/dat')
 var renderedNoFile = render(noFile)
 fs.writeFileSync('no_file.html', renderedNoFile)
-
-
-// var manyData = parse(__dirname + '/__tests__/data/multi_suite.xml')
-// var manyTests = parse(manyData)
-// var redneredManyTests = render(manyTests)
-// fs.writeFileSync('many_tests.html', redneredManyTests)
