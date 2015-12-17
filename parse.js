@@ -123,7 +123,7 @@ function updateParsedSuite(testSuiteName, suite, test) {
         type: 'passed'
     }
 
-    if(test.type !== 'passed' || test.type !== 'skipped')
+    if (test.type !== 'passed' || test.type !== 'skipped')
         parsedSuites[testSuiteName].type = 'failure'
 
     if (suite.$) {
@@ -175,19 +175,21 @@ function parseTests(suites, fileName) {
             suiteName = suite.$.name
 
         suite.testcase = suite.testcase.filter(function(test) {
-            //will probably change to an error instead of filtering
-            //this would happen if testcase has nothing inside and no keys
             return typeof test !== 'string'
         })
 
         suite.testcase.forEach(function(testcase) {
             var test = !testcase.hasOwnProperty('$') ? {
                 name: fileName,
-                messages: {values: []},
+                messages: {
+                    values: []
+                },
                 time: 0
             } : {
                 name: testcase.$.name || fileName,
-                messages: {values: []},
+                messages: {
+                    values: []
+                },
                 time: testcase.$.time || 0
             }
 
@@ -208,11 +210,25 @@ function parseTests(suites, fileName) {
             else if (suiteName)
                 testSuiteName = suiteName
 
-            //now create or add a suite
             updateParsedSuite(testSuiteName, suite, test)
         })
     })
 
+}
+
+function extractSuite(suite, suitesToAdd) {
+    suite.testsuite = suite.testsuite.filter(function(suite) {
+        return typeof suite !== 'string'
+    })
+
+    suite.testsuite.forEach(function(childSuite) {
+        if (suite.$ && childSuite.$)
+            childSuite.$.name = suite.$.name + ' ' + childSuite.$.name
+        suitesToAdd.push(childSuite)
+
+        if (childSuite.testsuite)
+            extractSuite(childSuite, suitesToAdd)
+    })
 }
 
 function parseSuites(result, fileName) {
@@ -226,12 +242,16 @@ function parseSuites(result, fileName) {
         suites = [result.testsuite]
 
     suites = suites.filter(function(suite) {
-        //will probably change to an error instead of filtering
-        //this would only happen if you had a testsuties with nothing inside
-        //or only a testsuite with no testsuites with nothing inside and no keys
-        //in either case you shouldn't be surprised not to see it
         return typeof suite !== 'string'
     })
+
+    var suitesToAdd = []
+    suites.forEach(function(suite) {
+        if (suite.testsuite)
+            extractSuite(suite, suitesToAdd)
+    })
+
+    suites = suites.concat(suitesToAdd)
 
     parseProperties(suites)
     parseTests(suites, fileName)

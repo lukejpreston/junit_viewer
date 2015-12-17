@@ -65,7 +65,7 @@
             </testcase>
         </testsuite>
         <!-- test suite with only one of verything -->
-         <testsuite name="one thing" errors="666" tests="777" failures="888" time="0.021">
+        <testsuite name="one thing" errors="666" tests="777" failures="888" time="0.021">
             <properties>
                 <property name="c" value="d" />
             </properties>
@@ -95,4 +95,17 @@
         <testsuite name="nothing inside" errors="666" tests="777" failures="888" time="0.021"></testsuite>
         <!-- test suite with nothing inside and no keys-->
         <testsuite></testsuite>
+        <!-- nested suites -->
+        <testsuite name="parent">
+            <testcase name="parent test"></testcase>
+            <testsuite name="child one">
+                <testcase name="child one test"></testcase>
+            </testsuite>
+            <testsuite name="child two">
+                <testcase name="child two test"></testcase>
+                <testsuite name="child of child two">
+                    <testcase name="child of child two test"></testcase>
+                </testsuite>
+            </testsuite>
+        </testsuite>
     </testsuites>
