@@ -123,7 +123,7 @@ function updateParsedSuite(testSuiteName, suite, test) {
         type: 'passed'
     }
 
-    if (test.type !== 'passed' || test.type !== 'skipped')
+    if (test.type !== 'passed' && test.type !== 'skipped')
         parsedSuites[testSuiteName].type = 'failure'
 
     if (suite.$) {
