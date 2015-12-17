@@ -1208,10 +1208,10 @@ there.
     border-color: #A7A6AB;
 }
 
+.properties,
 .test,
 .option,
-.suite__properties,
-.properties--single {
+.suite__properties {
     width: 96%;
     margin-left: 2%;
     margin-right: 2%;
@@ -1221,7 +1221,7 @@ there.
 .properties__list,
 .test__messages,
 .options__cta,
-.test__message--single {
+.test__message {
     margin-top: -10px;
     border: 1px solid #bbb;
     border-radius: 0 0 4px 4px;
@@ -1239,7 +1239,7 @@ there.
     border-radius: 4px 4px 0 0;
 }
 
-.test__message {
+.test__message--multiple {
     padding: 5px;
     border-radius: 4px;
     border: solid #bbb 1px;
@@ -1348,113 +1348,131 @@ there.
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="suite_b3Bj0">
+    <div class="row offset-by-one ten columns"><div class="suite" id="suite_zjJJL">
     <button class="suite--failure u-full-width flat" onclick="cta.contract.local.suite(this.parentElement)">
-        <span class="suite__name u-pull-left">Multi</span>
-        <span class="suite__info u-pull-right">tests: 3</span>
-        <span class="suite__info u-pull-right">failures: 1</span>
-        <span class="suite__info u-pull-right">time: 0.0160106</span>
+        <span class="suite__name u-pull-left">SUITE ONE</span>
+        <span class="suite__info u-pull-right">tests: 10</span>
+<span class="suite__info u-pull-right">errors: 7</span>
+<span class="suite__info u-pull-right">failures: 2</span>
+<span class="suite__info u-pull-right">time: 0.021</span>
     </button>
     <div class="suite__contents">
-        <div class="suite__properties" id="properties_IwC14">
-    <button class="properties__title u-full-width" onclick="cta.contract.local.properties(this.parentElement)">
-        <span class="u-pull-left">MULTIPLE PROPERTIES</span>
-    </button>
-    <div class="properties__list">
-        <div id=properties_cEHdQ class="properties">
-    <button class="properties__title u-full-width" onclick="cta.contract.local.properties(this.parentElement)">
-        <span class="u-pull-left">Properties</span>
-    </button>
-    <table class="properties__list u-full-width">
-        <thead>
-            <th>NAME</th>
-            <th>VALUE</th>
-        </thead>
-        <tbody>
-            <tr id=property_Sufdn>
-    <td><b>flag-type</b></td>
-    <td>bug</td>
-</tr>
-<tr id=property_BzAdp>
-    <td><b>flag-content</b></td>
-    <td>APPLICATION DEFECT</td>
-</tr>
-<tr id=property_Wb86R>
-    <td><b>Has a name</b></td>
-    <td>true</td>
-</tr>
-<tr id=property_QwXyW>
-    <td><b>URL</b></td>
-    <td>&#x2F;hunter&#x2F;overall_test.go</td>
-</tr>
-        </tbody>
-    </table>
-</div>
-
-<div id=properties_1JQS1 class="properties">
-    <button class="properties__title u-full-width" onclick="cta.contract.local.properties(this.parentElement)">
-        <span class="u-pull-left">Properties</span>
-    </button>
-    <table class="properties__list u-full-width">
-        <thead>
-            <th>NAME</th>
-            <th>VALUE</th>
-        </thead>
-        <tbody>
-            <tr id=property_scjwM>
-    <td><b>even</b></td>
-    <td>more</td>
-</tr>
-        </tbody>
-    </table>
-</div>
-
-    </div>
-</div>
-        <div class="suite__tests"><div class="test" id="test_Q2ZEw">
-    <button class="test__name test--error u-full-width flat" onclick="cta.contract.local.test(this.parentElement)">
-        <span class="u-pull-left">Is An Error</span>
-        <span class="u-pull-right">TIME: 0.00075</span>
-    </button>
-    <div class="test__messages"><div id="message_ZBk9c" class="test__message">java.lang.RuntimeException: There was an error</div>
-<div id="message_ehxxe" class="test__message">java.lang.RuntimeException: There was an error</div></div>
-</div>
-
-<div class="test" id="test_gUl5z">
-    <button class="test__name test--failure u-full-width flat" onclick="cta.contract.local.test(this.parentElement)">
-        <span class="u-pull-left">It Is A Failure</span>
-        <span class="u-pull-right">TIME: 0.012011200000000001</span>
-    </button>
-    <div id="message_HBjw6" class="test__message--single">FILENAME:XX
-Expected
-    <string>: Luke
-to equal
-    <string>: luke</div>
-</div>
-
-<div class="test" id="test_gnjKW">
+        
+        <div class="test" id="test_CN6Vc">
     <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
-        <span class="u-pull-left">It Is A Pass</span>
-        <span class="u-pull-right">TIME: 0.000625</span>
+        <span class="u-pull-left">the first test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
     </button>
     
 </div>
 
-<div class="test" id="test_0aoXd">
-    <button class="test__name test--skipped u-full-width flat" onclick="cta.contract.local.test(this.parentElement)">
-        <span class="u-pull-left">It Is Skipped</span>
-        <span class="u-pull-right">TIME: 0</span>
+<div class="test" id="test_T8j1q">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the second test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div class="test__messages"><div id="message_BL4JA" class="test__message">This is a message</div>
-<div id="message_JsVdx" class="test__message">This is a message</div></div>
+    
 </div>
+
+<div class="test" id="test_rv6eE">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the third test</span>
+        <span class="u-pull-right">TIME: 0.012</span>
+    </button>
+    
 </div>
+
+<div class="test" id="test_hfZw2">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the fouth test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
+    </button>
+    
+</div>
+
+<div class="test" id="test_TMz7O">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the fifth test</span>
+        <span class="u-pull-right">TIME: 0.002</span>
+    </button>
+    
+</div>
+
+<div class="test" id="test_8gWpu">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the sixt test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
+    </button>
+    
+</div>
+
+    </div>
+</div>
+
+<div class="suite" id="suite_7yMUE">
+    <button class="suite--failure u-full-width flat" onclick="cta.contract.local.suite(this.parentElement)">
+        <span class="suite__name u-pull-left">SUITE TWO</span>
+        <span class="suite__info u-pull-right">tests: 6</span>
+<span class="suite__info u-pull-right">errors: 0</span>
+<span class="suite__info u-pull-right">failures: 0</span>
+<span class="suite__info u-pull-right">time: 0.021</span>
+    </button>
+    <div class="suite__contents">
+        
+        <div class="test" id="test_wdLbu">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the first test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
+    </button>
+    
+</div>
+
+<div class="test" id="test_9lWXT">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the second test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
+    </button>
+    
+</div>
+
+<div class="test" id="test_UQUpc">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the third test</span>
+        <span class="u-pull-right">TIME: 0.012</span>
+    </button>
+    
+</div>
+
+<div class="test" id="test_kYyAa">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the fouth test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
+    </button>
+    
+</div>
+
+<div class="test" id="test_SUEhj">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the fifth test</span>
+        <span class="u-pull-right">TIME: 0.002</span>
+    </button>
+    
+</div>
+
+<div class="test" id="test_WpcCW">
+    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <span class="u-pull-left">the sixt test</span>
+        <span class="u-pull-right">TIME: 0.001</span>
+    </button>
+    
+</div>
+
     </div>
 </div>
 </div>
     <script type="text/javascript">
         module = {} //this is entirely for testing with jest
-        var suites = [{"id":"suite_b3Bj0","type":"failure","name":"Multi","time":"0.0160106","tests":"3","failures":"1","properties":{"id":"properties_IwC14","values":[{"id":"properties_cEHdQ","props":[{"name":"flag-type","value":"bug","id":"property_Sufdn"},{"name":"flag-content","value":"APPLICATION DEFECT","id":"property_BzAdp"},{"name":"Has a name","value":"true","id":"property_Wb86R"},{"name":"URL","value":"/hunter/overall_test.go","id":"property_QwXyW"}]},{"id":"properties_1JQS1","props":[{"name":"even","value":"more","id":"property_scjwM"}]}]},"testCases":[{"id":"test_Q2ZEw","time":"0.00075","name":"Is An Error","messages":[{"id":"message_ZBk9c","message":"java.lang.RuntimeException: There was an error"},{"id":"message_ehxxe","message":"java.lang.RuntimeException: There was an error"}],"type":"error"},{"id":"test_gUl5z","time":"0.012011200000000001","name":"It Is A Failure","messages":[{"id":"message_HBjw6","message":"FILENAME:XX\nExpected\n    <string>: Luke\nto equal\n    <string>: luke"}],"type":"failure"},{"id":"test_gnjKW","time":"0.000625","name":"It Is A Pass","messages":[],"type":"passed"},{"id":"test_0aoXd","time":"0","name":"It Is Skipped","messages":[{"id":"message_BL4JA","message":"This is a message"},{"id":"message_JsVdx","message":"This is a message"}],"type":"skipped"}]}]
+        var suites = [{"name":"SUITE ONE","type":"failure","tests":"10","errors":"7","failures":"2","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_8rmgv"},"time":"0.001","type":"passed","id":"test_CN6Vc"},{"name":"the second test","messages":{"values":[],"id":"messages_Wifkx"},"time":"0.001","type":"passed","id":"test_T8j1q"},{"name":"the third test","messages":{"values":[],"id":"messages_LtNhO"},"time":"0.012","type":"passed","id":"test_rv6eE"},{"name":"the fouth test","messages":{"values":[],"id":"messages_O4t3E"},"time":"0.001","type":"passed","id":"test_hfZw2"},{"name":"the fifth test","messages":{"values":[],"id":"messages_CDRLG"},"time":"0.002","type":"passed","id":"test_TMz7O"},{"name":"the sixt test","messages":{"values":[],"id":"messages_pTUsZ"},"time":"0.001","type":"passed","id":"test_8gWpu"}],"properties":{"values":[],"id":"properties_dfGF7"},"id":"suite_zjJJL"},{"name":"SUITE TWO","type":"failure","tests":"6","errors":"0","failures":"0","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_5561s"},"time":"0.001","type":"passed","id":"test_wdLbu"},{"name":"the second test","messages":{"values":[],"id":"messages_RlIT6"},"time":"0.001","type":"passed","id":"test_9lWXT"},{"name":"the third test","messages":{"values":[],"id":"messages_76n6Z"},"time":"0.012","type":"passed","id":"test_UQUpc"},{"name":"the fouth test","messages":{"values":[],"id":"messages_afhM2"},"time":"0.001","type":"passed","id":"test_kYyAa"},{"name":"the fifth test","messages":{"values":[],"id":"messages_NkfmB"},"time":"0.002","type":"passed","id":"test_SUEhj"},{"name":"the sixt test","messages":{"values":[],"id":"messages_A1KBc"},"time":"0.001","type":"passed","id":"test_WpcCW"}],"properties":{"values":[],"id":"properties_TMmXN"},"id":"suite_7yMUE"}]
 function createToggleDisplay(by) {
     return function(element) {
         var isHidden = element.className.indexOf(' hide--' + by) !== -1
