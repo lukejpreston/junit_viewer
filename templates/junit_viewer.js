@@ -87,18 +87,6 @@ function forEachTest(callback) {
     })
 }
 
-function hideTests(button) {
-    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
-    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
-    forEachTest(function(test) {
-        var testElement = document.getElementById(test.id)
-        if (isHidden)
-            removeClass(testElement, 'hidden')
-        else
-            addClass(testElement, 'hidden')
-    })
-}
-
 function contractTests(button) {
     var isContracted = button.innerHTML.indexOf('EXPAND') !== -1
     button.innerHTML = isContracted ? 'CONTRACT ALL' : 'EXPAND ALL'
@@ -114,6 +102,18 @@ function contractTests(button) {
             replaceClass(testButton, 'flat', 'round')
             addClass(testContent, 'contracted')
         }
+    })
+}
+
+function hideTests(button) {
+    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
+    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
+    forEachTest(function(test) {
+        var testElement = document.getElementById(test.id)
+        if (isHidden)
+            removeClass(testElement, 'hidden')
+        else
+            addClass(testElement, 'hidden')
     })
 }
 
@@ -151,4 +151,49 @@ function searchTests(value) {
         if (inSearch)
             removeClass(testElement, 'not_in_search')
     })
+}
+
+// Properties
+
+function contractProperties(button) {
+    var isContracted = button.innerHTML.indexOf('EXPAND') !== -1
+    button.innerHTML = isContracted ? 'CONTRACT ALL' : 'EXPAND ALL'
+
+    suites
+        .filter(function(suite) {
+            return suite.properties.values.length > 0
+        })
+        .forEach(function(suite) {
+            var propertiesElement = document.getElementById(suite.properties.id)
+            var propertiesButton = propertiesElement.children[0]
+            var propertiesContent = propertiesElement.children[1]
+
+            if (isContracted) {
+                replaceClass(propertiesButton, 'round', 'flat')
+                removeClass(propertiesContent, 'contracted')
+            } else {
+                replaceClass(propertiesButton, 'flat', 'round')
+                addClass(propertiesContent, 'contracted')
+            }
+        })
+}
+
+function hideProperties(button) {
+    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
+    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
+    suites
+        .filter(function(suite) {
+            return suite.properties.values.length > 0
+        })
+        .forEach(function(suite) {
+            var propertiesElement = document.getElementById(suite.properties.id)
+            if (isHidden)
+                removeClass(propertiesElement, 'hidden')
+            else
+                addClass(propertiesElement, 'hidden')
+        })
+}
+
+function searchProperties(button) {
+
 }

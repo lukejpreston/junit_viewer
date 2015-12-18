@@ -1335,18 +1335,18 @@ there.
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
-                    <input placeholder="propety keys and values" type="text" class="options_search__input" oninput="cta.search.properties(this.value)"></input>
+                    <input placeholder="propety keys and values" type="text" class="options_search__input" oninput="searchProperties(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-half column button-primary" onclick="cta.hide.properties(this)">HIDE ALL</button>
-                    <button class="one-half column button-primary" onclick="cta.contract.global.properties(this)">CONTRACT ALL</button>
+                    <button class="one-half column button-primary" onclick="hideProperties(this)">HIDE ALL</button>
+                    <button class="one-half column button-primary" onclick="contractProperties(this)">CONTRACT ALL</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="suite_2VN8s">
+    <div class="row offset-by-one ten columns"><div class="suite" id="suite_JBF8J">
     <button class="suite--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">bacon</span>
         <span class="suite__info u-pull-right">tests: 777</span>
@@ -1355,7 +1355,7 @@ there.
 <span class="suite__info u-pull-right">time: 0.021</span>
     </button>
     <div class="suite__contents">
-        <div id=properties_u9nnr class="properties">
+        <div id=properties_1VUhN class="properties">
     <button class="properties__title u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
@@ -1365,15 +1365,15 @@ there.
             <th>VALUE</th>
         </thead>
         <tbody>
-            <tr id=property_yfZFc>
+            <tr id=property_yfRlE>
     <td><b>x</b></td>
     <td>y</td>
 </tr>
-<tr id=property_RtLZH>
+<tr id=property_mXuko>
     <td><b>a</b></td>
     <td>b</td>
 </tr>
-<tr id=property_8wop4>
+<tr id=property_FaUzq>
     <td><b>c</b></td>
     <td>d</td>
 </tr>
@@ -1381,47 +1381,47 @@ there.
     </table>
 </div>
 
-        <div class="test" id="test_6AnQt">
+        <div class="test" id="test_CmVsk">
     <button class="test__name test--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 1</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_5yNSq" class="test__message">inner massage</div>
+    <div id="message_PE4kr" class="test__message">inner massage</div>
 </div>
 
-<div class="test" id="test_OIVpZ">
+<div class="test" id="test_GhtJd">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 2</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_6Apsd" class="test__message">inner massage</div>
+    <div id="message_7si5M" class="test__message">inner massage</div>
 </div>
 
-<div class="test" id="test_N3XFd">
+<div class="test" id="test_iMml4">
     <button class="test__name test--skipped u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 3</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_bEnhh" class="test__message">inner massage</div>
+    <div id="message_K8Cfv" class="test__message">inner massage</div>
 </div>
 
-<div class="test" id="test_M0Ijg">
+<div class="test" id="test_k5Y0A">
     <button class="test__name test--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 4</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_S7dPW" class="test__message">inner massage</div>
+    <div id="message_Ql4f0" class="test__message">inner massage</div>
 </div>
 
-<div class="test" id="test_WGbac">
+<div class="test" id="test_wFYim">
     <button class="test__name test--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 5</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_n8BLD" class="test__message">inner message</div>
+    <div id="message_Kb8h7" class="test__message">inner message</div>
 </div>
 
-<div class="test" id="test_156ko">
+<div class="test" id="test_EoaPL">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 6</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1429,59 +1429,59 @@ there.
     
 </div>
 
-<div class="test" id="test_CNFof">
+<div class="test" id="test_Ig5Fi">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 7</span>
         <span class="u-pull-right">TIME: 0</span>
     </button>
-    <div class="test__message" id="messages_TRxFP"><div id="message_EE8pC" class="test__message--multiple">inner massage</div>
-<div id="message_XQxIp" class="test__message--multiple">inner massage</div></div>
+    <div class="test__message" id="messages_YUzk7"><div id="message_s6Jol" class="test__message--multiple">inner massage</div>
+<div id="message_u4uHH" class="test__message--multiple">inner massage</div></div>
 </div>
 
-<div class="test" id="test_SXjUR">
+<div class="test" id="test_lHtwD">
     <button class="test__name test--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 8</span>
         <span class="u-pull-right">TIME: 0</span>
     </button>
-    <div id="message_Z8gXl" class="test__message">type message</div>
+    <div id="message_UlZoU" class="test__message">type message</div>
 </div>
 
-<div class="test" id="test_Zv5DV">
+<div class="test" id="test_e4nsh">
     <button class="test__name test--skipped u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 9</span>
         <span class="u-pull-right">TIME: 0</span>
     </button>
-    <div id="message_STUhu" class="test__message">message</div>
+    <div id="message_xbSKy" class="test__message">message</div>
 </div>
 
-<div class="test" id="test_lKRHm">
+<div class="test" id="test_c3qek">
     <button class="test__name test--skipped u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 10</span>
         <span class="u-pull-right">TIME: 0</span>
     </button>
-    <div id="message_hoJe7" class="test__message">type</div>
+    <div id="message_ZhjmP" class="test__message">type</div>
 </div>
 
-<div class="test" id="test_KzkqY">
+<div class="test" id="test_UWVYC">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 11</span>
         <span class="u-pull-right">TIME: 0</span>
     </button>
-    <div id="message_VYOsN" class="test__message"><i>inner</i><b>message</b></div>
+    <div id="message_pEIwo" class="test__message"><i>inner</i><b>message</b></div>
 </div>
 
-<div class="test" id="test_u2tGn">
+<div class="test" id="test_FbsB6">
     <button class="test__name test--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 12</span>
         <span class="u-pull-right">TIME: 0</span>
     </button>
-    <div id="message_trJs2" class="test__message"><i>type</i> <b>message</b></div>
+    <div id="message_CWmMf" class="test__message"><i>type</i> <b>message</b></div>
 </div>
 
     </div>
 </div>
 
-<div class="suite" id="suite_QAD1X">
+<div class="suite" id="suite_to05Y">
     <button class="suite--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">not bacon</span>
         <span class="suite__info u-pull-right">tests: 777</span>
@@ -1490,7 +1490,7 @@ there.
 <span class="suite__info u-pull-right">time: 0.021</span>
     </button>
     <div class="suite__contents">
-        <div id=properties_lAcjC class="properties">
+        <div id=properties_47Xmc class="properties">
     <button class="properties__title u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
@@ -1500,15 +1500,15 @@ there.
             <th>VALUE</th>
         </thead>
         <tbody>
-            <tr id=property_yfZFc>
+            <tr id=property_yfRlE>
     <td><b>x</b></td>
     <td>y</td>
 </tr>
-<tr id=property_RtLZH>
+<tr id=property_mXuko>
     <td><b>a</b></td>
     <td>b</td>
 </tr>
-<tr id=property_8wop4>
+<tr id=property_FaUzq>
     <td><b>c</b></td>
     <td>d</td>
 </tr>
@@ -1516,18 +1516,18 @@ there.
     </table>
 </div>
 
-        <div class="test" id="test_rt9gf">
+        <div class="test" id="test_3lWEX">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">bacon 2</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_LWkVn" class="test__message">inner massage</div>
+    <div id="message_ATUMD" class="test__message">inner massage</div>
 </div>
 
     </div>
 </div>
 
-<div class="suite" id="suite_rboAh">
+<div class="suite" id="suite_n7XoI">
     <button class="suite--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">one thing</span>
         <span class="suite__info u-pull-right">tests: 777</span>
@@ -1536,7 +1536,7 @@ there.
 <span class="suite__info u-pull-right">time: 0.021</span>
     </button>
     <div class="suite__contents">
-        <div id=properties_8thUu class="properties">
+        <div id=properties_NTSKS class="properties">
     <button class="properties__title u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Properties</span>
     </button>
@@ -1546,7 +1546,7 @@ there.
             <th>VALUE</th>
         </thead>
         <tbody>
-            <tr id=property_oUrC9>
+            <tr id=property_bft9n>
     <td><b>c</b></td>
     <td>d</td>
 </tr>
@@ -1554,18 +1554,18 @@ there.
     </table>
 </div>
 
-        <div class="test" id="test_ahUtN">
+        <div class="test" id="test_dkYjj">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">test name</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_TchFa" class="test__message">inner massage</div>
+    <div id="message_6j1KS" class="test__message">inner massage</div>
 </div>
 
     </div>
 </div>
 
-<div class="suite" id="suite_OwXgb">
+<div class="suite" id="suite_2EzXT">
     <button class="suite--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">suite name</span>
         <span class="suite__info u-pull-right">tests: 777</span>
@@ -1575,18 +1575,18 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_4CQiu">
+        <div class="test" id="test_fEU6n">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">test name</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_Wfmul" class="test__message">inner massage</div>
+    <div id="message_O8Z0s" class="test__message">inner massage</div>
 </div>
 
     </div>
 </div>
 
-<div class="suite" id="suite_phuTv">
+<div class="suite" id="suite_tnOVe">
     <button class="suite--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">no key values</span>
         <span class="suite__info u-pull-right">tests: 0</span>
@@ -1596,18 +1596,18 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_74rc0">
+        <div class="test" id="test_NBiTg">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">test name</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_3w09z" class="test__message">inner massage</div>
+    <div id="message_8Lu5G" class="test__message">inner massage</div>
 </div>
 
     </div>
 </div>
 
-<div class="suite" id="suite_POqpn">
+<div class="suite" id="suite_CIWVo">
     <button class="suite--failure u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">NO CLASSNAME OR SUITE NAME</span>
         <span class="suite__info u-pull-right">tests: 0</span>
@@ -1617,18 +1617,18 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_n7BdO">
+        <div class="test" id="test_tdhv0">
     <button class="test__name test--error u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">I have no class name</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
-    <div id="message_0239B" class="test__message">inner massage</div>
+    <div id="message_74qX5" class="test__message">inner massage</div>
 </div>
 
     </div>
 </div>
 
-<div class="suite" id="suite_mqO1b">
+<div class="suite" id="suite_i22BJ">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">parent</span>
         <span class="suite__info u-pull-right">tests: </span>
@@ -1638,7 +1638,7 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_l4c8y">
+        <div class="test" id="test_lGxIh">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">parent test</span>
         <span class="u-pull-right">TIME: 0</span>
@@ -1649,7 +1649,7 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_a2wgc">
+<div class="suite" id="suite_yNU2O">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">parent child one</span>
         <span class="suite__info u-pull-right">tests: </span>
@@ -1659,7 +1659,7 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_45LQ3">
+        <div class="test" id="test_ubNXB">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">child one test</span>
         <span class="u-pull-right">TIME: 0</span>
@@ -1670,7 +1670,7 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_fV34m">
+<div class="suite" id="suite_H6TsH">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">parent child two</span>
         <span class="suite__info u-pull-right">tests: </span>
@@ -1680,7 +1680,7 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_PsfOQ">
+        <div class="test" id="test_TcdL7">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">child two test</span>
         <span class="u-pull-right">TIME: 0</span>
@@ -1691,7 +1691,7 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_7NtFc">
+<div class="suite" id="suite_CHMXO">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">parent child two child of child two</span>
         <span class="suite__info u-pull-right">tests: </span>
@@ -1701,7 +1701,7 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_zrlIj">
+        <div class="test" id="test_XTWJH">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">child of child two test</span>
         <span class="u-pull-right">TIME: 0</span>
@@ -1714,7 +1714,7 @@ there.
 </div>
     <script type="text/javascript">
         module = {} //this is entirely for testing with jest
-        var suites = [{"name":"bacon","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"bacon 1","messages":{"values":[{"value":"inner massage","id":"message_5yNSq"}],"id":"messages_Og6jO"},"time":"0.001","type":"passed","id":"test_6AnQt"},{"name":"bacon 2","messages":{"values":[{"value":"inner massage","id":"message_6Apsd"}],"id":"messages_cKo28"},"time":"0.001","type":"error","id":"test_OIVpZ"},{"name":"bacon 3","messages":{"values":[{"value":"inner massage","id":"message_bEnhh"}],"id":"messages_tv2MH"},"time":"0.001","type":"skipped","id":"test_N3XFd"},{"name":"bacon 4","messages":{"values":[{"value":"inner massage","id":"message_S7dPW"}],"id":"messages_6NwgN"},"time":"0.001","type":"failure","id":"test_M0Ijg"},{"name":"bacon 5","messages":{"values":[{"value":"inner message","id":"message_n8BLD"}],"id":"messages_WyWgz"},"time":"0.001","type":"passed","id":"test_WGbac"},{"name":"bacon 6","messages":{"values":[],"id":"messages_hQBi8"},"time":"0.001","type":"passed","id":"test_156ko"},{"name":"bacon 7","messages":{"values":[{"value":"inner massage","id":"message_EE8pC"},{"value":"inner massage","id":"message_XQxIp"}],"id":"messages_TRxFP"},"time":0,"type":"error","id":"test_CNFof"},{"name":"bacon 8","messages":{"values":[{"value":"type message","id":"message_Z8gXl"}],"id":"messages_xmFVJ"},"time":0,"type":"failure","id":"test_SXjUR"},{"name":"bacon 9","messages":{"values":[{"value":"message","id":"message_STUhu"}],"id":"messages_d70ID"},"time":0,"type":"skipped","id":"test_Zv5DV"},{"name":"bacon 10","messages":{"values":[{"value":"type","id":"message_hoJe7"}],"id":"messages_AoCpR"},"time":0,"type":"skipped","id":"test_lKRHm"},{"name":"bacon 11","messages":{"values":[{"value":"<i>inner</i><b>message</b>","id":"message_VYOsN"}],"id":"messages_Gan5x"},"time":0,"type":"error","id":"test_KzkqY"},{"name":"bacon 12","messages":{"values":[{"value":"<i>type</i> <b>message</b>","id":"message_trJs2"}],"id":"messages_5slwT"},"time":0,"type":"failure","id":"test_u2tGn"}],"properties":{"values":[{"name":"x","value":"y","id":"property_yfZFc"},{"name":"a","value":"b","id":"property_RtLZH"},{"name":"c","value":"d","id":"property_8wop4"}],"id":"properties_u9nnr"},"id":"suite_2VN8s"},{"name":"not bacon","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"bacon 2","messages":{"values":[{"value":"inner massage","id":"message_LWkVn"}],"id":"messages_X1NMN"},"time":"0.001","type":"error","id":"test_rt9gf"}],"properties":{"values":[{"name":"x","value":"y","id":"property_yfZFc"},{"name":"a","value":"b","id":"property_RtLZH"},{"name":"c","value":"d","id":"property_8wop4"}],"id":"properties_lAcjC"},"id":"suite_QAD1X"},{"name":"one thing","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_TchFa"}],"id":"messages_IjLKE"},"time":"0.001","type":"error","id":"test_ahUtN"}],"properties":{"values":[{"name":"c","value":"d","id":"property_oUrC9"}],"id":"properties_8thUu"},"id":"suite_rboAh"},{"name":"suite name","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_Wfmul"}],"id":"messages_xbZ9A"},"time":"0.001","type":"error","id":"test_4CQiu"}],"properties":{"values":[],"id":"properties_llkJu"},"id":"suite_OwXgb"},{"name":"no key values","type":"failure","tests":0,"errors":0,"failures":0,"time":0,"testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_3w09z"}],"id":"messages_4SrAg"},"time":"0.001","type":"error","id":"test_74rc0"}],"properties":{"values":[],"id":"properties_DMZcf"},"id":"suite_phuTv"},{"name":"NO CLASSNAME OR SUITE NAME","type":"failure","tests":0,"errors":0,"failures":0,"time":0,"testCases":[{"name":"I have no class name","messages":{"values":[{"value":"inner massage","id":"message_0239B"}],"id":"messages_mhzx4"},"time":"0.001","type":"error","id":"test_n7BdO"}],"properties":{"values":[],"id":"properties_R6e20"},"id":"suite_POqpn"},{"name":"parent","type":"passed","testCases":[{"name":"parent test","messages":{"values":[],"id":"messages_jZg44"},"time":0,"type":"passed","id":"test_l4c8y"}],"properties":{"values":[],"id":"properties_lUfzI"},"id":"suite_mqO1b"},{"name":"parent child one","type":"passed","testCases":[{"name":"child one test","messages":{"values":[],"id":"messages_gaeyj"},"time":0,"type":"passed","id":"test_45LQ3"}],"properties":{"values":[],"id":"properties_5cbOh"},"id":"suite_a2wgc"},{"name":"parent child two","type":"passed","testCases":[{"name":"child two test","messages":{"values":[],"id":"messages_cq1gN"},"time":0,"type":"passed","id":"test_PsfOQ"}],"properties":{"values":[],"id":"properties_KdgTy"},"id":"suite_fV34m"},{"name":"parent child two child of child two","type":"passed","testCases":[{"name":"child of child two test","messages":{"values":[],"id":"messages_FCBZI"},"time":0,"type":"passed","id":"test_zrlIj"}],"properties":{"values":[],"id":"properties_8Y1Oe"},"id":"suite_7NtFc"}]
+        var suites = [{"name":"bacon","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"bacon 1","messages":{"values":[{"value":"inner massage","id":"message_PE4kr"}],"id":"messages_VTn6B"},"time":"0.001","type":"passed","id":"test_CmVsk"},{"name":"bacon 2","messages":{"values":[{"value":"inner massage","id":"message_7si5M"}],"id":"messages_paUZg"},"time":"0.001","type":"error","id":"test_GhtJd"},{"name":"bacon 3","messages":{"values":[{"value":"inner massage","id":"message_K8Cfv"}],"id":"messages_Z93s1"},"time":"0.001","type":"skipped","id":"test_iMml4"},{"name":"bacon 4","messages":{"values":[{"value":"inner massage","id":"message_Ql4f0"}],"id":"messages_8bu12"},"time":"0.001","type":"failure","id":"test_k5Y0A"},{"name":"bacon 5","messages":{"values":[{"value":"inner message","id":"message_Kb8h7"}],"id":"messages_fFAhL"},"time":"0.001","type":"passed","id":"test_wFYim"},{"name":"bacon 6","messages":{"values":[],"id":"messages_98oFx"},"time":"0.001","type":"passed","id":"test_EoaPL"},{"name":"bacon 7","messages":{"values":[{"value":"inner massage","id":"message_s6Jol"},{"value":"inner massage","id":"message_u4uHH"}],"id":"messages_YUzk7"},"time":0,"type":"error","id":"test_Ig5Fi"},{"name":"bacon 8","messages":{"values":[{"value":"type message","id":"message_UlZoU"}],"id":"messages_1DzjA"},"time":0,"type":"failure","id":"test_lHtwD"},{"name":"bacon 9","messages":{"values":[{"value":"message","id":"message_xbSKy"}],"id":"messages_WqMhU"},"time":0,"type":"skipped","id":"test_e4nsh"},{"name":"bacon 10","messages":{"values":[{"value":"type","id":"message_ZhjmP"}],"id":"messages_6k3tV"},"time":0,"type":"skipped","id":"test_c3qek"},{"name":"bacon 11","messages":{"values":[{"value":"<i>inner</i><b>message</b>","id":"message_pEIwo"}],"id":"messages_rJPRT"},"time":0,"type":"error","id":"test_UWVYC"},{"name":"bacon 12","messages":{"values":[{"value":"<i>type</i> <b>message</b>","id":"message_CWmMf"}],"id":"messages_nsPHJ"},"time":0,"type":"failure","id":"test_FbsB6"}],"properties":{"values":[{"name":"x","value":"y","id":"property_yfRlE"},{"name":"a","value":"b","id":"property_mXuko"},{"name":"c","value":"d","id":"property_FaUzq"}],"id":"properties_1VUhN"},"id":"suite_JBF8J"},{"name":"not bacon","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"bacon 2","messages":{"values":[{"value":"inner massage","id":"message_ATUMD"}],"id":"messages_Wntzw"},"time":"0.001","type":"error","id":"test_3lWEX"}],"properties":{"values":[{"name":"x","value":"y","id":"property_yfRlE"},{"name":"a","value":"b","id":"property_mXuko"},{"name":"c","value":"d","id":"property_FaUzq"}],"id":"properties_47Xmc"},"id":"suite_to05Y"},{"name":"one thing","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_6j1KS"}],"id":"messages_6JdQ7"},"time":"0.001","type":"error","id":"test_dkYjj"}],"properties":{"values":[{"name":"c","value":"d","id":"property_bft9n"}],"id":"properties_NTSKS"},"id":"suite_n7XoI"},{"name":"suite name","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_O8Z0s"}],"id":"messages_z7COh"},"time":"0.001","type":"error","id":"test_fEU6n"}],"properties":{"values":[],"id":"properties_FOeKm"},"id":"suite_2EzXT"},{"name":"no key values","type":"failure","tests":0,"errors":0,"failures":0,"time":0,"testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_8Lu5G"}],"id":"messages_BSiQR"},"time":"0.001","type":"error","id":"test_NBiTg"}],"properties":{"values":[],"id":"properties_G1RVv"},"id":"suite_tnOVe"},{"name":"NO CLASSNAME OR SUITE NAME","type":"failure","tests":0,"errors":0,"failures":0,"time":0,"testCases":[{"name":"I have no class name","messages":{"values":[{"value":"inner massage","id":"message_74qX5"}],"id":"messages_gYnPZ"},"time":"0.001","type":"error","id":"test_tdhv0"}],"properties":{"values":[],"id":"properties_dL47j"},"id":"suite_CIWVo"},{"name":"parent","type":"passed","testCases":[{"name":"parent test","messages":{"values":[],"id":"messages_WgOwv"},"time":0,"type":"passed","id":"test_lGxIh"}],"properties":{"values":[],"id":"properties_BGflj"},"id":"suite_i22BJ"},{"name":"parent child one","type":"passed","testCases":[{"name":"child one test","messages":{"values":[],"id":"messages_6TNKU"},"time":0,"type":"passed","id":"test_ubNXB"}],"properties":{"values":[],"id":"properties_LMEpB"},"id":"suite_yNU2O"},{"name":"parent child two","type":"passed","testCases":[{"name":"child two test","messages":{"values":[],"id":"messages_PZcQJ"},"time":0,"type":"passed","id":"test_TcdL7"}],"properties":{"values":[],"id":"properties_A57pz"},"id":"suite_H6TsH"},{"name":"parent child two child of child two","type":"passed","testCases":[{"name":"child of child two test","messages":{"values":[],"id":"messages_wvW4G"},"time":0,"type":"passed","id":"test_XTWJH"}],"properties":{"values":[],"id":"properties_3lejU"},"id":"suite_CHMXO"}]
 function addClass(element, className) {
     if (element)
         element.className = element.className + ' ' + className
@@ -1804,18 +1804,6 @@ function forEachTest(callback) {
     })
 }
 
-function hideTests(button) {
-    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
-    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
-    forEachTest(function(test) {
-        var testElement = document.getElementById(test.id)
-        if (isHidden)
-            removeClass(testElement, 'hidden')
-        else
-            addClass(testElement, 'hidden')
-    })
-}
-
 function contractTests(button) {
     var isContracted = button.innerHTML.indexOf('EXPAND') !== -1
     button.innerHTML = isContracted ? 'CONTRACT ALL' : 'EXPAND ALL'
@@ -1831,6 +1819,18 @@ function contractTests(button) {
             replaceClass(testButton, 'flat', 'round')
             addClass(testContent, 'contracted')
         }
+    })
+}
+
+function hideTests(button) {
+    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
+    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
+    forEachTest(function(test) {
+        var testElement = document.getElementById(test.id)
+        if (isHidden)
+            removeClass(testElement, 'hidden')
+        else
+            addClass(testElement, 'hidden')
     })
 }
 
@@ -1868,6 +1868,51 @@ function searchTests(value) {
         if (inSearch)
             removeClass(testElement, 'not_in_search')
     })
+}
+
+// Properties
+
+function contractProperties(button) {
+    var isContracted = button.innerHTML.indexOf('EXPAND') !== -1
+    button.innerHTML = isContracted ? 'CONTRACT ALL' : 'EXPAND ALL'
+
+    suites
+        .filter(function(suite) {
+            return suite.properties.values.length > 0
+        })
+        .forEach(function(suite) {
+            var propertiesElement = document.getElementById(suite.properties.id)
+            var propertiesButton = propertiesElement.children[0]
+            var propertiesContent = propertiesElement.children[1]
+
+            if (isContracted) {
+                replaceClass(propertiesButton, 'round', 'flat')
+                removeClass(propertiesContent, 'contracted')
+            } else {
+                replaceClass(propertiesButton, 'flat', 'round')
+                addClass(propertiesContent, 'contracted')
+            }
+        })
+}
+
+function hideProperties(button) {
+    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
+    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
+    suites
+        .filter(function(suite) {
+            return suite.properties.values.length > 0
+        })
+        .forEach(function(suite) {
+            var propertiesElement = document.getElementById(suite.properties.id)
+            if (isHidden)
+                removeClass(propertiesElement, 'hidden')
+            else
+                addClass(propertiesElement, 'hidden')
+        })
+}
+
+function searchProperties(button) {
+
 }
 
     </script>

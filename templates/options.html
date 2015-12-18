@@ -33,11 +33,11 @@
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
-                    <input placeholder="propety keys and values" type="text" class="options_search__input" oninput="cta.search.properties(this.value)"></input>
+                    <input placeholder="propety keys and values" type="text" class="options_search__input" oninput="searchProperties(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-half column button-primary" onclick="cta.hide.properties(this)">HIDE ALL</button>
-                    <button class="one-half column button-primary" onclick="cta.contract.global.properties(this)">CONTRACT ALL</button>
+                    <button class="one-half column button-primary" onclick="hideProperties(this)">HIDE ALL</button>
+                    <button class="one-half column button-primary" onclick="contractProperties(this)">CONTRACT ALL</button>
                 </div>
             </div>
         </div>
