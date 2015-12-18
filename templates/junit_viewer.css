@@ -161,14 +161,11 @@ h1 {
     border-radius: 4px;
 }
 
-.hide--searching,
-.hide--local,
-.hide--global,
-.hide--global_hide_passing,
-.hide--global_hide_all {
-    display: none;
-}
-
 .suite__info {
     margin-right: 10px;
+}
+
+.contracted,
+.hidden {
+    display: none;
 }

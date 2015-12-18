@@ -1286,16 +1286,13 @@ there.
     border-radius: 4px;
 }
 
-.hide--searching,
-.hide--local,
-.hide--global,
-.hide--global_hide_passing,
-.hide--global_hide_all {
-    display: none;
-}
-
 .suite__info {
     margin-right: 10px;
+}
+
+.contracted,
+.hidden {
+    display: none;
 }
 </style>
 </head>
@@ -1348,8 +1345,8 @@ there.
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="suite_yPg5O">
-    <button class="suite--passed u-full-width flat" onclick="cta.contract.local.suite(this.parentElement)">
+    <div class="row offset-by-one ten columns"><div class="suite" id="suite_SwgIz">
+    <button class="suite--passed u-full-width flat" onclick="toggle(this.parentElement)">
         <span class="suite__name u-pull-left">SUITE ONE</span>
         <span class="suite__info u-pull-right">tests: 10</span>
 <span class="suite__info u-pull-right">errors: 7</span>
@@ -1358,48 +1355,48 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_lyGtw">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <div class="test" id="test_O6sNO">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the first test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
     
 </div>
 
-<div class="test" id="test_KTn39">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_GM09X">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the second test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
     
 </div>
 
-<div class="test" id="test_5Wg6Q">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_yJMMf">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the third test</span>
         <span class="u-pull-right">TIME: 0.012</span>
     </button>
     
 </div>
 
-<div class="test" id="test_dVXd9">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_LoVLz">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the fouth test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
     
 </div>
 
-<div class="test" id="test_yRkCi">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_HFKTm">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the fifth test</span>
         <span class="u-pull-right">TIME: 0.002</span>
     </button>
     
 </div>
 
-<div class="test" id="test_hx2oy">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_r3w2r">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the sixt test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
@@ -1409,8 +1406,8 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_t9PNk">
-    <button class="suite--passed u-full-width flat" onclick="cta.contract.local.suite(this.parentElement)">
+<div class="suite" id="suite_zj7rt">
+    <button class="suite--passed u-full-width flat" onclick="toggle(this.parentElement)">
         <span class="suite__name u-pull-left">SUITE TWO</span>
         <span class="suite__info u-pull-right">tests: 6</span>
 <span class="suite__info u-pull-right">errors: 0</span>
@@ -1419,48 +1416,48 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_oqydx">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+        <div class="test" id="test_N0UXO">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the first test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
     
 </div>
 
-<div class="test" id="test_UXZwR">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_ZqA1q">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the second test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
     
 </div>
 
-<div class="test" id="test_mFSiD">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_iUr8Q">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the third test</span>
         <span class="u-pull-right">TIME: 0.012</span>
     </button>
     
 </div>
 
-<div class="test" id="test_8vJBf">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_rG7p3">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the fouth test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
     
 </div>
 
-<div class="test" id="test_R0jeP">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_fClsQ">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the fifth test</span>
         <span class="u-pull-right">TIME: 0.002</span>
     </button>
     
 </div>
 
-<div class="test" id="test_9GTxv">
-    <button class="test__name test--passed u-full-width " onclick="cta.contract.local.test(this.parentElement)">
+<div class="test" id="test_Zvl9i">
+    <button class="test__name test--passed u-full-width " onclick="toggle(this.parentElement)">
         <span class="u-pull-left">the sixt test</span>
         <span class="u-pull-right">TIME: 0.001</span>
     </button>
@@ -1472,217 +1469,22 @@ there.
 </div>
     <script type="text/javascript">
         module = {} //this is entirely for testing with jest
-        var suites = [{"name":"SUITE ONE","type":"passed","tests":"10","errors":"7","failures":"2","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_JqxQw"},"time":"0.001","type":"passed","id":"test_lyGtw"},{"name":"the second test","messages":{"values":[],"id":"messages_HN7Fv"},"time":"0.001","type":"passed","id":"test_KTn39"},{"name":"the third test","messages":{"values":[],"id":"messages_kh182"},"time":"0.012","type":"passed","id":"test_5Wg6Q"},{"name":"the fouth test","messages":{"values":[],"id":"messages_gKWQE"},"time":"0.001","type":"passed","id":"test_dVXd9"},{"name":"the fifth test","messages":{"values":[],"id":"messages_yMAon"},"time":"0.002","type":"passed","id":"test_yRkCi"},{"name":"the sixt test","messages":{"values":[],"id":"messages_KyvQi"},"time":"0.001","type":"passed","id":"test_hx2oy"}],"properties":{"values":[],"id":"properties_ZVinh"},"id":"suite_yPg5O"},{"name":"SUITE TWO","type":"passed","tests":"6","errors":"0","failures":"0","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_zpuTi"},"time":"0.001","type":"passed","id":"test_oqydx"},{"name":"the second test","messages":{"values":[],"id":"messages_oIwwA"},"time":"0.001","type":"passed","id":"test_UXZwR"},{"name":"the third test","messages":{"values":[],"id":"messages_u2aLo"},"time":"0.012","type":"passed","id":"test_mFSiD"},{"name":"the fouth test","messages":{"values":[],"id":"messages_UyOTs"},"time":"0.001","type":"passed","id":"test_8vJBf"},{"name":"the fifth test","messages":{"values":[],"id":"messages_QSaet"},"time":"0.002","type":"passed","id":"test_R0jeP"},{"name":"the sixt test","messages":{"values":[],"id":"messages_Mnbxs"},"time":"0.001","type":"passed","id":"test_9GTxv"}],"properties":{"values":[],"id":"properties_IEQw1"},"id":"suite_t9PNk"}]
-function createToggleDisplay(by) {
-    return function(element) {
-        var isHidden = element.className.indexOf(' hide--' + by) !== -1
-        if (isHidden)
-            element.className = element.className.replace(' hide--' + by, '')
-        else
-            element.className = element.className + ' hide--' + by
-        return !isHidden
-    }
-}
+        var suites = [{"name":"SUITE ONE","type":"passed","tests":"10","errors":"7","failures":"2","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_YaCrK"},"time":"0.001","type":"passed","id":"test_O6sNO"},{"name":"the second test","messages":{"values":[],"id":"messages_lAUxx"},"time":"0.001","type":"passed","id":"test_GM09X"},{"name":"the third test","messages":{"values":[],"id":"messages_5OhIm"},"time":"0.012","type":"passed","id":"test_yJMMf"},{"name":"the fouth test","messages":{"values":[],"id":"messages_RDlNt"},"time":"0.001","type":"passed","id":"test_LoVLz"},{"name":"the fifth test","messages":{"values":[],"id":"messages_CRPQv"},"time":"0.002","type":"passed","id":"test_HFKTm"},{"name":"the sixt test","messages":{"values":[],"id":"messages_o4xhF"},"time":"0.001","type":"passed","id":"test_r3w2r"}],"properties":{"values":[],"id":"properties_4pXjg"},"id":"suite_SwgIz"},{"name":"SUITE TWO","type":"passed","tests":"6","errors":"0","failures":"0","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_BV3QP"},"time":"0.001","type":"passed","id":"test_N0UXO"},{"name":"the second test","messages":{"values":[],"id":"messages_0pWi9"},"time":"0.001","type":"passed","id":"test_ZqA1q"},{"name":"the third test","messages":{"values":[],"id":"messages_xzarf"},"time":"0.012","type":"passed","id":"test_iUr8Q"},{"name":"the fouth test","messages":{"values":[],"id":"messages_LmDAs"},"time":"0.001","type":"passed","id":"test_rG7p3"},{"name":"the fifth test","messages":{"values":[],"id":"messages_x469C"},"time":"0.002","type":"passed","id":"test_fClsQ"},{"name":"the sixt test","messages":{"values":[],"id":"messages_HtmLS"},"time":"0.001","type":"passed","id":"test_Zvl9i"}],"properties":{"values":[],"id":"properties_2xUae"},"id":"suite_zj7rt"}]
+function toggle(element) {
+    var button = element.children[0]
 
-function toggleCorners(element, isHidden) {
-    if (isHidden) {
-        element.className = element.className.replace(' flat', '')
-        element.className = element.className + ' round'
+    var suiteContent = element.children[1]
+    var isContracted = suiteContent.className.indexOf('contracted') !== -1
+
+    if (isContracted) {
+        button.className = button.className.replace('round', 'flat')
+        suiteContent.className = suiteContent.className.replace(' contracted', '')
     } else {
-        element.className = element.className.replace(' round', '')
-        element.className = element.className + ' flat'
+        button.className = button.className.replace('flat', 'round')
+        suiteContent.className = suiteContent.className + ' contracted'
     }
 }
 
-var toggleBy = {
-    global_hide_passing: createToggleDisplay('global_hide_passing'),
-    global_hide_all: createToggleDisplay('global_hide_all'),
-    local: createToggleDisplay('local'),
-    global: createToggleDisplay('global')
-}
-
-function contract(element, by) {
-    if (element.children[1]) {
-        var isHidden = toggleBy[by](element.children[1])
-        toggleCorners(element.children[0], isHidden)
-    }
-}
-
-function forEachSuite(callback) {
-    suites.forEach(callback)
-}
-
-function forEachTest(callback) {
-    forEachSuite(function(suite) {
-        suite.testCases.forEach(function(test) {
-            callback(test, suite)
-        })
-    })
-}
-
-function forEachProperties(callback) {
-    forEachSuite(function(suite) {
-        if (suite.properties)
-            callback(suite.properties, suite)
-    })
-}
-
-var cta = {
-    hide: {
-        passing: {
-            suites: function(element) {
-                var isHidden = element.innerHTML.indexOf('HIDE') !== -1
-                element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' PASSING'
-                forEachSuite(function(suite) {
-                    if (suite.type === 'passed') {
-                        var suiteElement = document.getElementById(suite.id)
-                        toggleBy.global_hide_passing(suiteElement);
-                    }
-                })
-            },
-            tests: function(element) {
-                var isHidden = element.innerHTML.indexOf('HIDE') !== -1
-                element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' PASSING'
-                forEachTest(function(test) {
-                    if (test.type === 'passed') {
-                        var testElement = document.getElementById(test.id)
-                        toggleBy.global_hide_passing(testElement);
-                    }
-                })
-            }
-        },
-        tests: function(element) {
-            var isHidden = element.innerHTML.indexOf('HIDE') !== -1
-            element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
-            forEachTest(function(test) {
-                var testElement = document.getElementById(test.id)
-                toggleBy.global_hide_all(testElement);
-            })
-        },
-        properties: function(element) {
-            var isHidden = element.innerHTML.indexOf('HIDE') !== -1
-            element.innerHTML = (isHidden ? 'SHOW' : 'HIDE') + ' ALL'
-            forEachProperties(function(properties) {
-                if (properties.values.length > 1) {
-                    var propertiesElement = document.getElementById(properties.id)
-                    toggleBy.global_hide_all(propertiesElement);
-                } else {
-                    properties.values.forEach(function(value) {
-                        var propertiesElement = document.getElementById(value.id)
-                        toggleBy.global_hide_all(propertiesElement);
-                    })
-                }
-            })
-        }
-    },
-
-    contract: {
-        local: {
-            suite: function(element) {
-                contract(element, 'local')
-            },
-            test: function(element) {
-                contract(element, 'local')
-            },
-            properties: function(element) {
-                contract(element, 'local')
-            },
-            option: function(element) {
-                contract(element, 'local')
-            }
-        },
-        global: {
-            suites: function(element) {
-                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
-                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
-                forEachSuite(function(suite) {
-                    var suiteElement = document.getElementById(suite.id)
-                    contract(suiteElement, 'global')
-                })
-            },
-            tests: function(element) {
-                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
-                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
-                forEachTest(function(test) {
-                    var testElement = document.getElementById(test.id)
-                    contract(testElement, 'global')
-                })
-            },
-            properties: function(element) {
-                var isHidden = element.innerHTML.indexOf('CONTRACT') !== -1
-                element.innerHTML = (isHidden ? 'EXPAND' : 'CONTRACT') + ' ALL'
-
-                forEachProperties(function(properties) {
-                    if (properties.values.length > 1) {
-                        var propertiesElement = document.getElementById(properties.id)
-                        contract(propertiesElement, 'global')
-                    } else {
-                        properties.values.forEach(function(value) {
-                            var propertiesElement = document.getElementById(value.id)
-                            contract(propertiesElement, 'global')
-                        })
-                    }
-                })
-            }
-        }
-    },
-    search: {
-        suites: function(value) {
-            value = value.toUpperCase()
-            forEachSuite(function(suite) {
-                var suiteElement = document.getElementById(suite.id)
-                var isNotHidden = suiteElement.className.indexOf('hide--searching') === -1
-                if (value === '')
-                    suiteElement.className = suiteElement.className.replace(' hide--searching', '')
-                else if (suite.name.toUpperCase().indexOf(value) !== -1)
-                    suiteElement.className = suiteElement.className.replace(' hide--searching', '')
-                else if (isNotHidden)
-                    suiteElement.className = suiteElement.className + ' hide--searching'
-            })
-        },
-        tests: function(value) {
-            value = value.toUpperCase()
-            forEachTest(function(test) {
-                var testElement = document.getElementById(test.id)
-                var isNotHidden = testElement.className.indexOf('hide--searching') === -1
-                if (value === '')
-                    testElement.className = testElement.className.replace(' hide--searching', '')
-                else if (test.messages) {
-                    test.messages.forEach(function(message) {
-                        if (message.message.toUpperCase().indexOf(value) !== -1)
-                            testElement.className = testElement.className.replace(' hide--searching', '')
-                        else if (isNotHidden)
-                            testElement.className = testElement.className + ' hide--searching'
-                    })
-                } else if (test.name.toUpperCase().indexOf(value) !== -1)
-                    testElement.className = testElement.className.replace(' hide--searching', '')
-                else if (isNotHidden)
-                    testElement.className = testElement.className + ' hide--searching'
-            })
-        },
-        properties: function(value) {
-            value = value.toUpperCase()
-            forEachProperties(function(properties) {
-                properties.values.forEach(function(propertiesValue) {
-                    propertiesValue.props.forEach(function(prop) {
-                        var propElement = document.getElementById(prop.id)
-                        var isNotHidden = propElement.className.indexOf('hide--searching') === -1
-                        if (value === '')
-                            propElement.className = propElement.className.replace(' hide--searching', '')
-                        else if(prop.name.toUpperCase().indexOf(value) !== -1)
-                            propElement.className = propElement.className.replace(' hide--searching', '')
-                        else if(prop.value.toUpperCase().indexOf(value) !== -1)
-                            propElement.className = propElement.className.replace(' hide--searching', '')
-                        else if(isNotHidden)
-                            propElement.className = propElement.className + ' hide--searching'
-                    })
-                })
-            })
-        }
-    }
-}
-
-module.exports = cta
     </script>
 </body>
 
