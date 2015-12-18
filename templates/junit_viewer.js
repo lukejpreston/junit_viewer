@@ -86,9 +86,10 @@ function hideTests(button) {
     forEachTest(function(test) {
         var testElement = document.getElementById(test.id)
 
-        if (isHidden) {
-
-        }
+        if (isHidden)
+            removeClass(testElement, 'hidden')
+        else
+            addClass(testElement, 'hidden')
     })
 }
 
