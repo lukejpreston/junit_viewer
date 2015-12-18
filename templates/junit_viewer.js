@@ -65,6 +65,11 @@ function searchSuites(value) {
     value = value.toUpperCase()
     suites.forEach(function(suite) {
         var suiteElement = document.getElementById(suite.id)
+        if (value === '') {
+            removeClass(suiteElement, 'not_in_search')
+            return
+        }
+
         var inSearch = suite.name.toUpperCase().indexOf(value) !== -1
         var notAlreadySearched = suiteElement.className.indexOf('not_in_search') === -1
         if (!inSearch && notAlreadySearched)
@@ -119,11 +124,31 @@ function hidePassingTests(button) {
         var testElement = document.getElementById(test.id)
         if (isHidden)
             removeClass(testElement, 'hidden')
-        else if(test.type === 'passed')
+        else if (test.type === 'passed')
             addClass(testElement, 'hidden')
     })
 }
 
 function searchTests(value) {
+    value = value.toUpperCase()
+    forEachTest(function(test) {
+        var testElement = document.getElementById(test.id)
+        if (value === '') {
+            removeClass(testElement, 'not_in_search')
+            return
+        }
 
+        var inSearch = test.name.toUpperCase().indexOf(value) !== -1
+        test.messages.values.forEach(function(message) {
+            var isInMessage = message.value.toUpperCase().indexOf(value) !== -1
+            if (isInMessage)
+                inSearch = true
+        })
+
+        var notAlreadySearched = testElement.className.indexOf('not_in_search') === -1
+        if (!inSearch && notAlreadySearched)
+            addClass(testElement, 'not_in_search')
+        if (inSearch)
+            removeClass(testElement, 'not_in_search')
+    })
 }
