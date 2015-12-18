@@ -194,11 +194,24 @@ function hideProperties(button) {
         })
 }
 
-function searchProperties(button) {
+function searchProperties(value) {
     value = value.toUpperCase()
     suites.forEach(function(suite) {
         suite.properties.values.forEach(function(property) {
-            console.log(property.id)
+            var propertyElement = document.getElementById(property.id)
+            if (value === '') {
+                removeClass(propertyElement, 'not_in_search')
+                return
+            }
+
+            var inSearch = property.name.toUpperCase().indexOf(value) !== -1 ||
+                property.value.toUpperCase().indexOf(value) !== -1
+            var notAlreadySearched = propertyElement.className.indexOf('not_in_search') === -1
+            if (!inSearch && notAlreadySearched)
+                addClass(propertyElement, 'not_in_search')
+            if (inSearch)
+                removeClass(propertyElement, 'not_in_search')
+
         })
     })
 }
