@@ -2,7 +2,7 @@ var fs = require('fs'),
     parse = require('./parse'),
     render = require('./render')
 
-var validData = parse(__dirname + '/__tests__/data/complete_multi_suites.xml')
+var validData = parse(__dirname + '/__tests__/data')
 fs.writeFileSync('valid_data.json', JSON.stringify(validData))
 var redneredValidData = render(validData)
 fs.writeFileSync('valid_data.html', redneredValidData)

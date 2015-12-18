@@ -58,12 +58,17 @@ function createError(fileName, message) {
         tests: 0,
         testCases: [{
             name: fileName,
-            messages: [{
-                message: message
-            }],
+            messages: {
+                values: [{
+                    value: message
+                }]
+            },
             time: 0,
             type: 'error'
-        }]
+        }],
+        properties: {
+            values: []
+        }
     }
 }
 
