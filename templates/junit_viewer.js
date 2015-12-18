@@ -1,14 +1,13 @@
 function toggleContraction(element) {
-    var button = element.children[0]
-
+    var suiteButton = element.children[0]
     var suiteContent = element.children[1]
     var isContracted = suiteContent.className.indexOf('contracted') !== -1
 
     if (isContracted) {
-        button.className = button.className.replace('round', 'flat')
+        suiteButton.className = suiteButton.className.replace('round', 'flat')
         suiteContent.className = suiteContent.className.replace(' contracted', '')
     } else {
-        button.className = button.className.replace('flat', 'round')
+        suiteButton.className = suiteButton.className.replace('flat', 'round')
         suiteContent.className = suiteContent.className + ' contracted'
     }
 }
@@ -21,4 +20,23 @@ function toggleHidden(element) {
     } else {
         element.className = element.className + ' hidden'
     }
+}
+
+function contractSuites(button) {
+    var isContracted = button.innerHTML.indexOf('CONTRACT') !== -1
+    button.innerHTML = isContracted ? 'EXPAND ALL' : 'CONTRACT ALL'
+
+    suites.forEach(function(suite) {
+        var suiteElement = document.getElementById(suite.id)
+        var suiteButton = suiteElement.children[0]
+        var suiteContent = suiteElement.children[1]
+
+        if (isContracted) {
+            suiteButton.className = suiteButton.className.replace('flat', 'round')
+            suiteContent.className = suiteContent.className + ' contracted'
+        } else {
+            suiteButton.className = suiteButton.className.replace('round', 'flat')
+            suiteContent.className = suiteContent.className.replace(' contracted', '')
+        }
+    })
 }

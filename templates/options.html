@@ -1,21 +1,21 @@
 <div>
-    <button class="button-primary u-full-width" onclick="cta.contract.local.option(this.parentElement)">ADVANCED SEARCH</button>
-    <div class="options hide--local">
+    <button class="button-primary u-full-width" onclick="toggleContraction(this.parentElement)">ADVANCED SEARCH</button>
+    <div class="options contracted">
         <div class="option">
-            <button class="button-primary u-full-width option__name flat" onclick="cta.contract.local.option(this.parentElement)">SUITES</button>
+            <button class="button-primary u-full-width option__name flat" onclick="toggleContraction(this.parentElement)">SUITES</button>
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
                     <input type="text" class="options_search__input" oninput="cta.search.suites(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-half column button-primary" onclick="cta.hide.passing.suites(this)">HIDE PASSING</button>
-                    <button class="one-half column button-primary" onclick="cta.contract.global.suites(this)">CONTRACT ALL</button>
+                    <button class="one-half column button-primary" onclick="hidePassingSuites(this)">HIDE PASSING</button>
+                    <button class="one-half column button-primary" onclick="contractSuites(this)">CONTRACT ALL</button>
                 </div>
             </div>
         </div>
         <div class="option">
-            <button class="button-primary u-full-width option__name flat" onclick="cta.contract.local.option(this.parentElement)">TESTS</button>
+            <button class="button-primary u-full-width option__name flat" onclick="toggleContraction(this.parentElement)">TESTS</button>
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="option">
-            <button class="button-primary u-full-width option__name flat" onclick="cta.contract.local.option(this.parentElement)">PROPERTIES</button>
+            <button class="button-primary u-full-width option__name flat" onclick="toggleContraction(this.parentElement)">PROPERTIES</button>
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
