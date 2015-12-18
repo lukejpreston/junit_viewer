@@ -195,5 +195,10 @@ function hideProperties(button) {
 }
 
 function searchProperties(button) {
-
+    value = value.toUpperCase()
+    suites.forEach(function(suite) {
+        suite.properties.values.forEach(function(property) {
+            console.log(property.id)
+        })
+    })
 }
