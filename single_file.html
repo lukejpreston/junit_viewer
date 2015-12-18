@@ -1321,12 +1321,12 @@ there.
             <div class="options__cta row">
                 <div class="u-full-width">
                     <button disabled class="options_search__name">SEARCH</button>
-                    <input type="text" class="options_search__input" oninput="cta.search.tests(this.value)"></input>
+                    <input type="text" class="options_search__input" oninput="searchTests(this.value)"></input>
                 </div>
                 <div class="options__buttons">
-                    <button class="one-third column button-primary" onclick="cta.hide.passing.tests(this)">HIDE PASSING</button>
-                    <button class="one-third column button-primary" onclick="cta.hide.tests(this)">HIDE ALL</button>
-                    <button class="one-third column button-primary" onclick="cta.contract.global.tests(this)">CONTRACT ALL</button>
+                    <button class="one-third column button-primary" onclick="hidePassingTests(this)">HIDE PASSING</button>
+                    <button class="one-third column button-primary" onclick="hideTests(this)">HIDE ALL</button>
+                    <button class="one-third column button-primary" onclick="contractTests(this)">CONTRACT ALL</button>
                 </div>
             </div>
         </div>
@@ -1346,7 +1346,7 @@ there.
     </div>
 </div>
 </div>
-    <div class="row offset-by-one ten columns"><div class="suite" id="suite_V9hGe">
+    <div class="row offset-by-one ten columns"><div class="suite" id="suite_kq5D3">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">SUITE ONE</span>
         <span class="suite__info u-pull-right">tests: 10</span>
@@ -1356,7 +1356,7 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_1cwbl">
+        <div class="test" id="test_7GORI">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the first test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1364,7 +1364,7 @@ there.
     
 </div>
 
-<div class="test" id="test_FU0AU">
+<div class="test" id="test_0GBJD">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the second test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1372,7 +1372,7 @@ there.
     
 </div>
 
-<div class="test" id="test_RdaOl">
+<div class="test" id="test_ysdco">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the third test</span>
         <span class="u-pull-right">TIME: 0.012</span>
@@ -1380,7 +1380,7 @@ there.
     
 </div>
 
-<div class="test" id="test_vSUtT">
+<div class="test" id="test_vrVw2">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the fouth test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1388,7 +1388,7 @@ there.
     
 </div>
 
-<div class="test" id="test_8BLJU">
+<div class="test" id="test_IAzj8">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the fifth test</span>
         <span class="u-pull-right">TIME: 0.002</span>
@@ -1396,7 +1396,7 @@ there.
     
 </div>
 
-<div class="test" id="test_5Zrei">
+<div class="test" id="test_CSxwn">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the sixt test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1407,7 +1407,7 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_16dTg">
+<div class="suite" id="suite_cQgy2">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">SUITE TWO</span>
         <span class="suite__info u-pull-right">tests: 6</span>
@@ -1417,7 +1417,7 @@ there.
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_2Wqp7">
+        <div class="test" id="test_alSgh">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the first test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1425,7 +1425,7 @@ there.
     
 </div>
 
-<div class="test" id="test_oP5UO">
+<div class="test" id="test_zX6Xz">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the second test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1433,7 +1433,7 @@ there.
     
 </div>
 
-<div class="test" id="test_iTocW">
+<div class="test" id="test_f9eKA">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the third test</span>
         <span class="u-pull-right">TIME: 0.012</span>
@@ -1441,7 +1441,7 @@ there.
     
 </div>
 
-<div class="test" id="test_0v43B">
+<div class="test" id="test_6LSN1">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the fouth test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1449,7 +1449,7 @@ there.
     
 </div>
 
-<div class="test" id="test_mFU1h">
+<div class="test" id="test_7DqCY">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the fifth test</span>
         <span class="u-pull-right">TIME: 0.002</span>
@@ -1457,7 +1457,7 @@ there.
     
 </div>
 
-<div class="test" id="test_YFvK6">
+<div class="test" id="test_b3nV8">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">the sixt test</span>
         <span class="u-pull-right">TIME: 0.001</span>
@@ -1470,30 +1470,34 @@ there.
 </div>
     <script type="text/javascript">
         module = {} //this is entirely for testing with jest
-        var suites = [{"name":"SUITE ONE","type":"passed","tests":"10","errors":"7","failures":"2","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_MT4Dr"},"time":"0.001","type":"passed","id":"test_1cwbl"},{"name":"the second test","messages":{"values":[],"id":"messages_ga3cX"},"time":"0.001","type":"passed","id":"test_FU0AU"},{"name":"the third test","messages":{"values":[],"id":"messages_ApMHQ"},"time":"0.012","type":"passed","id":"test_RdaOl"},{"name":"the fouth test","messages":{"values":[],"id":"messages_rfBCA"},"time":"0.001","type":"passed","id":"test_vSUtT"},{"name":"the fifth test","messages":{"values":[],"id":"messages_mwoGB"},"time":"0.002","type":"passed","id":"test_8BLJU"},{"name":"the sixt test","messages":{"values":[],"id":"messages_P4J0m"},"time":"0.001","type":"passed","id":"test_5Zrei"}],"properties":{"values":[],"id":"properties_3lY6M"},"id":"suite_V9hGe"},{"name":"SUITE TWO","type":"passed","tests":"6","errors":"0","failures":"0","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_oJUBu"},"time":"0.001","type":"passed","id":"test_2Wqp7"},{"name":"the second test","messages":{"values":[],"id":"messages_y10Ut"},"time":"0.001","type":"passed","id":"test_oP5UO"},{"name":"the third test","messages":{"values":[],"id":"messages_4An9U"},"time":"0.012","type":"passed","id":"test_iTocW"},{"name":"the fouth test","messages":{"values":[],"id":"messages_2FDeC"},"time":"0.001","type":"passed","id":"test_0v43B"},{"name":"the fifth test","messages":{"values":[],"id":"messages_SExnv"},"time":"0.002","type":"passed","id":"test_mFU1h"},{"name":"the sixt test","messages":{"values":[],"id":"messages_mWMDO"},"time":"0.001","type":"passed","id":"test_YFvK6"}],"properties":{"values":[],"id":"properties_Glcem"},"id":"suite_16dTg"}]
+        var suites = [{"name":"SUITE ONE","type":"passed","tests":"10","errors":"7","failures":"2","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_2Ehhq"},"time":"0.001","type":"passed","id":"test_7GORI"},{"name":"the second test","messages":{"values":[],"id":"messages_yf42e"},"time":"0.001","type":"passed","id":"test_0GBJD"},{"name":"the third test","messages":{"values":[],"id":"messages_L2JXb"},"time":"0.012","type":"passed","id":"test_ysdco"},{"name":"the fouth test","messages":{"values":[],"id":"messages_oZfLX"},"time":"0.001","type":"passed","id":"test_vrVw2"},{"name":"the fifth test","messages":{"values":[],"id":"messages_Sgna1"},"time":"0.002","type":"passed","id":"test_IAzj8"},{"name":"the sixt test","messages":{"values":[],"id":"messages_ZdUkY"},"time":"0.001","type":"passed","id":"test_CSxwn"}],"properties":{"values":[],"id":"properties_AigZY"},"id":"suite_kq5D3"},{"name":"SUITE TWO","type":"passed","tests":"6","errors":"0","failures":"0","time":"0.021","testCases":[{"name":"the first test","messages":{"values":[],"id":"messages_G5KIg"},"time":"0.001","type":"passed","id":"test_alSgh"},{"name":"the second test","messages":{"values":[],"id":"messages_0cAy6"},"time":"0.001","type":"passed","id":"test_zX6Xz"},{"name":"the third test","messages":{"values":[],"id":"messages_U13uh"},"time":"0.012","type":"passed","id":"test_f9eKA"},{"name":"the fouth test","messages":{"values":[],"id":"messages_ODeny"},"time":"0.001","type":"passed","id":"test_6LSN1"},{"name":"the fifth test","messages":{"values":[],"id":"messages_kPd4E"},"time":"0.002","type":"passed","id":"test_7DqCY"},{"name":"the sixt test","messages":{"values":[],"id":"messages_laYSU"},"time":"0.001","type":"passed","id":"test_b3nV8"}],"properties":{"values":[],"id":"properties_VniXz"},"id":"suite_cQgy2"}]
+function addClass(element, className) {
+    element.className = element.className + ' ' + className
+}
+
+function removeClass(element, className) {
+    element.className = element.className.replace(' ' + className, '')
+}
+
+function replaceClass(element, fromClassName, toClassName) {
+    element.className = element.className.replace(fromClassName, toClassName)
+}
+
 function toggleContraction(element) {
     var suiteButton = element.children[0]
     var suiteContent = element.children[1]
     var isContracted = suiteContent.className.indexOf('contracted') !== -1
 
     if (isContracted) {
-        suiteButton.className = suiteButton.className.replace('round', 'flat')
-        suiteContent.className = suiteContent.className.replace(' contracted', '')
+        replaceClass(suiteButton, 'round', 'flat')
+        removeClass(suiteContent, 'contracted')
     } else {
-        suiteButton.className = suiteButton.className.replace('flat', 'round')
-        suiteContent.className = suiteContent.className + ' contracted'
+        replaceClass(suiteButton, 'flat', 'round')
+        addClass(suiteContent, 'contracted')
     }
 }
 
-function toggleHidden(element) {
-    var isHidden = element.className.indexOf('hidden') !== -1
-
-    if (isHidden) {
-        element.className = element.className.replace(' hidden', '')
-    } else {
-        element.className = element.className + ' hidden'
-    }
-}
+// SUITES
 
 function contractSuites(button) {
     var isContracted = button.innerHTML.indexOf('EXPAND') !== -1
@@ -1505,11 +1509,11 @@ function contractSuites(button) {
         var suiteContent = suiteElement.children[1]
 
         if (isContracted) {
-            suiteButton.className = suiteButton.className.replace('round', 'flat')
-            suiteContent.className = suiteContent.className.replace(' contracted', '')
+            replaceClass(suiteButton, 'round', 'flat')
+            removeClass(suiteContent, 'contracted')
         } else {
-            suiteButton.className = suiteButton.className.replace('flat', 'round')
-            suiteContent.className = suiteContent.className + ' contracted'
+            replaceClass(suiteButton, 'flat', 'round')
+            addClass(suiteContent, 'contracted')
         }
     })
 }
@@ -1521,9 +1525,9 @@ function hidePassingSuites(button) {
     suites.forEach(function(suite) {
         var suiteElement = document.getElementById(suite.id)
         if (isHidden)
-            suiteElement.className = suiteElement.className.replace(' hidden', '')
+            removeClass(suiteElement, 'hidden')
         else if (suite.type === 'passed')
-            suiteElement.className = 'suite hidden'
+            addClass(suiteElement, 'hidden')
     })
 }
 
@@ -1533,14 +1537,44 @@ function searchSuites(value) {
         var suiteElement = document.getElementById(suite.id)
         var inSearch = suite.name.toUpperCase().indexOf(value) !== -1
         var notAlreadySearched = suiteElement.className.indexOf('not_in_search') === -1
-        if (!inSearch && notAlreadySearched) {
-            suiteElement.className = suiteElement.className + ' not_in_search'
-        }
+        if (!inSearch && notAlreadySearched)
+            addClass(suiteElement, 'not_in_search')
+        if (inSearch)
+            removeClass(suiteElement, 'not_in_search')
+    })
+}
 
-        if (inSearch) {
-            suiteElement.className = suiteElement.className.replace(' not_in_search', '')
+// TESTS
+
+function forEachTest(callback) {
+    suites.forEach(function(suite) {
+        suite.testCases.forEach(callback)
+    })
+}
+
+function hideTests(button) {
+    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
+    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
+
+    forEachTest(function(test) {
+        var testElement = document.getElementById(test.id)
+
+        if (isHidden) {
+
         }
     })
+}
+
+function contractTests(button) {
+
+}
+
+function hidePassingTests(button) {
+
+}
+
+function searchTests(value) {
+
 }
 
     </script>
