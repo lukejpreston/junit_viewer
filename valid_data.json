@@ -1,1 +1,386 @@
-{"title":"complete_multi_suites.xml","suites":[{"name":"bacon","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"bacon 1","messages":{"values":[{"value":"inner massage","id":"message_Cgw0l"}],"id":"messages_8cVya"},"time":"0.001","type":"passed","id":"test_YPzKZ"},{"name":"bacon 2","messages":{"values":[{"value":"inner massage","id":"message_1VpKK"}],"id":"messages_VEipE"},"time":"0.001","type":"error","id":"test_zMa0I"},{"name":"bacon 3","messages":{"values":[{"value":"inner massage","id":"message_sNac2"}],"id":"messages_c8hMt"},"time":"0.001","type":"skipped","id":"test_GDEpg"},{"name":"bacon 4","messages":{"values":[{"value":"inner massage","id":"message_kA8rB"}],"id":"messages_LbIlb"},"time":"0.001","type":"failure","id":"test_BrsU0"},{"name":"bacon 5","messages":{"values":[{"value":"inner message","id":"message_b7FIB"}],"id":"messages_7IJgz"},"time":"0.001","type":"passed","id":"test_KcTgM"},{"name":"bacon 6","messages":{"values":[],"id":"messages_j5Pbw"},"time":"0.001","type":"passed","id":"test_15K4y"},{"name":"bacon 7","messages":{"values":[{"value":"inner massage","id":"message_ApjuA"},{"value":"inner massage","id":"message_uX2p6"}],"id":"messages_c3Mf4"},"time":0,"type":"error","id":"test_AVslE"},{"name":"bacon 8","messages":{"values":[{"value":"type message","id":"message_4f47R"}],"id":"messages_Juty3"},"time":0,"type":"failure","id":"test_8dZiR"},{"name":"bacon 9","messages":{"values":[{"value":"message","id":"message_IjqK6"}],"id":"messages_zRuPH"},"time":0,"type":"skipped","id":"test_LSfnQ"},{"name":"bacon 10","messages":{"values":[{"value":"type","id":"message_ZxIA3"}],"id":"messages_LLQYM"},"time":0,"type":"skipped","id":"test_51QWw"},{"name":"bacon 11","messages":{"values":[{"value":"<i>inner</i><b>message</b>","id":"message_2FGbD"}],"id":"messages_4Y3gU"},"time":0,"type":"error","id":"test_r19df"},{"name":"bacon 12","messages":{"values":[{"value":"<i>type</i> <b>message</b>","id":"message_2tTEI"}],"id":"messages_GLfsX"},"time":0,"type":"failure","id":"test_USOcW"}],"properties":{"values":[{"name":"x","value":"y","id":"property_zHlpG"},{"name":"a","value":"b","id":"property_jZGV2"},{"name":"c","value":"d","id":"property_7bBBp"}],"id":"properties_UpkiX"},"id":"suite_Rwbek"},{"name":"not bacon","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"bacon 2","messages":{"values":[{"value":"inner massage","id":"message_j9QEu"}],"id":"messages_Ll10k"},"time":"0.001","type":"error","id":"test_rSV0s"}],"properties":{"values":[{"name":"x","value":"y","id":"property_zHlpG"},{"name":"a","value":"b","id":"property_jZGV2"},{"name":"c","value":"d","id":"property_7bBBp"}],"id":"properties_Yo6iU"},"id":"suite_72QYK"},{"name":"one thing","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_lcDxK"}],"id":"messages_GgE0o"},"time":"0.001","type":"error","id":"test_RF3Ze"}],"properties":{"values":[{"name":"c","value":"d","id":"property_yQhdc"}],"id":"properties_YsSrq"},"id":"suite_dMaag"},{"name":"suite name","type":"failure","tests":"777","errors":"666","failures":"888","time":"0.021","testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_Jlf9b"}],"id":"messages_hNYRE"},"time":"0.001","type":"error","id":"test_RcZKd"}],"properties":{"values":[],"id":"properties_EgwAu"},"id":"suite_QVfh0"},{"name":"no key values","type":"failure","tests":0,"errors":0,"failures":0,"time":0,"testCases":[{"name":"test name","messages":{"values":[{"value":"inner massage","id":"message_vYy5q"}],"id":"messages_QFakW"},"time":"0.001","type":"error","id":"test_WQBy4"}],"properties":{"values":[],"id":"properties_ezNYY"},"id":"suite_TtsD3"},{"name":"NO CLASSNAME OR SUITE NAME","type":"failure","tests":0,"errors":0,"failures":0,"time":0,"testCases":[{"name":"I have no class name","messages":{"values":[{"value":"inner massage","id":"message_O20xf"}],"id":"messages_cL3ft"},"time":"0.001","type":"error","id":"test_9lCLG"}],"properties":{"values":[],"id":"properties_48QFr"},"id":"suite_zYia9"},{"name":"parent","type":"passed","testCases":[{"name":"parent test","messages":{"values":[],"id":"messages_TaAIi"},"time":0,"type":"passed","id":"test_Wb8rM"}],"properties":{"values":[],"id":"properties_ijRMw"},"id":"suite_45d5j"},{"name":"parent child one","type":"passed","testCases":[{"name":"child one test","messages":{"values":[],"id":"messages_q7iTB"},"time":0,"type":"passed","id":"test_XXL5E"}],"properties":{"values":[],"id":"properties_qgZn3"},"id":"suite_FECg0"},{"name":"parent child two","type":"passed","testCases":[{"name":"child two test","messages":{"values":[],"id":"messages_d8aBk"},"time":0,"type":"passed","id":"test_1iVqg"}],"properties":{"values":[],"id":"properties_kLutT"},"id":"suite_vHv3W"},{"name":"parent child two child of child two","type":"passed","testCases":[{"name":"child of child two test","messages":{"values":[],"id":"messages_r5SFg"},"time":0,"type":"passed","id":"test_L297L"}],"properties":{"values":[],"id":"properties_UuRIw"},"id":"suite_Ust8N"}]}
+{
+    "title": "complete_multi_suites.xml",
+    "suites": [{
+        "name": "bacon",
+        "type": "failure",
+        "tests": "777",
+        "errors": "666",
+        "failures": "888",
+        "time": "0.021",
+        "testCases": [{
+            "name": "bacon 1",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_xVMZq"
+                }],
+                "id": "messages_i2yof"
+            },
+            "time": "0.001",
+            "type": "passed",
+            "id": "test_2gHH8"
+        }, {
+            "name": "bacon 2",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_xxdl0"
+                }],
+                "id": "messages_JQ2hw"
+            },
+            "time": "0.001",
+            "type": "error",
+            "id": "test_ojDgW"
+        }, {
+            "name": "bacon 3",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_qxvBu"
+                }],
+                "id": "messages_Hvj4c"
+            },
+            "time": "0.001",
+            "type": "skipped",
+            "id": "test_z0TLR"
+        }, {
+            "name": "bacon 4",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_AmdjN"
+                }],
+                "id": "messages_GwyBQ"
+            },
+            "time": "0.001",
+            "type": "failure",
+            "id": "test_e8SDw"
+        }, {
+            "name": "bacon 5",
+            "messages": {
+                "values": [{
+                    "value": "inner message",
+                    "id": "message_Wo7KH"
+                }],
+                "id": "messages_z8Avl"
+            },
+            "time": "0.001",
+            "type": "passed",
+            "id": "test_ZPn4p"
+        }, {
+            "name": "bacon 6",
+            "messages": {
+                "values": [],
+                "id": "messages_xY4cB"
+            },
+            "time": "0.001",
+            "type": "passed",
+            "id": "test_PQAv2"
+        }, {
+            "name": "bacon 7",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_2V0f5"
+                }, {
+                    "value": "inner massage",
+                    "id": "message_IGrhh"
+                }],
+                "id": "messages_QdOSw"
+            },
+            "time": 0,
+            "type": "error",
+            "id": "test_GuwYi"
+        }, {
+            "name": "bacon 8",
+            "messages": {
+                "values": [{
+                    "value": "type message",
+                    "id": "message_eHJHH"
+                }],
+                "id": "messages_rdgZI"
+            },
+            "time": 0,
+            "type": "failure",
+            "id": "test_w6erB"
+        }, {
+            "name": "bacon 9",
+            "messages": {
+                "values": [{
+                    "value": "message",
+                    "id": "message_KYJEr"
+                }],
+                "id": "messages_4hPsK"
+            },
+            "time": 0,
+            "type": "skipped",
+            "id": "test_EBxae"
+        }, {
+            "name": "bacon 10",
+            "messages": {
+                "values": [{
+                    "value": "type",
+                    "id": "message_nnGcW"
+                }],
+                "id": "messages_LmDx2"
+            },
+            "time": 0,
+            "type": "skipped",
+            "id": "test_5xSSf"
+        }, {
+            "name": "bacon 11",
+            "messages": {
+                "values": [{
+                    "value": "<i>inner</i><b>message</b>",
+                    "id": "message_ueDt3"
+                }],
+                "id": "messages_5uRB3"
+            },
+            "time": 0,
+            "type": "error",
+            "id": "test_I91lk"
+        }, {
+            "name": "bacon 12",
+            "messages": {
+                "values": [{
+                    "value": "<i>type</i> <b>message</b>",
+                    "id": "message_NHSYq"
+                }],
+                "id": "messages_4CTJG"
+            },
+            "time": 0,
+            "type": "failure",
+            "id": "test_VjFlu"
+        }],
+        "properties": {
+            "values": [{
+                "name": "x",
+                "value": "y",
+                "id": "property_c03HN"
+            }, {
+                "name": "a",
+                "value": "b",
+                "id": "property_iAjml"
+            }, {
+                "name": "c",
+                "value": "d",
+                "id": "property_UkIVC"
+            }],
+            "id": "properties_cGpDD"
+        },
+        "id": "suite_ZRAWv"
+    }, {
+        "name": "not bacon",
+        "type": "failure",
+        "tests": "777",
+        "errors": "666",
+        "failures": "888",
+        "time": "0.021",
+        "testCases": [{
+            "name": "bacon 2",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_DjuMO"
+                }],
+                "id": "messages_LuH79"
+            },
+            "time": "0.001",
+            "type": "error",
+            "id": "test_T9BZT"
+        }],
+        "properties": {
+            "values": [{
+                "name": "x",
+                "value": "y",
+                "id": "property_3yzav"
+            }, {
+                "name": "a",
+                "value": "b",
+                "id": "property_aLXnI"
+            }, {
+                "name": "c",
+                "value": "d",
+                "id": "property_bYcM8"
+            }],
+            "id": "properties_FATES"
+        },
+        "id": "suite_hOIPI"
+    }, {
+        "name": "one thing",
+        "type": "failure",
+        "tests": "777",
+        "errors": "666",
+        "failures": "888",
+        "time": "0.021",
+        "testCases": [{
+            "name": "test name",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_WM7yE"
+                }],
+                "id": "messages_2R3J9"
+            },
+            "time": "0.001",
+            "type": "error",
+            "id": "test_AXnkW"
+        }],
+        "properties": {
+            "values": [{
+                "name": "c",
+                "value": "d",
+                "id": "property_S8D0D"
+            }],
+            "id": "properties_oD0ub"
+        },
+        "id": "suite_c14wX"
+    }, {
+        "name": "suite name",
+        "type": "failure",
+        "tests": "777",
+        "errors": "666",
+        "failures": "888",
+        "time": "0.021",
+        "testCases": [{
+            "name": "test name",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_NZozm"
+                }],
+                "id": "messages_Wctlu"
+            },
+            "time": "0.001",
+            "type": "error",
+            "id": "test_BzCfW"
+        }],
+        "properties": {
+            "values": [],
+            "id": "properties_fhjtf"
+        },
+        "id": "suite_LiOWo"
+    }, {
+        "name": "no key values",
+        "type": "failure",
+        "tests": 0,
+        "errors": 0,
+        "failures": 0,
+        "time": 0,
+        "testCases": [{
+            "name": "test name",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_HfaSE"
+                }],
+                "id": "messages_PxNyo"
+            },
+            "time": "0.001",
+            "type": "error",
+            "id": "test_SgQf1"
+        }],
+        "properties": {
+            "values": [],
+            "id": "properties_mKoxv"
+        },
+        "id": "suite_Xrxx6"
+    }, {
+        "name": "NO CLASSNAME OR SUITE NAME",
+        "type": "failure",
+        "tests": 0,
+        "errors": 0,
+        "failures": 0,
+        "time": 0,
+        "testCases": [{
+            "name": "I have no class name",
+            "messages": {
+                "values": [{
+                    "value": "inner massage",
+                    "id": "message_Cnitz"
+                }],
+                "id": "messages_uEUfA"
+            },
+            "time": "0.001",
+            "type": "error",
+            "id": "test_NKF5U"
+        }],
+        "properties": {
+            "values": [],
+            "id": "properties_Wp3eT"
+        },
+        "id": "suite_crJqX"
+    }, {
+        "name": "parent",
+        "type": "passed",
+        "testCases": [{
+            "name": "parent test",
+            "messages": {
+                "values": [],
+                "id": "messages_vxmCN"
+            },
+            "time": 0,
+            "type": "passed",
+            "id": "test_o8q33"
+        }],
+        "properties": {
+            "values": [],
+            "id": "properties_j1mo3"
+        },
+        "id": "suite_fDGT4"
+    }, {
+        "name": "parent child one",
+        "type": "passed",
+        "testCases": [{
+            "name": "child one test",
+            "messages": {
+                "values": [],
+                "id": "messages_m2O4U"
+            },
+            "time": 0,
+            "type": "passed",
+            "id": "test_aoLAx"
+        }],
+        "properties": {
+            "values": [],
+            "id": "properties_11GNR"
+        },
+        "id": "suite_UscMv"
+    }, {
+        "name": "parent child two",
+        "type": "passed",
+        "testCases": [{
+            "name": "child two test",
+            "messages": {
+                "values": [],
+                "id": "messages_GT0qk"
+            },
+            "time": 0,
+            "type": "passed",
+            "id": "test_VqYFG"
+        }],
+        "properties": {
+            "values": [],
+            "id": "properties_wbOLa"
+        },
+        "id": "suite_diCDx"
+    }, {
+        "name": "parent child two child of child two",
+        "type": "passed",
+        "testCases": [{
+            "name": "child of child two test",
+            "messages": {
+                "values": [],
+                "id": "messages_ENJjG"
+            },
+            "time": 0,
+            "type": "passed",
+            "id": "test_iQ3pu"
+        }],
+        "properties": {
+            "values": [],
+            "id": "properties_x1snA"
+        },
+        "id": "suite_Lm4SM"
+    }]
+}

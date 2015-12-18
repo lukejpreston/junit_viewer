@@ -72,15 +72,14 @@ function parseProperties(suites) {
         var mergedProperties = {
             values: []
         }
-        if (suite.properties && Array.isArray(suite.properties)) {
-            suite.properties.forEach(function(properties) {
-                if (typeof properties !== 'string')
-                    properties.property.forEach(function(property) {
-                        mergedProperties.values.push({
-                            name: property.$.name,
-                            value: property.$.value
-                        })
-                    })
+        if (suite.properties) {
+            suite.properties.forEach(function(property) {
+                var prop = property.property
+                if (prop === undefined)
+                    return
+                prop.forEach(function(p) {
+                    mergedProperties.values.push(p)
+                })
             })
         }
         suite.properties = mergedProperties
@@ -148,20 +147,15 @@ function updateParsedSuite(testSuiteName, suite, test) {
 
     if (!parsedSuites[testSuiteName].hasOwnProperty('properties'))
         parsedSuites[testSuiteName].properties = {
-            values: []
+            values: {}
         }
 
-    var parsedPropertyNames = parsedSuites[testSuiteName].properties.values.map(function(property) {
-        return property.name
-    })
-    var propertyNames = suite.properties.values.map(function(property) {
-        return property.name
-    })
 
-    suite.properties.values.filter(function(property) {
-        return parsedPropertyNames.indexOf(property.name) === -1
-    }).forEach(function(property) {
-        parsedSuites[testSuiteName].properties.values.push(property)
+    suite.properties.values.forEach(function(property) {
+        parsedSuites[testSuiteName].properties.values[property.$.name] = {
+            name: property.$.name,
+            value: property.$.value
+        }
     })
 }
 
@@ -255,6 +249,7 @@ function parseSuites(result, fileName) {
 
     parseProperties(suites)
     parseTests(suites, fileName)
+
     return suites
 }
 
@@ -301,6 +296,12 @@ module.exports = function(fileName) {
 
     parsedSuites = Object.keys(parsedSuites).map(function(key) {
         return parsedSuites[key]
+    })
+
+    parsedSuites.forEach(function(suite) {
+        suite.properties.values = Object.keys(suite.properties.values).map(function(key) {
+            return suite.properties.values[key]
+        })
     })
 
     parsedSuites.forEach(function(suite) {
