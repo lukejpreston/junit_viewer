@@ -1,13 +1,16 @@
 function addClass(element, className) {
-    element.className = element.className + ' ' + className
+    if (element)
+        element.className = element.className + ' ' + className
 }
 
 function removeClass(element, className) {
-    element.className = element.className.replace(' ' + className, '')
+    if (element)
+        element.className = element.className.replace(' ' + className, '')
 }
 
 function replaceClass(element, fromClassName, toClassName) {
-    element.className = element.className.replace(fromClassName, toClassName)
+    if (element)
+        element.className = element.className.replace(fromClassName, toClassName)
 }
 
 function toggleContraction(element) {
@@ -82,10 +85,8 @@ function forEachTest(callback) {
 function hideTests(button) {
     var isHidden = button.innerHTML.indexOf('SHOW') !== -1
     button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
-
     forEachTest(function(test) {
         var testElement = document.getElementById(test.id)
-
         if (isHidden)
             removeClass(testElement, 'hidden')
         else
@@ -94,11 +95,33 @@ function hideTests(button) {
 }
 
 function contractTests(button) {
+    var isContracted = button.innerHTML.indexOf('EXPAND') !== -1
+    button.innerHTML = isContracted ? 'CONTRACT ALL' : 'EXPAND ALL'
+    forEachTest(function(test) {
+        var testElement = document.getElementById(test.id)
+        var testButton = testElement.children[0]
+        var testContent = testElement.children[1]
 
+        if (isContracted) {
+            replaceClass(testButton, 'round', 'flat')
+            removeClass(testContent, 'contracted')
+        } else {
+            replaceClass(testButton, 'flat', 'round')
+            addClass(testContent, 'contracted')
+        }
+    })
 }
 
 function hidePassingTests(button) {
-
+    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
+    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
+    forEachTest(function(test) {
+        var testElement = document.getElementById(test.id)
+        if (isHidden)
+            removeClass(testElement, 'hidden')
+        else if(test.type === 'passed')
+            addClass(testElement, 'hidden')
+    })
 }
 
 function searchTests(value) {
