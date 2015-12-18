@@ -23,8 +23,8 @@ function toggleHidden(element) {
 }
 
 function contractSuites(button) {
-    var isContracted = button.innerHTML.indexOf('CONTRACT') !== -1
-    button.innerHTML = isContracted ? 'EXPAND ALL' : 'CONTRACT ALL'
+    var isContracted = button.innerHTML.indexOf('EXPAND') !== -1
+    button.innerHTML = isContracted ? 'CONTRACT ALL' : 'EXPAND ALL'
 
     suites.forEach(function(suite) {
         var suiteElement = document.getElementById(suite.id)
@@ -32,11 +32,24 @@ function contractSuites(button) {
         var suiteContent = suiteElement.children[1]
 
         if (isContracted) {
-            suiteButton.className = suiteButton.className.replace('flat', 'round')
-            suiteContent.className = suiteContent.className + ' contracted'
-        } else {
             suiteButton.className = suiteButton.className.replace('round', 'flat')
             suiteContent.className = suiteContent.className.replace(' contracted', '')
+        } else {
+            suiteButton.className = suiteButton.className.replace('flat', 'round')
+            suiteContent.className = suiteContent.className + ' contracted'
         }
+    })
+}
+
+function hidePassingSuites(button) {
+    var isHidden = button.innerHTML.indexOf('SHOW') !== -1
+    button.innerHTML = isHidden ? 'HIDE PASSING' : 'SHOW PASSING'
+
+    suites.forEach(function(suite) {
+        var suiteElement = document.getElementById(suite.id)
+        if (isHidden)
+            suiteElement.className = suiteElement.className.replace(' hidden', '')
+        else if(suite.type === 'passed')
+            suiteElement.className = 'suite hidden'
     })
 }
