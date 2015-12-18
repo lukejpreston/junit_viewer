@@ -166,6 +166,7 @@ h1 {
 }
 
 .contracted,
-.hidden {
+.hidden,
+.not_in_search {
     display: none;
 }

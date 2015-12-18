@@ -49,7 +49,23 @@ function hidePassingSuites(button) {
         var suiteElement = document.getElementById(suite.id)
         if (isHidden)
             suiteElement.className = suiteElement.className.replace(' hidden', '')
-        else if(suite.type === 'passed')
+        else if (suite.type === 'passed')
             suiteElement.className = 'suite hidden'
+    })
+}
+
+function searchSuites(value) {
+    value = value.toUpperCase()
+    suites.forEach(function(suite) {
+        var suiteElement = document.getElementById(suite.id)
+        var inSearch = suite.name.toUpperCase().indexOf(value) !== -1
+        var notAlreadySearched = suiteElement.className.indexOf('not_in_search') === -1
+        if (!inSearch && notAlreadySearched) {
+            suiteElement.className = suiteElement.className + ' not_in_search'
+        }
+
+        if (inSearch) {
+            suiteElement.className = suiteElement.className.replace(' not_in_search', '')
+        }
     })
 }
