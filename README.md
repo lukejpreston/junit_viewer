@@ -40,6 +40,7 @@ You can do both
 junit-viewer --results=folder_or_file_path --save=destination_file.html --port=9090
 ```
 
+**The folowing can not be run just yet but would like to add it gaain (didn't work on a mac)**
 You can use token to show the current date/time in the destination file.
 The command below will create `destination_file_2015-11-18.html` file.
 
