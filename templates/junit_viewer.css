@@ -170,3 +170,17 @@ h1 {
 .not_in_search {
     display: none;
 }
+
+.suites_container {
+    max-height: 800px;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    -webkit-box-shadow: inset 30px 30px 30px #1EAEDB; 
+}
