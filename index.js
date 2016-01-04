@@ -40,6 +40,7 @@ function start() {
             var renderedResults = renderResults()
             var saveLocation = changeToAbsolute(commandArgs.save)
             fs.writeFileSync(saveLocation, renderedResults)
+            console.log('Wrote to: ', saveLocation)
         }
 
         if (commandArgs.hasOwnProperty('port')) {
