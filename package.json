@@ -14,7 +14,6 @@
     "license": "ISC",
     "repository": "https://github.com/lukejpreston/junit_viewer.git",
     "dependencies": {
-        "date-format": "0.0.2",
         "express": "^4.12.4",
         "mustache": "^2.2.0",
         "xml2js": "^0.4.8"
