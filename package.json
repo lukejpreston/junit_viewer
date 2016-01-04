@@ -1,6 +1,6 @@
 {
   "name": "junit-viewer",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Run this by passing in a folder and it will start server to view simple junit results",
   "main": "index.js",
   "bin": {
