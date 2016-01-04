@@ -32,7 +32,7 @@ function isDirectory(folder) {
 
 function normaliseFileName(fileName) {
     if (fileName.charAt(0) === '.')
-        fileName = __dirname + '/' + fileName
+        fileName = process.cwd() + '/' + fileName
 
     if (!fs.existsSync(fileName)) {
         console.log(fileName, 'does not exist')

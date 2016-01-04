@@ -17,7 +17,7 @@ process.argv.forEach(function(arg) {
 })
 
 function changeToAbsolute(fileName) {
-    return fileName.indexOf('/') === 0 ? fileName : __dirname + '/' + fileName
+    return fileName.indexOf('/') === 0 ? fileName : process.cwd() + '/' + fileName
 }
 
 function renderResults() {
