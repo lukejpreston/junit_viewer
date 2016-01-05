@@ -1,13 +1,29 @@
 Junit Viewer
 ============
 
-View a folder or a file of junit xml in a simple web page
+Junit Viewer is a very simple yet powerful way of viewing your xunit results
 
-Demo
-====
+Features
+========
 
-The demo uses the test data
-[Demo](http://lukejpreston.github.io/junit_viewer/)
+
+**Reads a file or folder (and all sub folders) of XML results** Hence you don't need to run this on separate files
+
+**Has it's own API** Now you can embed it in your own test runners in order to save the results in a quick and nice viewer
+
+**Single Page Results** You don't need to have a whole folder of files in order to view your results (trke all other junit viewers)
+
+**Using Express to start a server** Means you can just hit refresh and you have your latest tests instead of re-running Junit Viewer
+
+**Search** It comes with a search box so you can search your suites and tests and test messages but also properties
+
+**Skeleton** It uses Skeleton so it is pretty, responsive and quick
+
+**Quick** It uses mustache and has no jquery as such it is quicker than any other junit test viewer
+
+**Independent** It is independent of any testing tool, so it can work with anything which can produce junit results
+
+
 
 Install It
 ==========
@@ -16,48 +32,45 @@ Install It
 npm install junit-viewer -g
 ```
 
-[NPM](https://www.npmjs.com/package/junit-viewer)
+[Find the project on NPM](https://www.npmjs.com/package/junit-viewer)
 
 Run It
 ======
 
-You can start it on as a server
-So as not to save the file and share it easily
+If you just want to log to the terminal
 
 ```
-junit-viewer --results=folder_or_file_path --port=9090
+junit_viewer --results=file_or_folder_location
 ```
 
-You can save it to a file
+If you want to save it to a file
 
 ```
-junit-viewer --results=folder_or_file_path --save=destination_file.html
+junit_viewer --results=file_or_folder_location --save=file_location.html
 ```
 
-You can do both
+If you want to start a server
 
 ```
-junit-viewer --results=folder_or_file_path --save=destination_file.html --port=9090
+junit_viewer --results=file_or_folder_location --port=port_number
 ```
 
-**The folowing can not be run just yet but would like to add it gaain (didn't work on a mac)**
-You can use token to show the current date/time in the destination file.
-The command below will create `destination_file_2015-11-18.html` file.
+Using the API
+=============
 
 ```
-junit-viewer --results=folder_or_file_path --save=destination_file_$[date].html
+npm install --save-dev junit_viewer
 ```
 
-The string, `date` can be replaced with valid date-format strings.
-It uses [date-format](https://www.npmjs.com/package/date-format) plugin.
-
-Test It
-=======
-
-If you are working on the code do some tests using the test_data folder
-
 ```
-junit-viewer --results=test_data --save=destination_file.html --port=9090
+var jv = require('junit_viewer')
+var parsedData = jv.parse('fileOrFolderLocation')
+var renderedData = jv.render(parsedData)
+var parsedAndRenderedData = jv.junit_viewer('fileOrFolderLocation')
 ```
 
-then view either the saved file or go to localhost:9090 and view your changes
+Demos
+=====
+
+* [A mix of all kinds of data](http://lukejpreston.github.io/junit_viewer/demos/data.html)
+* [An example of a single file](http://lukejpreston.github.io/junit_viewer/demos/single.html)
