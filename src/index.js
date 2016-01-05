@@ -1,7 +1,5 @@
 var fs = require('fs'),
-    parse = require('./parse'),
-    render = require('./render'),
-    express = require('express')
+    junit_viewer = require('./junit_viewer')
 
 var commandArgs = {}
 
@@ -16,16 +14,6 @@ process.argv.forEach(function(arg) {
         commandArgs.help = true
 })
 
-function changeToAbsolute(fileName) {
-    return fileName.indexOf('/') === 0 ? fileName : process.cwd() + '/' + fileName
-}
-
-function renderResults() {
-    var resultsFile = changeToAbsolute(commandArgs.results)
-    var data = parse(resultsFile)
-    return render(data)
-}
-
 function start() {
     if (!commandArgs.hasOwnProperty('results') || commandArgs.help) {
         var message = ['Usage: ',
@@ -37,7 +25,7 @@ function start() {
         console.log(message)
     } else {
         if (commandArgs.hasOwnProperty('save')) {
-            var renderedResults = renderResults()
+            var renderedResults = junit_viewer(commandArgs.results)
             var saveLocation = changeToAbsolute(commandArgs.save)
             fs.writeFileSync(saveLocation, renderedResults)
             console.log('Wrote to: ', saveLocation)
@@ -47,7 +35,7 @@ function start() {
             var app = express()
 
             app.get('/', function(req, res) {
-                res.send(renderResults())
+                res.send(junit_viewer(commandArgs.results))
             })
 
             var server = app.listen(commandArgs.port, function() {

@@ -5,7 +5,7 @@ var templatesCache = {}
 
 function render(fileName, data) {
     if (!templatesCache.hasOwnProperty(fileName))
-        templatesCache[fileName] = fs.readFileSync(process.cwd() + '/templates/' + fileName).toString()
+        templatesCache[fileName] = fs.readFileSync(__dirname + '/../templates/' + fileName).toString()
     Mustache.parse(templatesCache[fileName])
     return Mustache.render(templatesCache[fileName], data)
 }
@@ -65,10 +65,10 @@ module.exports = function(data) {
     }
 
     var suites = data.suites
-    var renderedJavaScript = 'var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(process.cwd() + '/templates/junit_viewer.js').toString()
+    var renderedJavaScript = 'var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/../templates/junit_viewer.js').toString()
 
-    var renderedSkeleton = fs.readFileSync(process.cwd() + '/templates/skeleton.css').toString()
-    var renderedStyle = fs.readFileSync(process.cwd() + '/templates/junit_viewer.css').toString()
+    var renderedSkeleton = fs.readFileSync(__dirname + '/../templates/skeleton.css').toString()
+    var renderedStyle = fs.readFileSync(__dirname + '/../templates/junit_viewer.css').toString()
     var renderedOptions = render('options.html')
 
     var renderedSuties = suites.map(function(suite) {
@@ -95,8 +95,8 @@ module.exports = function(data) {
 
     return render('index.html', {
         title: data.title,
-        skeleton: fs.readFileSync(process.cwd() + '/templates/skeleton.css').toString(),
-        style: fs.readFileSync(process.cwd() + '/templates/junit_viewer.css').toString(),
+        skeleton: fs.readFileSync(__dirname + '/../templates/skeleton.css').toString(),
+        style: fs.readFileSync(__dirname + '/../templates/junit_viewer.css').toString(),
         options: render('options.html'),
         javascript: renderedJavaScript,
         suites: renderedSuties
