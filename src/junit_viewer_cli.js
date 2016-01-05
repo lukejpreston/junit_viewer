@@ -14,6 +14,10 @@ process.argv.forEach(function(arg) {
         commandArgs.help = true
 })
 
+function changeToAbsolute(fileName) {
+    return fileName.indexOf('/') === 0 ? fileName : process.cwd() + '/' + fileName
+}
+
 function start() {
     if (!commandArgs.hasOwnProperty('results') || commandArgs.help) {
         var message = ['Usage: ',
@@ -29,9 +33,7 @@ function start() {
             var saveLocation = changeToAbsolute(commandArgs.save)
             fs.writeFileSync(saveLocation, renderedResults)
             console.log('Wrote to: ', saveLocation)
-        }
-
-        if (commandArgs.hasOwnProperty('port')) {
+        } else if (commandArgs.hasOwnProperty('port')) {
             var app = express()
 
             app.get('/', function(req, res) {
@@ -43,6 +45,9 @@ function start() {
                 var port = server.address().port
                 console.log('Junit Viewer Listening at http://%s:%s', host, port)
             })
+        } else {
+            var renderedResults = junit_viewer(commandArgs.results)
+            console.log(renderedResults)
         }
     }
 }
