@@ -69,7 +69,7 @@
                 <passed></passed>
             </testcase>
         </testsuite>
-        <testsuite name="suite with properties other name name" property="prop_value" property_float="0.1234567890123456789">
+        <testsuite name="suite with properties other than name" property="prop_value" property_float="0.1234567890123456789">
             <testcase name="random test">
                 <passed></passed>
             </testcase>

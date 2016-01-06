@@ -33,12 +33,17 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
         })
 
         it('Each property has a value', function() {
-          expect(suiteWithProperties.properties.values[0].value).toBeDefined()
+            expect(suiteWithProperties.properties.values[0].value).toBeDefined()
         })
 
         it('Each property has a name', function() {
-          expect(suiteWithProperties.properties.values[0].name).toBeDefined()
+            expect(suiteWithProperties.properties.values[0].name).toBeDefined()
         })
+    })
+
+    it('Adds all non name labels onto suite', function() {
+        var suiteWithLabels = getSuiteByName('suite with properties other than name')
+        console.log(suiteWithLabels)
     })
 
     describe('Errors', function() {
