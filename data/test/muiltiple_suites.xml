@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <testsuites>
+        <testsuite name="first suite">
+            <testcase name="random"></testcase>
+        </testsuite>
+    </testsuites>
+    <testsuites>
+        <testsuite name="suite with properties">
+            <testcase name="random"></testcase>
+        </testsuite>
+    </testsuites>

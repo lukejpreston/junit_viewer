@@ -93,14 +93,18 @@ describe('Folder', function() {
     }
 })
 
-describe('Single file', function() {
-    var fileName = 'data/test/complete.xml'
-    var parsed = parse(fileName)
+describe('Edge case parsing', function() {
+    it('Can parse a single file', function() {
+        var fileName = 'data/test/complete.xml'
+        var parsed = parse(fileName)
+        expect(parsed.title).toBe('complete.xml')
 
-    describe('Parsing transforms XML to JSON', function() {
-        it('Has the title of the file name', function() {
-            expect(parsed.title).toBe('complete.xml')
-        })
+    })
+
+    it('Parses file name starting with a .', function() {
+        var fileName = './data/test/complete.xml'
+        var parsed = parse(fileName)
+        expect(parsed.title).toBe('complete.xml')
     })
 })
 
