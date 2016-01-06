@@ -20,6 +20,15 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
         expect(secondSuite).not.toBeDefined()
     })
 
+    describe('Suite properties', function() {
+        var suiteWithProperties = getSuiteByName('suite with properties')
+        var suiteWithNoProperties = getSuiteByName('suite with no properties')
+
+        it('Defaults to empty values', function() {
+            console.log(suiteWithNoProperties)
+        })
+    })
+
     describe('Errors', function() {
         describe('Blank file', function() {
             var suite = getSuiteByName(folder + '/blank_file.xml')
