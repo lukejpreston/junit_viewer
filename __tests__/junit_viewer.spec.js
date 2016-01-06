@@ -4,8 +4,6 @@ var parse = require('../src/parse'),
     render = require('../src/render'),
     jsdom = require('jsdom').jsdom
 
-var parsed, rendered, view, fileName
-
 describe('Folder', function() {
     var folder = 'data/test'
     var parsed = parse(folder)
@@ -13,6 +11,11 @@ describe('Folder', function() {
     var view = jsdom(rendered)
 
     describe('Parsing transforms XML to JSON', function() {
+
+        it('Can walk through sub folders', function() {
+            expect(getSuiteByName('sub folder')).toBeDefined()
+        })
+
         describe('Errors', function() {
             describe('Blank file', function() {
                 var suite = getSuiteByName('blank file')
@@ -97,12 +100,12 @@ describe('Single file', function() {
     describe('Parsing transforms XML to JSON', function() {
         it('Has the title of the file name', function() {
             expect(parsed.title).toBe('complete.xml')
-        });
+        })
     })
 })
 
 describe('No such file', function() {
-    var fileName = 'bacon'
+    var fileName = 'no_such_file'
     var parsed = parse(fileName)
     var rendered = render(parsed)
     var view = jsdom(rendered)
