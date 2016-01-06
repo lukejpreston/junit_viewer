@@ -15,40 +15,28 @@ describe('Folder', function() {
     describe('Parsing transforms XML to JSON', function() {
         describe('Errors', function() {
             describe('Blank file', function() {
-                var test = getSuiteByName('blank file')
+                var suite = getSuiteByName('blank file')
 
                 it('Has a name of file', function() {
-                    expect(test.name).toBe(folder + '/test_file.xml')
+                    expect(suite.name).toBe(folder + '/blank_file.xml')
                 })
 
                 it('Has type failure', function() {
-                    expect(test.type).toBe('failure')
-                })
-
-                it('Default time of zero', function() {
-                    expect(test.time).toBe(0)
-                })
-
-                it('Default tests of zero', function() {
-                    expect(test.tests).toBe(0)
+                    expect(suite.type).toBe('failure')
                 })
 
                 it('Default of no properties', function() {
-                    expect(test.properties.values.length).toBe(0)
+                    expect(suite.properties.values.length).toBe(0)
                 })
 
                 it('Has a single test', function() {
-                    expect(test.testCases.length).toBe(1)
+                    expect(suite.testCases.length).toBe(1)
                 })
 
                 describe('The test', function() {
-                    var test = test.testCases[0]
+                    var test = suite.testCases[0]
                     it('The test is an error', function() {
                         expect(test.type).toBe('error')
-                    })
-
-                    it('Default time of zero', function() {
-                        expect(test.time).toBe(0)
                     })
 
                     it('Has a message of "There are no results"', function() {
@@ -68,14 +56,6 @@ describe('Folder', function() {
                     expect(suite.type).toBe('failure')
                 })
 
-                it('Default time of zero', function() {
-                    expect(suite.time).toBe(0)
-                })
-
-                it('Default tests of zero', function() {
-                    expect(suite.tests).toBe(0)
-                })
-
                 it('Default of no properties', function() {
                     expect(suite.properties.values.length).toBe(0)
                 })
@@ -90,11 +70,7 @@ describe('Folder', function() {
                         expect(test.type).toBe('error')
                     })
 
-                    it('Default time of zero', function() {
-                        expect(test.time).toBe(0)
-                    })
-
-                    it('Has the error message', function() {
+                    it('Has a message of "There are no results"', function() {
                         expect(test.messages.values[0].value).toBeDefined()
                     })
                 })
