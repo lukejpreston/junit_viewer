@@ -54,8 +54,6 @@ function createError(fileName, message) {
     return {
         name: fileName,
         type: 'failure',
-        time: 0,
-        tests: 0,
         testCases: [{
             name: fileName,
             messages: {
@@ -63,7 +61,6 @@ function createError(fileName, message) {
                     value: message
                 }]
             },
-            time: 0,
             type: 'error'
         }],
         properties: {
@@ -131,15 +128,11 @@ function updateParsedSuite(testSuiteName, suite, test) {
         parsedSuites[testSuiteName].type = 'failure'
 
     if (suite.$) {
-        parsedSuites[testSuiteName].tests = parsedSuites[testSuiteName].tests || suite.$.tests
-        parsedSuites[testSuiteName].errors = parsedSuites[testSuiteName].errors || suite.$.errors
-        parsedSuites[testSuiteName].failures = parsedSuites[testSuiteName].failures || suite.$.failures
-        parsedSuites[testSuiteName].time = parsedSuites[testSuiteName].time || suite.$.time
-    } else {
-        parsedSuites[testSuiteName].tests = parsedSuites[testSuiteName].tests || 0
-        parsedSuites[testSuiteName].errors = parsedSuites[testSuiteName].errors || 0
-        parsedSuites[testSuiteName].failures = parsedSuites[testSuiteName].failures || 0
-        parsedSuites[testSuiteName].time = parsedSuites[testSuiteName].time || 0
+        Object.keys(suite.$).filter(function(key) {
+            return key !== 'name'
+        }).forEach(function(key) {
+            parsedSuites[testSuiteName][key] = parsedSuites[testSuiteName][key] || suite.$[key]
+        })
     }
 
     if (!parsedSuites[testSuiteName].hasOwnProperty('testCases'))
@@ -178,18 +171,11 @@ function parseTests(suites, fileName) {
         })
 
         suite.testcase.forEach(function(testcase) {
-            var test = !testcase.hasOwnProperty('$') ? {
-                name: fileName,
+            var test = {
+                name: testcase.hasOwnProperty('$') ? testcase.$.name || fileName : fileName,
                 messages: {
                     values: []
-                },
-                time: 0
-            } : {
-                name: testcase.$.name || fileName,
-                messages: {
-                    values: []
-                },
-                time: testcase.$.time || 0
+                }
             }
 
             if (testcase.passed)
@@ -208,6 +194,13 @@ function parseTests(suites, fileName) {
                 testSuiteName = testcase.$.classname
             else if (suiteName)
                 testSuiteName = suiteName
+
+            if(testcase.hasOwnProperty('$'))
+                Object.keys(testcase.$).filter(function (key) {
+                    return key !== 'name' || key !== 'classname'
+                }).forEach(function (key) {
+                    test[key] = testcase.$[key]
+                })
 
             updateParsedSuite(testSuiteName, suite, test)
         })

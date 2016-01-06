@@ -29,8 +29,7 @@ function renderTests(testCases) {
         var renderTestProperties = {
             id: test.id,
             type: test.type,
-            name: test.name,
-            time: test.time
+            name: test.name
         }
 
         var renderedMessages
@@ -55,6 +54,16 @@ function renderTests(testCases) {
 
         renderTestProperties.messages = renderedMessages
 
+        renderTestProperties.labels = Object.keys(test).filter(function(key) {
+            return key !== 'id' && key !== 'type' && key !== 'name' && key !== 'messages' && key !== 'classname'
+        }).map(function(key) {
+            return render('label.html', {
+                key: key,
+                value: test[key]
+            })
+        }).join('\n')
+
+
         return render('test.html', renderTestProperties)
     }).join('\n')
 }
@@ -77,7 +86,7 @@ module.exports = function(data) {
         var renderLabels = Object.keys(suite).filter(function(key) {
             return ['name', 'id', 'testCases', 'properties', 'type'].indexOf(key) === -1
         }).map(function(key) {
-            return render('suite_label.html', {
+            return render('label.html', {
                 key: key,
                 value: suite[key]
             })
