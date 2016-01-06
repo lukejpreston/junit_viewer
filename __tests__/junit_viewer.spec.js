@@ -43,7 +43,7 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
 
     it('Adds all non name labels onto suite', function() {
         var suiteWithLabels = getSuiteByName('suite with properties other than name')
-        console.log(suiteWithLabels)
+        expect(suiteWithLabels.property).toBeDefined()
     })
 
     describe('Errors', function() {
