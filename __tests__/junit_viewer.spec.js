@@ -25,7 +25,19 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
         var suiteWithNoProperties = getSuiteByName('suite with no properties')
 
         it('Defaults to empty values', function() {
-            console.log(suiteWithNoProperties)
+            expect(suiteWithNoProperties.properties.values.length).toBe(0)
+        })
+
+        it('Concatenates multiple properties', function() {
+            expect(suiteWithProperties.properties.values.length).toBe(3)
+        })
+
+        it('Each property has a value', function() {
+          expect(suiteWithProperties.properties.values[0].value).toBeDefined()
+        })
+
+        it('Each property has a name', function() {
+          expect(suiteWithProperties.properties.values[0].name).toBeDefined()
         })
     })
 
