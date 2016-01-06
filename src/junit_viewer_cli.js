@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    express = require('express'),
     junit_viewer = require('./junit_viewer')
 
 var commandArgs = {}
