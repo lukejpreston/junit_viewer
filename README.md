@@ -74,3 +74,22 @@ Demos
 
 * [A mix of all kinds of data](http://lukejpreston.github.io/junit_viewer/demos/data.html)
 * [An example of a single file](http://lukejpreston.github.io/junit_viewer/demos/single.html)
+
+Contributions
+=============
+
+If you wish to contribute then you can either create an issue or fork it and create a PR
+
+When developing all you need to do is
+
+```
+npm i
+```
+
+And to run the tests
+
+```
+npm test
+```
+
+The testing strategy is an integration test and not a conventional unit test
