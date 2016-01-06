@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <testsuites>
-        <testsuite name="sub folder test">
-            <testcase classname="class name" name="test name">
+        <testsuite name="sub folder suite">
+            <testcase name="test name">
                 <passed></passed>
             </testcase>
         </testsuite>

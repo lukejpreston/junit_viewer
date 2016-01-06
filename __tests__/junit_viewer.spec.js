@@ -4,87 +4,89 @@ var parse = require('../src/parse'),
     render = require('../src/render'),
     jsdom = require('jsdom').jsdom
 
-describe('Folder', function() {
+describe('Parsing transforms XML to JSON (generic folder)', function() {
     var folder = 'data/test'
     var parsed = parse(folder)
     var rendered = render(parsed)
     var view = jsdom(rendered)
+    it('Can walk through sub folders', function() {
+        expect(getSuiteByName('sub folder suite')).toBeDefined()
+    })
 
-    describe('Parsing transforms XML to JSON', function() {
+    it('Only picks the first suite if multiple "testsuites"', function() {
+        var firstSuite = getSuiteByName('first suite in mutil')
+        var secondSuite = getSuiteByName('second suite in mutil')
+        expect(firstSuite).toBeDefined()
+        expect(secondSuite).not.toBeDefined()
+    })
 
-        it('Can walk through sub folders', function() {
-            expect(getSuiteByName('sub folder')).toBeDefined()
-        })
+    describe('Errors', function() {
+        describe('Blank file', function() {
+            var suite = getSuiteByName(folder + '/blank_file.xml')
 
-        describe('Errors', function() {
-            describe('Blank file', function() {
-                var suite = getSuiteByName('blank file')
-
-                it('Has a name of file', function() {
-                    expect(suite.name).toBe(folder + '/blank_file.xml')
-                })
-
-                it('Has type failure', function() {
-                    expect(suite.type).toBe('failure')
-                })
-
-                it('Default of no properties', function() {
-                    expect(suite.properties.values.length).toBe(0)
-                })
-
-                it('Has a single test', function() {
-                    expect(suite.testCases.length).toBe(1)
-                })
-
-                describe('The test', function() {
-                    var test = suite.testCases[0]
-                    it('The test is an error', function() {
-                        expect(test.type).toBe('error')
-                    })
-
-                    it('Has a message of "There are no results"', function() {
-                        expect(test.messages.values[0].value).toBe('There are no results')
-                    })
-                })
+            it('Has a name of file', function() {
+                expect(suite.name).toBe(folder + '/blank_file.xml')
             })
 
-            describe('Invalid XML', function() {
-                var suite = getSuiteByName('invalid')
-
-                it('Has a name of file', function() {
-                    expect(suite.name).toBe(folder + '/invalid.xml')
-                })
-
-                it('Has type failure', function() {
-                    expect(suite.type).toBe('failure')
-                })
-
-                it('Default of no properties', function() {
-                    expect(suite.properties.values.length).toBe(0)
-                })
-
-                it('Has a single test', function() {
-                    expect(suite.testCases.length).toBe(1)
-                })
-
-                describe('The test', function() {
-                    var test = suite.testCases[0]
-                    it('The test is an error', function() {
-                        expect(test.type).toBe('error')
-                    })
-
-                    it('Has a message of "There are no results"', function() {
-                        expect(test.messages.values[0].value).toBeDefined()
-                    })
-                })
+            it('Has type failure', function() {
+                expect(suite.type).toBe('failure')
             })
 
+            it('Default of no properties', function() {
+                expect(suite.properties.values.length).toBe(0)
+            })
+
+            it('Has a single test', function() {
+                expect(suite.testCases.length).toBe(1)
+            })
+
+            describe('The test', function() {
+                var test = suite.testCases[0]
+                it('The test is an error', function() {
+                    expect(test.type).toBe('error')
+                })
+
+                it('Has a message of "There are no results"', function() {
+                    expect(test.messages.values[0].value).toBe('There are no results')
+                })
+            })
         })
+
+        describe('Invalid XML', function() {
+            var suite = getSuiteByName(folder + '/invalid.xml')
+
+            it('Has a name of file', function() {
+                expect(suite.name).toBe(folder + '/invalid.xml')
+            })
+
+            it('Has type failure', function() {
+                expect(suite.type).toBe('failure')
+            })
+
+            it('Default of no properties', function() {
+                expect(suite.properties.values.length).toBe(0)
+            })
+
+            it('Has a single test', function() {
+                expect(suite.testCases.length).toBe(1)
+            })
+
+            describe('The test', function() {
+                var test = suite.testCases[0]
+                it('The test is an error', function() {
+                    expect(test.type).toBe('error')
+                })
+
+                it('Has a message of "There are no results"', function() {
+                    expect(test.messages.values[0].value).toBeDefined()
+                })
+            })
+        })
+
     })
 
     function getSuiteByName(name) {
-        name = folder + '/' + name.toLowerCase().replace(/ /g, '_') + '.xml'
-        var matchingSuite = {}
+        var matchingSuite
         parsed.suites.forEach(function(suite) {
             if (suite.name === name)
                 matchingSuite = suite
