@@ -38,34 +38,38 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
 
     it('Adds all non name labels onto suite', function() {
         var suiteWithLabels = getSuiteByName('suite with properties other than name')
-        expect(suiteWithLabels.property).toBeDefined()
+        expect(suiteWithLabels.property).toBe('prop_value')
     })
 
-    describe('Suite properties', function() {
-        var suiteWithProperties = getSuiteByName('suite with properties')
-        var suiteWithNoProperties = getSuiteByName('suite with no properties')
+    it('Favors the tests classname over the testsuite name', function() {
+        var testWithDifferingClassName = getSuiteByName('test with own class name')
+        expect(testWithDifferingClassName).toBeDefined()
+    })
 
-        it('Defaults to empty values', function() {
-            expect(suiteWithNoProperties.properties.values.length).toBe(0)
-        })
+    it('Uses "NO CLASSNAME OR SUITE NAME" if suite name if no name in "testsuite" or classname in "testcase"', function() {
+        var nameless = getSuiteByName('NO CLASSNAME OR SUITE NAME')
+        expect(nameless).toBeDefined()
+    })
 
-        it('Concatenates multiple properties', function() {
-            expect(suiteWithProperties.properties.values.length).toBe(3)
-        })
+    it('Ignores suites with no tests', function() {
+        var noTests = getSuiteByName('suite with no tests')
+        expect(noTests).not.toBeDefined()
+    })
 
-        it('Each property has a value', function() {
-            expect(suiteWithProperties.properties.values[0].value).toBeDefined()
-        })
-
-        it('Each property has a name', function() {
-            expect(suiteWithProperties.properties.values[0].name).toBeDefined()
-        })
+    it('Ignores suites with no tests even if it has properties', function() {
+        var noTestsBuProps = getSuiteByName('suite with only properties')
+        expect(noTestsBuProps).not.toBeDefined()
     })
 
     describe('Tests', function() {
         var suiteWithEachKindOfTest
         beforeEach(function() {
             suiteWithEachKindOfTest = getSuiteByName('suite with each kind of test')
+        })
+
+        it('Assumes no type is "passed"', function() {
+            var testWithNoType = getTestByName('test with no type')
+            expect(testWithNoType.type).toBe('passed')
         })
 
         var types = ['passed', 'error', 'failure', 'skipped']
@@ -91,11 +95,6 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
                     expect(test.messages.values[0].value).toBe('inner message')
                 })
             })
-        })
-
-        it('Assumes no type is "passed"', function() {
-            var testWithNoType = getTestByName('test with no type')
-            expect(testWithNoType.type).toBe('passed')
         })
 
         describe('Messages', function() {
@@ -135,6 +134,27 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
             })
             return matchingTest
         }
+    })
+
+    describe('Suite properties', function() {
+        var suiteWithProperties = getSuiteByName('suite with properties')
+        var suiteWithNoProperties = getSuiteByName('suite with no properties')
+
+        it('Defaults to empty values', function() {
+            expect(suiteWithNoProperties.properties.values.length).toBe(0)
+        })
+
+        it('Concatenates multiple properties', function() {
+            expect(suiteWithProperties.properties.values.length).toBe(3)
+        })
+
+        it('Each property has a value', function() {
+            expect(suiteWithProperties.properties.values[0].value).toBeDefined()
+        })
+
+        it('Each property has a name', function() {
+            expect(suiteWithProperties.properties.values[0].name).toBeDefined()
+        })
     })
 
     describe('Errors', function() {

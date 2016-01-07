@@ -35,9 +35,11 @@
     "xml2js": "^0.4.8"
   },
   "devDependencies": {
+    "jasmine-reporters": "^1.0.0",
     "jest-cli": "^0.8.0"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/setup-jasmine-env.js",
     "collectCoverage": true,
     "coverageReporters": [
       "lcov"
