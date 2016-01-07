@@ -93,6 +93,40 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
             })
         })
 
+        it('Assumes no type is "passed"', function() {
+            var testWithNoType = getTestByName('test with no type')
+            expect(testWithNoType.type).toBe('passed')
+        })
+
+        describe('Messages', function() {
+            it('Can have multiple messages', function() {
+                var multipleMessages = getTestByName('multiple messages')
+                expect(multipleMessages.messages.values.length).toBe(2)
+                expect(multipleMessages.messages.values[0].value).toBe('first message')
+                expect(multipleMessages.messages.values[1].value).toBe('second message')
+            })
+
+            it('Concatenates the type and message (in that order) if no inner message', function() {
+                var noInnerMessage = getTestByName('test no inner message')
+                expect(noInnerMessage.messages.values[0].value).toBe('type message')
+            })
+
+            it('Uses message if no inner message or type', function() {
+                var noMessageType = getTestByName('test with no message type')
+                expect(noMessageType.messages.values[0].value).toBe('message')
+            })
+
+            it('Uses type if no inner message or message', function() {
+                var noMessage = getTestByName('test with no message')
+                expect(noMessage.messages.values[0].value).toBe('type')
+            })
+
+            it('Uses inner message over message and type', function() {
+                var message = getTestByName('test with message and message type and inner message')
+                expect(message.messages.values[0].value).toBe('inner message')
+            })
+        })
+
         function getTestByName(name) {
             var matchingTest
             suiteWithEachKindOfTest.testCases.forEach(function(testCase) {
