@@ -36,6 +36,11 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
         expect(onlyTestCase).not.toBeDefined()
     })
 
+    it('Adds all non name labels onto suite', function() {
+        var suiteWithLabels = getSuiteByName('suite with properties other than name')
+        expect(suiteWithLabels.property).toBeDefined()
+    })
+
     describe('Suite properties', function() {
         var suiteWithProperties = getSuiteByName('suite with properties')
         var suiteWithNoProperties = getSuiteByName('suite with no properties')
@@ -57,9 +62,45 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
         })
     })
 
-    it('Adds all non name labels onto suite', function() {
-        var suiteWithLabels = getSuiteByName('suite with properties other than name')
-        expect(suiteWithLabels.property).toBeDefined()
+    describe('Tests', function() {
+        var suiteWithEachKindOfTest
+        beforeEach(function() {
+            suiteWithEachKindOfTest = getSuiteByName('suite with each kind of test')
+        })
+
+        var types = ['passed', 'error', 'failure', 'skipped']
+
+        types.forEach(function(type) {
+            describe(type + ' with a message', function() {
+                var test
+
+                beforeEach(function() {
+                    test = getTestByName(type + ' with a message')
+                })
+
+                it('Has type' + type, function() {
+                    expect(test.type).toBe(type)
+                })
+
+                it('Has a name', function() {
+                    expect(test.name).toBe(type + ' with a message')
+                })
+
+                it('Has messages', function() {
+                    expect(test.messages.values.length).toBe(1)
+                    expect(test.messages.values[0].value).toBe('inner message')
+                })
+            })
+        })
+
+        function getTestByName(name) {
+            var matchingTest
+            suiteWithEachKindOfTest.testCases.forEach(function(testCase) {
+                if (testCase.name === name)
+                    matchingTest = testCase
+            })
+            return matchingTest
+        }
     })
 
     describe('Errors', function() {

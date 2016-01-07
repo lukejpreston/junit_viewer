@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <testsuites>
-        <testsuite name="suite with test with no props">
-            <testcase>
-                <passed></passed>
-            </testcase>
-        </testsuite>
         <testsuite name="suite with properties">
             <properties>
                 <property name="first_name" value="first_value" />
@@ -23,18 +18,19 @@
                 <passed></passed>
             </testcase>
         </testsuite>
+        <!-- HERE -->
         <testsuite name="suite with each kind of test">
             <testcase name="passed with a message">
-                <passed>inner massage</passed>
+                <passed>inner message</passed>
             </testcase>
             <testcase name="error with a message">
-                <error>inner massage</error>
+                <error>inner message</error>
             </testcase>
             <testcase name="skipped with a message">
-                <skipped>inner massage</skipped>
+                <skipped>inner message</skipped>
             </testcase>
             <testcase name="failure with a message">
-                <failure>inner massage</failure>
+                <failure>inner message</failure>
             </testcase>
             <testcase name="test with no type">inner message</testcase>
             <testcase name="test with no type or message or inner message"></testcase>
@@ -60,7 +56,7 @@
                 <failure message="<b>message</b>" type="<i>type</i>"></failure>
             </testcase>
             <testcase name="test with message and message type and inner message">
-                <error message="message" type="type">inner massage</error>
+                <error message="message" type="type">inner message</error>
             </testcase>
             <testcase name="test with a different classname" classname="test with own class name">
                 <passed></passed>
