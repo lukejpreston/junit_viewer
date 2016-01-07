@@ -18,7 +18,6 @@
                 <passed></passed>
             </testcase>
         </testsuite>
-        <!-- HERE -->
         <testsuite name="suite with each kind of test">
             <testcase name="passed with a message">
                 <passed>inner message</passed>

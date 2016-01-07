@@ -61,6 +61,14 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
         expect(noTestsBuProps).not.toBeDefined()
     })
 
+    it('Can have nested suites which concatenates the titles together on the child', function() {
+        var childSuiteWithParent = getSuiteByName('parent child one')
+        var childSuite = getSuiteByName('child one')
+
+        expect(childSuiteWithParent).toBeDefined()
+        expect(childSuite).not.toBeDefined()
+    })
+
     describe('Tests', function() {
         var suiteWithEachKindOfTest
         beforeEach(function() {
