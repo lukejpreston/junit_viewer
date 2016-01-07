@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <testsuites>
+        <testsuite name="suite with test with no props">
+            <testcase>
+                <passed></passed>
+            </testcase>
+        </testsuite>
         <testsuite name="suite with properties">
             <properties>
                 <property name="first_name" value="first_value" />
@@ -95,6 +100,9 @@
                 <testsuite name="child of child two">
                     <testcase name="child of child two test"></testcase>
                 </testsuite>
+            </testsuite>
+            <testsuite>
+                <testcase name="child one test"></testcase>
             </testsuite>
         </testsuite>
     </testsuites>

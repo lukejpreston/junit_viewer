@@ -9,6 +9,7 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
     var parsed = parse(folder)
     var rendered = render(parsed)
     var view = jsdom(rendered)
+
     it('Can walk through sub folders', function() {
         expect(getSuiteByName('sub folder suite')).toBeDefined()
     })
@@ -18,6 +19,21 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
         var secondSuite = getSuiteByName('second suite in mutil')
         expect(firstSuite).toBeDefined()
         expect(secondSuite).not.toBeDefined()
+    })
+
+    it('Adds the suite if the file only has a "testsuite"', function() {
+        var onlyTestSuite = getSuiteByName('only test suite')
+        expect(onlyTestSuite).toBeDefined()
+    })
+
+    it('Does not pick up files with only a testcase', function() {
+        var onlyTestCase = getSuiteByName('only a test case')
+        expect(onlyTestCase).not.toBeDefined()
+    })
+
+    it('Does not parse testsuites which only have test cases inside', function() {
+        var onlyTestCase = getSuiteByName('not in suite but in suites with no name')
+        expect(onlyTestCase).not.toBeDefined()
     })
 
     describe('Suite properties', function() {
