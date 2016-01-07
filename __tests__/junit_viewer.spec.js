@@ -251,6 +251,17 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
     }
 })
 
+describe('Rendering transforms JSON (from parse) to HTML string (generic folder)', function() {
+    var fileName = 'data/test/simple.xml'
+    var parsed = parse(fileName)
+    var rendered = render(parsed)
+    var view = jsdom(rendered)
+
+    it('Looks good', function() {
+
+    })
+})
+
 describe('No such file', function() {
     var fileName = 'no_such_file'
     var parsed = parse(fileName)

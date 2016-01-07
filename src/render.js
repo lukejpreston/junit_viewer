@@ -68,19 +68,8 @@ function renderTests(testCases) {
     }).join('\n')
 }
 
-module.exports = function(data) {
-    if (data.junitViewerFileError) {
-        return render('no_file.html', data)
-    }
-
-    var suites = data.suites
-    var renderedJavaScript = 'var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/../templates/junit_viewer.js').toString()
-
-    var renderedSkeleton = fs.readFileSync(__dirname + '/../templates/skeleton.css').toString()
-    var renderedStyle = fs.readFileSync(__dirname + '/../templates/junit_viewer.css').toString()
-    var renderedOptions = render('options.html')
-
-    var renderedSuties = suites.map(function(suite) {
+function renderSuites(suites) {
+    return suites.map(function(suite) {
         var renderedTests = renderTests(suite.testCases)
         var renderedProperties = renderProperties(suite.properties)
         var renderLabels = Object.keys(suite).filter(function(key) {
@@ -101,6 +90,15 @@ module.exports = function(data) {
             labels: renderLabels
         })
     }).join('\n')
+}
+
+module.exports = function(data) {
+    if (data.junitViewerFileError)
+        return render('no_file.html', data)
+
+    var suites = data.suites
+    var renderedJavaScript = 'var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/../templates/junit_viewer.js').toString()
+    var renderedSuites = renderSuites(suites)
 
     return render('index.html', {
         title: data.title,
@@ -108,6 +106,6 @@ module.exports = function(data) {
         style: fs.readFileSync(__dirname + '/../templates/junit_viewer.css').toString(),
         options: render('options.html'),
         javascript: renderedJavaScript,
-        suites: renderedSuties
+        suites: renderedSuites
     })
 }
