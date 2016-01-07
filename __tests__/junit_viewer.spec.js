@@ -227,7 +227,18 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
                 })
             })
         })
+    })
 
+    it('Can parse a single file', function() {
+        var fileName = 'data/test/complete.xml'
+        var parsed = parse(fileName)
+        expect(parsed.title).toBe('complete.xml')
+    })
+
+    it('Parses file name starting with a .', function() {
+        var fileName = './data/test/complete.xml'
+        var parsed = parse(fileName)
+        expect(parsed.title).toBe('complete.xml')
     })
 
     function getSuiteByName(name) {
@@ -241,18 +252,7 @@ describe('Parsing transforms XML to JSON (generic folder)', function() {
 })
 
 describe('Edge case parsing', function() {
-    it('Can parse a single file', function() {
-        var fileName = 'data/test/complete.xml'
-        var parsed = parse(fileName)
-        expect(parsed.title).toBe('complete.xml')
 
-    })
-
-    it('Parses file name starting with a .', function() {
-        var fileName = './data/test/complete.xml'
-        var parsed = parse(fileName)
-        expect(parsed.title).toBe('complete.xml')
-    })
 })
 
 describe('No such file', function() {
