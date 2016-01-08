@@ -59,6 +59,12 @@ If you want to start a server
 junit_viewer --results=file_or_folder_location --port=port_number
 ```
 
+By default it is minified but if you don't want it minified
+
+```
+junit_viewer --results=file_or_folder_location --minify=false
+```
+
 Using the API
 =============
 

@@ -1,8 +1,11 @@
 var fs = require('fs'),
     express = require('express'),
-    junit_viewer = require('./junit_viewer')
+    junit_viewer = require('./junit_viewer'),
+    htmlminify = require('html-minify')
 
-var commandArgs = {}
+var commandArgs = {
+    minify: true
+}
 
 process.argv.forEach(function(arg) {
     if (arg.indexOf('--save') !== -1)
@@ -11,6 +14,8 @@ process.argv.forEach(function(arg) {
         commandArgs.results = arg.split('=')[1]
     if (arg.indexOf('--port') !== -1)
         commandArgs.port = arg.split('=')[1] || 9090
+    if (arg.indexOf('--minify') !== -1)
+        commandArgs.minify = arg.split('=')[1] === 'true'
     if (arg.indexOf('--help') !== -1)
         commandArgs.help = true
 })
@@ -31,6 +36,8 @@ function start() {
     } else {
         if (commandArgs.hasOwnProperty('save')) {
             var renderedResults = junit_viewer(commandArgs.results)
+            if (commandArgs.minify)
+                renderedResults = htmlminify.minify(renderedResults)
             var saveLocation = changeToAbsolute(commandArgs.save)
             fs.writeFileSync(saveLocation, renderedResults)
             console.log('Wrote to: ', saveLocation)
@@ -38,16 +45,23 @@ function start() {
             var app = express()
 
             app.get('/', function(req, res) {
-                res.send(junit_viewer(commandArgs.results))
+                var renderedResults = junit_viewer(commandArgs.results)
+                if (commandArgs.minify)
+                    renderedResults = htmlminify.minify(renderedResults)
+                else
+                    console.log('not minify')
+                res.send(renderedResults)
             })
 
             var server = app.listen(commandArgs.port, function() {
                 var host = server.address().address
                 var port = server.address().port
-                console.log('Junit Viewer Listening at http://%s:%s', host, port)
+                console.log('Junit Viewer started at port:', port)
             })
         } else {
             var renderedResults = junit_viewer(commandArgs.results)
+            if (commandArgs.minify)
+                renderedResults = htmlminify.minify(renderedResults)
             console.log(renderedResults)
         }
     }
