@@ -9,9 +9,10 @@
 
 <body>
     <h1 class="u-full-width">{{title}}</h1>
-    <div class="row offset-by-one ten columns">{{{options}}}</div>
     <div>
-    <div class="row offset-by-one ten columns suites_container">{{{suites}}}</div>
+        <div id="options_container" class="options_container column one">{{{options}}}</div>
+        <div id="suites_container" class="u-pull-right columns eleven suites_container">{{{suites}}}</div>
+    </div>
     <script type="text/javascript">{{{javascript}}}</script>
 </body>
 

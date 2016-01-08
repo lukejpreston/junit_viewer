@@ -1257,25 +1257,12 @@ there.
     margin-bottom: 5px;
 }
 
-.suite__contents,
-.options {
+.suite__contents {
     margin: -10px 0 5px 0;
     border-radius: 0 0 4px 4px;
     border: 1px solid #bbb;
     padding: 5px;
     padding-top: 10px;
-}
-
-.options_search__name {
-    width: 24%;
-    margin-right: 0;
-    border-radius: 4px 0 0 4px !important;
-}
-
-.options_search__input {
-    width: 74%;
-    margin-left: -5px;
-    border-radius: 0 4px 4px 0 !important;
 }
 
 .flat {
@@ -1296,7 +1283,14 @@ there.
     display: none;
 }
 
+.options_container {
+    margin: 0 0.5em;
+    max-height: 800px;
+    overflow-y: scroll;
+}
+
 .suites_container {
+    margin: 0 1em;
     max-height: 800px;
     overflow-y: scroll;
 }
@@ -1304,17 +1298,106 @@ there.
 ::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    -webkit-box-shadow: inset 30px 30px 30px #1EAEDB; 
+    -webkit-box-shadow: inset 30px 30px 30px #1EAEDB;
+}
+
+.options_container__toggle {
+    margin: 0;
+}
+
+.options,
+.option__container {
+    border: 1px solid #bbb;
+    border-radius: 0 0 4px 4px;
+    padding: 5px;
+}
+
+.option {
+    margin-bottom: 1em;
+}
+
+.option__title {
+    margin-bottom: 0;
+}
+
+.search button {
+    margin-bottom: 0;
+    border-radius: 4px 4px 0 0;
+}
+
+.search input {
+    margin-top: -1px;
+    border-radius: 0 0 4px 4px;
+}
+
+.options__icon--colapsed {
+    padding: 0;
 }
 </style>
 </head>
 
 <body>
     <h1 class="u-full-width">junit_viewer_specs</h1>
-    <div class="row offset-by-one ten columns"><div>
+    <div>
+        <div id="options_container" class="options_container column one"><svg style="display: none">
+    <symbol id="options__icon" width="36" height="38">
+        <rect x="0" y="8" rx="2" ry="2" width="25" height="5" style="fill:#fff;"></rect>
+        <rect x="0" y="15" rx="2" ry="2" width="25" height="5" style="fill:#fff;"></rect>
+        <rect x="0" y="22" rx="2" ry="2" width="25" height="5" style="fill:#fff;"></rect>
+    </symbol>
+</svg>
+<button id="optionsCollapsed" title="advanced search" class="options_container button-primary options_container__toggle" onclick="showOptions()">
+    <svg width="25" height="38">
+        <use xlink:href="#options__icon"></use>
+    </svg>
+</button>
+<div id="optionsExpanded" class="options_container" style="display: none">
+    <button class="flat button-primary u-full-width options_container__toggle" onclick="hideOptions()">
+        <svg class="u-pull-left" width="36" height="38">
+            <use xlink:href="#options__icon"></use>
+        </svg>
+        <span>SEARCH</span></button>
+    <div class="options">
+        <div class="option">
+            <button class="option__title u-full-width button-primary">SUTIES</button>
+            <div class="option__container">
+                <button class="button-primary u-full-width">HIDE PASSING</button>
+                <button class="button-primary u-full-width">CONTRACT ALL</button>
+                <div class="search">
+                    <button class="u-full-width" disabled>SEARCH</button>
+                    <input class="u-full-width" type="text"></input>
+                </div>
+            </div>
+        </div>
+        <div class="option">
+            <button class="option__title u-full-width button-primary">TESTS</button>
+            <div class="option__container">
+                <button class="button-primary u-full-width">HIDE PASSING</button>
+                <button class="button-primary u-full-width">HIDE ALL</button>
+                <button class="button-primary u-full-width">CONTRACT ALL</button>
+                <div class="search">
+                    <button class="u-full-width" disabled>SEARCH</button>
+                    <input class="u-full-width" type="text"></input>
+                </div>
+            </div>
+        </div>
+        <div class="option">
+            <button class="option__title u-full-width button-primary">PROPERTIES</button>
+            <div class="option__container">
+                <button class="button-primary u-full-width">HIDE ALL</button>
+                <button class="button-primary u-full-width">CONTRACT ALL</button>
+                <div class="search">
+                    <button class="u-full-width" disabled>SEARCH</button>
+                    <input class="u-full-width" type="text"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div>
     <button class="button-primary u-full-width" onclick="toggleContraction(this.parentElement)">ADVANCED SEARCH</button>
     <div class="options contracted">
         <div class="option">
@@ -1359,23 +1442,23 @@ there.
         </div>
     </div>
 </div>
+ -->
 </div>
-    <div>
-    <div class="row offset-by-one ten columns suites_container"><div class="suite" id="suite_edLRx">
+        <div id="suites_container" class="u-pull-right columns eleven suites_container"><div class="suite" id="suite_i0sdw">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">No such file.Parsing transforms XML to JSON</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 1</span>
 <span class="label u-pull-right">failures: 0</span>
-<span class="label u-pull-right">time: 0</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">time: 0.001</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_S439P">
+        <div class="test" id="test_xzLSQ">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Just returns an error</span>
-        <span class="label u-pull-right">time: 0</span>
+        <span class="label u-pull-right">time: 0.001</span>
     </button>
     
 </div>
@@ -1383,18 +1466,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_rKLo3">
+<div class="suite" id="suite_NRzMg">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">No such file.Rendering the JSON into HTML</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 1</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.001</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_NQaL0">
+        <div class="test" id="test_14gbd">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Renders a html file with the expected file name inside</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1405,21 +1488,21 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_7Jdfw">
+<div class="suite" id="suite_XDwNH">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">No such file.Layout</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 1</span>
 <span class="label u-pull-right">failures: 0</span>
-<span class="label u-pull-right">time: 0.002</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">time: 0.003</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_238Nq">
+        <div class="test" id="test_hzUbO">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a title No Such File</span>
-        <span class="label u-pull-right">time: 0.002</span>
+        <span class="label u-pull-right">time: 0.003</span>
     </button>
     
 </div>
@@ -1427,18 +1510,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_GoJZH">
+<div class="suite" id="suite_uExmJ">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder)</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 13</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.048</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_xRFUs">
+        <div class="test" id="test_iu8Oy">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Can parse a single file</span>
         <span class="label u-pull-right">time: 0.018</span>
@@ -1446,15 +1529,15 @@ there.
     
 </div>
 
-<div class="test" id="test_0at3d">
+<div class="test" id="test_uACOt">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Parses file name starting with a .</span>
-        <span class="label u-pull-right">time: 0.009</span>
+        <span class="label u-pull-right">time: 0.01</span>
     </button>
     
 </div>
 
-<div class="test" id="test_RNND2">
+<div class="test" id="test_lTx8S">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Can walk through sub folders</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1462,7 +1545,7 @@ there.
     
 </div>
 
-<div class="test" id="test_PTrEL">
+<div class="test" id="test_FZ8uD">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Only picks the first suite if multiple &quot;testsuites&quot;</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1470,7 +1553,7 @@ there.
     
 </div>
 
-<div class="test" id="test_Qawuz">
+<div class="test" id="test_VgKm4">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Adds the suite if the file only has a &quot;testsuite&quot;</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1478,7 +1561,7 @@ there.
     
 </div>
 
-<div class="test" id="test_gBObU">
+<div class="test" id="test_1gBlr">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Does not pick up files with only a testcase</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1486,7 +1569,7 @@ there.
     
 </div>
 
-<div class="test" id="test_XP1v8">
+<div class="test" id="test_KeXDk">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Does not parse testsuites which only have test cases inside</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1494,7 +1577,7 @@ there.
     
 </div>
 
-<div class="test" id="test_W5Yww">
+<div class="test" id="test_weItx">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Adds all non name labels onto suite</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1502,7 +1585,7 @@ there.
     
 </div>
 
-<div class="test" id="test_iKB0Y">
+<div class="test" id="test_O7dF5">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Favors the tests classname over the testsuite name</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1510,7 +1593,7 @@ there.
     
 </div>
 
-<div class="test" id="test_DHRER">
+<div class="test" id="test_QH3UF">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Uses &quot;NO CLASSNAME OR SUITE NAME&quot; if suite name if no name in &quot;testsuite&quot; or classname in &quot;testcase&quot;</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1518,7 +1601,7 @@ there.
     
 </div>
 
-<div class="test" id="test_8pFPH">
+<div class="test" id="test_MVZK8">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Ignores suites with no tests</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1526,7 +1609,7 @@ there.
     
 </div>
 
-<div class="test" id="test_nkkPd">
+<div class="test" id="test_ivH8l">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Ignores suites with no tests even if it has properties</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1534,7 +1617,7 @@ there.
     
 </div>
 
-<div class="test" id="test_dmhis">
+<div class="test" id="test_Gmzz0">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Can have nested suites which concatenates the titles together on the child</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1545,18 +1628,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_W5tpu">
+<div class="suite" id="suite_2DEML">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Tests</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 1</span>
 <span class="label u-pull-right">failures: 0</span>
-<span class="label u-pull-right">time: 0.009</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">time: 0.01</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_DXBdD">
+        <div class="test" id="test_4hU7h">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Assumes no type is &quot;passed&quot;</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1567,18 +1650,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_PMv0j">
+<div class="suite" id="suite_Oixz0">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Tests.passed with a message</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 3</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.002</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_U3SaM">
+        <div class="test" id="test_q4yul">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has typepassed</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1586,7 +1669,7 @@ there.
     
 </div>
 
-<div class="test" id="test_xi2T0">
+<div class="test" id="test_oOfkb">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a name</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1594,7 +1677,7 @@ there.
     
 </div>
 
-<div class="test" id="test_TsIUw">
+<div class="test" id="test_ncZNA">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has messages</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1605,18 +1688,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_lLBwr">
+<div class="suite" id="suite_1z5BS">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Tests.error with a message</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 3</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.002</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_Zjend">
+        <div class="test" id="test_HHJHu">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has typeerror</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1624,7 +1707,7 @@ there.
     
 </div>
 
-<div class="test" id="test_G31IC">
+<div class="test" id="test_4G4BY">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a name</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1632,7 +1715,7 @@ there.
     
 </div>
 
-<div class="test" id="test_oOfUz">
+<div class="test" id="test_fyR6K">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has messages</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1643,18 +1726,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_P5TvO">
+<div class="suite" id="suite_kTwLX">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Tests.failure with a message</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 3</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.001</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_lnmyW">
+        <div class="test" id="test_96xLo">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has typefailure</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1662,7 +1745,7 @@ there.
     
 </div>
 
-<div class="test" id="test_kt1UK">
+<div class="test" id="test_xAFB5">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a name</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1670,7 +1753,7 @@ there.
     
 </div>
 
-<div class="test" id="test_KWfvQ">
+<div class="test" id="test_uOkvc">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has messages</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1681,18 +1764,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_9m9NR">
+<div class="suite" id="suite_ezFe3">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Tests.skipped with a message</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 3</span>
 <span class="label u-pull-right">failures: 0</span>
-<span class="label u-pull-right">time: 0.001</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">time: 0.002</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_RpdsL">
+        <div class="test" id="test_4uNuI">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has typeskipped</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1700,7 +1783,7 @@ there.
     
 </div>
 
-<div class="test" id="test_TxzFU">
+<div class="test" id="test_ybs1h">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a name</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1708,10 +1791,10 @@ there.
     
 </div>
 
-<div class="test" id="test_20mBV">
+<div class="test" id="test_ftRMe">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has messages</span>
-        <span class="label u-pull-right">time: 0</span>
+        <span class="label u-pull-right">time: 0.001</span>
     </button>
     
 </div>
@@ -1719,18 +1802,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_cvMET">
+<div class="suite" id="suite_FU4tz">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Tests.Messages</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 5</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.002</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_ZsWKx">
+        <div class="test" id="test_Sbq9P">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Can have multiple messages</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1738,7 +1821,7 @@ there.
     
 </div>
 
-<div class="test" id="test_1Adzj">
+<div class="test" id="test_F88Ug">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Concatenates the type and message (in that order) if no inner message</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1746,7 +1829,7 @@ there.
     
 </div>
 
-<div class="test" id="test_OCigh">
+<div class="test" id="test_Qi4aO">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Uses message if no inner message or type</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1754,7 +1837,7 @@ there.
     
 </div>
 
-<div class="test" id="test_h4PkF">
+<div class="test" id="test_DkWWb">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Uses type if no inner message or message</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1762,7 +1845,7 @@ there.
     
 </div>
 
-<div class="test" id="test_IloOF">
+<div class="test" id="test_ZrzsQ">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Uses inner message over message and type</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1773,18 +1856,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_9fQLW">
+<div class="suite" id="suite_Z3B4m">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Suite properties</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 4</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.002</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_HXNfE">
+        <div class="test" id="test_ZrvLG">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Defaults to empty values</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1792,7 +1875,7 @@ there.
     
 </div>
 
-<div class="test" id="test_8D4uy">
+<div class="test" id="test_BhSP9">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Concatenates multiple properties</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1800,7 +1883,7 @@ there.
     
 </div>
 
-<div class="test" id="test_Apirj">
+<div class="test" id="test_2ff0o">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Each property has a value</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1808,7 +1891,7 @@ there.
     
 </div>
 
-<div class="test" id="test_KjTfV">
+<div class="test" id="test_Tkn1q">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Each property has a name</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1819,18 +1902,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_UiBdl">
+<div class="suite" id="suite_ndEnP">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Errors.Blank file</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 4</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.002</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_5rzTm">
+        <div class="test" id="test_ACnO5">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a name of file</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1838,7 +1921,7 @@ there.
     
 </div>
 
-<div class="test" id="test_luC3E">
+<div class="test" id="test_iUQ41">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has type failure</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1846,7 +1929,7 @@ there.
     
 </div>
 
-<div class="test" id="test_h4smI">
+<div class="test" id="test_JybsV">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Default of no properties</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1854,7 +1937,7 @@ there.
     
 </div>
 
-<div class="test" id="test_msAU8">
+<div class="test" id="test_utuTo">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a single test</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1865,18 +1948,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_YmYQU">
+<div class="suite" id="suite_FiE9D">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Errors.Blank file.The test</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 2</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.001</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_UnIbR">
+        <div class="test" id="test_eof0i">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">The test is an error</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1884,7 +1967,7 @@ there.
     
 </div>
 
-<div class="test" id="test_rLgr5">
+<div class="test" id="test_jyjTD">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a message of &quot;There are no results&quot;</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1895,18 +1978,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_ABf9Y">
+<div class="suite" id="suite_vrQdV">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Errors.Invalid XML</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 4</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.002</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_JXnxv">
+        <div class="test" id="test_24t6a">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a name of file</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1914,7 +1997,7 @@ there.
     
 </div>
 
-<div class="test" id="test_f1iMD">
+<div class="test" id="test_JKkuE">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has type failure</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1922,7 +2005,7 @@ there.
     
 </div>
 
-<div class="test" id="test_UMxG1">
+<div class="test" id="test_B7kwO">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Default of no properties</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1930,7 +2013,7 @@ there.
     
 </div>
 
-<div class="test" id="test_UpvZX">
+<div class="test" id="test_EEQ3N">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a single test</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1941,18 +2024,18 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_JhsJL">
+<div class="suite" id="suite_Le4lx">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Parsing transforms XML to JSON (generic folder).Errors.Invalid XML.The test</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 2</span>
 <span class="label u-pull-right">failures: 0</span>
 <span class="label u-pull-right">time: 0.001</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">timestamp: 2016-01-07T18:17:55</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_61rwU">
+        <div class="test" id="test_qFLXZ">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">The test is an error</span>
         <span class="label u-pull-right">time: 0.001</span>
@@ -1960,7 +2043,7 @@ there.
     
 </div>
 
-<div class="test" id="test_eBVoz">
+<div class="test" id="test_K6ZiG">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Has a message of &quot;There are no results&quot;</span>
         <span class="label u-pull-right">time: 0</span>
@@ -1971,21 +2054,21 @@ there.
     </div>
 </div>
 
-<div class="suite" id="suite_ULkvf">
+<div class="suite" id="suite_7DGbY">
     <button class="suite--passed u-full-width flat" onclick="toggleContraction(this.parentElement)">
         <span class="suite__name u-pull-left">Rendering transforms JSON (from parse) to HTML string (generic folder)</span>
         <span class="label u-pull-right">errors: 0</span>
 <span class="label u-pull-right">tests: 1</span>
 <span class="label u-pull-right">failures: 0</span>
-<span class="label u-pull-right">time: 0.001</span>
-<span class="label u-pull-right">timestamp: 2016-01-07T18:12:37</span>
+<span class="label u-pull-right">time: 0.004</span>
+<span class="label u-pull-right">timestamp: 2016-01-08T09:15:14</span>
     </button>
     <div class="suite__contents">
         
-        <div class="test" id="test_fz0cl">
+        <div class="test" id="test_N3Y4b">
     <button class="test__name test--passed u-full-width " onclick="toggleContraction(this.parentElement)">
         <span class="u-pull-left">Looks good</span>
-        <span class="label u-pull-right">time: 0.001</span>
+        <span class="label u-pull-right">time: 0.003</span>
     </button>
     
 </div>
@@ -1993,7 +2076,8 @@ there.
     </div>
 </div>
 </div>
-    <script type="text/javascript">var suites = [{"name":"No such file.Parsing transforms XML to JSON","type":"passed","errors":"0","tests":"1","failures":"0","time":"0","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Just returns an error","messages":{"values":[],"id":"messages_RVMgk"},"type":"passed","classname":"No such file.Parsing transforms XML to JSON","time":"0","id":"test_S439P"}],"properties":{"values":[],"id":"properties_hrCIH"},"id":"suite_edLRx"},{"name":"No such file.Rendering the JSON into HTML","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.001","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Renders a html file with the expected file name inside","messages":{"values":[],"id":"messages_KGJw3"},"type":"passed","classname":"No such file.Rendering the JSON into HTML","time":"0.001","id":"test_NQaL0"}],"properties":{"values":[],"id":"properties_TFmXn"},"id":"suite_rKLo3"},{"name":"No such file.Layout","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.002","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Has a title No Such File","messages":{"values":[],"id":"messages_xKeMr"},"type":"passed","classname":"No such file.Layout","time":"0.002","id":"test_238Nq"}],"properties":{"values":[],"id":"properties_eGbyw"},"id":"suite_7Jdfw"},{"name":"Parsing transforms XML to JSON (generic folder)","type":"passed","errors":"0","tests":"13","failures":"0","time":"0.048","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Can parse a single file","messages":{"values":[],"id":"messages_cWitT"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.018","id":"test_xRFUs"},{"name":"Parses file name starting with a .","messages":{"values":[],"id":"messages_kEsbK"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.009","id":"test_0at3d"},{"name":"Can walk through sub folders","messages":{"values":[],"id":"messages_JEQJh"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_RNND2"},{"name":"Only picks the first suite if multiple &quot;testsuites&quot;","messages":{"values":[],"id":"messages_hAOoq"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_PTrEL"},{"name":"Adds the suite if the file only has a &quot;testsuite&quot;","messages":{"values":[],"id":"messages_eEvBl"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_Qawuz"},{"name":"Does not pick up files with only a testcase","messages":{"values":[],"id":"messages_Pqwk6"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_gBObU"},{"name":"Does not parse testsuites which only have test cases inside","messages":{"values":[],"id":"messages_YP9PT"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_XP1v8"},{"name":"Adds all non name labels onto suite","messages":{"values":[],"id":"messages_UOKZr"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_W5Yww"},{"name":"Favors the tests classname over the testsuite name","messages":{"values":[],"id":"messages_CpkO5"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_iKB0Y"},{"name":"Uses &quot;NO CLASSNAME OR SUITE NAME&quot; if suite name if no name in &quot;testsuite&quot; or classname in &quot;testcase&quot;","messages":{"values":[],"id":"messages_emP8u"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_DHRER"},{"name":"Ignores suites with no tests","messages":{"values":[],"id":"messages_1DOVW"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_8pFPH"},{"name":"Ignores suites with no tests even if it has properties","messages":{"values":[],"id":"messages_dI9NC"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_nkkPd"},{"name":"Can have nested suites which concatenates the titles together on the child","messages":{"values":[],"id":"messages_3lj25"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_dmhis"}],"properties":{"values":[],"id":"properties_AnH7Y"},"id":"suite_GoJZH"},{"name":"Parsing transforms XML to JSON (generic folder).Tests","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.009","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Assumes no type is &quot;passed&quot;","messages":{"values":[],"id":"messages_dFJKH"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests","time":"0.001","id":"test_DXBdD"}],"properties":{"values":[],"id":"properties_0ta21"},"id":"suite_W5tpu"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.002","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Has typepassed","messages":{"values":[],"id":"messages_xr8dS"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","time":"0","id":"test_U3SaM"},{"name":"Has a name","messages":{"values":[],"id":"messages_UHWyQ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","time":"0","id":"test_xi2T0"},{"name":"Has messages","messages":{"values":[],"id":"messages_C1Xel"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","time":"0.001","id":"test_TsIUw"}],"properties":{"values":[],"id":"properties_236HA"},"id":"suite_PMv0j"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.002","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Has typeerror","messages":{"values":[],"id":"messages_R0PZC"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","time":"0.001","id":"test_Zjend"},{"name":"Has a name","messages":{"values":[],"id":"messages_8IYjX"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","time":"0","id":"test_G31IC"},{"name":"Has messages","messages":{"values":[],"id":"messages_K0zs9"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","time":"0.001","id":"test_oOfUz"}],"properties":{"values":[],"id":"properties_yWJcq"},"id":"suite_lLBwr"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.001","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Has typefailure","messages":{"values":[],"id":"messages_uurqF"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","time":"0","id":"test_lnmyW"},{"name":"Has a name","messages":{"values":[],"id":"messages_cbZzk"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","time":"0","id":"test_kt1UK"},{"name":"Has messages","messages":{"values":[],"id":"messages_4rYMr"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","time":"0.001","id":"test_KWfvQ"}],"properties":{"values":[],"id":"properties_2DBKO"},"id":"suite_P5TvO"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.001","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Has typeskipped","messages":{"values":[],"id":"messages_sxRlz"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","time":"0","id":"test_RpdsL"},{"name":"Has a name","messages":{"values":[],"id":"messages_BMsjo"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","time":"0.001","id":"test_TxzFU"},{"name":"Has messages","messages":{"values":[],"id":"messages_4hA6J"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","time":"0","id":"test_20mBV"}],"properties":{"values":[],"id":"properties_0xB91"},"id":"suite_9m9NR"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.Messages","type":"passed","errors":"0","tests":"5","failures":"0","time":"0.002","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Can have multiple messages","messages":{"values":[],"id":"messages_HNKsI"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0","id":"test_ZsWKx"},{"name":"Concatenates the type and message (in that order) if no inner message","messages":{"values":[],"id":"messages_0JT0r"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0.001","id":"test_1Adzj"},{"name":"Uses message if no inner message or type","messages":{"values":[],"id":"messages_TCDqq"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0","id":"test_OCigh"},{"name":"Uses type if no inner message or message","messages":{"values":[],"id":"messages_sA1VM"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0.001","id":"test_h4PkF"},{"name":"Uses inner message over message and type","messages":{"values":[],"id":"messages_fn4E9"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0","id":"test_IloOF"}],"properties":{"values":[],"id":"properties_3jnRt"},"id":"suite_cvMET"},{"name":"Parsing transforms XML to JSON (generic folder).Suite properties","type":"passed","errors":"0","tests":"4","failures":"0","time":"0.002","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Defaults to empty values","messages":{"values":[],"id":"messages_hi4o5"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0.001","id":"test_HXNfE"},{"name":"Concatenates multiple properties","messages":{"values":[],"id":"messages_BZOKJ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0","id":"test_8D4uy"},{"name":"Each property has a value","messages":{"values":[],"id":"messages_iupUB"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0","id":"test_Apirj"},{"name":"Each property has a name","messages":{"values":[],"id":"messages_U0mnu"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0.001","id":"test_KjTfV"}],"properties":{"values":[],"id":"properties_ozqmJ"},"id":"suite_9fQLW"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","type":"passed","errors":"0","tests":"4","failures":"0","time":"0.002","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Has a name of file","messages":{"values":[],"id":"messages_EgfWY"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0","id":"test_5rzTm"},{"name":"Has type failure","messages":{"values":[],"id":"messages_lpcYJ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0","id":"test_luC3E"},{"name":"Default of no properties","messages":{"values":[],"id":"messages_UIAVf"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0.001","id":"test_h4smI"},{"name":"Has a single test","messages":{"values":[],"id":"messages_yLA0H"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0","id":"test_msAU8"}],"properties":{"values":[],"id":"properties_UX8bM"},"id":"suite_UiBdl"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Blank file.The test","type":"passed","errors":"0","tests":"2","failures":"0","time":"0.001","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"The test is an error","messages":{"values":[],"id":"messages_cUAuV"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file.The test","time":"0","id":"test_UnIbR"},{"name":"Has a message of &quot;There are no results&quot;","messages":{"values":[],"id":"messages_iJT2Z"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file.The test","time":"0.001","id":"test_rLgr5"}],"properties":{"values":[],"id":"properties_BeKGz"},"id":"suite_YmYQU"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","type":"passed","errors":"0","tests":"4","failures":"0","time":"0.002","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Has a name of file","messages":{"values":[],"id":"messages_Yspjj"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0","id":"test_JXnxv"},{"name":"Has type failure","messages":{"values":[],"id":"messages_fvp7C"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0.001","id":"test_f1iMD"},{"name":"Default of no properties","messages":{"values":[],"id":"messages_TxWtQ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0","id":"test_UMxG1"},{"name":"Has a single test","messages":{"values":[],"id":"messages_dVxsE"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0","id":"test_UpvZX"}],"properties":{"values":[],"id":"properties_4L9Cr"},"id":"suite_ABf9Y"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML.The test","type":"passed","errors":"0","tests":"2","failures":"0","time":"0.001","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"The test is an error","messages":{"values":[],"id":"messages_xqtCC"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML.The test","time":"0.001","id":"test_61rwU"},{"name":"Has a message of &quot;There are no results&quot;","messages":{"values":[],"id":"messages_Mq3eg"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML.The test","time":"0","id":"test_eBVoz"}],"properties":{"values":[],"id":"properties_9gYte"},"id":"suite_JhsJL"},{"name":"Rendering transforms JSON (from parse) to HTML string (generic folder)","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.001","timestamp":"2016-01-07T18:12:37","testCases":[{"name":"Looks good","messages":{"values":[],"id":"messages_XNyn5"},"type":"passed","classname":"Rendering transforms JSON (from parse) to HTML string (generic folder)","time":"0.001","id":"test_fz0cl"}],"properties":{"values":[],"id":"properties_OkQlT"},"id":"suite_ULkvf"}]
+    </div>
+    <script type="text/javascript">var suites = [{"name":"No such file.Parsing transforms XML to JSON","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.001","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Just returns an error","messages":{"values":[],"id":"messages_2ifyl"},"type":"passed","classname":"No such file.Parsing transforms XML to JSON","time":"0.001","id":"test_xzLSQ"}],"properties":{"values":[],"id":"properties_LqE9e"},"id":"suite_i0sdw"},{"name":"No such file.Rendering the JSON into HTML","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.001","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Renders a html file with the expected file name inside","messages":{"values":[],"id":"messages_Ub1MW"},"type":"passed","classname":"No such file.Rendering the JSON into HTML","time":"0.001","id":"test_14gbd"}],"properties":{"values":[],"id":"properties_T95kW"},"id":"suite_NRzMg"},{"name":"No such file.Layout","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.003","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Has a title No Such File","messages":{"values":[],"id":"messages_xtNug"},"type":"passed","classname":"No such file.Layout","time":"0.003","id":"test_hzUbO"}],"properties":{"values":[],"id":"properties_QzOlp"},"id":"suite_XDwNH"},{"name":"Parsing transforms XML to JSON (generic folder)","type":"passed","errors":"0","tests":"13","failures":"0","time":"0.048","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Can parse a single file","messages":{"values":[],"id":"messages_QTkpe"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.018","id":"test_iu8Oy"},{"name":"Parses file name starting with a .","messages":{"values":[],"id":"messages_S73Ql"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.01","id":"test_uACOt"},{"name":"Can walk through sub folders","messages":{"values":[],"id":"messages_Coy0R"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_lTx8S"},{"name":"Only picks the first suite if multiple &quot;testsuites&quot;","messages":{"values":[],"id":"messages_x6Kh9"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_FZ8uD"},{"name":"Adds the suite if the file only has a &quot;testsuite&quot;","messages":{"values":[],"id":"messages_9u0BO"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_VgKm4"},{"name":"Does not pick up files with only a testcase","messages":{"values":[],"id":"messages_nVDZL"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_1gBlr"},{"name":"Does not parse testsuites which only have test cases inside","messages":{"values":[],"id":"messages_xR4ae"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_KeXDk"},{"name":"Adds all non name labels onto suite","messages":{"values":[],"id":"messages_qIEc5"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_weItx"},{"name":"Favors the tests classname over the testsuite name","messages":{"values":[],"id":"messages_7LEhF"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_O7dF5"},{"name":"Uses &quot;NO CLASSNAME OR SUITE NAME&quot; if suite name if no name in &quot;testsuite&quot; or classname in &quot;testcase&quot;","messages":{"values":[],"id":"messages_WCcil"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_QH3UF"},{"name":"Ignores suites with no tests","messages":{"values":[],"id":"messages_08NaX"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_MVZK8"},{"name":"Ignores suites with no tests even if it has properties","messages":{"values":[],"id":"messages_hS4K7"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0.001","id":"test_ivH8l"},{"name":"Can have nested suites which concatenates the titles together on the child","messages":{"values":[],"id":"messages_JbGHR"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder)","time":"0","id":"test_Gmzz0"}],"properties":{"values":[],"id":"properties_uJCJi"},"id":"suite_uExmJ"},{"name":"Parsing transforms XML to JSON (generic folder).Tests","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.01","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Assumes no type is &quot;passed&quot;","messages":{"values":[],"id":"messages_Poxnv"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests","time":"0.001","id":"test_4hU7h"}],"properties":{"values":[],"id":"properties_DoOkK"},"id":"suite_2DEML"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.002","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Has typepassed","messages":{"values":[],"id":"messages_wBrzV"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","time":"0","id":"test_q4yul"},{"name":"Has a name","messages":{"values":[],"id":"messages_WA0Iv"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","time":"0","id":"test_oOfkb"},{"name":"Has messages","messages":{"values":[],"id":"messages_GVYxV"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.passed with a message","time":"0.001","id":"test_ncZNA"}],"properties":{"values":[],"id":"properties_iuI5J"},"id":"suite_Oixz0"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.002","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Has typeerror","messages":{"values":[],"id":"messages_6ovRv"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","time":"0.001","id":"test_HHJHu"},{"name":"Has a name","messages":{"values":[],"id":"messages_m7RSg"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","time":"0","id":"test_4G4BY"},{"name":"Has messages","messages":{"values":[],"id":"messages_uOYSF"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.error with a message","time":"0.001","id":"test_fyR6K"}],"properties":{"values":[],"id":"properties_c2CQ1"},"id":"suite_1z5BS"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.001","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Has typefailure","messages":{"values":[],"id":"messages_N50ru"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","time":"0","id":"test_96xLo"},{"name":"Has a name","messages":{"values":[],"id":"messages_DmcMN"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","time":"0","id":"test_xAFB5"},{"name":"Has messages","messages":{"values":[],"id":"messages_Funj4"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.failure with a message","time":"0.001","id":"test_uOkvc"}],"properties":{"values":[],"id":"properties_kWSpQ"},"id":"suite_kTwLX"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","type":"passed","errors":"0","tests":"3","failures":"0","time":"0.002","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Has typeskipped","messages":{"values":[],"id":"messages_aglGa"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","time":"0","id":"test_4uNuI"},{"name":"Has a name","messages":{"values":[],"id":"messages_hxdKi"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","time":"0.001","id":"test_ybs1h"},{"name":"Has messages","messages":{"values":[],"id":"messages_DULFb"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.skipped with a message","time":"0.001","id":"test_ftRMe"}],"properties":{"values":[],"id":"properties_ajtGp"},"id":"suite_ezFe3"},{"name":"Parsing transforms XML to JSON (generic folder).Tests.Messages","type":"passed","errors":"0","tests":"5","failures":"0","time":"0.002","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Can have multiple messages","messages":{"values":[],"id":"messages_4L2hV"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0","id":"test_Sbq9P"},{"name":"Concatenates the type and message (in that order) if no inner message","messages":{"values":[],"id":"messages_Hqg4H"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0.001","id":"test_F88Ug"},{"name":"Uses message if no inner message or type","messages":{"values":[],"id":"messages_Uk3Z7"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0","id":"test_Qi4aO"},{"name":"Uses type if no inner message or message","messages":{"values":[],"id":"messages_jKIya"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0.001","id":"test_DkWWb"},{"name":"Uses inner message over message and type","messages":{"values":[],"id":"messages_S2eX9"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Tests.Messages","time":"0","id":"test_ZrzsQ"}],"properties":{"values":[],"id":"properties_fGP8Q"},"id":"suite_FU4tz"},{"name":"Parsing transforms XML to JSON (generic folder).Suite properties","type":"passed","errors":"0","tests":"4","failures":"0","time":"0.002","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Defaults to empty values","messages":{"values":[],"id":"messages_oIGXB"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0.001","id":"test_ZrvLG"},{"name":"Concatenates multiple properties","messages":{"values":[],"id":"messages_2Aisu"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0","id":"test_BhSP9"},{"name":"Each property has a value","messages":{"values":[],"id":"messages_0y8rZ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0","id":"test_2ff0o"},{"name":"Each property has a name","messages":{"values":[],"id":"messages_6c7MM"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Suite properties","time":"0.001","id":"test_Tkn1q"}],"properties":{"values":[],"id":"properties_f6xd0"},"id":"suite_Z3B4m"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","type":"passed","errors":"0","tests":"4","failures":"0","time":"0.002","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Has a name of file","messages":{"values":[],"id":"messages_2f5a0"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0","id":"test_ACnO5"},{"name":"Has type failure","messages":{"values":[],"id":"messages_4We6x"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0","id":"test_iUQ41"},{"name":"Default of no properties","messages":{"values":[],"id":"messages_LkSTI"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0.001","id":"test_JybsV"},{"name":"Has a single test","messages":{"values":[],"id":"messages_Uy26f"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file","time":"0","id":"test_utuTo"}],"properties":{"values":[],"id":"properties_LsGJY"},"id":"suite_ndEnP"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Blank file.The test","type":"passed","errors":"0","tests":"2","failures":"0","time":"0.001","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"The test is an error","messages":{"values":[],"id":"messages_g78jt"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file.The test","time":"0","id":"test_eof0i"},{"name":"Has a message of &quot;There are no results&quot;","messages":{"values":[],"id":"messages_0y8sQ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Blank file.The test","time":"0.001","id":"test_jyjTD"}],"properties":{"values":[],"id":"properties_90ucM"},"id":"suite_FiE9D"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","type":"passed","errors":"0","tests":"4","failures":"0","time":"0.002","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"Has a name of file","messages":{"values":[],"id":"messages_b35eR"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0","id":"test_24t6a"},{"name":"Has type failure","messages":{"values":[],"id":"messages_4Bb5T"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0.001","id":"test_JKkuE"},{"name":"Default of no properties","messages":{"values":[],"id":"messages_1nfkJ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0","id":"test_B7kwO"},{"name":"Has a single test","messages":{"values":[],"id":"messages_5TfFb"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML","time":"0","id":"test_EEQ3N"}],"properties":{"values":[],"id":"properties_5vsfv"},"id":"suite_vrQdV"},{"name":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML.The test","type":"passed","errors":"0","tests":"2","failures":"0","time":"0.001","timestamp":"2016-01-07T18:17:55","testCases":[{"name":"The test is an error","messages":{"values":[],"id":"messages_zjCdJ"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML.The test","time":"0.001","id":"test_qFLXZ"},{"name":"Has a message of &quot;There are no results&quot;","messages":{"values":[],"id":"messages_7sRaO"},"type":"passed","classname":"Parsing transforms XML to JSON (generic folder).Errors.Invalid XML.The test","time":"0","id":"test_K6ZiG"}],"properties":{"values":[],"id":"properties_LDcpv"},"id":"suite_Le4lx"},{"name":"Rendering transforms JSON (from parse) to HTML string (generic folder)","type":"passed","errors":"0","tests":"1","failures":"0","time":"0.004","timestamp":"2016-01-08T09:15:14","testCases":[{"name":"Looks good","messages":{"values":[],"id":"messages_1xfTs"},"type":"passed","classname":"Rendering transforms JSON (from parse) to HTML string (generic folder)","time":"0.003","id":"test_N3Y4b"}],"properties":{"values":[],"id":"properties_94DdR"},"id":"suite_7DGbY"}]
 function addClass(element, className) {
     if (element)
         element.className = element.className + ' ' + className
@@ -2210,6 +2294,36 @@ function searchProperties(value) {
 
         })
     })
+}
+
+function showOptions() {
+    var collapsed = document.getElementById('optionsCollapsed')
+    collapsed.style.display = "none"
+
+    var expanded = document.getElementById('optionsExpanded')
+    expanded.style.display = "block"
+
+    var optionsContainer = document.getElementById('options_container')
+    optionsContainer.className = optionsContainer.className.replace('one', 'one-third')
+
+    var suitesContainer = document.getElementById('suites_container')
+    suitesContainer.className = suitesContainer.className.replace('eleven ', 'two-thirds ')
+    suitesContainer.className = suitesContainer.className.replace('columns ', 'column ')
+}
+
+function hideOptions() {
+    var collapsed = document.getElementById('optionsCollapsed')
+    collapsed.style.display = "block"
+
+    var expanded = document.getElementById('optionsExpanded')
+    expanded.style.display = "none"
+
+    var optionsContainer = document.getElementById('options_container')
+    optionsContainer.className = optionsContainer.className.replace('one-third', 'one')
+
+    var suitesContainer = document.getElementById('suites_container')
+    suitesContainer.className = suitesContainer.className.replace('two-thirds ', 'eleven ')
+    suitesContainer.className = suitesContainer.className.replace('column ', 'columns ')
 }
 </script>
 </body>

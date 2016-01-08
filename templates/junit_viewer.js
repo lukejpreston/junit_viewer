@@ -215,3 +215,33 @@ function searchProperties(value) {
         })
     })
 }
+
+function showOptions() {
+    var collapsed = document.getElementById('optionsCollapsed')
+    collapsed.style.display = "none"
+
+    var expanded = document.getElementById('optionsExpanded')
+    expanded.style.display = "block"
+
+    var optionsContainer = document.getElementById('options_container')
+    optionsContainer.className = optionsContainer.className.replace('one', 'one-third')
+
+    var suitesContainer = document.getElementById('suites_container')
+    suitesContainer.className = suitesContainer.className.replace('eleven ', 'two-thirds ')
+    suitesContainer.className = suitesContainer.className.replace('columns ', 'column ')
+}
+
+function hideOptions() {
+    var collapsed = document.getElementById('optionsCollapsed')
+    collapsed.style.display = "block"
+
+    var expanded = document.getElementById('optionsExpanded')
+    expanded.style.display = "none"
+
+    var optionsContainer = document.getElementById('options_container')
+    optionsContainer.className = optionsContainer.className.replace('one-third', 'one')
+
+    var suitesContainer = document.getElementById('suites_container')
+    suitesContainer.className = suitesContainer.className.replace('two-thirds ', 'eleven ')
+    suitesContainer.className = suitesContainer.className.replace('column ', 'columns ')
+}
