@@ -79,11 +79,33 @@ var renderedData = jv.render(parsedData)
 var parsedAndRenderedData = jv.junit_viewer('fileOrFolderLocation')
 ```
 
+Code Documentation
+==================
+
+Using Junit Viewer's very own unit tests (using a single file result)
+
+[Junit Viewer](http://lukejpreston.github.io/junit_viewer/junit_viewer_specs.html)
+
 Demos
 =====
 
-* [A mix of all kinds of data](http://lukejpreston.github.io/junit_viewer/demos/data.html)
-* [An example of a single file](http://lukejpreston.github.io/junit_viewer/demos/single.html)
+Using Junit Viewer's very own unit tests (using a folder of results)
+
+[A mix of all kinds of tests](http://lukejpreston.github.io/junit_viewer/demo.html)
+
+
+<div class="row">
+            <h2><br/>Code Documentation</h2>
+            <p>Using Junit Viewer's very own unit tests (using a single file result)</p>
+            <a href="./junit_viewer_specs.html">A mix of all kinds of tests</a>
+        </div>
+        <div class="row">
+            <h2><br/>Demo</h2>
+            <p>Using Junit Viewer's very own unit tests (using a folder of results)</p>
+            <a href="./demo.html">A mix of all kinds of tests</a>
+        </div>
+
+
 
 Contributions
 =============
