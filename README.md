@@ -1,6 +1,8 @@
 Junit Viewer
 ============
 
+[![Join the chat at https://gitter.im/lukejpreston/junit_viewer](https://badges.gitter.im/lukejpreston/junit_viewer.svg)](https://gitter.im/lukejpreston/junit_viewer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Junit Viewer is a very simple yet powerful way of viewing your xunit results
 
 Features
