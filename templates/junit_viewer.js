@@ -245,3 +245,14 @@ function hideOptions() {
     suitesContainer.className = suitesContainer.className.replace('two-thirds ', 'eleven ')
     suitesContainer.className = suitesContainer.className.replace('column ', 'columns ')
 }
+
+var height = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight
+document.getElementById('suites_container').style['height'] = height + 'px'
+document.getElementById('options').style['height'] = (height - 38 * 2) + 'px'
+
+window.onresize = function(event) {
+    console.log('change')
+    var height = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight
+    document.getElementById('suites_container').style['height'] = height + 'px'
+    document.getElementById('options').style['height'] = (height - 38 * 2) + 'px'
+}

@@ -162,8 +162,13 @@ h1 {
     margin: 0 0.5em;
 }
 
-.suites_container {
+.container__suites {
     margin: 0 1em;
+}
+
+.container__suites,
+.options {
+    overflow: scroll;
 }
 
 ::-webkit-scrollbar {

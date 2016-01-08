@@ -4,7 +4,7 @@ var parse = require('../src/parse'),
     render = require('../src/render'),
     jsdom = require('jsdom').jsdom
 
-xdescribe('Parsing transforms XML to JSON (generic folder)', function() {
+describe('Parsing transforms XML to JSON (generic folder)', function() {
     var folder = 'data/test'
     var parsed = parse(folder)
     var rendered = render(parsed)
@@ -258,11 +258,11 @@ describe('Rendering transforms JSON (from parse) to HTML string (generic folder)
     var view = jsdom(rendered)
 
     it('Looks good', function() {
-        require('fs').writeFileSync('tmp.html', rendered)
+        // require('fs').writeFileSync('tmp.html', rendered)
     })
 })
 
-xdescribe('No such file', function() {
+describe('No such file', function() {
     var fileName = 'no_such_file'
     var parsed = parse(fileName)
     var rendered = render(parsed)

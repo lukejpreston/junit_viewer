@@ -33,7 +33,6 @@ function renderTests(testCases) {
         }
 
         var renderedMessages
-        console.log(test.name, test.messages.values[0])
         if (test.messages.values.length > 1) {
             var renderedMessagesValues = test.messages.values.map(function(message) {
                 return render('message.html', {
