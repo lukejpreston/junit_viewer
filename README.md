@@ -10,12 +10,13 @@ Junit Viewer is a very simple yet powerful way of viewing your xunit results
 Features
 ========
 
-
 **Reads a file or folder (and all sub folders) of XML results** Hence you don't need to run this on separate files
 
 **Has it's own API** Now you can embed it in your own test runners in order to save the results in a quick and nice viewer
 
 **Single Page Results** You don't need to have a whole folder of files in order to view your results (trke all other junit viewers)
+
+**Shows HTML output** This tool will show HTML in your test messages, meaning it is a great test snapshot tool to show images
 
 **Using Express to start a server** Means you can just hit refresh and you have your latest tests instead of re-running Junit Viewer
 
@@ -26,7 +27,6 @@ Features
 **Quick** It uses mustache and has no jquery as such it is quicker than any other junit test viewer
 
 **Independent** It is independent of any testing tool, so it can work with anything which can produce junit results
-
 
 
 Install It
