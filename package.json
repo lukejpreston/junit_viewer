@@ -1,6 +1,6 @@
 {
   "name": "junit-viewer",
-  "version": "4.5.1",
+  "version": "4.6.0",
   "description": "A simple and quick tool to view junit results",
   "main": "src/main.js",
   "bin": {
