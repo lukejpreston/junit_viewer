@@ -20,6 +20,8 @@ process.argv.forEach(function(arg) {
         commandArgs.help = true
 })
 
+
+
 function changeToAbsolute(fileName) {
     return fileName.indexOf('/') === 0 ? fileName : process.cwd() + '/' + fileName
 }
@@ -54,10 +56,10 @@ function start() {
             })
 
             var server = app.listen(commandArgs.port, function() {
-                var host = server.address().address
                 var port = server.address().port
                 console.log('Junit Viewer started at port:', port)
             })
+            return server
         } else {
             var renderedResults = junit_viewer(commandArgs.results)
             if (commandArgs.minify)

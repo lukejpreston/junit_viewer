@@ -294,3 +294,12 @@ function get(id) {
 function getInnerHtml(id) {
     return get(id).innerHTML
 }
+
+
+describe('Can use express from the command line', function() {
+    it('Hosts at your port', function() {
+        var cli = require('../src/junit_viewer_cli')
+        var server = cli.start()
+        server.close()
+    })
+})

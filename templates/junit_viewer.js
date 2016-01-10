@@ -61,6 +61,27 @@ function hidePassingSuites(button) {
     })
 }
 
+function match(search, text) {
+    text = text.toUpperCase()
+    search = search.toUpperCase()
+
+    try {
+        if (text.match(new RegExp(search)) !== null) return true
+    } catch (e) {
+
+    }
+
+    if (text.indexOf(search) !== -1) return true
+    var j = -1
+    for (var i = 0; i < search.length; i++) {
+        var l = search[i]
+        if (l == ' ') continue
+        j = text.indexOf(l, j + 1)
+        if (j == -1) return false
+    }
+    return true
+}
+
 function searchSuites(value) {
     value = value.toUpperCase()
     suites.forEach(function(suite) {
@@ -70,7 +91,8 @@ function searchSuites(value) {
             return
         }
 
-        var inSearch = suite.name.toUpperCase().indexOf(value) !== -1
+        // var inSearch = suite.name.toUpperCase().indexOf(value) !== -1
+        var inSearch = match(value, suite.name)
         var notAlreadySearched = suiteElement.className.indexOf('not_in_search') === -1
         if (!inSearch && notAlreadySearched)
             addClass(suiteElement, 'not_in_search')
@@ -138,9 +160,11 @@ function searchTests(value) {
             return
         }
 
-        var inSearch = test.name.toUpperCase().indexOf(value) !== -1
+        // var inSearch = test.name.toUpperCase().indexOf(value) !== -1
+        var inSearch = match(value, test.name)
         test.messages.values.forEach(function(message) {
-            var isInMessage = message.value.toUpperCase().indexOf(value) !== -1
+            // var isInMessage = message.value.toUpperCase().indexOf(value) !== -1
+            var isInMessage = match(value, message.value)
             if (isInMessage)
                 inSearch = true
         })
@@ -204,8 +228,10 @@ function searchProperties(value) {
                 return
             }
 
-            var inSearch = property.name.toUpperCase().indexOf(value) !== -1 ||
-                property.value.toUpperCase().indexOf(value) !== -1
+            // var inSearch = property.name.toUpperCase().indexOf(value) !== -1 ||
+            //     property.value.toUpperCase().indexOf(value) !== -1
+
+            var inSearch = match(value, property.name) || match(value, property.value)
             var notAlreadySearched = propertyElement.className.indexOf('not_in_search') === -1
             if (!inSearch && notAlreadySearched)
                 addClass(propertyElement, 'not_in_search')
@@ -251,7 +277,6 @@ document.getElementById('suites_container').style['height'] = height + 'px'
 document.getElementById('options').style['height'] = (height - 38 * 2) + 'px'
 
 window.onresize = function(event) {
-    console.log('change')
     var height = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight
     document.getElementById('suites_container').style['height'] = height + 'px'
     document.getElementById('options').style['height'] = (height - 38 * 2) + 'px'
