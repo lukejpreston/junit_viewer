@@ -20,7 +20,7 @@ Features
 
 **Using Express to start a server** Means you can just hit refresh and you have your latest tests instead of re-running Junit Viewer
 
-**Search** It comes with a search box so you can search your suites and tests and test messages but also properties
+**Search** It comes with a search box so you can search your suites and tests and test messages but also properties, it uses matching similar to Sublime e.g 'HW' would match against 'HelloWorld' (so would 'hw') and you can also search using regex e.g. 'h(.*)' would match against 'HelloWorld'
 
 **Skeleton** It uses Skeleton so it is pretty, responsive and quick
 
