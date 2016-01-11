@@ -92,15 +92,63 @@ function renderSuites(suites) {
     }).join('\n')
 }
 
+function renderJunitInfo(info) {
+    var redneredJunitInfo = {
+        suites: '',
+        tests: ''
+    }
+    redneredJunitInfo.suites = render('junit_info.html', {
+        kind: 'suite',
+        name: 'suite',
+        type: 'count',
+        count: info.suites.count
+    })
+
+    redneredJunitInfo.suites = redneredJunitInfo.suites + Object.keys(info.suites).filter(function(key) {
+        return key !== 'count'
+    }).map(function(key) {
+        return render('junit_info.html', {
+            kind: 'suite',
+            name: key,
+            type: key,
+            count: info.suites[key]
+        })
+    }).join('\n')
+
+    redneredJunitInfo.tests = redneredJunitInfo.tests + '\n' + render('junit_info.html', {
+        kind: 'test',
+        name: 'test',
+        type: 'count',
+        count: info.tests.count
+    })
+
+    redneredJunitInfo.tests = redneredJunitInfo.tests + Object.keys(info.tests).filter(function(key) {
+        return key !== 'count'
+    }).map(function(key) {
+        return render('junit_info.html', {
+            kind: 'test',
+            name: key,
+            type: key,
+            count: info.tests[key]
+        })
+    }).join('\n')
+
+    return redneredJunitInfo
+}
+
 module.exports = function(data) {
     if (data.junitViewerFileError)
         return render('no_file.html', data)
 
     var suites = data.suites
-    var renderedJavaScript = 'var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/../templates/junit_viewer.js').toString()
+    var junit_info = data.junit_info
+    var renderedJavaScript = 'var junit_info = ' + JSON.stringify(junit_info) + '\n var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/../templates/junit_viewer.js').toString()
     var renderedSuites = renderSuites(suites)
 
+    var redneredJunitInfo = renderJunitInfo(junit_info)
+
     return render('index.html', {
+        junit_info: redneredJunitInfo,
         title: data.title,
         skeleton: fs.readFileSync(__dirname + '/../templates/skeleton.css').toString(),
         style: fs.readFileSync(__dirname + '/../templates/junit_viewer.css').toString(),

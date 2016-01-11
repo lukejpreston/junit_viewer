@@ -212,3 +212,8 @@ h1 {
 .options__icon--colapsed {
     padding: 0;
 }
+
+
+.junit_info {
+    text-align: center;
+}
