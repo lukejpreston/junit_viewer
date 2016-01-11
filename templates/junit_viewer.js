@@ -61,17 +61,62 @@ function hidePassingSuites(button) {
     })
 }
 
+function globToRegex(pat) {
+    var i = 0,
+        j, n = pat.length || 0,
+        res, c, stuff
+    res = '^';
+    while (i < n) {
+        c = pat[i];
+        i = i + 1;
+        if (c === '*') {
+            res = res + '.*';
+        } else if (c === '?') {
+            res = res + '.';
+        } else if (c === '[') {
+            j = i;
+            if (j < n && pat[j] === '!') {
+                j = j + 1;
+            }
+            if (j < n && pat[j] === ']') {
+                j = j + 1;
+            }
+            while (j < n && pat[j] !== ']') {
+                j = j + 1;
+            }
+            if (j >= n) {
+                res = res + '\\[';
+            } else {
+                stuff = pat.slice(i, j).replace('\\', '\\\\');
+                i = j + 1;
+                if (stuff[0] === '!') {
+                    stuff = '^' + stuff.slice(1);
+                } else if (stuff[0] === '^') {
+                    stuff = '\\' + stuff;
+                }
+                res = res + '[' + stuff + ']';
+            }
+        } else {
+            res = res + escape(c);
+        }
+    }
+    return res + '$';
+}
+
 function match(search, text) {
     text = text.toUpperCase()
     search = search.toUpperCase()
 
+    if (text.indexOf(search) !== -1) return true
+
     try {
         if (text.match(new RegExp(search)) !== null) return true
-    } catch (e) {
+    } catch (e) {}
 
-    }
+    try {
+        if (text.match(new RegExp(globToRegex(search))) !== null) return true
+    } catch (e) {}
 
-    if (text.indexOf(search) !== -1) return true
     var j = -1
     for (var i = 0; i < search.length; i++) {
         var l = search[i]
