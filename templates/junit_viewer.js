@@ -63,36 +63,36 @@ function createVisibleInfo(suites) {
 
 function updateInfo() {
     var suites = document.getElementsByClassName('suite')
-    var hiddenSuites = document.getElementsByClassName('suite hidden')
-    var notInSearchSuites = document.getElementsByClassName('suite not_in_search')
-
-    document.getElementById('junit_info_suite_count_count').innerHTML = suites.length - hiddenSuites.length - notInSearchSuites.length
-
     var data = createVisibleInfo(suites)
 
-    Object.keys(junit_info.suites).filter(function(key) {
+    var hiddenSuites = document.getElementsByClassName('suite hidden')
+    var notInSearchSuites = document.getElementsByClassName('suite not_in_search')
+    data.suites.count = suites.length - hiddenSuites.length - notInSearchSuites.length
+
+    var tests = document.getElementsByClassName('test')
+    var hiddenTests = document.getElementsByClassName('test hidden')
+    var notInSearchTests = document.getElementsByClassName('test not_in_search')
+
+    data.tests.count = 0
+    Object.keys(data.tests).filter(function(key) {
         return key !== 'count'
     }).forEach(function(key) {
+        data.tests.count += data.tests[key]
+    })
+
+    Object.keys(junit_info.suites).forEach(function(key) {
         if (data.suites.hasOwnProperty(key))
             document.getElementById('junit_info_suite_' + key + '_count').innerHTML = data.suites[key]
         else
             document.getElementById('junit_info_suite_' + key + '_count').innerHTML = 0
     })
 
-    Object.keys(junit_info.tests).filter(function(key) {
-        return key !== 'count'
-    }).forEach(function(key) {
+    Object.keys(junit_info.tests).forEach(function(key) {
         if (data.tests.hasOwnProperty(key))
             document.getElementById('junit_info_test_' + key + '_count').innerHTML = data.tests[key]
         else
             document.getElementById('junit_info_test_' + key + '_count').innerHTML = 0
     })
-
-    var tests = document.getElementsByClassName('test')
-    var hiddenTests = document.getElementsByClassName('test hidden')
-    var notInSearchTests = document.getElementsByClassName('test not_in_search')
-
-    document.getElementById('junit_info_test_count_count').innerHTML = tests.length - hiddenTests.length - notInSearchTests.length
 }
 
 // SUITES
