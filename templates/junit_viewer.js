@@ -206,7 +206,6 @@ function searchSuites(value) {
             return
         }
 
-        // var inSearch = suite.name.toUpperCase().indexOf(value) !== -1
         var inSearch = match(value, suite.name)
         var notAlreadySearched = suiteElement.className.indexOf('not_in_search') === -1
         if (!inSearch && notAlreadySearched)
@@ -281,10 +280,8 @@ function searchTests(value) {
             return
         }
 
-        // var inSearch = test.name.toUpperCase().indexOf(value) !== -1
         var inSearch = match(value, test.name)
         test.messages.values.forEach(function(message) {
-            // var isInMessage = message.value.toUpperCase().indexOf(value) !== -1
             var isInMessage = match(value, message.value)
             if (isInMessage)
                 inSearch = true
@@ -350,9 +347,6 @@ function searchProperties(value) {
                 removeClass(propertyElement, 'not_in_search')
                 return
             }
-
-            // var inSearch = property.name.toUpperCase().indexOf(value) !== -1 ||
-            //     property.value.toUpperCase().indexOf(value) !== -1
 
             var inSearch = match(value, property.name) || match(value, property.value)
             var notAlreadySearched = propertyElement.className.indexOf('not_in_search') === -1
