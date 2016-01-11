@@ -195,10 +195,10 @@ function parseTests(suites, fileName) {
             else if (suiteName)
                 testSuiteName = suiteName
 
-            if(testcase.hasOwnProperty('$'))
-                Object.keys(testcase.$).filter(function (key) {
+            if (testcase.hasOwnProperty('$'))
+                Object.keys(testcase.$).filter(function(key) {
                     return key !== 'name' || key !== 'classname'
-                }).forEach(function (key) {
+                }).forEach(function(key) {
                     test[key] = testcase.$[key]
                 })
 
@@ -318,8 +318,29 @@ module.exports = function(fileName) {
         })
     })
 
+    var junit_info = {
+        suites: {
+            count: parsedSuites.length
+        },
+        tests: {
+            count: 0
+        }
+    }
+    parsedSuites.forEach(function(suite) {
+        if (!junit_info.suites.hasOwnProperty(suite.type))
+            junit_info.suites[suite.type] = 0
+        junit_info.suites[suite.type] = junit_info.suites[suite.type] += 1
+        junit_info.tests.count += suite.testCases.length
+        suite.testCases.forEach(function(test) {
+            if (!junit_info.tests.hasOwnProperty(test.type))
+                junit_info.tests[test.type] = 0
+            junit_info.tests[test.type] = junit_info.tests[test.type] += 1
+        })
+    })
+
     return {
         title: extractFileName(fileName),
-        suites: parsedSuites
+        suites: parsedSuites,
+        junit_info: junit_info
     }
 }
