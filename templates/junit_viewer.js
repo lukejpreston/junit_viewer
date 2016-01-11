@@ -27,6 +27,53 @@ function toggleContraction(element) {
     }
 }
 
+function createHiddenInfo(suites) {
+    var data = {}
+    Object.keys(suites).forEach(function(key, index) {
+        var junitInfo = document.getElementById(key)
+        if (junitInfo && junitInfo.className.indexOf('not_in_search') === -1 && junitInfo.className.indexOf('hidden') === -1) {
+            var type = junitInfo.children[0].className.split(' ')[0].split('--')[1]
+            if (!data.hasOwnProperty(type))
+                data[type] = 0
+            data[type] += 1
+        }
+    })
+    return data
+}
+
+function updateInfo() {
+    var suites = document.getElementsByClassName('suite')
+    var hiddenSuites = document.getElementsByClassName('suite hidden')
+    var noInSearchSuites = document.getElementsByClassName('suite not_in_search')
+
+    document.getElementById('junit_info_suite_count_count').innerHTML = suites.length - hiddenSuites.length - noInSearchSuites.length
+
+    var data = createHiddenInfo(suites)
+
+    Object.keys(junit_info.suites).filter(function(key) {
+        return key !== 'count'
+    }).forEach(function(key) {
+        if (data.hasOwnProperty(key))
+            document.getElementById('junit_info_suite_' + key + '_count').innerHTML = data[key]
+        else
+            document.getElementById('junit_info_suite_' + key + '_count').innerHTML = 0
+    })
+
+
+    // var hiddenTests = document.getElementsByClassName('test hidden')
+
+    // document.getElementById('junit_info_suite_count_count')
+    // document.getElementById('junit_info_suite_passed_count')
+    // document.getElementById('junit_info_suite_failre_count')
+
+    // document.getElementById('junit_info_test_count_count')
+    // document.getElementById('junit_info_test_passed_count')
+    // document.getElementById('junit_info_test_failre_count')
+    // document.getElementById('junit_info_test_error_count')
+    // document.getElementById('junit_info_test_skipped_count')
+
+}
+
 // SUITES
 
 function contractSuites(button) {
@@ -59,6 +106,8 @@ function hidePassingSuites(button) {
         else if (suite.type === 'passed')
             addClass(suiteElement, 'hidden')
     })
+
+    updateInfo()
 }
 
 function globToRegex(pat) {
@@ -144,6 +193,8 @@ function searchSuites(value) {
         if (inSearch)
             removeClass(suiteElement, 'not_in_search')
     })
+
+    updateInfo()
 }
 
 // TESTS
@@ -182,6 +233,8 @@ function hideTests(button) {
         else
             addClass(testElement, 'hidden')
     })
+
+    updateInfo()
 }
 
 function hidePassingTests(button) {
@@ -194,6 +247,8 @@ function hidePassingTests(button) {
         else if (test.type === 'passed')
             addClass(testElement, 'hidden')
     })
+
+    updateInfo()
 }
 
 function searchTests(value) {
@@ -220,6 +275,8 @@ function searchTests(value) {
         if (inSearch)
             removeClass(testElement, 'not_in_search')
     })
+
+    updateInfo()
 }
 
 // Properties

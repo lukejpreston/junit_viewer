@@ -50,8 +50,6 @@ function start() {
                 var renderedResults = junit_viewer(commandArgs.results)
                 if (commandArgs.minify)
                     renderedResults = htmlminify.minify(renderedResults)
-                else
-                    console.log('not minify')
                 res.send(renderedResults)
             })
 
