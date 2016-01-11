@@ -27,51 +27,72 @@ function toggleContraction(element) {
     }
 }
 
-function createHiddenInfo(suites) {
-    var data = {}
-    Object.keys(suites).forEach(function(key, index) {
-        var junitInfo = document.getElementById(key)
-        if (junitInfo && junitInfo.className.indexOf('not_in_search') === -1 && junitInfo.className.indexOf('hidden') === -1) {
-            var type = junitInfo.children[0].className.split(' ')[0].split('--')[1]
-            if (!data.hasOwnProperty(type))
-                data[type] = 0
-            data[type] += 1
+function createVisibleInfo(suites) {
+    var data = {
+        suites: {},
+        tests: {}
+    }
+    Object.keys(suites).filter(function(suiteKey) {
+        var suite = document.getElementById(suiteKey)
+        return suite !== null
+    }).forEach(function(suiteKey, index) {
+        var suite = document.getElementById(suiteKey)
+        if (suite.className.indexOf('not_in_search') === -1 && suite.className.indexOf('hidden') === -1) {
+            var type = suite.children[0].className.split(' ')[0].split('--')[1]
+            if (!data.suites.hasOwnProperty(type))
+                data.suites[type] = 0
+            data.suites[type] += 1
+            var suiteContents = suite.children[1].children
+            Object.keys(suiteContents).filter(function(testKey) {
+                return document.getElementById(testKey) !== null &&
+                    suiteContents[testKey].className.indexOf('test') !== -1 &&
+                    suiteContents[testKey].className.indexOf('not_in_search') === -1 &&
+                    suiteContents[testKey].className.indexOf('hidden') === -1
+            }).forEach(function(testKey) {
+                var test = document.getElementById(testKey)
+                var type = test.children[0].className.split(' ')[1].split('--')[1]
+                if (!data.tests.hasOwnProperty(type))
+                    data.tests[type] = 0
+                data.tests[type] += 1
+            })
         }
     })
+
     return data
 }
 
 function updateInfo() {
     var suites = document.getElementsByClassName('suite')
     var hiddenSuites = document.getElementsByClassName('suite hidden')
-    var noInSearchSuites = document.getElementsByClassName('suite not_in_search')
+    var notInSearchSuites = document.getElementsByClassName('suite not_in_search')
 
-    document.getElementById('junit_info_suite_count_count').innerHTML = suites.length - hiddenSuites.length - noInSearchSuites.length
+    document.getElementById('junit_info_suite_count_count').innerHTML = suites.length - hiddenSuites.length - notInSearchSuites.length
 
-    var data = createHiddenInfo(suites)
+    var data = createVisibleInfo(suites)
 
     Object.keys(junit_info.suites).filter(function(key) {
         return key !== 'count'
     }).forEach(function(key) {
-        if (data.hasOwnProperty(key))
-            document.getElementById('junit_info_suite_' + key + '_count').innerHTML = data[key]
+        if (data.suites.hasOwnProperty(key))
+            document.getElementById('junit_info_suite_' + key + '_count').innerHTML = data.suites[key]
         else
             document.getElementById('junit_info_suite_' + key + '_count').innerHTML = 0
     })
 
+    Object.keys(junit_info.tests).filter(function(key) {
+        return key !== 'count'
+    }).forEach(function(key) {
+        if (data.tests.hasOwnProperty(key))
+            document.getElementById('junit_info_test_' + key + '_count').innerHTML = data.tests[key]
+        else
+            document.getElementById('junit_info_test_' + key + '_count').innerHTML = 0
+    })
 
-    // var hiddenTests = document.getElementsByClassName('test hidden')
+    var tests = document.getElementsByClassName('test')
+    var hiddenTests = document.getElementsByClassName('test hidden')
+    var notInSearchTests = document.getElementsByClassName('test not_in_search')
 
-    // document.getElementById('junit_info_suite_count_count')
-    // document.getElementById('junit_info_suite_passed_count')
-    // document.getElementById('junit_info_suite_failre_count')
-
-    // document.getElementById('junit_info_test_count_count')
-    // document.getElementById('junit_info_test_passed_count')
-    // document.getElementById('junit_info_test_failre_count')
-    // document.getElementById('junit_info_test_error_count')
-    // document.getElementById('junit_info_test_skipped_count')
-
+    document.getElementById('junit_info_test_count_count').innerHTML = tests.length - hiddenTests.length - notInSearchTests.length
 }
 
 // SUITES
