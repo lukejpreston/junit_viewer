@@ -11,7 +11,7 @@ process.argv.forEach(function(arg) {
     if (arg.indexOf('--save') !== -1)
         commandArgs.save = arg.split('=')[1]
     if (arg.indexOf('--results') !== -1)
-        commandArgs.results = arg.split('=')[1]
+        commandArgs.results = arg.split('=')[1] || './'
     if (arg.indexOf('--port') !== -1)
         commandArgs.port = arg.split('=')[1] || 9090
     if (arg.indexOf('--minify') !== -1)
@@ -43,7 +43,8 @@ function start() {
             var saveLocation = changeToAbsolute(commandArgs.save)
             fs.writeFileSync(saveLocation, renderedResults)
             console.log('Wrote to: ', saveLocation)
-        } else if (commandArgs.hasOwnProperty('port')) {
+        }
+        if (commandArgs.hasOwnProperty('port')) {
             var app = express()
 
             app.get('/', function(req, res) {
@@ -58,7 +59,9 @@ function start() {
                 console.log('Junit Viewer started at port:', port)
             })
             return server
-        } else {
+        }
+
+        if(!commandArgs.hasOwnProperty('save') && !commandArgs.hasOwnProperty('port')){
             var renderedResults = junit_viewer(commandArgs.results)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)

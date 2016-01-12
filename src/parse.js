@@ -286,11 +286,10 @@ module.exports = function(fileName) {
             junitViewerFileError: fileName.slice(0, fileName.indexOf('FILE DOES NOT EXIST') - 1)
         }
 
-
     if (isDirectory(fileName))
-        runThroughFolder(fileName, parsedSuites)
+        runThroughFolder(fileName)
     else
-        parseTestResult(fileName, parsedSuites)
+        parseTestResult(fileName)
 
     parsedSuites = Object.keys(parsedSuites).map(function(key) {
         return parsedSuites[key]
