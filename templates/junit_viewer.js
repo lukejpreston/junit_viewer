@@ -37,7 +37,9 @@ function createVisibleInfo(suites) {
         return suite !== null
     }).forEach(function(suiteKey, index) {
         var suite = document.getElementById(suiteKey)
-        if (suite.className.indexOf('not_in_search') === -1 && suite.className.indexOf('hidden') === -1) {
+        if (suite.className.indexOf('not_in_search') === -1 &&
+            suite.className.indexOf('hidden') === -1 &&
+            suite.className.indexOf('no_visible_tests') === -1) {
             var type = suite.children[0].className.split(' ')[0].split('--')[1]
             if (!data.suites.hasOwnProperty(type))
                 data.suites[type] = 0
@@ -67,7 +69,8 @@ function updateInfo() {
 
     var hiddenSuites = document.getElementsByClassName('suite hidden')
     var notInSearchSuites = document.getElementsByClassName('suite not_in_search')
-    data.suites.count = suites.length - hiddenSuites.length - notInSearchSuites.length
+    var noVisibleTestsSuites = document.getElementsByClassName('suite no_visible_tests')
+    data.suites.count = suites.length - hiddenSuites.length - notInSearchSuites.length - noVisibleTestsSuites.length
 
     var tests = document.getElementsByClassName('test')
     var hiddenTests = document.getElementsByClassName('test hidden')
@@ -277,6 +280,10 @@ function searchTests(value) {
         var testElement = document.getElementById(test.id)
         if (value === '') {
             removeClass(testElement, 'not_in_search')
+            suites.forEach(function(suite) {
+                var suiteElement = document.getElementById(suite.id)
+                suiteElement.className = suiteElement.className.replace(' no_visible_tests', '')
+            })
             return
         }
 
@@ -292,6 +299,19 @@ function searchTests(value) {
             addClass(testElement, 'not_in_search')
         if (inSearch)
             removeClass(testElement, 'not_in_search')
+    })
+
+    suites.forEach(function(suite) {
+        var suiteElement = document.getElementById(suite.id)
+        var testElements = suiteElement.children[1].children
+        var numberOfHiddenTests = Object.keys(testElements).filter(function(key) {
+            return document.getElementById(key) !== null && (testElements[key].className.indexOf('not_in_search') !== -1 || testElements[key].className.indexOf('properties') !== -1)
+        }).length
+
+        if (testElements.length === numberOfHiddenTests)
+            suiteElement.className = suiteElement.className + ' no_visible_tests'
+        else
+            suiteElement.className = suiteElement.className.replace(' no_visible_tests', '')
     })
 
     updateInfo()
