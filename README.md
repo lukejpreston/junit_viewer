@@ -99,20 +99,6 @@ Using Junit Viewer's very own unit tests (using a folder of results)
 
 [A mix of all kinds of tests](http://lukejpreston.github.io/junit_viewer/demo.html)
 
-
-<div class="row">
-            <h2><br/>Code Documentation</h2>
-            <p>Using Junit Viewer's very own unit tests (using a single file result)</p>
-            <a href="./junit_viewer_specs.html">A mix of all kinds of tests</a>
-        </div>
-        <div class="row">
-            <h2><br/>Demo</h2>
-            <p>Using Junit Viewer's very own unit tests (using a folder of results)</p>
-            <a href="./demo.html">A mix of all kinds of tests</a>
-        </div>
-
-
-
 Contributions
 =============
 
