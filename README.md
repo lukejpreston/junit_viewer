@@ -47,6 +47,12 @@ If you just want to log to the terminal
 junit_viewer --results=file_or_folder_location
 ```
 
+By default it will just set the results folder to the current directory so you could just run
+
+```
+junit_viewer
+```
+
 If you want to save it to a file
 
 ```
