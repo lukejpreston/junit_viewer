@@ -271,6 +271,21 @@ function hidePassingTests(button) {
             addClass(testElement, 'hidden')
     })
 
+    suites.forEach(function(suite) {
+        var suiteElement = document.getElementById(suite.id)
+        var testElements = suiteElement.children[1].children
+        var numberOfHiddenTests = Object.keys(testElements).filter(function(key) {
+            return document.getElementById(key) !== null && (
+                testElements[key].className.indexOf('hidden') !== -1 ||
+                testElements[key].className.indexOf('properties') !== -1)
+        }).length
+
+        if (testElements.length === numberOfHiddenTests)
+            suiteElement.className = suiteElement.className + ' no_visible_tests'
+        else
+            suiteElement.className = suiteElement.className.replace(' no_visible_tests', '')
+    })
+
     updateInfo()
 }
 
