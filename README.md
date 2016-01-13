@@ -1,13 +1,11 @@
 Junit Viewer
 ============
 
-[![Join the chat at https://gitter.im/lukejpreston/junit_viewer](https://badges.gitter.im/lukejpreston/junit_viewer.svg)](https://gitter.im/lukejpreston/junit_viewer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Build Status](https://travis-ci.org/lukejpreston/junit_viewer.svg?branch=master)](https://travis-ci.org/lukejpreston/junit_viewer)
-
-[![Downloads on npm](http://img.shields.io/npm/dm/junit-viewer.svg?style=flat)](https://www.npmjs.com/package/junit-viewer)
-
 [![npm version](https://badge.fury.io/js/junit-viewer.svg)](https://badge.fury.io/js/junit-viewer)
+[![Join the chat at https://gitter.im/lukejpreston/junit_viewer](https://badges.gitter.im/lukejpreston/junit_viewer.svg)](https://gitter.im/lukejpreston/junit_viewer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/lukejpreston/junit_viewer.svg?branch=master)](https://travis-ci.org/lukejpreston/junit_viewer)
+[![Dependency Status](https://www.versioneye.com/user/projects/5695f33caf789b002e000662/badge.svg)](https://www.versioneye.com/user/projects/5695f33caf789b002e000662)
+[![Downloads on npm](http://img.shields.io/npm/dm/junit-viewer.svg)](https://www.npmjs.com/package/junit-viewer)
 
 Junit Viewer is a very simple yet powerful way of viewing your xunit results
 
