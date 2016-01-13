@@ -3,7 +3,6 @@
 node_modules
 npm-debug.log
 
-coverage
 junit_viewer_specs
 
 junit_viewer.sublime-workspace
