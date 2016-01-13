@@ -7,6 +7,8 @@ Junit Viewer
 
 [![Downloads on npm](http://img.shields.io/npm/dm/junit-viewer.svg?style=flat)](https://www.npmjs.com/package/junit-viewer)
 
+[![npm version](https://badge.fury.io/js/junit-viewer.svg)](https://badge.fury.io/js/junit-viewer)
+
 Junit Viewer is a very simple yet powerful way of viewing your xunit results
 
 Features
