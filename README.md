@@ -46,42 +46,42 @@ Run It
 If you just want to log to the terminal
 
 ```
-junit_viewer --results=file_or_folder_location
+junit-viewer --results=file_or_folder_location
 ```
 
 By default it will just set the results folder to the current directory so you could just run
 
 ```
-junit_viewer
+junit-viewer
 ```
 
 If you want to save it to a file
 
 ```
-junit_viewer --results=file_or_folder_location --save=file_location.html
+junit-viewer --results=file_or_folder_location --save=file_location.html
 ```
 
 If you want to start a server
 
 ```
-junit_viewer --results=file_or_folder_location --port=port_number
+junit-viewer --results=file_or_folder_location --port=port_number
 ```
 
 By default it is minified but if you don't want it minified
 
 ```
-junit_viewer --results=file_or_folder_location --minify=false
+junit-viewer --results=file_or_folder_location --minify=false
 ```
 
 Using the API
 =============
 
 ```
-npm install --save-dev junit_viewer
+npm install --save-dev junit-viewer
 ```
 
 ```
-var jv = require('junit_viewer')
+var jv = require('junit-viewer')
 var parsedData = jv.parse('fileOrFolderLocation')
 var renderedData = jv.render(parsedData)
 var parsedAndRenderedData = jv.junit_viewer('fileOrFolderLocation')
