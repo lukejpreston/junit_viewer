@@ -262,7 +262,7 @@ function hideTests(button) {
 
 function hidePassingTests(button) {
     var isHidden = button.innerHTML.indexOf('SHOW') !== -1
-    button.innerHTML = isHidden ? 'HIDE ALL' : 'SHOW ALL'
+    button.innerHTML = isHidden ? 'HIDE PASSING' : 'SHOW PASSING'
     forEachTest(function(test) {
         var testElement = document.getElementById(test.id)
         if (isHidden)
