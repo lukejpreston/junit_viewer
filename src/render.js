@@ -1,13 +1,39 @@
 var Mustache = require('mustache'),
     fs = require('fs')
 
+// make the templates cache in a way that is friendly to the browserify filesystem plugin
 var templatesCache = {}
 
+function addTemplate(fileName, accessor) {
+    var data
+    Object.defineProperty(templatesCache, fileName, {
+        get: function () {
+            if (data) {
+                return data
+            }
+
+            data = accessor()
+            return data
+        }
+    })
+}
+
+addTemplate('property.html', function () { return fs.readFileSync(__dirname + '/../templates/property.html').toString() })
+addTemplate('properties.html', function () { return fs.readFileSync(__dirname + '/../templates/properties.html').toString() })
+addTemplate('message.html', function () { return fs.readFileSync(__dirname + '/../templates/message.html').toString() })
+addTemplate('messages.html', function () { return fs.readFileSync(__dirname + '/../templates/messages.html').toString() })
+addTemplate('label.html', function () { return fs.readFileSync(__dirname + '/../templates/label.html').toString() })
+addTemplate('test.html', function () { return fs.readFileSync(__dirname + '/../templates/test.html').toString() })
+addTemplate('suite.html', function () { return fs.readFileSync(__dirname + '/../templates/suite.html').toString() })
+addTemplate('junit_info.html', function () { return fs.readFileSync(__dirname + '/../templates/junit_info.html').toString() })
+addTemplate('no_file.html', function () { return fs.readFileSync(__dirname + '/../templates/no_file.html').toString() })
+addTemplate('index.html', function () { return fs.readFileSync(__dirname + '/../templates/index.html').toString() })
+addTemplate('options.html', function () { return fs.readFileSync(__dirname + '/../templates/options.html').toString() })
+
 function render(fileName, data) {
-    if (!templatesCache.hasOwnProperty(fileName))
-        templatesCache[fileName] = fs.readFileSync(__dirname + '/../templates/' + fileName).toString()
-    Mustache.parse(templatesCache[fileName])
-    return Mustache.render(templatesCache[fileName], data)
+    var template = templatesCache[fileName]
+    Mustache.parse(template)
+    return Mustache.render(template, data)
 }
 
 function renderProperties(properties) {

@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    parse = require('./parse'),
+    parse = require('./parse').parse,
     render = require('./render')
 
 function changeToAbsolute(fileName) {

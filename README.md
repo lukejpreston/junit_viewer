@@ -83,6 +83,7 @@ npm install --save-dev junit-viewer
 ```
 var jv = require('junit-viewer')
 var parsedData = jv.parse('fileOrFolderLocation')
+// var parsedData = jv.parseXML('xml data')
 var renderedData = jv.render(parsedData)
 var parsedAndRenderedData = jv.junit_viewer('fileOrFolderLocation')
 ```

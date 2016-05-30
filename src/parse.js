@@ -251,12 +251,8 @@ function parseSuites(result, fileName) {
     return suites
 }
 
-function parseTestResult(fileName) {
-    if (!isXml(fileName))
-        return
-
-    var data = fs.readFileSync(fileName).toString()
-    parser.parseString(data, function(err, result) {
+function parseString(data, fileName) {
+    parser.parseString(data, function (err, result) {
         if (err !== null)
             parsedSuites[fileName] = createError(fileName, err.toString())
         else if (result === null)
@@ -264,6 +260,14 @@ function parseTestResult(fileName) {
         else
             parseSuites(result, fileName)
     })
+}
+
+function parseTestResult(fileName) {
+    if (!isXml(fileName))
+        return
+
+    var data = fs.readFileSync(fileName).toString()
+    parseString(data, fileName)
 }
 
 function runThroughFolder(folder) {
@@ -278,68 +282,128 @@ function runThroughFolder(folder) {
 
 var parsedSuites
 
-module.exports = function(fileName) {
-    parsedSuites = {}
-    fileName = normaliseFileName(fileName)
-    if (fileName.indexOf('FILE DOES NOT EXIST') !== -1)
-        return {
-            junitViewerFileError: fileName.slice(0, fileName.indexOf('FILE DOES NOT EXIST') - 1)
-        }
+module.exports = {
+    parse: function(fileName) {
+        parsedSuites = {}
+        fileName = normaliseFileName(fileName)
+        if (fileName.indexOf('FILE DOES NOT EXIST') !== -1)
+            return {
+                junitViewerFileError: fileName.slice(0, fileName.indexOf('FILE DOES NOT EXIST') - 1)
+            }
 
-    if (isDirectory(fileName))
-        runThroughFolder(fileName)
-    else
-        parseTestResult(fileName)
+        if (isDirectory(fileName))
+            runThroughFolder(fileName)
+        else
+            parseTestResult(fileName)
 
-    parsedSuites = Object.keys(parsedSuites).map(function(key) {
-        return parsedSuites[key]
-    })
-
-    parsedSuites.forEach(function(suite) {
-        suite.properties.values = Object.keys(suite.properties.values).map(function(key) {
-            return suite.properties.values[key]
+        parsedSuites = Object.keys(parsedSuites).map(function(key) {
+            return parsedSuites[key]
         })
-    })
 
-    parsedSuites.forEach(function(suite) {
-        suite.id = createUniqueHash('suite')
-        suite.testCases.forEach(function(test) {
-            test.id = createUniqueHash('test')
-            test.messages.id = createUniqueHash('messages')
-            test.messages.values.forEach(function(message) {
-                message.id = createUniqueHash('message')
+        parsedSuites.forEach(function(suite) {
+            suite.properties.values = Object.keys(suite.properties.values).map(function(key) {
+                return suite.properties.values[key]
             })
         })
 
-        suite.properties.id = createUniqueHash('properties')
-        suite.properties.values.forEach(function(property) {
-            property.id = createUniqueHash('property')
-        })
-    })
+        parsedSuites.forEach(function(suite) {
+            suite.id = createUniqueHash('suite')
+            suite.testCases.forEach(function(test) {
+                test.id = createUniqueHash('test')
+                test.messages.id = createUniqueHash('messages')
+                test.messages.values.forEach(function(message) {
+                    message.id = createUniqueHash('message')
+                })
+            })
 
-    var junit_info = {
-        suites: {
-            count: parsedSuites.length
-        },
-        tests: {
-            count: 0
+            suite.properties.id = createUniqueHash('properties')
+            suite.properties.values.forEach(function(property) {
+                property.id = createUniqueHash('property')
+            })
+        })
+
+        var junit_info = {
+            suites: {
+                count: parsedSuites.length
+            },
+            tests: {
+                count: 0
+            }
         }
-    }
-    parsedSuites.forEach(function(suite) {
-        if (!junit_info.suites.hasOwnProperty(suite.type))
-            junit_info.suites[suite.type] = 0
-        junit_info.suites[suite.type] = junit_info.suites[suite.type] += 1
-        junit_info.tests.count += suite.testCases.length
-        suite.testCases.forEach(function(test) {
-            if (!junit_info.tests.hasOwnProperty(test.type))
-                junit_info.tests[test.type] = 0
-            junit_info.tests[test.type] = junit_info.tests[test.type] += 1
+        parsedSuites.forEach(function(suite) {
+            if (!junit_info.suites.hasOwnProperty(suite.type))
+                junit_info.suites[suite.type] = 0
+            junit_info.suites[suite.type] = junit_info.suites[suite.type] += 1
+            junit_info.tests.count += suite.testCases.length
+            suite.testCases.forEach(function(test) {
+                if (!junit_info.tests.hasOwnProperty(test.type))
+                    junit_info.tests[test.type] = 0
+                junit_info.tests[test.type] = junit_info.tests[test.type] += 1
+            })
         })
-    })
 
-    return {
-        title: extractFileName(fileName),
-        suites: parsedSuites,
-        junit_info: junit_info
+        return {
+            title: extractFileName(fileName),
+            suites: parsedSuites,
+            junit_info: junit_info
+        }
+    },
+    parseXML: function(xml) {
+        parsedSuites = {}
+
+        var fileName = 'xml'
+        parseString(xml, fileName)
+
+        parsedSuites = Object.keys(parsedSuites).map(function(key) {
+            return parsedSuites[key]
+        })
+
+        parsedSuites.forEach(function(suite) {
+            suite.properties.values = Object.keys(suite.properties.values).map(function(key) {
+                return suite.properties.values[key]
+            })
+        })
+
+        parsedSuites.forEach(function(suite) {
+            suite.id = createUniqueHash('suite')
+            suite.testCases.forEach(function(test) {
+                test.id = createUniqueHash('test')
+                test.messages.id = createUniqueHash('messages')
+                test.messages.values.forEach(function(message) {
+                    message.id = createUniqueHash('message')
+                })
+            })
+
+            suite.properties.id = createUniqueHash('properties')
+            suite.properties.values.forEach(function(property) {
+                property.id = createUniqueHash('property')
+            })
+        })
+
+        var junit_info = {
+            suites: {
+                count: parsedSuites.length
+            },
+            tests: {
+                count: 0
+            }
+        }
+        parsedSuites.forEach(function(suite) {
+            if (!junit_info.suites.hasOwnProperty(suite.type))
+                junit_info.suites[suite.type] = 0
+            junit_info.suites[suite.type] = junit_info.suites[suite.type] += 1
+            junit_info.tests.count += suite.testCases.length
+            suite.testCases.forEach(function(test) {
+                if (!junit_info.tests.hasOwnProperty(test.type))
+                    junit_info.tests[test.type] = 0
+                junit_info.tests[test.type] = junit_info.tests[test.type] += 1
+            })
+        })
+
+        return {
+            title: fileName,
+            suites: parsedSuites,
+            junit_info: junit_info
+        }
     }
 }
