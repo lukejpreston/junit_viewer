@@ -16,6 +16,9 @@ function replaceClass(element, fromClassName, toClassName) {
 function toggleContraction(element) {
     var suiteButton = element.children[0]
     var suiteContent = element.children[1]
+    if (!suiteContent) {
+        return
+    }
     var isContracted = suiteContent.className.indexOf('contracted') !== -1
 
     if (isContracted) {
