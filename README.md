@@ -102,6 +102,78 @@ Using Junit Viewer's very own unit tests (using a folder of results)
 
 [A mix of all kinds of tests](http://lukejpreston.github.io/junit_viewer/demo.html)
 
+Running in Browser
+==================
+
+You can also run junit\_viewer in the browser. To make this work, you need to bundle the junit\_viewer API using a suitable tool.
+In this example, I am using `browserify` but `webpack` etc. should work just fine as well.
+
+Create a file for setting up the bundle:
+
+bundle_setup.js
+```
+var viewer = require('./junit_viewer');
+window.JUnitViewer = viewer;
+```
+
+Install some dependancies:
+
+```
+npm install -g browserify
+npm install brfs --save
+```
+
+Make the bundle:
+
+```
+browserify bundle_setup.js -o junit-viewer-bundle.js -t brfs
+```
+
+Now you can use the bundle in HTML. In this example, I am putting the rendered output into an iframe. Replace <!--XMLString-->
+with the content of the xml for the test output:
+
+index.html
+```
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>JUnit test results</title>
+	<script src="junit-viewer-bundle.js"></script>
+
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		html,
+		body,
+		#results {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<iframe id="results"></iframe>
+	<script>
+		try {
+			var xmlResults = "<!--XMLString-->";
+			var parsedResults = JUnitViewer.parseXML(xmlResults);
+			var renderedData = JUnitViewer.render(parsedResults);
+			document.getElementById('results').contentWindow.document.write(renderedData);
+		} catch (e) {
+			alert('Error: ' + e.toString() + ' - ' + e.stack);
+		}
+	</script>
+</body>
+
+</html>
+```
+
 Contributions
 =============
 
