@@ -18,6 +18,10 @@ process.argv.forEach(function(arg) {
         commandArgs.minify = arg.split('=')[1] === 'true'
     if (arg.indexOf('--help') !== -1)
         commandArgs.help = true
+    if (arg.indexOf('--contracted') !== -1)
+        commandArgs.contracted = "contracted"
+    else
+        commandArgs.contracted = ""
 })
 
 
@@ -37,7 +41,7 @@ function start() {
         console.log(message)
     } else {
         if (commandArgs.hasOwnProperty('save')) {
-            var renderedResults = junit_viewer(commandArgs.results)
+            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)
             var saveLocation = changeToAbsolute(commandArgs.save)
@@ -48,7 +52,7 @@ function start() {
             var app = express()
 
             app.get('/', function(req, res) {
-                var renderedResults = junit_viewer(commandArgs.results)
+                var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
                 if (commandArgs.minify)
                     renderedResults = htmlminify.minify(renderedResults)
                 res.send(renderedResults)
@@ -62,7 +66,7 @@ function start() {
         }
 
         if(!commandArgs.hasOwnProperty('save') && !commandArgs.hasOwnProperty('port')){
-            var renderedResults = junit_viewer(commandArgs.results)
+            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)
             console.log(renderedResults)

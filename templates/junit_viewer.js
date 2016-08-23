@@ -421,3 +421,19 @@ window.onresize = function(event) {
     document.getElementById('suites_container').style['height'] = height + 'px'
     document.getElementById('options').style['height'] = (height - 38 * 2) + 'px'
 }
+
+function contractAllSuits()
+{
+
+
+        suites.forEach(function(suite) {
+        var suiteElement = document.getElementById(suite.id)
+        var suiteButton = suiteElement.children[0]
+        var suiteContent = suiteElement.children[1]
+
+        
+        replaceClass(suiteButton, 'round', 'flat')
+        removeClass(suiteContent, 'contracted')
+        
+    })
+}

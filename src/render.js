@@ -83,6 +83,7 @@ function renderSuites(suites) {
 
         return render('suite.html', {
             id: suite.id,
+            contracted: suite.contracted,
             type: suite.type,
             name: suite.name,
             tests: renderedTests,
