@@ -30,6 +30,8 @@ Features
 
 **Independent** It is independent of any testing tool, so it can work with anything which can produce junit results
 
+**Contracted View** It provides a contracted default view for all suits at startup
+
 
 Install It
 ==========
@@ -71,6 +73,12 @@ By default it is minified but if you don't want it minified
 
 ```
 junit-viewer --results=file_or_folder_location --minify=false
+```
+
+By default it displays expanded view of suits
+
+```
+junit-viewer --results=file_or_folder_location --contracted
 ```
 
 Using the API

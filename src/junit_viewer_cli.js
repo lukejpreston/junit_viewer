@@ -37,7 +37,7 @@ function start() {
             '--results=folderName location of folder',
             '--port=portNumber supply a port if you want to serve',
             '--save=fileName supply a file name if you wish to save the file',
-            '--contracted=provide the flag to have default view of all test as contracted'
+            '--contracted=provide the flag to have default view of all suits as contracted'
         ].join('\n')
         console.log(message)
     } else {
