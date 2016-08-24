@@ -73,7 +73,7 @@ function renderSuites(suites) {
         var renderedTests = renderTests(suite.testCases)
         var renderedProperties = renderProperties(suite.properties)
         var renderLabels = Object.keys(suite).filter(function(key) {
-            return ['name', 'id', 'testCases', 'properties', 'type'].indexOf(key) === -1
+            return ['name', 'id','contracted', 'testCases', 'properties', 'type'].indexOf(key) === -1
         }).map(function(key) {
             return render('label.html', {
                 key: key,

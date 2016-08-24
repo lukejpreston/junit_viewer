@@ -122,6 +122,23 @@ function contractSuites(button) {
     })
 }
 
+function setContracted(contracted) {
+
+ if(contracted==="contracted")
+ {
+
+    document.getElementById('contractSuits').innerHTML="EXPAND ALL";
+
+ }
+else{
+
+    document.getElementById('contractSuits').innerHTML="CONTRACT ALL";
+}
+
+    console.log("Log this"+contracted);
+
+}
+
 function hidePassingSuites(button) {
     var isHidden = button.innerHTML.indexOf('SHOW') !== -1
     button.innerHTML = isHidden ? 'HIDE PASSING' : 'SHOW PASSING'
@@ -422,18 +439,4 @@ window.onresize = function(event) {
     document.getElementById('options').style['height'] = (height - 38 * 2) + 'px'
 }
 
-function contractAllSuits()
-{
 
-
-        suites.forEach(function(suite) {
-        var suiteElement = document.getElementById(suite.id)
-        var suiteButton = suiteElement.children[0]
-        var suiteContent = suiteElement.children[1]
-
-        
-        replaceClass(suiteButton, 'round', 'flat')
-        removeClass(suiteContent, 'contracted')
-        
-    })
-}

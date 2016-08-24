@@ -1,5 +1,5 @@
 <div class="suite" id="{{id}}">
-    <button class="suite--{{type}} u-full-width round" onclick="toggleContraction(this.parentElement)" >
+    <button class="suite--{{type}} u-full-width round" onclick="toggleContraction(this.parentElement)" onload="setContracted({{contracted}})">
         <span class="suite__name u-pull-left">{{{name}}}</span>
         {{{labels}}}
     </button>
