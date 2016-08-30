@@ -18,6 +18,10 @@ process.argv.forEach(function(arg) {
         commandArgs.minify = arg.split('=')[1] === 'true'
     if (arg.indexOf('--help') !== -1)
         commandArgs.help = true
+    if (arg.indexOf('--contracted') !== -1)
+        commandArgs.contracted = "contracted"
+    else
+        commandArgs.contracted = ""
 })
 
 
@@ -32,12 +36,13 @@ function start() {
             'You need to specify a folder',
             '--results=folderName location of folder',
             '--port=portNumber supply a port if you want to serve',
-            '--save=fileName supply a file name if you wish to save the file'
+            '--save=fileName supply a file name if you wish to save the file',
+            '--contracted=provide the flag to have default view of all suits as contracted'
         ].join('\n')
         console.log(message)
     } else {
         if (commandArgs.hasOwnProperty('save')) {
-            var renderedResults = junit_viewer(commandArgs.results)
+            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)
             var saveLocation = changeToAbsolute(commandArgs.save)
@@ -48,7 +53,7 @@ function start() {
             var app = express()
 
             app.get('/', function(req, res) {
-                var renderedResults = junit_viewer(commandArgs.results)
+                var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
                 if (commandArgs.minify)
                     renderedResults = htmlminify.minify(renderedResults)
                 res.send(renderedResults)
@@ -62,7 +67,7 @@ function start() {
         }
 
         if(!commandArgs.hasOwnProperty('save') && !commandArgs.hasOwnProperty('port')){
-            var renderedResults = junit_viewer(commandArgs.results)
+            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)
             console.log(renderedResults)

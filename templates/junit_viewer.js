@@ -16,6 +16,9 @@ function replaceClass(element, fromClassName, toClassName) {
 function toggleContraction(element) {
     var suiteButton = element.children[0]
     var suiteContent = element.children[1]
+    if (!suiteContent) {
+        return
+    }
     var isContracted = suiteContent.className.indexOf('contracted') !== -1
 
     if (isContracted) {
@@ -117,6 +120,23 @@ function contractSuites(button) {
             addClass(suiteContent, 'contracted')
         }
     })
+}
+
+function setContracted(contracted) {
+
+ if(contracted==="contracted")
+ {
+
+    document.getElementById('contractSuits').innerHTML="EXPAND ALL";
+
+ }
+else{
+
+    document.getElementById('contractSuits').innerHTML="CONTRACT ALL";
+}
+
+    console.log("Log this"+contracted);
+
 }
 
 function hidePassingSuites(button) {
@@ -418,3 +438,5 @@ window.onresize = function(event) {
     document.getElementById('suites_container').style['height'] = height + 'px'
     document.getElementById('options').style['height'] = (height - 38 * 2) + 'px'
 }
+
+

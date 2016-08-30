@@ -283,7 +283,7 @@ function runThroughFolder(folder) {
 var parsedSuites
 
 module.exports = {
-    parse: function(fileName) {
+    parse: function(fileName,contracted) {
         parsedSuites = {}
         fileName = normaliseFileName(fileName)
         if (fileName.indexOf('FILE DOES NOT EXIST') !== -1)
@@ -308,6 +308,7 @@ module.exports = {
 
         parsedSuites.forEach(function(suite) {
             suite.id = createUniqueHash('suite')
+            suite.contracted=contracted
             suite.testCases.forEach(function(test) {
                 test.id = createUniqueHash('test')
                 test.messages.id = createUniqueHash('messages')
