@@ -1,6 +1,6 @@
 jest.autoMockOff()
 
-var parse = require('../src/parse'),
+var parse = require('../src/parse').parse,
     render = require('../src/render'),
     jsdom = require('jsdom').jsdom
 
