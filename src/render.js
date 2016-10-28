@@ -6,29 +6,19 @@ var templatesCache = {}
 
 function addTemplate(fileName, accessor) {
     var data
-    Object.defineProperty(templatesCache, fileName, {
-        get: function () {
-            if (data) {
+    if (!templatesCache.hasOwnProperty(fileName)) {
+        Object.defineProperty(templatesCache, fileName, {
+            get: function () {
+                if (data) {
+                    return data
+                }
+
+                data = accessor()
                 return data
             }
-
-            data = accessor()
-            return data
-        }
-    })
+        })
+    }
 }
-
-addTemplate('property.html', function () { return fs.readFileSync(__dirname + '/../templates/property.html').toString() })
-addTemplate('properties.html', function () { return fs.readFileSync(__dirname + '/../templates/properties.html').toString() })
-addTemplate('message.html', function () { return fs.readFileSync(__dirname + '/../templates/message.html').toString() })
-addTemplate('messages.html', function () { return fs.readFileSync(__dirname + '/../templates/messages.html').toString() })
-addTemplate('label.html', function () { return fs.readFileSync(__dirname + '/../templates/label.html').toString() })
-addTemplate('test.html', function () { return fs.readFileSync(__dirname + '/../templates/test.html').toString() })
-addTemplate('suite.html', function () { return fs.readFileSync(__dirname + '/../templates/suite.html').toString() })
-addTemplate('junit_info.html', function () { return fs.readFileSync(__dirname + '/../templates/junit_info.html').toString() })
-addTemplate('no_file.html', function () { return fs.readFileSync(__dirname + '/../templates/no_file.html').toString() })
-addTemplate('index.html', function () { return fs.readFileSync(__dirname + '/../templates/index.html').toString() })
-addTemplate('options.html', function () { return fs.readFileSync(__dirname + '/../templates/options.html').toString() })
 
 function render(fileName, data) {
     var template = templatesCache[fileName]
@@ -163,13 +153,31 @@ function renderJunitInfo(info) {
     return redneredJunitInfo
 }
 
-module.exports = function(data) {
+module.exports = function(data, template) {
+    
+    var templateDirectory = __dirname + '/../templates/' + template;
+    if (!fs.existsSync(templateDirectory)) {
+        throw new Error('Template "' + template + '" not found');
+    }
+
+    addTemplate('property.html', function () { return fs.readFileSync(templateDirectory + '/property.html').toString() })
+    addTemplate('properties.html', function () { return fs.readFileSync(templateDirectory + '/properties.html').toString() })
+    addTemplate('message.html', function () { return fs.readFileSync(templateDirectory + '/message.html').toString() })
+    addTemplate('messages.html', function () { return fs.readFileSync(templateDirectory + '/messages.html').toString() })
+    addTemplate('label.html', function () { return fs.readFileSync(templateDirectory + '/label.html').toString() })
+    addTemplate('test.html', function () { return fs.readFileSync(templateDirectory + '/test.html').toString() })
+    addTemplate('suite.html', function () { return fs.readFileSync(templateDirectory + '/suite.html').toString() })
+    addTemplate('junit_info.html', function () { return fs.readFileSync(templateDirectory + '/junit_info.html').toString() })
+    addTemplate('no_file.html', function () { return fs.readFileSync(templateDirectory + '/no_file.html').toString() })
+    addTemplate('index.html', function () { return fs.readFileSync(templateDirectory + '/index.html').toString() })
+    addTemplate('options.html', function () { return fs.readFileSync(templateDirectory + '/options.html').toString() })
+
     if (data.junitViewerFileError)
         return render('no_file.html', data)
 
     var suites = data.suites
     var junit_info = data.junit_info
-    var renderedJavaScript = 'var junit_info = ' + JSON.stringify(junit_info) + '\n var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(__dirname + '/../templates/junit_viewer.js').toString()
+    var renderedJavaScript = 'var junit_info = ' + JSON.stringify(junit_info) + '\n var suites = ' + JSON.stringify(suites) + '\n' + fs.readFileSync(templateDirectory + '/junit_viewer.js').toString()
     var renderedSuites = renderSuites(suites)
 
     var redneredJunitInfo = renderJunitInfo(junit_info)
@@ -177,8 +185,8 @@ module.exports = function(data) {
     return render('index.html', {
         junit_info: redneredJunitInfo,
         title: data.title,
-        skeleton: fs.readFileSync(__dirname + '/../templates/skeleton.css').toString(),
-        style: fs.readFileSync(__dirname + '/../templates/junit_viewer.css').toString(),
+        skeleton: fs.readFileSync(templateDirectory + '/skeleton.css').toString(),
+        style: fs.readFileSync(templateDirectory + '/junit_viewer.css').toString(),
         options: render('options.html'),
         javascript: renderedJavaScript,
         suites: renderedSuites
