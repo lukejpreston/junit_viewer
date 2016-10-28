@@ -1,0 +1,15 @@
+<div class="suite suite-{{type}}" id="{{id}}">
+    <div class="suite-wrap">
+        <div class="suite-header">
+            <div>
+                <span class="text-primary suite-name"><strong>{{{name}}}</strong></span>
+                <div>{{{labels}}}</div>
+            </div>
+            <button type="button" class="btn btn-default btn-xs bt-detail">+</button>
+            <div class="suite-contents {{#contracted}}hide{{/contracted}}">
+                {{{properties}}}
+                {{{tests}}}
+            </div>
+        </div>
+    </div>
+</div>

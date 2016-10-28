@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>xUnit - {{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">{{{skeleton}}}</style>
+    <style type="text/css">{{style}}</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">xUnit - {{title}}</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <div class="navbar-nav navbar-right">
+                    <div class="navbar-text junit-info">{{{junit_info.suites}}}</div>
+                    <div class="navbar-text junit-info">{{{junit_info.tests}}}</div>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <div class="container">
+        {{{options}}}
+        <div id="suites_container">{{{suites}}}</div>
+    </div>
+    <script type="text/javascript">{{{javascript}}}</script>
+</body>
+
+</html>
