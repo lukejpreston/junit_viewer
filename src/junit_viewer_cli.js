@@ -5,7 +5,8 @@ var fs = require('fs'),
 
 var commandArgs = {
     minify: true,
-    template: 'default'
+    template: 'default',
+    contracted: ''
 }
 
 process.argv.forEach(function(arg) {
@@ -23,8 +24,6 @@ process.argv.forEach(function(arg) {
         commandArgs.help = true
     if (arg.indexOf('--contracted') !== -1)
         commandArgs.contracted = "contracted"
-    else
-        commandArgs.contracted = ""
 })
 
 
@@ -46,6 +45,7 @@ function start() {
         console.log(message)
     } else {
         if (commandArgs.hasOwnProperty('save')) {
+
             var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted,commandArgs.template)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)
@@ -57,6 +57,7 @@ function start() {
             var app = express()
 
             app.get('/', function(req, res) {
+
                 var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted,commandArgs.template)
                 if (commandArgs.minify)
                     renderedResults = htmlminify.minify(renderedResults)

@@ -5,7 +5,7 @@
                 <span class="text-primary suite-name"><strong>{{{name}}}</strong></span>
                 <div>{{{labels}}}</div>
             </div>
-            <button type="button" class="btn btn-default btn-xs bt-detail">+</button>
+            <button type="button" class="btn btn-default btn-xs bt-detail">{{#contracted}}+{{/contracted}}{{^contracted}}-{{/contracted}}</button>
             <div class="suite-contents {{#contracted}}hide{{/contracted}}">
                 {{{properties}}}
                 {{{tests}}}
