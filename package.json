@@ -1,49 +1,18 @@
 {
-  "name": "junit-viewer",
-  "version": "4.11.0",
-  "description": "A simple and quick tool to view junit results",
-  "main": "src/main.js",
-  "bin": {
-    "junit-viewer": "./bin/junit-viewer"
-  },
-  "directories": {
-    "bin": "./bin",
-    "templates": "./templates",
-    "src": "./src"
-  },
-  "keywords": [
-    "junit",
-    "xunit",
-    "test"
-  ],
-  "scripts": {
-    "test": "rm -rf junit_viewer_specs/* && jest --port --results=data && ./bin/junit-viewer --results=junit_viewer_specs --save=junit_viewer_specs.html"
-  },
-  "author": "Luke Preston <lukejpreston@gmail.com>",
-  "license": "ISC",
-  "repository": {
-    "url": "https://github.com/lukejpreston/junit_viewer.git",
-    "type": "git"
-  },
-  "bugs": {
-    "url": "https://github.com/lukejpreston/junit_viewer.git"
-  },
-  "homepage": "https://github.com/lukejpreston/junit_viewer.git",
-  "dependencies": {
-    "express": "^4.12.4",
-    "html-minify": "^0.3.1",
-    "mustache": "^2.2.0",
-    "xml2js": "^0.4.8"
-  },
+  "name": "junit_viewer",
+  "version": "0.1.0",
+  "private": true,
   "devDependencies": {
-    "jasmine-reporters": "^1.0.0",
-    "jest-cli": "^0.8.0"
+    "react-scripts": "0.8.5"
   },
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/setup-jasmine-env.js",
-    "collectCoverage": true,
-    "coverageReporters": [
-      "lcov"
-    ]
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }

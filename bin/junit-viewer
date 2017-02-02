@@ -1,3 +1,0 @@
-#!/usr/bin/env node
-
-require('../src/junit_viewer_cli.js').start()
