@@ -57,8 +57,9 @@ const rows = [{
 let Header = () => {
   return <section className='hero is-info is-bold'>
     <div className='hero-body'>
-      <h1 className='title'>Xunit Viewer</h1>
-      <div className='container'>{
+      <div className='container'>
+        <h1 className='title'>Xunit Viewer</h1>
+        <div className='container'>{
           rows.map((row, index) => {
             return <Row
               key={`row-${index}`}
@@ -71,6 +72,7 @@ let Header = () => {
               />
           })
       }</div>
+      </div>
     </div>
   </section>
 }
