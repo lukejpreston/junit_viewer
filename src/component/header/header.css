@@ -1,0 +1,124 @@
+:root {
+  --fail: #E74C3C;
+  --pass: #00D1B2;
+  --error: #FFDD57;
+  --skipped: #ECF0F1;
+  --info: #3273DC;
+}
+
+.hero {
+  & .input {
+    height: 2.385em;
+    border: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  & .subtitle {
+    & .toggle {
+      width: 70px;
+
+      & a {
+        transition: background-color 0.2s;
+        border-color: #fff;
+
+        & span {
+          color: #444;
+        }
+      }
+    }
+
+    & .is-suites,
+    & .is-tests,
+    & .is-properties {
+      width: 150px;
+
+      &.is-active a {
+        background-color: color(var(--info) tint(70%)) !important;
+
+        &:hover {
+          background-color: color(var(--info) tint(60%)) !important;
+        }
+      }
+
+      & a {
+        background-color: color(var(--info) tint(50%)) !important;
+
+        &:hover {
+          background-color: color(var(--info) tint(60%)) !important;
+        }
+      }
+    }
+
+    & .is-pass {
+      & a {
+        background-color: color(var(--pass) tint(70%)) !important;
+
+        &:hover {
+          background-color: color(var(--pass) tint(50%)) !important;
+        }
+      }
+
+      &.is-active a {
+        background-color: var(--pass) !important;
+
+        &:hover {
+          background-color: color(var(--pass) tint(50%)) !important;
+        }
+      }
+    }
+
+    & .is-fail {
+      & a {
+        background-color: color(var(--fail) tint(70%)) !important;
+
+        &:hover {
+          background-color: color(var(--fail) tint(50%)) !important;
+        }
+      }
+
+      &.is-active a {
+        background-color: var(--fail) !important;
+
+        &:hover {
+          background-color: color(var(--fail) tint(50%)) !important;
+        }
+      }
+    }
+
+    & .is-error {
+      & a {
+        background-color: color(var(--error) tint(70%)) !important;
+
+        &:hover {
+          background-color: color(var(--error) tint(50%)) !important;
+        }
+      }
+
+      &.is-active a {
+        background-color: var(--error) !important;
+
+        &:hover {
+          background-color: color(var(--error) tint(50%)) !important;
+        }
+      }
+    }
+
+    & .is-skipped {
+      & a {
+        background-color: color(var(--skipped) b(20%)) !important;
+
+        &:hover {
+          background-color: color(var(--skipped) b(10%)) !important;
+        }
+      }
+
+      &.is-active a {
+        background-color: var(--skipped) !important;
+
+        &:hover {
+          background-color: color(var(--skipped) b(10%)) !important;
+        }
+      }
+    }
+  }
+}
