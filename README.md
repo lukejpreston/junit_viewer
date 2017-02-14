@@ -9,16 +9,27 @@
 ### CLI
 
 ```bash
-xunit-viewer --file=location.xml
+xunit-viewer --results=file_or_folder_location --save=file_location.html --port=port_number --minify=false
 ```
+
+all args are optional
+
+* `results` the location of the test data, will default to current directory
+* `save` where you want to save the output, will default to logging the result
+* `port` if present will start a server which watches either current directory or the value of `results`
+* `minify` will run the code using development mode, which is to say unminified, defaults to true
 
 ### Node
 
 ```js
 const XunitViewer = require('xunit-viewer')
-let parsedData = XunitViewer.parse('location or xml data')
+
+let parsedData = XunitViewer.parse('fileOrFolderLocation')
+parsedData = XunitViewer.parseXML('<!--XMLString-->')
+
 let rendered = XunitViewer.render(parsedData)
-rendered = XunitViewer.render('location or xml data')
+
+let parsedAndRendered = XunitViewer.parsedAndRender('fileOrFolderLocation')
 ```
 
 ### React
@@ -26,7 +37,7 @@ rendered = XunitViewer.render('location or xml data')
 ```js
 import React from 'react'
 import XunitViewer from 'xunit-viewer/component'
-import 'xunit-viewer/standard.css'
+import 'xunit-viewer/main.css'
 
 let MyWrapperComponent = () => {
   return <XunitViewer data={{}} />
@@ -38,7 +49,7 @@ let MyWrapperComponent = () => {
 ```html
 <html>
   <head>
-    <link rel="stylesheet" href="xunit-viewer/standard.css" />
+    <link rel="stylesheet" href="xunit-viewer/main.css" />
     <script type="text/javascript" src="xunit-viewer/main.js" />
   </head>
   <body>
@@ -67,3 +78,19 @@ let MyWrapperComponent = () => {
     </script>
   </body>
 ```
+
+## Development
+
+```bash
+yarn start # runs `xunit-viewer --results=./src/test-data --port=3000 --minify=false`
+yarn test # runs the tests
+yarn lint # lints
+yarn build # generate the ./dist folder
+yarn xunit-viewer # calls ./bin/xunit-viewer
+yarn demo # generates the new demo
+yarn travis # runs lint => test => demo => publishes demo => publish to npm
+```
+
+## Demos
+
+Have a look at our demo
