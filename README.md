@@ -1,4 +1,6 @@
-# ![Icon](https://raw.githubusercontent.com/lukejpreston/xunit-viewer/react/public/XunitViewerIcon.png) Xunit Viewer
+# ![Icon](https://raw.githubusercontent.com/lukejpreston/xunit-viewer/react/public/XunitViewerIcon.png)
+
+# Xunit Viewer
 
 **NB** This is the next version of Junit Viewer. Renamed because it supports more than Junit
 
