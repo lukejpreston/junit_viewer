@@ -27,7 +27,7 @@ let suites = [{
     name: 'skip',
     message: 'skipping test'
   }, {
-    status: 'unknown',
+    status: 'blah',
     name: 'unknown',
     message: 'unknown test'
   }]

@@ -1,3 +1,5 @@
+import iconMap from '../icon-map'
+
 export default (suites) => {
   let stats = {
     suites: {
@@ -48,13 +50,13 @@ export default (suites) => {
     }
   }
 
-  let updateCount = (type, group, icon) => {
+  let updateCount = (type, group) => {
     if (count[type][group] > 0) {
       stats[group].data.push({
         type,
         total: count[type][group],
         active: true,
-        icon
+        icon: iconMap[type]
       })
     }
   }
@@ -74,16 +76,16 @@ export default (suites) => {
     if (suite.properties) stats.properties.total += Object.keys(suite.properties).length
   })
 
-  updateCount('pass', 'suites', 'check')
-  updateCount('pass', 'tests', 'check')
-  updateCount('fail', 'suites', 'times')
-  updateCount('fail', 'tests', 'times')
-  updateCount('error', 'suites', 'exclamation')
-  updateCount('error', 'tests', 'exclamation')
-  updateCount('skipped', 'suites', 'ban')
-  updateCount('skipped', 'tests', 'ban')
-  updateCount('unknown', 'suites', 'question')
-  updateCount('unknown', 'tests', 'question')
+  updateCount('pass', 'suites')
+  updateCount('pass', 'tests')
+  updateCount('fail', 'suites')
+  updateCount('fail', 'tests')
+  updateCount('error', 'suites')
+  updateCount('error', 'tests')
+  updateCount('skipped', 'suites')
+  updateCount('skipped', 'tests')
+  updateCount('unknown', 'suites')
+  updateCount('unknown', 'tests')
 
   let result = []
   if (stats.suites.total > 0) result.push(stats.suites)

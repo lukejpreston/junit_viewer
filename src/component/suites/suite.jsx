@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react'
 import Properties from './properties'
 import Test from './test'
+import iconMap from '../icon-map'
 
 let Suite = ({name, status, properties = {}, tests = []}) => {
   let Props = null
@@ -8,7 +9,10 @@ let Suite = ({name, status, properties = {}, tests = []}) => {
 
   return <div className='card suite'>
     <header className={`card-header is-${status}`}>
-      <p className='card-header-title'>{name}</p>
+      <p className='card-header-title'>
+        <i className={`fa fa-${iconMap[status]}`} />
+        {name}
+      </p>
       <a className='card-header-icon'>
         <span className='icon'>
           <i className='fa fa-angle-down' />

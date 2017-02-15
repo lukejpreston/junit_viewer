@@ -7,6 +7,11 @@
 }
 
 .suites {
+  & .fa {
+    padding-right: 5px;
+  }
+
+  & .suite,
   & .test {
     margin-bottom: 10px;
   }
@@ -35,7 +40,7 @@
   }
 
   & .is-unknown {
-    background-color: var(--unknown);
+    background-color: color(var(--unknown) tint(50%));
   }
 
 }
