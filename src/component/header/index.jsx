@@ -1,67 +1,15 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import './header.css'
-import Row from './row'
+import Stat from './stat'
 
-const rows = [{
-  name: 'Suites',
-  total: 100,
-  active: false,
-  type: 'suites',
-  icon: 'plus',
-  data: [{
-    total: 50,
-    active: false,
-    type: 'pass',
-    icon: 'check'
-  }, {
-    total: 50,
-    active: false,
-    type: 'fail',
-    icon: 'times'
-  }]
-}, {
-  name: 'Tests',
-  total: 100,
-  active: true,
-  type: 'tests',
-  icon: 'minus',
-  data: [{
-    total: 25,
-    active: true,
-    type: 'pass',
-    icon: 'check'
-  }, {
-    total: 25,
-    active: true,
-    type: 'fail',
-    icon: 'times'
-  }, {
-    total: 25,
-    active: true,
-    type: 'error',
-    icon: 'exclamation'
-  }, {
-    total: 25,
-    active: true,
-    type: 'skipped',
-    icon: 'ban'
-  }]
-}, {
-  name: 'Properties',
-  total: 100,
-  active: true,
-  type: 'properties',
-  icon: 'minus'
-}]
-
-let Header = () => {
+let Header = ({stats = []}) => {
   return <section className='hero is-info is-bold'>
     <div className='hero-body'>
       <div className='container'>
         <h1 className='title'>Xunit Viewer</h1>
         <div className='container'>{
-          rows.map((row, index) => {
-            return <Row
+          stats.map((row, index) => {
+            return <Stat
               key={`row-${index}`}
               name={row.name}
               total={row.total}
@@ -75,6 +23,10 @@ let Header = () => {
       </div>
     </div>
   </section>
+}
+
+Header.propTypes = {
+  stats: PropTypes.array
 }
 
 export default Header

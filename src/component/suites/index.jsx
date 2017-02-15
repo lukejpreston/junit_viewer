@@ -4,9 +4,17 @@ import Suite from './suite'
 
 let Suites = ({suites = []}) => {
   return <section className='section suites'>
-    <div className='container'>
-      <Suite />
-    </div>
+    <div className='container'>{
+        suites.map((suite, index) => {
+          return <Suite
+            key={`suite-${index}`}
+            name={suite.name}
+            status={suite.status}
+            properties={suite.properties}
+            tests={suite.tests}
+            />
+        })
+      }</div>
   </section>
 }
 

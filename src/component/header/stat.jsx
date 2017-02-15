@@ -18,7 +18,7 @@ Toggle.propTypes = {
   type: PropTypes.string
 }
 
-let Row = ({icon, name, total, active, type, data = []}) => {
+let Stat = ({icon, name, total, active, type, data = []}) => {
   return <div className='subtitle'>
     <div className='tabs is-toggle'>
       <ul>
@@ -52,7 +52,7 @@ let Row = ({icon, name, total, active, type, data = []}) => {
   </div>
 }
 
-Row.propTypes = {
+Stat.propTypes = {
   icon: PropTypes.string,
   name: PropTypes.string,
   total: PropTypes.number,
@@ -61,4 +61,4 @@ Row.propTypes = {
   type: PropTypes.string
 }
 
-export default Row
+export default Stat
