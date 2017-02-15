@@ -4,6 +4,8 @@
 
 **NB** This is the next version of Junit Viewer. Renamed because it supports more than Junit
 
+Also this project used to parse and render. It now uses another project named `Xunit Parser`. It should be the same as the parsing from Xunit Viewer v4
+
 ## Usage
 
 ### CLI
@@ -24,12 +26,13 @@ all args are optional
 ```js
 const XunitViewer = require('xunit-viewer')
 
-let parsedData = XunitViewer.parse('fileOrFolderLocation')
-parsedData = XunitViewer.parseXML('<!--XMLString-->')
-
-let rendered = XunitViewer.render(parsedData)
-
-let parsedAndRendered = XunitViewer.parsedAndRender('fileOrFolderLocation')
+// you pick one of the following
+// it will choose suites over xml over file or folder
+let rendered = XunitViewer({
+  suites: [],
+  xml: '<!--XML-->',
+  fileOrFolderLocation: ''
+})
 ```
 
 ### React
@@ -40,7 +43,10 @@ import XunitViewer from 'xunit-viewer/component'
 import 'xunit-viewer/main.css'
 
 let MyWrapperComponent = () => {
-  return <XunitViewer data={{}} />
+  return <XunitViewer
+    suites={[]}
+    xml='<!--XML-->'
+    />
 }
 ```
 
@@ -54,6 +60,7 @@ let MyWrapperComponent = () => {
   </head>
   <body>
     <input type="file" onchange="renderFile" />
+    <textarea onchange="render" />
     <div id='root' />
     <script>
       window.renderFile = (evt) => {
@@ -62,8 +69,7 @@ let MyWrapperComponent = () => {
           if (!file) return
           let reader = new window.FileReader()
           reader.onload = (evt) => {
-            let parsedData = XunitViewer.parse(evt.target.result)
-            render(parsedData)
+            render(evt.target.result)
           }
           reader.onerror = (err) => {
             console.error(err)
@@ -71,9 +77,13 @@ let MyWrapperComponent = () => {
           reader.readAsText(file)
       }
 
-      let render = (data) => {
-        let rendered = XunitViewer.render(parsedData)
-        document.querySelector('#root').appendChild(rendered)
+      let render = (xml) => {
+        try {
+          let rendered = XunitViewer.render(xml)
+          document.querySelector('#root').appendChild(rendered)
+        } catch (err) {
+          console.error(err)
+        }
       }
     </script>
   </body>
