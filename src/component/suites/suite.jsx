@@ -1,6 +1,11 @@
 import React, {PropTypes} from 'react'
+import Properties from './properties'
+import Test from './test'
 
 let Suite = ({name, status, properties = {}, tests = []}) => {
+  let Props = null
+  if (Object.keys(properties).length > 0) Props = <Properties data={properties} />
+
   return <div className={`card suite is-${status}`}>
     <header className='card-header'>
       <p className='card-header-title'>{name}</p>
@@ -10,7 +15,17 @@ let Suite = ({name, status, properties = {}, tests = []}) => {
         </span>
       </a>
     </header>
-    <div className='card-content' />
+    <div className='card-content'>
+      {Props}
+      {tests.map((test, index) => {
+        return <Test
+          key={`test-${test.name}-${index}`}
+          status={test.status}
+          name={test.name}
+          message={test.message}
+          />
+      })}
+    </div>
   </div>
 }
 

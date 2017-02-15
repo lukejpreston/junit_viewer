@@ -30,7 +30,7 @@ class XunitViewer extends React.Component {
         }}
         isActive={this.state.header.active}
       />
-      <Suites />
+      <Suites suites={this.props.suites} />
     </div>
   }
 }

@@ -6,29 +6,45 @@ import XunitViewer from '../component'
 
 let suites = [{
   status: 'pass',
+  name: 'Passing Suite',
   properties: {
     key: 'value'
   },
   tests: [{
-    status: 'pass'
+    status: 'pass',
+    name: 'pass',
+    message: 'passing test'
   }, {
-    status: 'fail'
+    status: 'fail',
+    name: 'fail',
+    message: 'failing test'
   }, {
-    status: 'error'
+    status: 'error',
+    name: 'error',
+    message: 'erroring test'
   }, {
-    status: 'skipped'
+    status: 'skipped',
+    name: 'skip',
+    message: 'skipping test'
   }, {
-    status: 'broken'
+    status: 'unknown',
+    name: 'unknown',
+    message: 'unknown test'
   }]
 }, {
   status: 'fail',
+  name: 'Failing Suite',
   properties: {
     key: 'value'
   },
   tests: [{
-    status: 'pass'
+    status: 'pass',
+    name: 'pass',
+    message: 'passing test'
   }, {
-    status: 'fail'
+    status: 'fail',
+    name: 'fail',
+    message: 'failing test'
   }]
 }]
 
