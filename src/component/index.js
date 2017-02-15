@@ -5,12 +5,12 @@ import '../../node_modules/font-awesome/css/font-awesome.css'
 import './index.css'
 
 import Header from './header'
-import Main from './main'
+import Suites from './suites'
 
 let XunitViewer = () => {
   return <div>
     <Header />
-    <Main />
+    <Suites />
   </div>
 }
 

@@ -8,8 +8,8 @@ coverage
 
 # production
 build
-main.js
-main.css
+./main.js
+./main.css
 
 # misc
 .DS_Store
