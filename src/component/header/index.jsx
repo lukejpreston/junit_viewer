@@ -24,7 +24,7 @@ let Header = ({stats = []}) => {
         </div>
       </header>
     </div>
-    <div className='hero-body'>
+    <div className={`hero-body is-active size-${stats.length}`}>
       <div className='container'>
         <div className='container'>{
           stats.map((row, index) => {

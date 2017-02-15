@@ -137,6 +137,33 @@
     }
   }
 
+  &-body {
+    transition: height 0.2s;
+    overflow: hidden;
+    height: 0;
+    padding: 0;
+
+    & .subtitle {
+      margin-bottom: 10px;
+    }
+
+    &.is-active {
+      padding: 10px;
+
+      &.size-3 {
+        height: calc(3 * (2.385em + 13px));
+      }
+
+      &.size-2 {
+        height: calc(2 * (2.385em + 15px));
+      }
+
+      &.size-1 {
+        height: calc(2.385em + 20px);
+      }
+    }
+  }
+
   & .input {
     height: 2.385em;
     border: 0;
