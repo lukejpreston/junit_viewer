@@ -47,7 +47,7 @@
     }
 
     & .burger {
-      width: calc(8 * var(--burger-margin));
+      width: calc(9 * var(--burger-margin));
       position: relative;
       height: 49px;
       background-color: transparent;
@@ -81,7 +81,8 @@
 
       &:hover {
         cursor: pointer;
-        background-color: var(--info);
+        background-color: color(var(--info) tint(10%));
+
         & .bottom {
           display: none;
         }

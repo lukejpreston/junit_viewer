@@ -6,7 +6,6 @@ import './index.css'
 
 import Header from './header'
 import Suites from './suites'
-import extractStats from './extract-stats'
 
 class XunitViewer extends React.Component {
   constructor (props) {
@@ -20,7 +19,7 @@ class XunitViewer extends React.Component {
   render () {
     return <div>
       <Header
-        stats={extractStats(this.props.suites)}
+        suites={this.props.suites}
         onToggle={() => {
           this.setState({
             header: {

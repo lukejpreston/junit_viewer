@@ -2,8 +2,10 @@ import React, {PropTypes} from 'react'
 import './header.css'
 import Icon from './icon'
 import Stat from './stat'
+import extractStats from './extract-stats'
 
-let Header = ({stats = [], onToggle, isActive}) => {
+let Header = ({suites = [], onToggle, isActive}) => {
+  let stats = extractStats(suites)
   let active = isActive ? 'active' : 'inactive'
   return <section className='hero'>
     <div className='hero-head'>
@@ -11,7 +13,7 @@ let Header = ({stats = [], onToggle, isActive}) => {
         <div className='container'>
           <div className='nav-left'>
             <span
-              className={`is-pulled-right burger is-${active}`}
+              className={`burger is-${active}`}
               onClick={onToggle}>
               <span className='top' />
               <span className='middle' />
@@ -45,7 +47,7 @@ let Header = ({stats = [], onToggle, isActive}) => {
 }
 
 Header.propTypes = {
-  stats: PropTypes.array,
+  suites: PropTypes.array,
   isActive: PropTypes.bool,
   onToggle: PropTypes.func.isRequired
 }
