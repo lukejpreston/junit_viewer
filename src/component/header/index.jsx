@@ -3,7 +3,8 @@ import './header.css'
 import Icon from './icon'
 import Stat from './stat'
 
-let Header = ({stats = []}) => {
+let Header = ({stats = [], onToggle, isActive}) => {
+  let active = isActive ? 'active' : 'inactive'
   return <section className='hero'>
     <div className='hero-head'>
       <header className='nav'>
@@ -15,7 +16,9 @@ let Header = ({stats = []}) => {
             <h1 className='title'>Xunit Viewer</h1>
           </div>
           <div className='nav-right'>
-            <span className='is-pulled-right burger'>
+            <span
+              className={`is-pulled-right burger is-${active}`}
+              onClick={onToggle}>
               <span className='top' />
               <span className='middle' />
               <span className='bottom' />
@@ -24,7 +27,7 @@ let Header = ({stats = []}) => {
         </div>
       </header>
     </div>
-    <div className={`hero-body is-active size-${stats.length}`}>
+    <div className={`hero-body is-${active} size-${stats.length}`}>
       <div className='container'>
         <div className='container'>{
           stats.map((row, index) => {
@@ -45,7 +48,9 @@ let Header = ({stats = []}) => {
 }
 
 Header.propTypes = {
-  stats: PropTypes.array
+  stats: PropTypes.array,
+  isActive: PropTypes.boolean,
+  onToggle: PropTypes.func.isRequired
 }
 
 export default Header

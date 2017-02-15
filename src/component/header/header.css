@@ -138,10 +138,10 @@
   }
 
   &-body {
-    transition: height 0.2s;
+    transition: height 0.2s, padding 0.2s;
     overflow: hidden;
     height: 0;
-    padding: 0;
+    padding: 0 10px;
 
     & .subtitle {
       margin-bottom: 10px;
