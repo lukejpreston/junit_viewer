@@ -6,8 +6,8 @@ let Suite = ({name, status, properties = {}, tests = []}) => {
   let Props = null
   if (Object.keys(properties).length > 0) Props = <Properties data={properties} />
 
-  return <div className={`card suite is-${status}`}>
-    <header className='card-header'>
+  return <div className='card suite'>
+    <header className={`card-header is-${status}`}>
       <p className='card-header-title'>{name}</p>
       <a className='card-header-icon'>
         <span className='icon'>
