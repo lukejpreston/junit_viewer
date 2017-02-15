@@ -10,12 +10,6 @@ let Header = ({stats = [], onToggle, isActive}) => {
       <header className='nav'>
         <div className='container'>
           <div className='nav-left'>
-            <Icon />
-          </div>
-          <div className='nav-center'>
-            <h1 className='title'>Xunit Viewer</h1>
-          </div>
-          <div className='nav-right'>
             <span
               className={`is-pulled-right burger is-${active}`}
               onClick={onToggle}>
@@ -24,12 +18,16 @@ let Header = ({stats = [], onToggle, isActive}) => {
               <span className='bottom' />
             </span>
           </div>
+          <div className='nav-center'>
+            <Icon />
+            <h1 className='title'>Xunit Viewer</h1>
+          </div>
+          <div className='nav-right' />
         </div>
       </header>
     </div>
     <div className={`hero-body is-${active} size-${stats.length}`}>
-      <div className='container'>
-        <div className='container'>{
+      <div className='container'>{
           stats.map((row, index) => {
             return <Stat
               key={`row-${index}`}
@@ -42,14 +40,13 @@ let Header = ({stats = [], onToggle, isActive}) => {
               />
           })
       }</div>
-      </div>
     </div>
   </section>
 }
 
 Header.propTypes = {
   stats: PropTypes.array,
-  isActive: PropTypes.boolean,
+  isActive: PropTypes.bool,
   onToggle: PropTypes.func.isRequired
 }
 
