@@ -1,13 +1,142 @@
 :root {
   --fail: #E74C3C;
-  --pass: #23D160;
+  --pass: #00D1B2;
   --error: #FFDD57;
   --skipped: #ECF0F1;
-  --info: #3273DC;
-  --unknown: #00D1B2;
+  --info: #2C3E50;
+  --unknown: #23D160;
+  --burger-margin: 7px;
 }
 
 .hero {
+  background-image: linear-gradient(141deg, #2C3E50 0%, color(#2C3E50 tint(5%)) 71%, color(#2C3E50 tint(10%)) 100%);
+
+  &-head {
+    height: 49px;
+
+    & .title {
+      color: #fff;
+      line-height: 49px;
+    }
+
+    & .icon {
+      margin-top: 3px;
+      margin-left: 10px;
+
+      & .background,
+      & .char,
+      & .border {
+        transition: all 0.2s;
+      }
+
+      &:hover {
+        & .border-top,
+        & .border-left,
+        & .char-x {
+          fill: var(--fail);
+          stroke: var(--fail);
+        }
+
+        & .border-bottom,
+        & .border-right,
+        & .char-v {
+          fill: var(--pass);
+          stroke: var(--pass);
+        }
+      }
+    }
+
+    & .burger {
+      width: calc(8 * var(--burger-margin));
+      position: relative;
+      height: 49px;
+      background-color: transparent;
+      transition: background-color 0.2s;
+
+      & .top,
+      & .middle,
+      & .bottom {
+        position: absolute;
+        border: solid 1px #fff;
+        width: calc(4 * var(--burger-margin));
+        left: calc(2 * var(--burger-margin));
+        transition: all 0.2s;
+
+        &:before {
+          content: ' ';
+        }
+      }
+
+      & .top {
+        margin-top: calc(var(--burger-margin) + var(--burger-margin) + 1px);
+      }
+
+      & .middle {
+        margin-top: calc(2 * var(--burger-margin) + var(--burger-margin) + 1px);
+      }
+
+      & .bottom {
+        margin-top: calc(3 * var(--burger-margin) + var(--burger-margin) + 1px);
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--info);
+        & .bottom {
+          display: none;
+        }
+
+        & .top,
+        & .middle {
+          width: calc(2 * var(--burger-margin) + 7px);
+        }
+
+        & .top {
+          transform: rotate(45deg);
+          margin-top: calc(2 * var(--burger-margin) + var(--burger-margin) + 1px);
+        }
+
+        & .middle {
+          transform: rotate(-45deg);
+          left: calc(4 * var(--burger-margin));
+        }
+      }
+
+      &.is-active {
+        & .bottom {
+          display: none;
+        }
+
+        & .top {
+          transform: rotate(-45deg);
+          margin-top: calc(2 * var(--burger-margin) + var(--burger-margin) + 1px);
+        }
+
+        & .middle {
+          transform: rotate(45deg);
+          margin-top: calc(2 * var(--burger-margin) + var(--burger-margin) + 1px);
+        }
+
+        &:hover {
+          & .top,
+          & .middle {
+            width: calc(2 * var(--burger-margin) + 7px);
+          }
+
+          & .top {
+            transform: rotate(-45deg);
+            margin-top: calc(2 * var(--burger-margin) + var(--burger-margin) + 1px);
+          }
+
+          & .middle {
+            transform: rotate(45deg);
+            left: calc(4 * var(--burger-margin));
+          }
+        }
+      }
+    }
+  }
+
   & .input {
     height: 2.385em;
     border: 0;

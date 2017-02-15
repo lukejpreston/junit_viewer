@@ -1,12 +1,31 @@
 import React, {PropTypes} from 'react'
 import './header.css'
+import Icon from './icon'
 import Stat from './stat'
 
 let Header = ({stats = []}) => {
-  return <section className='hero is-info is-bold'>
+  return <section className='hero'>
+    <div className='hero-head'>
+      <header className='nav'>
+        <div className='container'>
+          <div className='nav-left'>
+            <Icon />
+          </div>
+          <div className='nav-center'>
+            <h1 className='title'>Xunit Viewer</h1>
+          </div>
+          <div className='nav-right'>
+            <span className='is-pulled-right burger'>
+              <span className='top' />
+              <span className='middle' />
+              <span className='bottom' />
+            </span>
+          </div>
+        </div>
+      </header>
+    </div>
     <div className='hero-body'>
       <div className='container'>
-        <h1 className='title'>Xunit Viewer</h1>
         <div className='container'>{
           stats.map((row, index) => {
             return <Stat
