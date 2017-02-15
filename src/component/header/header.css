@@ -1,9 +1,10 @@
 :root {
   --fail: #E74C3C;
-  --pass: #00D1B2;
+  --pass: #23D160;
   --error: #FFDD57;
   --skipped: #ECF0F1;
   --info: #3273DC;
+  --unknown: #00D1B2;
 }
 
 .hero {
@@ -117,6 +118,24 @@
 
         &:hover {
           background-color: color(var(--skipped) b(10%)) !important;
+        }
+      }
+    }
+
+    & .is-unknown {
+      & a {
+        background-color: color(var(--unknown) b(20%)) !important;
+
+        &:hover {
+          background-color: color(var(--unknown) b(10%)) !important;
+        }
+      }
+
+      &.is-active a {
+        background-color: var(--unknown) !important;
+
+        &:hover {
+          background-color: color(var(--unknown) b(10%)) !important;
         }
       }
     }

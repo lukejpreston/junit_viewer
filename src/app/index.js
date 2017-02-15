@@ -4,7 +4,35 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import XunitViewer from '../component'
 
+let suites = [{
+  status: 'pass',
+  properties: {
+    key: 'value'
+  },
+  tests: [{
+    status: 'pass'
+  }, {
+    status: 'fail'
+  }, {
+    status: 'error'
+  }, {
+    status: 'skipped'
+  }, {
+    status: 'broken'
+  }]
+}, {
+  status: 'fail',
+  properties: {
+    key: 'value'
+  },
+  tests: [{
+    status: 'pass'
+  }, {
+    status: 'fail'
+  }]
+}]
+
 ReactDOM.render(
-  <XunitViewer />,
+  <XunitViewer suites={suites} />,
   document.getElementById('root')
 )
