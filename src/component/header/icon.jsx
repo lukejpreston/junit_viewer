@@ -22,7 +22,7 @@ let Icon = () => {
       x2='64'
       y2='1'
       strokeWidth='3'
-      stroke='#00D1B2'
+      stroke='#23D160'
     />
     <line
       className='border border-top'
@@ -31,7 +31,7 @@ let Icon = () => {
       x2='1'
       y2='64'
       strokeWidth='3'
-      stroke='#00D1B2'
+      stroke='#23D160'
     />
     <line
       className='border border-right'
@@ -57,8 +57,8 @@ let Icon = () => {
       y='45'
       fontFamily='Helvetica'
       fontSize='36'
-      stroke='#00D1B2'
-      fill='#00D1B2'>
+      stroke='#23D160'
+      fill='#23D160'>
     X
     </text>
     <text

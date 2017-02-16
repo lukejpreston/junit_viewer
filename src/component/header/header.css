@@ -29,6 +29,20 @@
         transition: all 0.2s;
       }
 
+      & .border-top,
+      & .border-left,
+      & .char-x {
+        fill: var(--pass);
+        stroke: var(--pass);
+      }
+
+      & .border-bottom,
+      & .border-right,
+      & .char-v {
+        fill: var(--fail);
+        stroke: var(--fail);
+      }
+
       &:hover {
         & .border-top,
         & .border-left,
