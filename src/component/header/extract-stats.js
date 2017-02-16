@@ -1,6 +1,17 @@
 import iconMap from '../icon-map'
+import searchSuites from '../search-suites'
 
-export default (suites) => {
+export default (suites, search) => {
+  let hasSuites = suites.length > 0
+  let hasTests = false
+  let hasProperties = false
+  suites.forEach(suite => {
+    if (suite.tests) hasTests = true
+    if (suite.properties) hasProperties = true
+  })
+
+  suites = searchSuites(suites, search)
+
   let stats = {
     suites: {
       name: 'Suites',
@@ -88,8 +99,8 @@ export default (suites) => {
   updateCount('unknown', 'tests')
 
   let result = []
-  if (stats.suites.total > 0) result.push(stats.suites)
-  if (stats.tests.total > 0) result.push(stats.tests)
-  if (stats.properties.total > 0) result.push(stats.properties)
+  if (hasSuites) result.push(stats.suites)
+  if (hasTests) result.push(stats.tests)
+  if (hasProperties) result.push(stats.properties)
   return result
 }

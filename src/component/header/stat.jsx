@@ -18,13 +18,19 @@ Toggle.propTypes = {
   type: PropTypes.string
 }
 
-let Stat = ({icon, name, total, active, type, data = []}) => {
+let Stat = ({icon, name, total, active, type, data = [], onSearch}) => {
   return <div className='subtitle'>
     <div className='tabs is-toggle'>
       <ul>
         <li>
           <p className='control has-icon has-icon-right'>
-            <input className='input' type='text' placeholder={`Search ${name}`} />
+            <input
+              className='input'
+              type='text'
+              placeholder={`Search ${name}`}
+              onChange={evt => {
+                onSearch(evt.target.value, type)
+              }} />
             <span className='icon is-small'>
               <i className='fa fa-search' />
             </span>
@@ -58,7 +64,8 @@ Stat.propTypes = {
   total: PropTypes.number,
   data: PropTypes.array,
   active: PropTypes.bool,
-  type: PropTypes.string
+  type: PropTypes.string,
+  onSearch: PropTypes.func.isRequired
 }
 
 export default Stat

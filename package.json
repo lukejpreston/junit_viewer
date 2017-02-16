@@ -73,7 +73,10 @@
   },
   "dependencies": {
     "bulma": "^0.3.1",
+    "change-case": "^3.0.1",
+    "clone": "^2.1.0",
     "font-awesome": "^4.7.0",
+    "fuzzysearch": "^1.0.3",
     "normalize.css": "^5.0.0",
     "postcss": "^5.2.13",
     "postcss-cssnext": "^2.9.0",

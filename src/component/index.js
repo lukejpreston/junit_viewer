@@ -13,6 +13,11 @@ class XunitViewer extends React.Component {
     this.state = {
       header: {
         active: true
+      },
+      search: {
+        suites: '',
+        tests: '',
+        properties: ''
       }
     }
   }
@@ -20,16 +25,23 @@ class XunitViewer extends React.Component {
     return <div>
       <Header
         suites={this.props.suites}
+        search={this.state.search}
+        onSearch={(value, type) => {
+          let search = this.state.search
+          search[type] = value
+          this.setState({search})
+        }}
         onToggle={() => {
-          this.setState({
-            header: {
-              active: !this.state.header.active
-            }
-          })
+          let header = this.state.header
+          header.active = !header.active
+          this.setState({header})
         }}
         isActive={this.state.header.active}
       />
-      <Suites suites={this.props.suites} />
+      <Suites
+        suites={this.props.suites}
+        search={this.state.search}
+      />
     </div>
   }
 }
