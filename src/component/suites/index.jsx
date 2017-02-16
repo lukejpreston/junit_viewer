@@ -1,8 +1,10 @@
 import React, {PropTypes} from 'react'
 import './suites.css'
 import Suite from './suite'
+import searchSuites from '../search-suites'
 
-let Suites = ({suites = []}) => {
+let Suites = ({suites = [], search}) => {
+  suites = searchSuites(suites, search)
   return <section className='section suites'>
     <div className='container'>{
         suites.map((suite, index) => {
@@ -19,7 +21,8 @@ let Suites = ({suites = []}) => {
 }
 
 Suites.propTypes = {
-  suites: PropTypes.array
+  suites: PropTypes.array,
+  search: PropTypes.object
 }
 
 export default Suites
