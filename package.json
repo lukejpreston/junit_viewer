@@ -1,6 +1,6 @@
 {
   "version": "5.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "url": "https://github.com/lukejpreston/xunit-viewer.git",
     "type": "git"
