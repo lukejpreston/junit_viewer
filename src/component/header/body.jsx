@@ -12,7 +12,6 @@ let Body = ({active, suites, onSearch, search}) => {
           key={`stat-${stat.type}-${index}`}
           name={stat.name}
           total={stat.total}
-          active={stat.active}
           type={stat.type}
           icon={stat.icon}
           data={stat.data}

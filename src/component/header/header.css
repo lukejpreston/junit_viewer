@@ -200,115 +200,51 @@
       }
     }
 
+    & .count:hover {
+      cursor: initial;
+    }
+
     & .is-suites,
     & .is-tests,
     & .is-properties {
-      width: 150px;
+      width: 100px;
 
-      &.is-active a {
-        background-color: color(var(--info) tint(70%)) !important;
+      & .count {
+        background-color: color(var(--info) tint(60%)) !important;
 
-        &:hover {
-          background-color: color(var(--info) tint(60%)) !important;
-        }
-      }
-
-      & a {
-        background-color: color(var(--info) tint(50%)) !important;
-
-        &:hover {
-          background-color: color(var(--info) tint(60%)) !important;
+        & .icon {
+          display: none;
         }
       }
     }
 
     & .is-pass {
-      & a {
-        background-color: color(var(--pass) tint(70%)) !important;
-
-        &:hover {
-          background-color: color(var(--pass) tint(50%)) !important;
-        }
-      }
-
-      &.is-active a {
+      & .count {
         background-color: var(--pass) !important;
-
-        &:hover {
-          background-color: color(var(--pass) tint(50%)) !important;
-        }
       }
     }
 
     & .is-fail {
-      & a {
-        background-color: color(var(--fail) tint(70%)) !important;
-
-        &:hover {
-          background-color: color(var(--fail) tint(50%)) !important;
-        }
-      }
-
-      &.is-active a {
+      & .count {
         background-color: var(--fail) !important;
-
-        &:hover {
-          background-color: color(var(--fail) tint(50%)) !important;
-        }
       }
     }
 
     & .is-error {
-      & a {
-        background-color: color(var(--error) tint(70%)) !important;
-
-        &:hover {
-          background-color: color(var(--error) tint(50%)) !important;
-        }
-      }
-
-      &.is-active a {
+      & .count {
         background-color: var(--error) !important;
-
-        &:hover {
-          background-color: color(var(--error) tint(50%)) !important;
-        }
       }
     }
 
     & .is-skipped {
-      & a {
-        background-color: color(var(--skipped) b(20%)) !important;
-
-        &:hover {
-          background-color: color(var(--skipped) b(10%)) !important;
-        }
-      }
-
-      &.is-active a {
+      & .count {
         background-color: var(--skipped) !important;
-
-        &:hover {
-          background-color: color(var(--skipped) b(10%)) !important;
-        }
       }
     }
 
     & .is-unknown {
-      & a {
-        background-color: color(var(--unknown) tint(50%)) !important;
-
-        &:hover {
-          background-color: color(var(--unknown) tint(40%)) !important;
-        }
-      }
-
-      &.is-active a {
+      & .count {
         background-color: color(var(--unknown) tint(30%)) !important;
-
-        &:hover {
-          background-color: color(var(--unknown) tint(40%)) !important;
-        }
       }
     }
   }

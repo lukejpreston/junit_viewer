@@ -1,9 +1,8 @@
 import React, {PropTypes} from 'react'
 
-let Toggle = ({icon, name, total, active, type}) => {
-  let isActive = active ? 'is-active' : 'is-inactive'
-  return <li className={`toggle ${isActive} is-${type}`}>
-    <a>
+let Toggle = ({icon, name, total, type}) => {
+  return <li className={`toggle is-${type}`}>
+    <a className='count'>
       <span className='icon is-small'><i className={`fa fa-${icon}`} /></span>
       <span>{name} <b>{total}</b></span>
     </a>
@@ -14,11 +13,10 @@ Toggle.propTypes = {
   icon: PropTypes.string,
   name: PropTypes.string,
   total: PropTypes.number,
-  active: PropTypes.bool,
   type: PropTypes.string
 }
 
-let Stat = ({icon, name, total, active, type, data = [], onSearch}) => {
+let Stat = ({icon, name, total, type, data = [], onSearch}) => {
   return <div className='subtitle'>
     <div className='tabs is-toggle'>
       <ul>
@@ -40,7 +38,6 @@ let Stat = ({icon, name, total, active, type, data = [], onSearch}) => {
           icon={icon}
           name={name}
           total={total}
-          active={active}
           type={type} />
         {
           data.map((toggle, index) => {
@@ -63,7 +60,6 @@ Stat.propTypes = {
   name: PropTypes.string,
   total: PropTypes.number,
   data: PropTypes.array,
-  active: PropTypes.bool,
   type: PropTypes.string,
   onSearch: PropTypes.func.isRequired
 }

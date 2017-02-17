@@ -17,24 +17,18 @@ export default (suites, search) => {
       name: 'Suites',
       type: 'suites',
       total: suites.length,
-      active: true,
-      icon: 'minus',
       data: []
     },
     tests: {
       name: 'Tests',
       type: 'tests',
       total: 0,
-      active: true,
-      icon: 'minus',
       data: []
     },
     properties: {
       name: 'Properties',
       type: 'properties',
-      total: 0,
-      active: true,
-      icon: 'minus'
+      total: 0
     }
   }
 
@@ -66,7 +60,6 @@ export default (suites, search) => {
       stats[group].data.push({
         type,
         total: count[type][group],
-        active: true,
         icon: iconMap[type]
       })
     }
