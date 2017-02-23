@@ -28,6 +28,7 @@ let Options = ({name, type, category, onStatToggle}) => {
   category = name || category
   return <li className={`toggle is-${type}`}>
     <a
+      title='cancel'
       className='change'
       onClick={() => {
         onStatToggle({name: category, type})
@@ -35,24 +36,28 @@ let Options = ({name, type, category, onStatToggle}) => {
       <span className='icon is-small'><i className={`fa fa-chevron-left`} /></span>
     </a>
     <a
+      title='exapnd'
       className='change'
       onClick={() => {
       }}>
       <span className='icon is-small'><i className={`fa fa-expand`} /></span>
     </a>
     <a
+      title='contract'
       className='change'
       onClick={() => {
       }}>
       <span className='icon is-small'><i className={`fa fa-compress`} /></span>
     </a>
     <a
+      title='show'
       className='change'
       onClick={() => {
       }}>
       <span className='icon is-small'><i className={`fa fa-eye`} /></span>
     </a>
     <a
+      title='hide'
       className='change'
       onClick={() => {
       }}>
