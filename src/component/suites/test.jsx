@@ -9,7 +9,8 @@ let knownStatuses = [
   'skipped'
 ]
 
-let Test = ({status, name, message}) => {
+let Test = ({uuid, status, name, message, onToggle, collapsed}) => {
+  let isCollapsed = Object.keys(collapsed.tests).includes(uuid) ? 'collapsed' : 'expanded'
   status = knownStatuses.includes(status) ? status : 'unknown'
   let Content = null
   let Icon = null
@@ -22,9 +23,15 @@ let Test = ({status, name, message}) => {
     </a>
   }
 
-  return <div className='card test'>
-    <header className={`card-header is-${status}`}>
-
+  return <div className={`card test is-${isCollapsed}`}>
+    <header
+      className={`card-header is-${status}`}
+      onClick={() => {
+        onToggle({
+          type: 'tests',
+          uuid
+        })
+      }}>
       <p className='card-header-title'>
         <i className={`fa fa-${iconMap[status]}`} />
         {name}
@@ -36,9 +43,12 @@ let Test = ({status, name, message}) => {
 }
 
 Test.propTypes = {
+  uuid: PropTypes.string.isRequired,
   status: PropTypes.string,
   name: PropTypes.string,
-  message: PropTypes.any
+  message: PropTypes.any,
+  onToggle: PropTypes.func.isRequired,
+  collapsed: PropTypes.object.isRequired
 }
 
 export default Test

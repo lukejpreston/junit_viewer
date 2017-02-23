@@ -3,12 +3,27 @@ import Properties from './properties'
 import Test from './test'
 import iconMap from '../icon-map'
 
-let Suite = ({name, status, properties = {}, tests = []}) => {
+let Suite = ({
+  uuid,
+  name = '',
+  status = 'unknown',
+  properties = {},
+  tests = [],
+  onToggle,
+  collapsed
+}) => {
   let Props = null
-  if (Object.keys(properties).length > 0) Props = <Properties data={properties} />
+  if (Object.keys(properties).length > 0) Props = <Properties onToggle={onToggle} collapsed={collapsed} data={properties} />
 
-  return <div className='card suite'>
-    <header className={`card-header is-${status}`}>
+  let isCollapsed = Object.keys(collapsed.suites).includes(uuid) ? 'collapsed' : 'expanded'
+
+  return <div className={`card suite is-${isCollapsed}`}>
+    <header
+      className={`card-header is-${status}`}
+      onClick={() => {
+        onToggle({type: 'suites', uuid})
+      }}
+      >
       <p className='card-header-title'>
         <i className={`fa fa-${iconMap[status]}`} />
         {name}
@@ -21,23 +36,29 @@ let Suite = ({name, status, properties = {}, tests = []}) => {
     </header>
     <div className='card-content'>
       {Props}
-      {tests.map((test, index) => {
-        return <Test
-          key={`test-${test.name}-${index}`}
+      {tests.map(test =>
+        <Test
+          onToggle={onToggle}
+          collapsed={collapsed}
+          key={`test-${test._uuid}`}
+          uuid={test._uuid}
           status={test.status}
           name={test.name}
           message={test.message}
           />
-      })}
+      )}
     </div>
   </div>
 }
 
 Suite.propTypes = {
+  uuid: PropTypes.string.isRequired,
   name: PropTypes.string,
   status: PropTypes.string,
   properties: PropTypes.object,
-  tests: PropTypes.array
+  tests: PropTypes.array,
+  onToggle: PropTypes.func.isRequired,
+  collapsed: PropTypes.object.isRequired
 }
 
 export default Suite

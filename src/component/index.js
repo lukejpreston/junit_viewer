@@ -18,6 +18,11 @@ class XunitViewer extends React.Component {
         suites: '',
         tests: '',
         properties: ''
+      },
+      collapsed: {
+        suites: {},
+        tests: {},
+        properties: {}
       }
     }
   }
@@ -41,6 +46,15 @@ class XunitViewer extends React.Component {
       <Suites
         suites={this.props.suites}
         search={this.state.search}
+        collapsed={this.state.collapsed}
+        onToggle={({type, uuid}) => {
+          let collapsed = this.state.collapsed
+          if (collapsed[type][uuid]) delete collapsed[type][uuid]
+          else collapsed[type][uuid] = true
+
+          console.log(type, uuid, collapsed[type][uuid])
+          this.setState({collapsed})
+        }}
       />
     </div>
   }
