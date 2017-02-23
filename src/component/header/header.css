@@ -214,6 +214,10 @@
       & .count,
       & .change {
         background-color: color(var(--info) tint(60%)) !important;
+
+        &:hover {
+          background-color: color(var(--info) tint(80%)) !important;
+        }
       }
 
       & .count {
@@ -227,6 +231,10 @@
       & .count,
       & .change {
         background-color: var(--pass) !important;
+
+        &:hover {
+          background-color: color(var(--pass) tint(20%)) !important;
+        }
       }
     }
 
@@ -234,6 +242,10 @@
       & .count,
       & .change {
         background-color: var(--fail) !important;
+
+        &:hover {
+          background-color: color(var(--fail) tint(20%)) !important;
+        }
       }
     }
 
@@ -241,6 +253,10 @@
       & .count,
       & .change {
         background-color: var(--error) !important;
+
+        &:hover {
+          background-color: color(var(--error) tint(20%)) !important;
+        }
       }
     }
 
@@ -248,6 +264,10 @@
       & .count,
       & .change {
         background-color: var(--skipped) !important;
+
+        &:hover {
+          background-color: color(var(--skipped) b(20%)) !important;
+        }
       }
     }
 
@@ -255,6 +275,10 @@
       & .count,
       & .change {
         background-color: color(var(--unknown) tint(30%)) !important;
+
+        &:hover {
+          background-color: color(var(--unknown) tint(20%)) !important;
+        }
       }
     }
   }
