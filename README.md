@@ -2,9 +2,13 @@
 
 # Xunit Viewer
 
-**NB** This is the next version of Junit Viewer. Renamed because it supports more than Junit
+A library for rendering xunit results into a single HTML
 
-Also this project used to parse and render. It now uses another project named `Xunit Parser`. It should be the same as the parsing from Xunit Viewer v4
+## Junit Viewer
+
+Junit Viewer is now deprecated and instead call directly into this and the Xunit Parser library
+
+The Xunit Parser library will parse xunit XML into JSON so if you were using Junit Viewer for parsing then consider using Xunit Parser instead
 
 ## Usage
 
