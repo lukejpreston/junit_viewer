@@ -12,7 +12,8 @@ class XunitViewer extends React.Component {
     super(props)
     this.state = {
       header: {
-        active: true
+        active: true,
+        statsStatus: {}
       },
       search: {
         suites: '',
@@ -41,7 +42,20 @@ class XunitViewer extends React.Component {
           header.active = !header.active
           this.setState({header})
         }}
+        onStatToggle={({name, type}) => {
+          let statsStatus = this.state.header.statsStatus
+          statsStatus[name] = statsStatus[name] || {}
+          if (statsStatus[name][type]) delete statsStatus[name][type]
+          else statsStatus[name][type] = true
+          this.setState({
+            header: {
+              active: this.state.header.active,
+              statsStatus
+            }
+          })
+        }}
         isActive={this.state.header.active}
+        statsStatus={this.state.header.statsStatus}
       />
       <Suites
         suites={this.props.suites}
@@ -51,8 +65,6 @@ class XunitViewer extends React.Component {
           let collapsed = this.state.collapsed
           if (collapsed[type][uuid]) delete collapsed[type][uuid]
           else collapsed[type][uuid] = true
-
-          console.log(type, uuid, collapsed[type][uuid])
           this.setState({collapsed})
         }}
       />

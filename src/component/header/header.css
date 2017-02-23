@@ -188,7 +188,6 @@
 
   & .subtitle {
     & .toggle {
-      width: 70px;
 
       & a {
         transition: background-color 0.2s;
@@ -200,18 +199,24 @@
       }
     }
 
-    & .count:hover {
-      cursor: initial;
+    & .change {
+      height: 2.385em;
+      width: 20px;
+      display: inline-flex;
+      border-radius: 0px !important;
     }
 
     & .is-suites,
     & .is-tests,
     & .is-properties {
-      width: 100px;
+      min-width: 110px;
+
+      & .count,
+      & .change {
+        background-color: color(var(--info) tint(60%)) !important;
+      }
 
       & .count {
-        background-color: color(var(--info) tint(60%)) !important;
-
         & .icon {
           display: none;
         }
@@ -219,31 +224,36 @@
     }
 
     & .is-pass {
-      & .count {
+      & .count,
+      & .change {
         background-color: var(--pass) !important;
       }
     }
 
     & .is-fail {
-      & .count {
+      & .count,
+      & .change {
         background-color: var(--fail) !important;
       }
     }
 
     & .is-error {
-      & .count {
+      & .count,
+      & .change {
         background-color: var(--error) !important;
       }
     }
 
     & .is-skipped {
-      & .count {
+      & .count,
+      & .change {
         background-color: var(--skipped) !important;
       }
     }
 
     & .is-unknown {
-      & .count {
+      & .count,
+      & .change {
         background-color: color(var(--unknown) tint(30%)) !important;
       }
     }
