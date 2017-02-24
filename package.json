@@ -8,13 +8,11 @@
   "bugs": {
     "url": "https://github.com/lukejpreston/xunit-viewer.git"
   },
-  "homepage": "http://lukejpreston.github.io/xunit-viewer",
+  "homepage": "./",
   "author": "Luke Preston <lukejpreston@gmail.com>",
   "name": "xunit-viewer",
-  "bin": "./bin/xunit-viewer",
-  "main": "./index.js",
+  "main": "./src/component/index.js",
   "directories": {
-    "bin": "./bin",
     "src": "./src"
   },
   "files": {
@@ -85,7 +83,9 @@
     "uuid": "^3.0.1"
   },
   "scripts": {
-    "start": "./bin/xunit-viewer --results=./src/test-data --port=3000 --minify=false"
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js && mkdir build/static/css/static && cp -r build/static/media build/static/css/static",
+    "test": "node scripts/test.js"
   },
   "jest": {
     "collectCoverageFrom": [
