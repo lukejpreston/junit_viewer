@@ -3,10 +3,11 @@ import './header.css'
 import Head from './head'
 import Body from './body'
 
-let Header = ({suites = [], onToggle, onStatToggle, onExpand, onCollapse, onShow, onHide, onSearch, isActive, search, statsStatus}) => {
+let Header = ({suites = [], title, onToggle, onStatToggle, onExpand, onCollapse, onShow, onHide, onSearch, isActive, search, statsStatus}) => {
   let active = isActive ? 'active' : 'inactive'
   return <section className='hero'>
     <Head
+      title={title}
       active={active}
       onToggle={onToggle} />
     <Body
@@ -25,6 +26,7 @@ let Header = ({suites = [], onToggle, onStatToggle, onExpand, onCollapse, onShow
 
 Header.propTypes = {
   suites: PropTypes.array,
+  title: PropTypes.string,
   isActive: PropTypes.bool,
   onToggle: PropTypes.func.isRequired,
   onStatToggle: PropTypes.func.isRequired,

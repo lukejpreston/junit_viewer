@@ -63,6 +63,7 @@ class XunitViewer extends React.Component {
   render () {
     return <div>
       <Header
+        title={this.props.title}
         suites={this.props.suites}
         search={this.state.search}
         onSearch={(value, type) => {
@@ -188,6 +189,7 @@ class XunitViewer extends React.Component {
 }
 
 XunitViewer.propTypes = {
+  title: PropTypes.string,
   suites: PropTypes.array
 }
 

@@ -1,7 +1,9 @@
 import React, {PropTypes} from 'react'
 import Icon from './icon'
+import changeCase from 'change-case'
 
-let Head = ({active, onToggle}) => {
+let Head = ({title = 'Xunit Viewer', active, onToggle}) => {
+  title = changeCase.title(title)
   return <div className='hero-head'>
     <header className='nav'>
       <div className='container'>
@@ -16,7 +18,7 @@ let Head = ({active, onToggle}) => {
         </div>
         <div className='nav-center'>
           <Icon />
-          <h1 className='title'>Xunit Viewer</h1>
+          <h1 className='title'>{title}</h1>
         </div>
         <div className='nav-right' />
       </div>
@@ -25,6 +27,7 @@ let Head = ({active, onToggle}) => {
 }
 
 Head.propTypes = {
+  title: PropTypes.string,
   active: PropTypes.string,
   onToggle: PropTypes.func
 }

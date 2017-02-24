@@ -61,6 +61,6 @@ let suites = [{
 }]
 
 ReactDOM.render(
-  <XunitViewer suites={suites} />,
+  <XunitViewer suites={suites} title={'thisIs-my_title'} />,
   document.getElementById('root')
 )
