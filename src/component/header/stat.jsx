@@ -24,7 +24,7 @@ Count.propTypes = {
   statsStatus: PropTypes.object
 }
 
-let Options = ({name, type, category, onStatToggle}) => {
+let Options = ({name, type, category, onStatToggle, onExpand, onCollapse, onShow, onHide}) => {
   category = name || category
   return <li className={`toggle is-${type}`}>
     <a
@@ -39,6 +39,7 @@ let Options = ({name, type, category, onStatToggle}) => {
       title='exapnd'
       className='change'
       onClick={() => {
+        onExpand({name: category, type})
       }}>
       <span className='icon is-small'><i className={`fa fa-expand`} /></span>
     </a>
@@ -46,6 +47,7 @@ let Options = ({name, type, category, onStatToggle}) => {
       title='contract'
       className='change'
       onClick={() => {
+        onCollapse({name: category, type})
       }}>
       <span className='icon is-small'><i className={`fa fa-compress`} /></span>
     </a>
@@ -53,6 +55,7 @@ let Options = ({name, type, category, onStatToggle}) => {
       title='show'
       className='change'
       onClick={() => {
+        onShow({name: category, type})
       }}>
       <span className='icon is-small'><i className={`fa fa-eye`} /></span>
     </a>
@@ -60,6 +63,7 @@ let Options = ({name, type, category, onStatToggle}) => {
       title='hide'
       className='change'
       onClick={() => {
+        onHide({name: category, type})
       }}>
       <span className='icon is-small'><i className={`fa fa-eye-slash`} /></span>
     </a>
@@ -70,13 +74,18 @@ Options.propTypes = {
   name: PropTypes.string,
   category: PropTypes.string,
   type: PropTypes.string,
+  statsStatus: PropTypes.object,
   onStatToggle: PropTypes.func.isRequired,
-  statsStatus: PropTypes.object
+  onExpand: PropTypes.func.isRequired,
+  onCollapse: PropTypes.func.isRequired,
+  onShow: PropTypes.func.isRequired,
+  onHide: PropTypes.func.isRequired
 }
 
-let Toggle = ({icon, name, total, type, category, onStatToggle, statsStatus}) => {
+let Toggle = ({icon, name, total, type, category, onStatToggle, onExpand, onCollapse, onShow, onHide, statsStatus}) => {
   let Content = Count
   category = name || category
+  category = category.toLowerCase()
   if (statsStatus && statsStatus[category] && statsStatus[category][type]) {
     Content = Options
   }
@@ -88,6 +97,10 @@ let Toggle = ({icon, name, total, type, category, onStatToggle, statsStatus}) =>
     type={type}
     category={category}
     onStatToggle={onStatToggle}
+    onExpand={onExpand}
+    onCollapse={onCollapse}
+    onShow={onShow}
+    onHide={onHide}
     />
 }
 
@@ -98,10 +111,14 @@ Toggle.propTypes = {
   total: PropTypes.number,
   type: PropTypes.string,
   onStatToggle: PropTypes.func.isRequired,
+  onExpand: PropTypes.func.isRequired,
+  onCollapse: PropTypes.func.isRequired,
+  onShow: PropTypes.func.isRequired,
+  onHide: PropTypes.func.isRequired,
   statsStatus: PropTypes.object
 }
 
-let Stat = ({icon, name, total, type, data = [], onSearch, onStatToggle, statsStatus}) => {
+let Stat = ({icon, name, total, type, data = [], onSearch, onStatToggle, onExpand, onCollapse, onShow, onHide, statsStatus}) => {
   return <div className='subtitle'>
     <div className='tabs is-toggle'>
       <ul>
@@ -121,6 +138,10 @@ let Stat = ({icon, name, total, type, data = [], onSearch, onStatToggle, statsSt
         </li>
         <Toggle
           onStatToggle={onStatToggle}
+          onExpand={onExpand}
+          onCollapse={onCollapse}
+          onShow={onShow}
+          onHide={onHide}
           icon={icon}
           name={name}
           total={total}
@@ -130,6 +151,10 @@ let Stat = ({icon, name, total, type, data = [], onSearch, onStatToggle, statsSt
           data.map((toggle, index) => {
             return <Toggle
               onStatToggle={onStatToggle}
+              onExpand={onExpand}
+              onCollapse={onCollapse}
+              onShow={onShow}
+              onHide={onHide}
               key={`toggle-${type}-${index}`}
               icon={toggle.icon}
               category={name}
@@ -153,6 +178,10 @@ Stat.propTypes = {
   type: PropTypes.string,
   onSearch: PropTypes.func.isRequired,
   onStatToggle: PropTypes.func.isRequired,
+  onExpand: PropTypes.func.isRequired,
+  onCollapse: PropTypes.func.isRequired,
+  onShow: PropTypes.func.isRequired,
+  onHide: PropTypes.func.isRequired,
   statsStatus: PropTypes.object
 }
 
