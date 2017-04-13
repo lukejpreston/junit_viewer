@@ -6,8 +6,8 @@ function changeToAbsolute(fileName) {
     return fileName.indexOf('/') === 0 ? fileName : process.cwd() + '/' + fileName
 }
 
-module.exports = function(results,contracted) {
+module.exports = function(results,contracted,template) {
     var resultsFile = changeToAbsolute(results)
     var data = parse(resultsFile,contracted)
-    return render(data)
+    return render(data,template)
 }

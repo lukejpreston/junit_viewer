@@ -4,7 +4,9 @@ var fs = require('fs'),
     htmlminify = require('html-minify')
 
 var commandArgs = {
-    minify: true
+    minify: true,
+    template: 'default',
+    contracted: ''
 }
 
 process.argv.forEach(function(arg) {
@@ -16,12 +18,12 @@ process.argv.forEach(function(arg) {
         commandArgs.port = arg.split('=')[1] || 9090
     if (arg.indexOf('--minify') !== -1)
         commandArgs.minify = arg.split('=')[1] === 'true'
+    if (arg.indexOf('--template') !== -1)
+        commandArgs.template = arg.split('=')[1] || 'default'
     if (arg.indexOf('--help') !== -1)
         commandArgs.help = true
     if (arg.indexOf('--contracted') !== -1)
         commandArgs.contracted = "contracted"
-    else
-        commandArgs.contracted = ""
 })
 
 
@@ -37,12 +39,14 @@ function start() {
             '--results=folderName location of folder',
             '--port=portNumber supply a port if you want to serve',
             '--save=fileName supply a file name if you wish to save the file',
-            '--contracted=provide the flag to have default view of all suits as contracted'
+            '--contracted=provide the flag to have default view of all suits as contracted',
+            '--template=template used to render'
         ].join('\n')
         console.log(message)
     } else {
         if (commandArgs.hasOwnProperty('save')) {
-            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
+
+            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted,commandArgs.template)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)
             var saveLocation = changeToAbsolute(commandArgs.save)
@@ -53,7 +57,8 @@ function start() {
             var app = express()
 
             app.get('/', function(req, res) {
-                var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
+
+                var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted,commandArgs.template)
                 if (commandArgs.minify)
                     renderedResults = htmlminify.minify(renderedResults)
                 res.send(renderedResults)
@@ -67,7 +72,7 @@ function start() {
         }
 
         if(!commandArgs.hasOwnProperty('save') && !commandArgs.hasOwnProperty('port')){
-            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted)
+            var renderedResults = junit_viewer(commandArgs.results,commandArgs.contracted,commandArgs.template)
             if (commandArgs.minify)
                 renderedResults = htmlminify.minify(renderedResults)
             console.log(renderedResults)

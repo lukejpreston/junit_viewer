@@ -87,6 +87,12 @@ By default it displays expanded view of suits
 junit-viewer --results=file_or_folder_location --contracted
 ```
 
+Change the template used for render
+
+```
+junit-viewer --results=file_or_folder_location --template=bootstrap
+```
+
 Using the API
 =============
 

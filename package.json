@@ -20,6 +20,10 @@
     "test": "rm -rf junit_viewer_specs/* && jest --port --results=data && ./bin/junit-viewer --results=junit_viewer_specs --save=junit_viewer_specs.html"
   },
   "author": "Luke Preston <lukejpreston@gmail.com>",
+  "contributors": [
+    "Luke Preston <lukejpreston@gmail.com>",
+    "Flaceliere Brice <contact@b-flaceliere.fr>"
+  ],
   "license": "ISC",
   "repository": {
     "url": "https://github.com/lukejpreston/junit_viewer.git",
