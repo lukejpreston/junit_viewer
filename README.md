@@ -1,4 +1,4 @@
-<img width="671" alt="image" src="https://github.com/lukejpreston/junit_viewer/assets/4129128/ddd6e922-b00a-4e7d-9aee-314720129f0b">Junit Viewer
+Junit Viewer
 ============
 
 **DEPRECATED** This project is deprecated, please use Xunit Viewer instead [xunit-viewer](https://www.npmjs.com/package/xunit-viewer)
