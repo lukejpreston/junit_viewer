@@ -1,5 +1,7 @@
-Junit Viewer
+<img width="671" alt="image" src="https://github.com/lukejpreston/junit_viewer/assets/4129128/ddd6e922-b00a-4e7d-9aee-314720129f0b">Junit Viewer
 ============
+
+**DEPRECATED** This project is deprecated, please use Xunit Viewer instead [xunit-viewer](https://www.npmjs.com/package/xunit-viewer)
 
 [![npm version](https://badge.fury.io/js/junit-viewer.svg)](https://badge.fury.io/js/junit-viewer)
 [![Join the chat at https://gitter.im/lukejpreston/junit_viewer](https://badges.gitter.im/lukejpreston/junit_viewer.svg)](https://gitter.im/lukejpreston/junit_viewer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
